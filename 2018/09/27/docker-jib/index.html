@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="to do list," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="keywords" content="to do list">
+<meta name="description" content="google jib容器打包工具试用 Building Docker Image for a Spring Boot App With Jib 使用 Jib 生成 Java Docker 镜像 github GoogleContainerTools 123456789101112131415161718192021222324252627282930313233343536373839404142">
+<meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="to_do_list">
-<meta property="og:url" content="http:/andrewchen1.xyz/2018/09/15/to-do-list/index.html">
+<meta property="og:title" content="docker_jib">
+<meta property="og:url" content="http:/andrewchen1.xyz/2018/09/27/docker-jib/index.html">
 <meta property="og:site_name" content="小夫的笔记">
+<meta property="og:description" content="google jib容器打包工具试用 Building Docker Image for a Spring Boot App With Jib 使用 Jib 生成 Java Docker 镜像 github GoogleContainerTools 123456789101112131415161718192021222324252627282930313233343536373839404142">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-23T15:42:56.994Z">
+<meta property="og:updated_time" content="2018-09-27T10:36:38.213Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="to_do_list">
+<meta name="twitter:title" content="docker_jib">
+<meta name="twitter:description" content="google jib容器打包工具试用 Building Docker Image for a Spring Boot App With Jib 使用 Jib 生成 Java Docker 镜像 github GoogleContainerTools 123456789101112131415161718192021222324252627282930313233343536373839404142">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http:/andrewchen1.xyz/2018/09/15/to-do-list/"/>
+  <link rel="canonical" href="http:/andrewchen1.xyz/2018/09/27/docker-jib/"/>
 
 
 
 
 
-  <title>to_do_list | 小夫的笔记</title>
+  <title>docker_jib | 小夫的笔记</title>
   
 
 
@@ -270,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/andrewchen1.xyz/2018/09/15/to-do-list/">
+    <link itemprop="mainEntityOfPage" href="http:/andrewchen1.xyz/2018/09/27/docker-jib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小夫">
@@ -287,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">to_do_list</h1>
+          <h1 class="post-title" itemprop="name headline">docker_jib</h1>
         
 
         <div class="post-meta">
@@ -299,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-15T18:07:57+08:00">
-                2018-09-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-27T18:25:01+08:00">
+                2018-09-27
               </time>
             
 
@@ -337,7 +340,12 @@
       
 
       
-        
+        <p><a href="https://blog.csdn.net/lusyoe/article/details/81000886" target="_blank" rel="noopener">google jib容器打包工具试用</a></p>
+<p><a href="https://dzone.com/articles/building-docker-image-for-a-spring-boot-app" target="_blank" rel="noopener">Building Docker Image for a Spring Boot App With Jib</a></p>
+<p><a href="https://blog.csdn.net/u013360850/article/details/81058871" target="_blank" rel="noopener">使用 Jib 生成 Java Docker 镜像</a></p>
+<p><a href="https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#quickstart" target="_blank" rel="noopener">github GoogleContainerTools</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>suidifu-discovery-eureka<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.cloud.tools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jib-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">from</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">image</span>&gt;</span>registry.hub.docker.com/openjdk:8-jdk-alpine<span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">to</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">image</span>&gt;</span>registry.cn-hangzhou.aliyuncs.com/andrewchen/spring-boot-example<span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">auth</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">username</span>&gt;</span>chendufu<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">password</span>&gt;</span>habwaD-wiske5-jecxyc<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">auth</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">container</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">jvmFlags</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">jvmFlag</span>&gt;</span>-Xms256M<span class="tag">&lt;/<span class="name">jvmFlag</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">jvmFlags</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>com.suidifu.discovery.eureka.SuidifuDiscoveryEurekaApplication<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">ports</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">port</span>&gt;</span>8080<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">ports</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">container</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>dockerBuild<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -352,12 +360,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/to-do-list/" rel="tag"># to do list</a>
-          
-        </div>
-      
 
       
       
@@ -367,8 +369,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/28/ThinkJava-并发/" rel="next" title="ThinkJava-并发">
-                <i class="fa fa-chevron-left"></i> ThinkJava-并发
+              <a href="/2018/09/23/ThinkJava-Java-I-O系统/" rel="next" title="ThinkJava-Java_I/O系统">
+                <i class="fa fa-chevron-left"></i> ThinkJava-Java_I/O系统
               </a>
             
           </div>
@@ -376,10 +378,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/18/ThinkJava-注解/" rel="prev" title="ThinkJava-注解">
-                ThinkJava-注解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

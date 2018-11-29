@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素. Java.long中的注解 @Override Deprecated Suppress Warnings">
+<meta name="description" content="注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素. Java支持的三种标准注解 @Override @Deprecated @Suppress Warnings  Java支持的四种元注解 @Targe 表示该注解可以用于什么地方.可能的ElementType参数包括  CONSTRUCTOR 构造方法 FIELD 成员变量 LOCAL_VARIA">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ThinkJava-注解">
 <meta property="og:url" content="http:/andrewchen1.xyz/2018/09/18/ThinkJava-注解/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素. Java.long中的注解 @Override Deprecated Suppress Warnings">
+<meta property="og:description" content="注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素. Java支持的三种标准注解 @Override @Deprecated @Suppress Warnings  Java支持的四种元注解 @Targe 表示该注解可以用于什么地方.可能的ElementType参数包括  CONSTRUCTOR 构造方法 FIELD 成员变量 LOCAL_VARIA">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-18T15:55:57.953Z">
+<meta property="og:updated_time" content="2018-09-23T09:59:07.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThinkJava-注解">
-<meta name="twitter:description" content="注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素. Java.long中的注解 @Override Deprecated Suppress Warnings">
+<meta name="twitter:description" content="注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素. Java支持的三种标准注解 @Override @Deprecated @Suppress Warnings  Java支持的四种元注解 @Targe 表示该注解可以用于什么地方.可能的ElementType参数包括  CONSTRUCTOR 构造方法 FIELD 成员变量 LOCAL_VARIA">
 
 
 
@@ -363,11 +363,52 @@
 
       
         <h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p>注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素.</p>
-<h2 id="Java-long中的注解"><a href="#Java-long中的注解" class="headerlink" title="Java.long中的注解"></a>Java.long中的注解</h2><ul>
+<h2 id="Java支持的三种标准注解"><a href="#Java支持的三种标准注解" class="headerlink" title="Java支持的三种标准注解"></a>Java支持的三种标准注解</h2><ul>
 <li>@Override</li>
-<li>Deprecated</li>
-<li>Suppress Warnings</li>
+<li>@Deprecated</li>
+<li>@Suppress Warnings</li>
 </ul>
+<h2 id="Java支持的四种元注解"><a href="#Java支持的四种元注解" class="headerlink" title="Java支持的四种元注解"></a>Java支持的四种元注解</h2><ul>
+<li><p>@Targe</p>
+<p>表示该注解可以用于什么地方.可能的ElementType参数包括</p>
+<ul>
+<li>CONSTRUCTOR 构造方法</li>
+<li>FIELD 成员变量</li>
+<li>LOCAL_VARIABLE 局部变量</li>
+<li>METHOD 方法</li>
+<li>PACKAGE 包</li>
+<li>PAPAMETER 参数</li>
+<li>TYPE 类, 接口, 枚举</li>
+</ul>
+</li>
+<li><p>@Retention <em>riˈtenCHən</em> </p>
+<ul>
+<li>SOURCE 注解将被编译器丢弃</li>
+<li>CLASS 注解在class文件中可用, 但是会被VM丢弃</li>
+<li>RUNTIME VM 在运行期间也保留注解, 可以通过反射机制来获取注解的信息</li>
+</ul>
+</li>
+<li><p>@Documented</p>
+<p>将该注解包含在javadoc 中</p>
+</li>
+<li><p>@Inherited</p>
+<p>允许子类继承父类中的注解</p>
+</li>
+</ul>
+<h2 id="注解元素"><a href="#注解元素" class="headerlink" title="注解元素"></a>注解元素</h2><p>注解元素可以用的类型如下所示</p>
+<ul>
+<li>所有基本类型 int, long, float, double, short, byte, boolean, void</li>
+<li>String</li>
+<li>Class</li>
+<li>enum</li>
+<li>Annotation</li>
+<li>以上类型的数组</li>
+</ul>
+<h2 id="生成外部文件"><a href="#生成外部文件" class="headerlink" title="生成外部文件"></a>生成外部文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> DbTable &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> ConStraints &#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">primaryKey</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">allowNull</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">unqiue</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> SQLString &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="function">ConStraints <span class="title">conStraints</span><span class="params">()</span> <span class="keyword">default</span> @ConStraints</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> SQLInter &#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">    <span class="function">ConStraints <span class="title">conStraints</span><span class="params">()</span> <span class="keyword">default</span> @ConStraints</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在使用的时候</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DbTable</span>(name = <span class="string">"member"</span>)</span><br><span class="line"><span class="meta">@Date</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line">    <span class="meta">@SQLString</span>(<span class="number">30</span>)</span><br><span class="line">    <span class="keyword">private</span> String firstName;</span><br><span class="line">    <span class="meta">@SQLString</span>(<span class="number">50</span>)</span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="meta">@SQLInter</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="meta">@SQLString</span>(value = <span class="number">30</span>, conStraints = <span class="meta">@ConStraints</span>(primaryKey = <span class="keyword">true</span>))</span><br><span class="line">    <span class="keyword">private</span> String handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>框架是通过类似这样的方法来解析的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Class member = Member.class;</span><br><span class="line">        DbTable dbTable = member.getAnnotationsByType(DbTable.class);</span><br><span class="line">        <span class="keyword">if</span> (! Objects.isNull(dbTable)) &#123;</span><br><span class="line">            String tableName = dbTable.name();</span><br><span class="line">            <span class="keyword">if</span> (! Objects.isNull(tableName) &amp;&amp; tableName.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                tableName = tableName.toUpperCase();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                tableName = member.getName().toUpperCase();</span><br><span class="line">            &#125;</span><br><span class="line">            Field[] fields = member.getDeclaredFields();</span><br><span class="line">            StringBuilder[] fieldsDefs = <span class="keyword">new</span> StringBuilder[fields.length];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i ++) &#123;</span><br><span class="line">                Field field = fields[i];</span><br><span class="line">                fieldsDef[i] = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">                Annotation[] annotations = field.getAnnotations();</span><br><span class="line">                <span class="keyword">if</span> (annotations.length == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (Annotation annotation : annotations) &#123;</span><br><span class="line">                    String columnName = <span class="string">""</span>;</span><br><span class="line">                    <span class="keyword">if</span> (annotation <span class="keyword">instanceof</span> SQLInter) &#123;</span><br><span class="line">                        SQLInter sqlInter = (SQLInter) annotation;</span><br><span class="line">                        fieldsDef[i].append(<span class="string">" INT "</span>).append( getConstrains(sqlInter.conStraints()));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// many many other type</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            StringBuilder createCommand = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            createCommand.append(<span class="string">"crate table "</span>).append(tableName).append(<span class="string">" ("</span>);</span><br><span class="line">            <span class="keyword">for</span> (StringBuilder stringBuilder : fieldsDefs ) &#123;</span><br><span class="line">                createCommand.append(stringBuilder).append(<span class="string">" , "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 去掉最后一个逗号</span></span><br><span class="line">            createCommand = createCommand.subSequence(<span class="number">0</span>, createCommand.length() - <span class="number">2</span>);</span><br><span class="line">            createCommand.append(<span class="string">" );"</span>);             </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getConstrains</span><span class="params">(ConStraints con)</span> </span>&#123;</span><br><span class="line">        StringBuilder constraints = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">if</span> (! con.allowNull()) &#123;</span><br><span class="line">            constraints.append(<span class="string">" NOT NUll "</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (con.primaryKey()) &#123;</span><br><span class="line">            constraints.append(<span class="string">" PRIMARY KEY "</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (con.unqiue()) &#123;</span><br><span class="line">            constraints.append(<span class="string">" UNIQUE "</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> constraints.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -401,6 +442,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/23/ThinkJava-枚举类型/" rel="prev" title="ThinkJava-枚举类型">
+                ThinkJava-枚举类型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -481,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -558,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注解"><span class="nav-number">1.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-long中的注解"><span class="nav-number">1.1.</span> <span class="nav-text">Java.long中的注解</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注解"><span class="nav-number">1.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java支持的三种标准注解"><span class="nav-number">1.1.</span> <span class="nav-text">Java支持的三种标准注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java支持的四种元注解"><span class="nav-number">1.2.</span> <span class="nav-text">Java支持的四种元注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解元素"><span class="nav-number">1.3.</span> <span class="nav-text">注解元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成外部文件"><span class="nav-number">1.4.</span> <span class="nav-text">生成外部文件</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -585,6 +630,7 @@
   <span class="author" itemprop="copyrightHolder">小夫</span>
 
   
+   <a href="http://www.miitbeian.gov.cn/">浙ICP备18051892号</a> 
 </div>
 
 
