@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Akka入门和实践," />
+  <meta name="keywords" content="akka,笔记," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="年糕的爸爸在B乎上开了专栏前路迢迢,教麻瓜使用Akka和Clojure. 然后就上船了.但是 akka 和clojure 是个什么鬼.但是应该是永远也学会不会的吧. #从入门到放弃# 什么是Actor在我的理解里面Actor 就是我们固定的一个流程(process) Actor 和消息传递 Actor同步处理接收到的流程 消息用于跨进程(多个Actor之间)通信的数据 消息传递一种软件开发范式,">
-<meta name="keywords" content="Akka入门和实践">
+<meta name="keywords" content="akka,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识Akka">
 <meta property="og:url" content="http:/andrewchen1.xyz/2019/02/17/初识Akka/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="年糕的爸爸在B乎上开了专栏前路迢迢,教麻瓜使用Akka和Clojure. 然后就上船了.但是 akka 和clojure 是个什么鬼.但是应该是永远也学会不会的吧. #从入门到放弃# 什么是Actor在我的理解里面Actor 就是我们固定的一个流程(process) Actor 和消息传递 Actor同步处理接收到的流程 消息用于跨进程(多个Actor之间)通信的数据 消息传递一种软件开发范式,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-17T14:39:57.748Z">
+<meta property="og:updated_time" content="2019-02-17T14:59:09.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Akka">
 <meta name="twitter:description" content="年糕的爸爸在B乎上开了专栏前路迢迢,教麻瓜使用Akka和Clojure. 然后就上船了.但是 akka 和clojure 是个什么鬼.但是应该是永远也学会不会的吧. #从入门到放弃# 什么是Actor在我的理解里面Actor 就是我们固定的一个流程(process) Actor 和消息传递 Actor同步处理接收到的流程 消息用于跨进程(多个Actor之间)通信的数据 消息传递一种软件开发范式,">
@@ -313,19 +313,41 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Akka入门和实践/" itemprop="url" rel="index">
+                    <span itemprop="name">Akka入门和实践</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
               <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/02/17/初识Akka/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/02/17/初识Akka/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/17/初识Akka/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/02/17/初识Akka/" itemprop="commentCount"></span>
                 </a>
-              
+              </span>
             
           
 
@@ -397,7 +419,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Akka入门和实践/" rel="tag"># Akka入门和实践</a>
+            <a href="/tags/akka/" rel="tag"># akka</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
         </div>
       
@@ -453,7 +477,12 @@
 
   
     <div class="comments" id="comments">
-      <div id="SOHUCS"></div>
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
 
   
@@ -508,7 +537,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -519,7 +548,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -530,7 +559,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -749,6 +778,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://andrewchen7.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http:/andrewchen1.xyz/2019/02/17/初识Akka/';
+          this.page.identifier = '2019/02/17/初识Akka/';
+          this.page.title = '初识Akka';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://andrewchen7.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -764,25 +813,6 @@
 
 
 
-  
-
-
-
-
-  
-    <script type="text/javascript">
-    (function(){
-      var appid = 'cytXOMzOb';
-      var conf = 'prod_8f42cb87f121340816072fe3513251cc';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-        window.changyan.api.config({appid:appid,conf:conf})});
-      }
-    })();
-    </script>
-    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-  
 
 
 

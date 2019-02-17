@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ThinkJava," />
+  <meta name="keywords" content="读书笔记,Java," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="为什么要有并发现在多核心的处理器变得越来越常见,要如何使用多个核心呢?并发是一个很好的解决方案. Java并发的实现Thread线程可以驱动任务,因此你需要一种描述任务的方式, 这可以由Runable接口来提供.将Runable对象转变为工作任务的传统方式就是把它提交给一个Thread构造器 1234567891011121314151617181920212223242526public cla">
-<meta name="keywords" content="ThinkJava">
+<meta name="keywords" content="读书笔记,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并发">
 <meta property="og:url" content="http:/andrewchen1.xyz/2018/08/28/并发/index.html">
@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://img.andrewchen1.top/FqqCk4nHnOPoPq3D8ECWkCiGaGWj">
 <meta property="og:image" content="http://img.andrewchen1.top/FgLRxZO-dql-Lyo4OC3rhIEF3_K6">
 <meta property="og:image" content="http://img.andrewchen1.top/FuWMJSBr8RzssuBfhkY4CHX44O7u">
-<meta property="og:updated_time" content="2019-02-17T14:38:31.237Z">
+<meta property="og:updated_time" content="2019-02-17T15:01:33.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发">
 <meta name="twitter:description" content="为什么要有并发现在多核心的处理器变得越来越常见,要如何使用多个核心呢?并发是一个很好的解决方案. Java并发的实现Thread线程可以驱动任务,因此你需要一种描述任务的方式, 这可以由Runable接口来提供.将Runable对象转变为工作任务的传统方式就是把它提交给一个Thread构造器 1234567891011121314151617181920212223242526public cla">
@@ -324,19 +324,41 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java编程思想/" itemprop="url" rel="index">
+                    <span itemprop="name">Java编程思想</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
               <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/28/并发/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/08/28/并发/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/28/并发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/28/并发/" itemprop="commentCount"></span>
                 </a>
-              
+              </span>
             
           
 
@@ -916,7 +938,9 @@ Exception table:
       
         <div class="post-tags">
           
-            <a href="/tags/ThinkJava/" rel="tag"># ThinkJava</a>
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -972,7 +996,12 @@ Exception table:
 
   
     <div class="comments" id="comments">
-      <div id="SOHUCS"></div>
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
 
   
@@ -1027,7 +1056,7 @@ Exception table:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1038,7 +1067,7 @@ Exception table:
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1049,7 +1078,7 @@ Exception table:
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1268,6 +1297,26 @@ Exception table:
 
   
 
+    
+      <script id="dsq-count-scr" src="https://andrewchen7.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http:/andrewchen1.xyz/2018/08/28/并发/';
+          this.page.identifier = '2018/08/28/并发/';
+          this.page.title = '并发';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://andrewchen7.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -1283,25 +1332,6 @@ Exception table:
 
 
 
-  
-
-
-
-
-  
-    <script type="text/javascript">
-    (function(){
-      var appid = 'cytXOMzOb';
-      var conf = 'prod_8f42cb87f121340816072fe3513251cc';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-        window.changyan.api.config({appid:appid,conf:conf})});
-      }
-    })();
-    </script>
-    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-  
 
 
 

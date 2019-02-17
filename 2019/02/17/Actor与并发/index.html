@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Akka入门和实践," />
+  <meta name="keywords" content="akka,笔记," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="响应式四准则 灵敏性 立刻进行响应 伸缩性 方便进行扩展 容错性 从容的对错误进行响应, 不会对系统的其他地方造成影响 事件驱动 何时 何地 如何对请求作出响应. 允许对响应的组件进行路由和负载均衡.剖析Actor12345678910111213141516171819202122package com.akkademy.pingpong;import akka.actor.AbstractAc">
-<meta name="keywords" content="Akka入门和实践">
+<meta name="keywords" content="akka,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Actor与并发">
 <meta property="og:url" content="http:/andrewchen1.xyz/2019/02/17/Actor与并发/index.html">
@@ -88,7 +88,7 @@
 <meta property="og:description" content="响应式四准则 灵敏性 立刻进行响应 伸缩性 方便进行扩展 容错性 从容的对错误进行响应, 不会对系统的其他地方造成影响 事件驱动 何时 何地 如何对请求作出响应. 允许对响应的组件进行路由和负载均衡.剖析Actor12345678910111213141516171819202122package com.akkademy.pingpong;import akka.actor.AbstractAc">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550399086170.png">
-<meta property="og:updated_time" content="2019-02-17T14:40:05.700Z">
+<meta property="og:updated_time" content="2019-02-17T14:59:22.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Actor与并发">
 <meta name="twitter:description" content="响应式四准则 灵敏性 立刻进行响应 伸缩性 方便进行扩展 容错性 从容的对错误进行响应, 不会对系统的其他地方造成影响 事件驱动 何时 何地 如何对请求作出响应. 允许对响应的组件进行路由和负载均衡.剖析Actor12345678910111213141516171819202122package com.akkademy.pingpong;import akka.actor.AbstractAc">
@@ -315,19 +315,41 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Akka入门和实践/" itemprop="url" rel="index">
+                    <span itemprop="name">Akka入门和实践</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
               <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/02/17/Actor与并发/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/02/17/Actor与并发/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/17/Actor与并发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/02/17/Actor与并发/" itemprop="commentCount"></span>
                 </a>
-              
+              </span>
             
           
 
@@ -411,7 +433,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Akka入门和实践/" rel="tag"># Akka入门和实践</a>
+            <a href="/tags/akka/" rel="tag"># akka</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
         </div>
       
@@ -463,7 +487,12 @@
 
   
     <div class="comments" id="comments">
-      <div id="SOHUCS"></div>
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
 
   
@@ -518,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -529,7 +558,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -540,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -759,6 +788,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://andrewchen7.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http:/andrewchen1.xyz/2019/02/17/Actor与并发/';
+          this.page.identifier = '2019/02/17/Actor与并发/';
+          this.page.title = 'Actor与并发';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://andrewchen7.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -774,25 +823,6 @@
 
 
 
-  
-
-
-
-
-  
-    <script type="text/javascript">
-    (function(){
-      var appid = 'cytXOMzOb';
-      var conf = 'prod_8f42cb87f121340816072fe3513251cc';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-        window.changyan.api.config({appid:appid,conf:conf})});
-      }
-    })();
-    </script>
-    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-  
 
 
 
