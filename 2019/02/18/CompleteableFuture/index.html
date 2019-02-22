@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="内容抄袭自彻底理解Java的Future模式深度学习Java Future （一）深度学习Java Future （二）抄完了就假装自己会了 = =… #爽文# Runnable 和 Callable\runnable 中的void run();方法和 Callable 中的V call() throws Exception; 描述了要执行的任务的逻辑. 这些逻辑要在其他的线程中执行. 这个两个的">
+<meta name="keywords" content="Java,并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CompleteableFuture">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/02/18/CompleteableFuture/index.html">
+<meta property="og:site_name" content="小夫的笔记">
+<meta property="og:description" content="内容抄袭自彻底理解Java的Future模式深度学习Java Future （一）深度学习Java Future （二）抄完了就假装自己会了 = =… #爽文# Runnable 和 Callable\runnable 中的void run();方法和 Callable 中的V call() throws Exception; 描述了要执行的任务的逻辑. 这些逻辑要在其他的线程中执行. 这个两个的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550474637544.png">
+<meta property="og:updated_time" content="2019-02-22T14:09:09.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CompleteableFuture">
+<meta name="twitter:description" content="内容抄袭自彻底理解Java的Future模式深度学习Java Future （一）深度学习Java Future （二）抄完了就假装自己会了 = =… #爽文# Runnable 和 Callable\runnable 中的void run();方法和 Callable 中的V call() throws Exception; 描述了要执行的任务的逻辑. 这些逻辑要在其他的线程中执行. 这个两个的">
+<meta name="twitter:image" content="http://img.andrewchen1.top/小书匠/1550474637544.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.andrewchen1.top/2019/02/18/CompleteableFuture/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CompleteableFuture | 小夫的笔记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小夫的笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/02/18/CompleteableFuture/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小夫"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.jpg"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小夫的笔记"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CompleteableFuture
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-18 12:17:00" itemprop="dateCreated datePublished" datetime="2019-02-18T12:17:00+08:00">2019-02-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-22 22:09:09" itemprop="dateModified" datetime="2019-02-22T22:09:09+08:00">2019-02-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JDK/" itemprop="url" rel="index"><span itemprop="name">JDK</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/02/18/CompleteableFuture/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/18/CompleteableFuture/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>内容抄袭自<br><a href="http://www.cnblogs.com/cz123/p/7693064.html" target="_blank" rel="noopener">彻底理解Java的Future模式</a><br><a href="https://www.jianshu.com/p/bce9301f1adb" target="_blank" rel="noopener">深度学习Java Future （一）</a><br><a href="https://www.jianshu.com/p/3aa308a5f182" target="_blank" rel="noopener">深度学习Java Future （二）</a><br>抄完了就假装自己会了 = =… #爽文#</p>
+<h1 id="Runnable-和-Callable"><a href="#Runnable-和-Callable" class="headerlink" title="Runnable 和 Callable\"></a>Runnable 和 Callable\<v></v></h1><p>runnable 中的void run();方法和 Callable 中的V call() throws Exception; 描述了要执行的任务的逻辑. 这些逻辑要在其他的线程中执行. 这个两个的区别是是否会有返回值. FutureTask 相当于是结果的提货券.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// runnable</span></span><br><span class="line"><span class="keyword">new</span> Thread(() -&gt; System.out.println(<span class="string">"hello world"</span>)).start();</span><br><span class="line"></span><br><span class="line"><span class="comment">//callable </span></span><br><span class="line">FutureTask&lt;String&gt; futureTask = <span class="keyword">new</span> FutureTask&lt;&gt;(() -&gt; <span class="string">"this is Future"</span>);</span><br><span class="line">		   <span class="keyword">new</span> Thread(futureTask).start();</span><br><span class="line">        String result = futureTask.get();</span><br></pre></td></tr></table></figure>
+<h1 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h1><h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="Treiber-Stack"><a href="#Treiber-Stack" class="headerlink" title="Treiber Stack"></a>Treiber Stack</h3><p><a href="https://en.wikipedia.org/wiki/Treiber_stack" target="_blank" rel="noopener">wikipedia</a> <a href="http://www.cnblogs.com/micrari/p/7719408.html" target="_blank" rel="noopener">blogger</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcurrentStack</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    AtomicReference&lt;Node&lt;E&gt;&gt; top = <span class="keyword">new</span> AtomicReference&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(E item)</span> </span>&#123;</span><br><span class="line">        Node&lt;E&gt; newHead = <span class="keyword">new</span> Node&lt;&gt;(item);</span><br><span class="line">        Node&lt;E&gt; oldHead;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(;;) &#123;</span><br><span class="line">            oldHead = top.get();</span><br><span class="line">            newHead.next = oldHead;</span><br><span class="line">            <span class="keyword">if</span> (top.compareAndSet(oldHead, newHead)) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Node&lt;E&gt; oldHead = <span class="keyword">null</span>;</span><br><span class="line">        Node&lt;E&gt; newHead = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(;;) &#123;</span><br><span class="line">            oldHead = top.get();</span><br><span class="line">            <span class="keyword">if</span> (Objects.isNull(oldHead)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            newHead = oldHead;</span><br><span class="line">            <span class="keyword">if</span> (top.compareAndSet(oldHead, newHead)) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> oldHead.item;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">final</span> E item;</span><br><span class="line">        <span class="keyword">public</span> Node&lt;E&gt; next;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(E item)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.item = item;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="LockSupport"><a href="#LockSupport" class="headerlink" title="LockSupport"></a>LockSupport</h3><p><a href="https://blog.csdn.net/hengyunabc/article/details/28126139" target="_blank" rel="noopener">Java的LockSupport.park()实现分析</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">unpark</span><span class="params">(Thread jthread)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">park</span><span class="params">(<span class="keyword">boolean</span> isAbsolute, <span class="keyword">long</span> time)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>unpark函数为线程提供“许可(permit)”，线程调用park函数则等待“许可”。这个有点像信号量，但是这个“许可”是不能叠加的，“许可”是一次性的。<br>比如线程B连续调用了三次unpark函数，当线程A调用park函数就使用掉这个“许可”，如果线程A再次调用park，则进入等待状态。<br>注意，<strong>unpark函数可以先于park调用</strong>.比如线程B调用unpark函数，给线程A发了一个“许可”，那么当线程A调用park时，它发现已经有“许可”了，那么它会马上再继续运行。<br>实际上，park函数即使没有“许可”，有时也会无理由地返回，这点等下再解析。</p>
+</blockquote>
+<p>每个java线程都有一个Parker实例，Parker类是这样定义的：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parker</span> :</span> <span class="keyword">public</span> os::PlatformParker &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">volatile</span> <span class="keyword">int</span> _counter ;</span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">park</span><span class="params">(<span class="keyword">bool</span> isAbsolute, jlong time)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">unpark</span><span class="params">()</span></span>;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlatformParker</span> :</span> <span class="keyword">public</span> CHeapObj&lt;mtInternal&gt; &#123;</span><br><span class="line">  <span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">pthread_mutex_t</span> _mutex [<span class="number">1</span>] ;</span><br><span class="line">    <span class="keyword">pthread_cond_t</span>  _cond  [<span class="number">1</span>] ;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在Parker类里的_counter字段，就是用来记录所谓的“许可”的。</p>
+<p>当调用park时，先尝试直接能否直接拿到“许可”，即_counter&gt;0时，如果成功，则把_counter设置为0,并返回：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Parker::park(<span class="keyword">bool</span> isAbsolute, jlong time) &#123;</span><br><span class="line">  <span class="comment">// Ideally we'd do something useful while spinning, such</span></span><br><span class="line">  <span class="comment">// as calling unpackTime().</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">  <span class="comment">// Optional fast-path check:</span></span><br><span class="line">  <span class="comment">// Return immediately if a permit is available.</span></span><br><span class="line">  <span class="comment">// We depend on Atomic::xchg() having full barrier semantics</span></span><br><span class="line">  <span class="comment">// since we are doing a lock-free update to _counter.</span></span><br><span class="line">  <span class="comment">// 原子操作</span></span><br><span class="line">  <span class="keyword">if</span> (Atomic::xchg(<span class="number">0</span>, &amp;_counter) &gt; <span class="number">0</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure></p>
+<p>如果不成功，则构造一个ThreadBlockInVM，然后检查_counter是不是&gt;0，如果是，则把_counter设置为0，unlock mutex并返回：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ThreadBlockInVM <span class="title">tbivm</span><span class="params">(jt)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (_counter &gt; <span class="number">0</span>)  &#123; <span class="comment">// no wait needed</span></span><br><span class="line">  _counter = <span class="number">0</span>;</span><br><span class="line">  status = pthread_mutex_unlock(_mutex);</span><br></pre></td></tr></table></figure></p>
+<p>ThreadBlockInVM <a href="https://juejin.im/post/5b7a0bbbf265da437b082793" target="_blank" rel="noopener">从Java到JVM到OS线程睡眠</a><br>前面说到 ThreadBlockInVM 会检查当前线程用不用进入 safepoint，它主要的逻辑如下：</p>
+<ul>
+<li>首先设置 Java 线程状态，将状态加一，由 _thread_in_vm = 6 变为 _thread_in_vm_trans = 7，从“运行vm本身代码”到“相应的过度状态”。</li>
+<li>os::is_MP() 用于判断计算机系统是否为多核系统，多核情况下需要做内存屏障处理，这是为了让每个线程都能实时同步状态。</li>
+<li>内存屏障有两种方式，一种是 rderAccess::fence() ，它的实现是直接通过CPU指令来实现，汇编指令为 __asm__ volatile (“lock; addl $0,0(%%rsp)” : : : “cc”, “memory”); ，这种方式代价比较大。而另外一种为 InterfaceSupport::serialize_memory ，由 JVM 模拟实现，效率高一点。</li>
+<li>调用 SafepointSynchronize::block 尝试在该安全点进行阻塞。</li>
+<li>设置 Java 线程状态为 _thread_blocked ，即阻塞。</li>
+</ul>
+<p>如果此时的count 的值是0,当前这个线程已经被pack了, 那么判断等待的时间，然后再调用pthread_cond_wait函数等待，如果等待返回，则把_counter设置为0，unlock mutex并返回：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (time == <span class="number">0</span>) &#123;</span><br><span class="line">  status = pthread_cond_wait (_cond, _mutex) ;</span><br><span class="line">&#125;</span><br><span class="line">_counter = <span class="number">0</span> ;</span><br><span class="line">status = pthread_mutex_unlock(_mutex) ;</span><br><span class="line">assert_status(status == <span class="number">0</span>, status, <span class="string">"invariant"</span>) ;</span><br><span class="line">OrderAccess::fence();</span><br></pre></td></tr></table></figure></p>
+<p>当unpark时，则简单多了，直接设置_counter为1，再unlock mutext返回。如果_counter之前的值是0，则还要调用pthread_cond_signal唤醒在park中等待的线程：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Parker::unpark() &#123;</span><br><span class="line">  <span class="keyword">int</span> s, status ;</span><br><span class="line">  status = pthread_mutex_lock(_mutex);</span><br><span class="line">  assert (status == <span class="number">0</span>, <span class="string">"invariant"</span>) ;</span><br><span class="line">  s = _counter;</span><br><span class="line">  _counter = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> (s &lt; <span class="number">1</span>) &#123;</span><br><span class="line">     <span class="keyword">if</span> (WorkAroundNPTLTimedWaitHang) &#123;</span><br><span class="line">        status = pthread_cond_signal (_cond) ;</span><br><span class="line">        assert (status == <span class="number">0</span>, <span class="string">"invariant"</span>) ;</span><br><span class="line">        status = pthread_mutex_unlock(_mutex);</span><br><span class="line">        assert (status == <span class="number">0</span>, <span class="string">"invariant"</span>) ;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        status = pthread_mutex_unlock(_mutex);</span><br><span class="line">        assert (status == <span class="number">0</span>, <span class="string">"invariant"</span>) ;</span><br><span class="line">        status = pthread_cond_signal (_cond) ;</span><br><span class="line">        assert (status == <span class="number">0</span>, <span class="string">"invariant"</span>) ;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    pthread_mutex_unlock(_mutex);</span><br><span class="line">    assert (status == <span class="number">0</span>, <span class="string">"invariant"</span>) ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="FutureTask-代码"><a href="#FutureTask-代码" class="headerlink" title="FutureTask 代码"></a>FutureTask 代码</h2><p><img src="http://img.andrewchen1.top/小书匠/1550474637544.png" alt="类图"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Possible state transitions:</span></span><br><span class="line"><span class="comment">    * NEW -&gt; COMPLETING -&gt; NORMAL</span></span><br><span class="line"><span class="comment">    * NEW -&gt; COMPLETING -&gt; EXCEPTIONAL</span></span><br><span class="line"><span class="comment">    * NEW -&gt; CANCELLED</span></span><br><span class="line"><span class="comment">    * NEW -&gt; INTERRUPTING -&gt; INTERRUPTED</span></span><br><span class="line"><span class="comment">    * /</span></span><br><span class="line"><span class="comment">private volatile int state;</span></span><br><span class="line"><span class="comment">   private static final int NEW          = 0;</span></span><br><span class="line"><span class="comment">   private static final int COMPLETING   = 1;</span></span><br><span class="line"><span class="comment">   private static final int NORMAL       = 2;</span></span><br><span class="line"><span class="comment">   private static final int EXCEPTIONAL  = 3;</span></span><br><span class="line"><span class="comment">   private static final int CANCELLED    = 4;</span></span><br><span class="line"><span class="comment">   private static final int INTERRUPTING = 5;</span></span><br><span class="line"><span class="comment">   private static final int INTERRUPTED  = 6;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">/** The underlying callable; nulled out after running */</span></span><br><span class="line">   <span class="keyword">private</span> Callable&lt;V&gt; callable;</span><br><span class="line">   <span class="comment">/** The result to return or exception to throw from get() */</span></span><br><span class="line">   <span class="keyword">private</span> Object outcome; <span class="comment">// non-volatile, protected by state reads/writes</span></span><br><span class="line">   <span class="comment">/** The thread running the callable; CASed during run() */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">volatile</span> Thread runner;</span><br><span class="line">   <span class="comment">/** Treiber stack of waiting threads */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">volatile</span> WaitNode waiters;</span><br></pre></td></tr></table></figure>
+<p>state 是运行的状态, callable 是要执行的逻辑, <strong>它会在其run方法中被执行</strong> outcome 是结果. waiters字段则代表阻塞在该Future上的线程链表.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">volatile</span> Thread thread;</span><br><span class="line">    <span class="keyword">volatile</span> WaitNode next;</span><br><span class="line">    WaitNode() &#123; thread = Thread.currentThread(); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>get()/get(timeout)在task处于非完成状态时是需要阻塞等待的，如果多个线程进行get操作，显然需要一个链表/队列来维护这些等待线程，这就是waiters的意义所在。</p>
+</blockquote>
+<p>最核心的get方法, 如果当前的状态小于等于COMPLETING 则进入awaitDone方法来进行等待任务执行完成<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s = state;</span><br><span class="line">        <span class="keyword">if</span> (s &lt;= COMPLETING)</span><br><span class="line">            s = awaitDone(<span class="keyword">false</span>, <span class="number">0L</span>);</span><br><span class="line">        <span class="keyword">return</span> report(s);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">awaitDone</span><span class="params">(<span class="keyword">boolean</span> timed, <span class="keyword">long</span> nanos)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">long</span> deadline = timed ? System.nanoTime() + nanos : <span class="number">0L</span>;</span><br><span class="line">        WaitNode q = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">boolean</span> queued = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Thread.interrupted()) &#123;</span><br><span class="line">                removeWaiter(q);</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> InterruptedException();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> s = state;</span><br><span class="line">            <span class="keyword">if</span> (s &gt; COMPLETING) &#123;</span><br><span class="line">                <span class="keyword">if</span> (q != <span class="keyword">null</span>)</span><br><span class="line">                    q.thread = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">return</span> s;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s == COMPLETING) <span class="comment">// cannot time out yet</span></span><br><span class="line">                Thread.yield();</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (q == <span class="keyword">null</span>)</span><br><span class="line">                q = <span class="keyword">new</span> WaitNode();</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (!queued)</span><br><span class="line">			<span class="comment">/**</span></span><br><span class="line"><span class="comment">             * compareAndSwapObject(Object var1, long var2, Object var3, Object var4)</span></span><br><span class="line"><span class="comment">             * var1 操作的对象</span></span><br><span class="line"><span class="comment">             * var2 操作的对象属性</span></span><br><span class="line"><span class="comment">             * var3 var2与var3比较，相等才更新</span></span><br><span class="line"><span class="comment">             * var4 更新值</span></span><br><span class="line"><span class="comment">             * waitersOffset = UNSAFE.objectFieldOffset</span></span><br><span class="line"><span class="comment">                (k.getDeclaredField("waiters")</span></span><br><span class="line"><span class="comment">			 * 用了CAS 相当于 把当前的线程的信息写入到waiters中, 失败了就会到这个for中然后还是继续到这个if分支, 继续做CAS 直到成功.</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">                queued = UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, waitersOffset,</span><br><span class="line">                                                     q.next = waiters, q);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (timed) &#123;</span><br><span class="line">                nanos = deadline - System.nanoTime();</span><br><span class="line">                <span class="keyword">if</span> (nanos &lt;= <span class="number">0L</span>) &#123;</span><br><span class="line">                    removeWaiter(q);</span><br><span class="line">                    <span class="keyword">return</span> state;</span><br><span class="line">                &#125;</span><br><span class="line">                LockSupport.parkNanos(<span class="keyword">this</span>, nanos);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                LockSupport.park(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>如果当前的线程被中断, 那么将所有等待该Future上的线程都从阻塞链表中删除</li>
+<li>如果当前的状态是确定的状态的时候 就将当前的状态返回</li>
+<li>如果当前的状态是 Complete 那就yalid 让出执行的权限</li>
+<li>如果q 是null 当然 最初的时候 q 就是null 的 要初始化</li>
+<li>把当前的线程放到waiters 中(在第一次执行的时候)</li>
+<li>如果配置了等待时间 要判断是否超时了</li>
+</ul>
+<p><a href="https://www.zhihu.com/question/60123950" target="_blank" rel="noopener">为什么要这样设计呢</a></p>
+<p>FutureTask 中的Run方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (state != NEW ||</span><br><span class="line">           !UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, runnerOffset,</span><br><span class="line">                                        <span class="keyword">null</span>, Thread.currentThread()))</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           Callable&lt;V&gt; c = callable;</span><br><span class="line">           <span class="keyword">if</span> (c != <span class="keyword">null</span> &amp;&amp; state == NEW) &#123;</span><br><span class="line">               V result;</span><br><span class="line">               <span class="keyword">boolean</span> ran;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   result = c.call();</span><br><span class="line">                   ran = <span class="keyword">true</span>;</span><br><span class="line">               &#125; <span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">                   result = <span class="keyword">null</span>;</span><br><span class="line">                   ran = <span class="keyword">false</span>;</span><br><span class="line">                   setException(ex);</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (ran)</span><br><span class="line">                   set(result);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">           <span class="comment">// runner must be non-null until state is settled to</span></span><br><span class="line">           <span class="comment">// prevent concurrent calls to run()</span></span><br><span class="line">           runner = <span class="keyword">null</span>;</span><br><span class="line">           <span class="comment">// state must be re-read after nulling runner to prevent</span></span><br><span class="line">           <span class="comment">// leaked interrupts</span></span><br><span class="line">           <span class="keyword">int</span> s = state;</span><br><span class="line">           <span class="keyword">if</span> (s &gt;= INTERRUPTING)</span><br><span class="line">               handlePossibleCancellationInterrupt(s);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(V v)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (UNSAFE.compareAndSwapInt(<span class="keyword">this</span>, stateOffset, NEW, COMPLETING)) &#123;</span><br><span class="line">           outcome = v;</span><br><span class="line">           UNSAFE.putOrderedInt(<span class="keyword">this</span>, stateOffset, NORMAL); <span class="comment">// final state</span></span><br><span class="line">           finishCompletion();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">// 通过CAS的方式唤醒每一个被pack的线程,将他们unpack</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">finishCompletion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">// assert state &gt; COMPLETING;</span></span><br><span class="line">       <span class="keyword">for</span> (WaitNode q; (q = waiters) != <span class="keyword">null</span>;) &#123;</span><br><span class="line">           <span class="keyword">if</span> (UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, waitersOffset, q, <span class="keyword">null</span>)) &#123;</span><br><span class="line">               <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">                   Thread t = q.thread;</span><br><span class="line">                   <span class="keyword">if</span> (t != <span class="keyword">null</span>) &#123;</span><br><span class="line">                       q.thread = <span class="keyword">null</span>;</span><br><span class="line">                       LockSupport.unpark(t);</span><br><span class="line">                   &#125;</span><br><span class="line">                   WaitNode next = q.next;</span><br><span class="line">                   <span class="keyword">if</span> (next == <span class="keyword">null</span>)</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">                   q.next = <span class="keyword">null</span>; <span class="comment">// unlink to help gc</span></span><br><span class="line">                   q = next;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       done();</span><br><span class="line"></span><br><span class="line">       callable = <span class="keyword">null</span>;        <span class="comment">// to reduce footprint</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="CompleteableFuture"><a href="#CompleteableFuture" class="headerlink" title="CompleteableFuture"></a>CompleteableFuture</h1><p>首先 如何生成一个CompletableFuture<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;U&gt; <span class="function">CompletableFuture&lt;U&gt; <span class="title">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;U&gt; <span class="function">CompletableFuture&lt;U&gt; <span class="title">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                       Executor executor)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title">runAsync</span><span class="params">(Runnable runnable)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title">runAsync</span><span class="params">(Runnable runnable,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                   Executor executor)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>之后就是CompletableFuture 的骚操作了, 非常函数式编程</p>
+<ul>
+<li>thenApply<br>将前续结果作为函数的入参<ul>
+<li>thenAccept<br>消耗前续产生的结果</li>
+<li>thenRun<br>前序步骤完成之后 执行一个runnable 任务</li>
+<li>thenCombine</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/并发/" rel="tag"># 并发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/17/Actor与并发/" rel="next" title="Actor与并发">
+                <i class="fa fa-chevron-left"></i> Actor与并发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/22/刚出炉的一套面试题Q1/" rel="prev" title="刚出炉的一套面试题Q1">
+                刚出炉的一套面试题Q1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="小夫"/>
+            
+              <p class="site-author-name" itemprop="name">小夫</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/andrewchen1" title="GitHub &rarr; https://github.com/andrewchen1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:andrewchen7@outlook.com" title="E-Mail &rarr; mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/312228489" title="微博 &rarr; http://weibo.com/312228489" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Runnable-和-Callable"><span class="nav-number">1.</span> <span class="nav-text">Runnable 和 Callable\</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FutureTask"><span class="nav-number">2.</span> <span class="nav-text">FutureTask</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">2.1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Treiber-Stack"><span class="nav-number">2.1.1.</span> <span class="nav-text">Treiber Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LockSupport"><span class="nav-number">2.1.2.</span> <span class="nav-text">LockSupport</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FutureTask-代码"><span class="nav-number">2.2.</span> <span class="nav-text">FutureTask 代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CompleteableFuture"><span class="nav-number">3.</span> <span class="nav-text">CompleteableFuture</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小夫</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+  <script id="dsq-count-scr" src="https://andrewchen7.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://www.andrewchen1.top/2019/02/18/CompleteableFuture/";
+    this.page.identifier = "2019/02/18/CompleteableFuture/";
+    this.page.title = 'CompleteableFuture';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://andrewchen7.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
