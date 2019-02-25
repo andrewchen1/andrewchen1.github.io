@@ -107,7 +107,13 @@
 <meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550843215530.png">
 <meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550843268348.png">
 <meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550843771177.png">
-<meta property="og:updated_time" content="2019-02-22T14:08:56.996Z">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550845574483.png">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550845652250.png">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550845714409.png">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550845870353.png">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1550846036129.png">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1551063033304.png">
+<meta property="og:updated_time" content="2019-02-25T03:08:46.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刚出炉的一套面试题Q1">
 <meta name="twitter:description" content="刚出炉的一套面试题(JAVA岗) 你们在关于微服务间数据一致性问题，是如何解决的？微服务下的数据一致性的几种实现方式之概述 传统应用的事务管理本地事务事务的特征ACID原子(原子, 一致, 隔离, 持久)  并发事务问题 脏读 (读到了其他事务没有提交的修改) 不可重复读 (读到了其他事务提交的修改) 幻影读 (做count操作的时候在同一事务中获得结果不一致)事务隔离级别 read uncomm">
@@ -387,12 +393,24 @@
                 
               
 
-              <time title="Created: 2019-02-22 15:17:00 / Modified: 22:08:56" itemprop="dateCreated datePublished" datetime="2019-02-22T15:17:00+08:00">2019-02-22</time>
+              <time title="Created: 2019-02-22 15:17:00" itemprop="dateCreated datePublished" datetime="2019-02-22T15:17:00+08:00">2019-02-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-25 11:08:46" itemprop="dateModified" datetime="2019-02-25T11:08:46+08:00">2019-02-25</time>
               
             
           </span>
@@ -514,8 +532,37 @@
 <ol>
 <li>阶段1: coordinator或watchdog未收到宕机participant的vote，直接中止事务；宕机的participant恢复后，读取logging发现未发出赞成vote，自行中止该次事务</li>
 <li>阶段2: coordinator未收到宕机participant的precommit ACK，但因为之前已经收到了宕机participant的赞成反馈(不然也不会进入到阶段2)，coordinator进行commit；watchdog可以通过问询其他participant获得这些信息，过程同理；宕机的participant恢复后发现收到precommit或已经发出赞成vote，则自行commit该次事务</li>
-<li>阶段3: 即便coordinator或watchdog未收到宕机participant的commit ACK，也结束该次事务；宕机的participant恢复后发现收到commit或者precommit，也将自行commit该次事务<br>因为有了准备提交(prepare to commit)阶段，3PC的事务处理延时也增加了1个RTT，变为3个RTT(propose+precommit+commit)，但是它防止participant宕机后整个系统进入阻塞态，增强了系统的可用性，对一些现实业务场景是非常值得的。</li>
+<li>阶段3: 即便coordinator或watchdog未收到宕机participant的commit ACK，也结束该次事务；宕机的participant恢复后发现收到commit或者precommit，也将自行commit该次事务<br>因为有了准备提交(prepare to commit)阶段，3PC的事务处理延时也增加了1个RTT，变为3个RTT(propose+precommit+commit)，但是它防止participant宕机后整个系统进入阻塞态，增强了系统的可用性，对一些现实业务场景是非常值得的。<h2 id="微服务事务管理"><a href="#微服务事务管理" class="headerlink" title="微服务事务管理"></a>微服务事务管理</h2></li>
+<li>由于微服务间无法直接进行数据访问，微服务间互相调用通常通过RPC（dubbo）或Http API（SpringCloud）进行，所以已经无法使用TM统一管理微服务的RM。</li>
+<li>不同的微服务使用的数据源类型可能完全不同，如果微服务使用了NoSQL之类不支持事务的数据库，则事务根本无从谈起。</li>
+<li>即使微服务使用的数据源都支持事务，那么如果使用一个大事务将许多微服务的事务管理起来，这个大事务维持的时间，将比本地事务长几个数量级。如此长时间的事务及跨服务的事务，将为产生很多锁及数据不可用，严重影响系统性能。</li>
 </ol>
+<p>BASE理论由eBay的架构师Dan Pritchett提出，BASE理论是对CAP理论的延伸，核心思想是即使无法做到强一致性，应用应该可以采用合适的方式达到最终一致性。BASE是指基本可用（Basically Available）、软状态（ Soft State）、最终一致性（ Eventual Consistency）。</p>
+<p>BASE中的最终一致性是对于微服务下的事务管理的根本要求，既基于微服务的事务管理无法达到强一致性，但必须保证最重一致性。那么，有哪些方法可以保证微服务下的事务管理的最终一致性呢，按照实现原理分主要有两类，事件通知型和补偿型，其中事件通知型又可分为可靠事件通知模式及最大努力通知模式，而补偿型又可分为TCC模式、和业务补偿模式两种。这四种模式都可以达到微服务下的数据最终一致性。</p>
+<p><img src="http://img.andrewchen1.top/小书匠/1550845574483.png" alt="理想化事情"><br><img src="http://img.andrewchen1.top/小书匠/1550845652250.png" alt="错误的回滚1"><br><img src="http://img.andrewchen1.top/小书匠/1550845714409.png" alt="错误的回滚2"></p>
+<h3 id="本地事件服务"><a href="#本地事件服务" class="headerlink" title="本地事件服务"></a>本地事件服务</h3><p><img src="http://img.andrewchen1.top/小书匠/1550845870353.png" alt="本地事件服务"></p>
+<ol>
+<li>当业务执行时，在同一个本地事务中将事件写入本地事件表，同时投递该事件，如果事件投递成功，则将该事件从事件表中删除。</li>
+<li>如果投递失败，则使用事件服务<strong>定时</strong>地异步统一处理投递失败的事件，进行重新投递，直到事件被正确投递，并将事件从事件表中删除。这种方式最大可能地保证了事件投递的实效性，并且当第一次投递失败后，也能使用异步事件服务保证事件至少被投递一次。<h3 id="外部事件服务"><a href="#外部事件服务" class="headerlink" title="外部事件服务"></a>外部事件服务</h3></li>
+</ol>
+<p><img src="http://img.andrewchen1.top/小书匠/1550846036129.png" alt="要创建事件服务"></p>
+<p>业务服务在提交前，向事件服务发送事件，<strong>事件服务</strong>只记录事件，并不发送。业务服务在提交或回滚后通知事件服务，事件服务发送事件或者删除事件。不用担心业务系统在提交或者会滚后宕机而无法发送确认事件给事件服务，因为事件服务会定时获取所有仍未发送的事件并且向业务系统<strong>查询</strong>，根据业务系统的返回来决定发送或者删除该事件。</p>
+<p>可靠事件模式需要注意的有两点，</p>
+<ol>
+<li>事件的正确发送； </li>
+<li>事件的重复消费。<br>通过异步消息服务可以确保事件的正确发送，然而事件是有可能重复发送的，那么就需要消费端保证同一条事件不会重复被消费，简而言之就是保证事件消费的幂等性。</li>
+</ol>
+<p>如果事件本身是具备幂等性的状态型事件，如订单状态的通知（已下单、已支付、已发货等），则需要判断事件的顺序。<br><strong>一般通过时间戳来判断，既消费过了新的消息后，当接受到老的消息直接丢弃不予消费。如果无法提供全局时间戳，则应考虑使用全局统一的序列号。</strong><br>对于不具备幂等性的事件，一般是动作行为事件，如扣款100，存款200，则应该将事件id及事件结果持久化，<strong>在消费事件前查询事件id，若已经消费则直接返回执行结果；若是新消息，则执行，并存储执行结果。</strong></p>
+<h3 id="最大努力通知模式"><a href="#最大努力通知模式" class="headerlink" title="最大努力通知模式"></a>最大努力通知模式</h3><p>最大努力通知型的特点是，业务服务在提交事务后，进行有限次数（设置最大次数限制）的消息发送，比如发送三次消息，若三次消息发送都失败，则不予继续发送。所以有可能导致消息的丢失。</p>
+<h3 id="业务补偿模式"><a href="#业务补偿模式" class="headerlink" title="业务补偿模式"></a>业务补偿模式</h3><p>补偿模式比起事件通知模式最大的不同是，补偿模式的上游服务依赖于下游服务的运行结果，而事件通知模式上游服务不依赖于下游服务的运行结果。首先介绍业务补偿模式，业务补偿模式是一种纯补偿模式，其设计理念为，业务在调用的时候正常提交，当一个服务失败的时候，所有其依赖的上游服务都进行业务补偿操作<br>小明从杭州出发，去往美国纽约出差，现在他需要定从杭州去往上海的火车票，以及从上海飞往纽约的飞机票。如果小明成功购买了火车票之后发现那天的飞机票已经售空了，那么与其在上海再多待一天，小明还不如取消去上海的火车票，选择飞往北京再转机纽约，所以小明就取消了去上海的火车票。这个例子中购买杭州到上海的火车票是服务a，购买上海到纽约的飞机票是服务b，业务补偿模式就是在服务b失败的时候，对服务a进行补偿操作，在例子中就是取消杭州到上海的火车票。</p>
+<p>补偿模式要求每个服务都提供补偿借口，且这种补偿一般来说是<strong>不完全补偿</strong>，既即使进行了补偿操作，那条取消的火车票记录还是一直存在数据库中可以被追踪（一般是有相信的状态字段“已取消”作为标记），毕竟已经提交的线上数据一般是不能进行物理删除的。</p>
+<p>补偿模式要求每个服务都提供补偿借口，且这种补偿一般来说是不完全补偿，既即使进行了补偿操作，那条取消的火车票记录还是一直存在数据库中可以被追踪（一般是有相信的状态字段“已取消”作为标记），毕竟已经提交的线上数据一般是不能进行物理删除的。</p>
+<h3 id="TCC-Try-Confirm-Cancel模式"><a href="#TCC-Try-Confirm-Cancel模式" class="headerlink" title="TCC/Try Confirm Cancel模式"></a>TCC/Try Confirm Cancel模式</h3><p>TCC模式是一种优化了的业务补偿模式，它可以做到完全补偿，既进行补偿后不留下补偿的纪录，就好像什么事情都没有发生过一样。同时，TCC的软状态时间很短，原因是因为TCC是一种两阶段型模式（已经忘了两阶段概念的可以回顾一下1.2.1），只有在所有的服务的第一阶段（try）都成功的时候才进行第二阶段确认（Confirm）操作，否则进行补偿(Cancel)操作，而在try阶段是不会进行真正的业务处理的。<br><img src="http://img.andrewchen1.top/小书匠/1551063033304.png" alt="TCC业务逻辑"><br>和2PC很像</p>
+<ol>
+<li>Try，业务服务完成所有的业务检查，预留必需的业务资源</li>
+<li>如果Try在所有服务中都成功，那么执行Confirm操作，Confirm操作不做任何的业务检查（因为try中已经做过），只是用Try阶段预留的业务资源进行业务处理；否则进行Cancel操作，Cancel操作释放Try阶段预留的业务资源.</li>
+</ol>
+<p>example:<br>服务a（小明从招行转出100元）:<br>try: update cmb_account set balance=balance-100, freeze=freeze+100 where acc_id=1 and balance&gt;100;<br>confirm: update cmb_account set freeze=freeze-100 where acc_id=1;<br>cancel: update cmb_account set balance=balance+100, freeze=freeze-100 where acc_id=1;<br>服务b（小明往广发银行汇入100元）:<br>try: update cgb_account set freeze=freeze+100 where acc_id=1;<br>confirm: update cgb_account set balance=balance+100, freeze=freeze-100 where acc_id=1;<br>cancel: update cgb_account set freeze=freeze-100 where acc_id=1;<br>具体说明：<br>a的try阶段，服务做了两件事，1：业务检查，这里是检查小明的帐户里的钱是否多余100元；2:预留资源，将100元从余额中划入冻结资金。<br>a的confirm阶段，这里不再进行业务检查，因为try阶段已经做过了，同时由于转账已经成功，将冻结资金扣除。<br>a的cancel阶段，释放预留资源，既100元冻结资金，并恢复到余额。<br>b的try阶段进行，预留资源，将100元冻结。<br>b的confirm阶段，使用try阶段预留的资源，将100元冻结资金划入余额。<br>b的cancel阶段，释放try阶段的预留资源，将100元从冻结资金中减去。<br>从上面的简单例子可以看出，TCC模式比纯业务补偿模式更加复杂，所以在实现上每个服务都需要实现Cofirm和Cancel两个接口。</p>
 
       
     </div>
@@ -770,7 +817,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#你们在关于微服务间数据一致性问题，是如何解决的？"><span class="nav-number">1.</span> <span class="nav-text">你们在关于微服务间数据一致性问题，是如何解决的？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统应用的事务管理"><span class="nav-number">1.1.</span> <span class="nav-text">传统应用的事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地事务"><span class="nav-number">1.1.1.</span> <span class="nav-text">本地事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务的特征"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">事务的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发事务问题"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">并发事务问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务和Connection-在JDBC的事务操作中，必须操作的是同一个Connection连接吗？"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">事务和Connection 在JDBC的事务操作中，必须操作的是同一个Connection连接吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地事务的的实现"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">本地事务的的实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式事务"><span class="nav-number">1.2.</span> <span class="nav-text">分布式事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一致性"><span class="nav-number">1.2.1.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Pharse-Commit"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 Pharse Commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Pharse-Commit"><span class="nav-number">1.2.3.</span> <span class="nav-text">3 Pharse Commit</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#你们在关于微服务间数据一致性问题，是如何解决的？"><span class="nav-number">1.</span> <span class="nav-text">你们在关于微服务间数据一致性问题，是如何解决的？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统应用的事务管理"><span class="nav-number">1.1.</span> <span class="nav-text">传统应用的事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地事务"><span class="nav-number">1.1.1.</span> <span class="nav-text">本地事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务的特征"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">事务的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发事务问题"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">并发事务问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务和Connection-在JDBC的事务操作中，必须操作的是同一个Connection连接吗？"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">事务和Connection 在JDBC的事务操作中，必须操作的是同一个Connection连接吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地事务的的实现"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">本地事务的的实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式事务"><span class="nav-number">1.2.</span> <span class="nav-text">分布式事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一致性"><span class="nav-number">1.2.1.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Pharse-Commit"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 Pharse Commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Pharse-Commit"><span class="nav-number">1.2.3.</span> <span class="nav-text">3 Pharse Commit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务事务管理"><span class="nav-number">1.3.</span> <span class="nav-text">微服务事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地事件服务"><span class="nav-number">1.3.1.</span> <span class="nav-text">本地事件服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部事件服务"><span class="nav-number">1.3.2.</span> <span class="nav-text">外部事件服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大努力通知模式"><span class="nav-number">1.3.3.</span> <span class="nav-text">最大努力通知模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#业务补偿模式"><span class="nav-number">1.3.4.</span> <span class="nav-text">业务补偿模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCC-Try-Confirm-Cancel模式"><span class="nav-number">1.3.5.</span> <span class="nav-text">TCC/Try Confirm Cancel模式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
