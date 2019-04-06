@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="枚举类型创建 enmu时, 编译器会为你生成一个相关的类, 这个类继承自java.lang.Enum. 但是这个新生成的类是final的,不能为继承 如果在emum()实例上调用getDeclaringClass()方法,我们就能知道其所属的enum()类. 向enum 中添加新方法如果打算定义自己的方法,那么必须在enum实例序列的最后添加一个分号.同时必须先定义enum实例. 12345678">
-<meta name="keywords" content="Java,读书笔记">
+  <meta name="description" content="纵向扩张使用传统的基于线程的抽象概念很难实现多核能力的使用.如果多个线程都能访问可变的共享状态, 很容易发生资源竞争.在并发的实现, 默认使用命令式编程是错误的 因为我们要关注临界资源, 要关注临界区.  Router使用Actor 进行并行编程12345678910public static void main(String[] args) &amp;#123;    ActorSystem actor">
+<meta name="keywords" content="akka,笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="枚举类型">
-<meta property="og:url" content="https://www.andrewchen1.top/2018/09/23/枚举类型/index.html">
+<meta property="og:title" content="5-纵向扩展">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/04/06/5-纵向扩展/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="枚举类型创建 enmu时, 编译器会为你生成一个相关的类, 这个类继承自java.lang.Enum. 但是这个新生成的类是final的,不能为继承 如果在emum()实例上调用getDeclaringClass()方法,我们就能知道其所属的enum()类. 向enum 中添加新方法如果打算定义自己的方法,那么必须在enum实例序列的最后添加一个分号.同时必须先定义enum实例. 12345678">
+<meta property="og:description" content="纵向扩张使用传统的基于线程的抽象概念很难实现多核能力的使用.如果多个线程都能访问可变的共享状态, 很容易发生资源竞争.在并发的实现, 默认使用命令式编程是错误的 因为我们要关注临界资源, 要关注临界区.  Router使用Actor 进行并行编程12345678910public static void main(String[] args) &amp;#123;    ActorSystem actor">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-17T15:59:59.508Z">
+<meta property="og:updated_time" content="2019-04-06T08:33:09.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="枚举类型">
-<meta name="twitter:description" content="枚举类型创建 enmu时, 编译器会为你生成一个相关的类, 这个类继承自java.lang.Enum. 但是这个新生成的类是final的,不能为继承 如果在emum()实例上调用getDeclaringClass()方法,我们就能知道其所属的enum()类. 向enum 中添加新方法如果打算定义自己的方法,那么必须在enum实例序列的最后添加一个分号.同时必须先定义enum实例. 12345678">
+<meta name="twitter:title" content="5-纵向扩展">
+<meta name="twitter:description" content="纵向扩张使用传统的基于线程的抽象概念很难实现多核能力的使用.如果多个线程都能访问可变的共享状态, 很容易发生资源竞争.在并发的实现, 默认使用命令式编程是错误的 因为我们要关注临界资源, 要关注临界区.  Router使用Actor 进行并行编程12345678910public static void main(String[] args) &amp;#123;    ActorSystem actor">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.andrewchen1.top/2018/09/23/枚举类型/">
+  <link rel="canonical" href="https://www.andrewchen1.top/2019/04/06/5-纵向扩展/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>枚举类型 | 小夫的笔记</title>
+  <title>5-纵向扩展 | 小夫的笔记</title>
   
 
 
@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2018/09/23/枚举类型/">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/04/06/5-纵向扩展/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小夫">
@@ -366,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">枚举类型
+          <h1 class="post-title" itemprop="name headline">5-纵向扩展
 
               
             
@@ -392,24 +392,12 @@
                 
               
 
-              <time title="Created: 2018-09-23 17:59:56" itemprop="dateCreated datePublished" datetime="2018-09-23T17:59:56+08:00">2018-09-23</time>
+              <time title="Created: 2019-04-06 14:21:39 / Modified: 16:33:09" itemprop="dateCreated datePublished" datetime="2019-04-06T14:21:39+08:00">2019-04-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-17 23:59:59" itemprop="dateModified" datetime="2019-02-17T23:59:59+08:00">2019-02-17</time>
               
             
           </span>
@@ -426,7 +414,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java编程思想/" itemprop="url" rel="index"><span itemprop="name">Java编程思想</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Akka入门和实践/" itemprop="url" rel="index"><span itemprop="name">Akka入门和实践</span></a></span>
 
                 
                 
@@ -461,22 +449,87 @@
       
 
       
-        <h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p>创建 enmu时, 编译器会为你生成一个相关的类, 这个类继承自java.lang.Enum. <strong>但是这个新生成的类是final的,不能为继承</strong></p>
-<p>如果在emum()实例上调用getDeclaringClass()方法,我们就能知道其所属的enum()类.</p>
-<h2 id="向enum-中添加新方法"><a href="#向enum-中添加新方法" class="headerlink" title="向enum 中添加新方法"></a>向enum 中添加新方法</h2><p>如果打算定义自己的方法,那么必须在enum实例序列的最后添加一个分号.同时必须先定义enum实例.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Color &#123;</span><br><span class="line">    RED(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    Color(<span class="keyword">int</span> r, <span class="keyword">int</span> b, <span class="keyword">int</span> g) &#123;</span><br><span class="line">        <span class="keyword">this</span>.r = r;</span><br><span class="line">        <span class="keyword">this</span>.b = b;</span><br><span class="line">        <span class="keyword">this</span>.g = g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> b;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> g;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//... etc</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"the rbg is &#123;"</span> + r +<span class="string">", "</span> + b + <span class="string">", "</span> + g + <span class="string">"&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="switch-语句中的enum"><a href="#switch-语句中的enum" class="headerlink" title="switch 语句中的enum"></a>switch 语句中的enum</h2><p>实际上,在编译器中会通过ordinal()方法取得其次序.</p>
-<h2 id="values-的神秘之处"><a href="#values-的神秘之处" class="headerlink" title="values()的神秘之处"></a>values()的神秘之处</h2><p>通过反射我们会发现Enum类,它并没有values()方法.</p>
-<p>values方法是由编译器添加的static方法.编译器还会为其添加了valueOf()方法.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Main &#123;</span><br><span class="line">    RED(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    Main(<span class="keyword">int</span> r, <span class="keyword">int</span> b, <span class="keyword">int</span> g) &#123;</span><br><span class="line">        <span class="keyword">this</span>.r = r;</span><br><span class="line">        <span class="keyword">this</span>.b = b;</span><br><span class="line">        <span class="keyword">this</span>.g = g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> b;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> g;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//... etc</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"the rbg is &#123;"</span> + r +<span class="string">", "</span> + b + <span class="string">", "</span> + g + <span class="string">"&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>经过 javap Main 之后之后</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">Enum</span>&lt;<span class="title">Main</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Main RED;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Main[] values();</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Main <span class="title">valueOf</span><span class="params">(java.lang.String)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRed</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="keyword">public</span> java.lang.<span class="function">String <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="keyword">static</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于擦除效应,反编译无法得到Enum的完整信息,所以它展示的Main的父亲类只是一个原始的Enum, 而并非事实上的Enum.</p>
-<p>由于values()方法是由编译器插入到enum定义的中断饿static方法. 如果上转型Enum, 那么values()就不能访问了. 不过class类中有getEnumConstants()方法,可以得到所有enum实例.</p>
-<h2 id="使用EnumMap"><a href="#使用EnumMap" class="headerlink" title="使用EnumMap"></a>使用EnumMap</h2><p>EnumMap 是一种特殊的Map, 它要求其中的key必须来自于一个enum. 由于enum本身的限制,所以EnumMap在内部可以由数组实现. 比方说 Enum ordinal的值是0, 那么arr[0] 就是enumMap.get(Enum.something)对应的值.</p>
-<h2 id="常量相关的方法"><a href="#常量相关的方法" class="headerlink" title="常量相关的方法"></a>常量相关的方法</h2><p>Java 的enum有个非常有趣特性,他允许程序员为enum实例编写方法,从而为每个enum实例赋予各自不同的行为.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ConstantSpecificMethod &#123;</span><br><span class="line">    DATE_TIME &#123;</span><br><span class="line">        <span class="function">String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"I AM DATE_TIME"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> String <span class="title">getInfo</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>606</p>
+        <h1 id="纵向扩张"><a href="#纵向扩张" class="headerlink" title="纵向扩张"></a>纵向扩张</h1><p>使用传统的基于线程的抽象概念很难实现多核能力的使用.如果多个线程都能访问可变的共享状态, 很容易发生资源竞争.<strong>在并发的实现, 默认使用命令式编程是错误的</strong> 因为我们要关注临界资源, 要关注临界区. </p>
+<h2 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h2><h3 id="使用Actor-进行并行编程"><a href="#使用Actor-进行并行编程" class="headerlink" title="使用Actor 进行并行编程"></a>使用Actor 进行并行编程</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ActorSystem actorSystem = ActorSystem.create();</span><br><span class="line">    ActorRef bunchingActorRefPool = actorSystem.actorOf(Props.create(BunchingActor.class)</span><br><span class="line">            .withRouter(<span class="keyword">new</span> RoundRobinPool(<span class="number">8</span>)));</span><br><span class="line">    <span class="comment">// Or</span></span><br><span class="line">    <span class="comment">// 我们可能之前已经创建了一些actor 然后要把这些actor 组织在一起</span></span><br><span class="line">    List&lt;String&gt; paths = Arrays.asList(<span class="string">"/user/w1"</span>, <span class="string">"/user/w2"</span>, <span class="string">"/user/w3"</span>);</span><br><span class="line"></span><br><span class="line">    ActorRef bunchingActorRefGroup = actorSystem.actorOf(<span class="keyword">new</span> RoundRobinGroup(paths).props());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个是pool, 一个是group.  我感觉pool 的话是我们生成一些相同功能的actor, 放到一个池子中. 而group 是已经有一些actor, 我们把他们分类, 分成一组.</p>
+<h4 id="路由策略"><a href="#路由策略" class="headerlink" title="路由策略"></a>路由策略</h4><table>
+<thead>
+<tr>
+<th>路由策略</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Round robin</td>
+<td>依次轮训</td>
+</tr>
+<tr>
+<td>smallest mailbox</td>
+<td>邮箱中东西最少的</td>
+</tr>
+<tr>
+<td>scatter gather</td>
+<td>全部都发, 接受第一个响应, 丢弃其余的</td>
+</tr>
+<tr>
+<td>tail chopping</td>
+<td>全部都发, 但是不是一次性发送, 每次发送之后都会等待一段时间</td>
+</tr>
+<tr>
+<td>consisteng hashing</td>
+<td>由router 提供一个key, router根据这个key生成哈希值, 每次都会发送到这个hash对应的actor 上.[一致性哈希算法]</td>
+</tr>
+<tr>
+<td>balancing pool</td>
+<td>多个actor 共享一个邮箱, 谁空闲了谁去处理邮箱中的东西</td>
+</tr>
+</tbody>
+</table>
+<p>在group 中 监督可以用Actor自己的监督方式, 对于pool, 因为是pool 对pool中的actor 进行监督. 所以要自定义监督方式的话, 需要</p>
+<h4 id="pool的监督定义方式"><a href="#pool的监督定义方式" class="headerlink" title="pool的监督定义方式"></a>pool的监督定义方式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ActorRef bunchingActorRefPool = actorSystem.actorOf(Props.create(BunchingActor.class)</span><br><span class="line">                .withRouter(<span class="keyword">new</span> RoundRobinPool(<span class="number">8</span>).withSupervisorStrategy(OneForOneStrategy.defaultStrategy())));</span><br></pre></td></tr></table></figure>
+<h3 id="Dispatcher"><a href="#Dispatcher" class="headerlink" title="Dispatcher"></a>Dispatcher</h3><p>Dispatcher 将如何执行任务和何时运行任务进行节藕.一般来说, Dispatch会包含一些线程, 这些线程会负责调度并运行任务.比如说处理Future事件.</p>
+<p>Dispatcher基于Exector.</p>
+<p>As all we know that exector 有两种</p>
+<ol>
+<li>ThreadPoolExector</li>
+<li>ForkJoinPoolExecutor </li>
+</ol>
+<h4 id="创建Dispatch"><a href="#创建Dispatch" class="headerlink" title="创建Dispatch"></a>创建Dispatch</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">my-dispatcher &#123;</span><br><span class="line">        type = &quot;fork-join-executor&quot;</span><br><span class="line">        executor = &quot;fork-join-executor&quot;</span><br><span class="line">        fork-join-executor &#123;</span><br><span class="line">            parallelism-min = 2 #Min threads</span><br><span class="line">            parallelism-factor = 2 # max thread per core</span><br><span class="line">            parallelism-max = 10 # Max total threads</span><br><span class="line">            throughput = 100</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在生成actor的时候使用执行的dispatcher(Executor)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ActorRef bunchingActorRefPool = actorSystem.actorOf(Props.create(BunchingActor.class)</span><br><span class="line">                .withRouter(<span class="keyword">new</span> RoundRobinPool(<span class="number">8</span>)</span><br><span class="line">                        .withSupervisorStrategy(OneForOneStrategy.defaultStrategy())</span><br><span class="line">                        .withDispatcher(<span class="string">"my-dispatcher"</span>)));</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dispatcher</td>
+<td>默认的类型.</td>
+</tr>
+<tr>
+<td>PinnedDispatcher</td>
+<td>每个Actor都分配自己独有的线程.为每一个Actor都创建一个ThreadPool Executor.</td>
+</tr>
+<tr>
+<td>CallingThreadDispatcher</td>
+<td>它没有Executor,而是在发起调用的线程上执行.主要用在测试,每个Actor都会获取一个锁,每次一个线程都只有一个actor在运行</td>
+</tr>
+<tr>
+<td>balancingDispatcher</td>
+<td>已经被废弃了, 暂时也看不懂 = =</td>
+</tr>
+</tbody>
+</table>
+<h4 id="决定何时使用那种Dispatcher"><a href="#决定何时使用那种Dispatcher" class="headerlink" title="决定何时使用那种Dispatcher"></a>决定何时使用那种Dispatcher</h4><p>在默认的情况下, Actor完成的所有的工作都会在默认的Dispatcher中执行. 对于运行时间比较长的CPU密集任务和会阻塞IO的任务, 我们建议在创建这类Actor的group或者pool的时候指定其他的Dispatcher.</p>
+<p>如果要修改默认的dispatcher的话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">default-disptcher &#123;</span><br><span class="line">        # 最小的线程数量</span><br><span class="line">        parallelism-min = 8</span><br><span class="line">        # 每个核心最大的线程数量</span><br><span class="line">        parallelism-factor = 3.0</span><br><span class="line">        # 最大的线程数量</span><br><span class="line">        parallelism-max = 64</span><br><span class="line">        # 每个actor 等待处理的消息数量 (吞吐量)</span><br><span class="line">        throughtput = 100</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>如果要对默认值进行修改的话  在config文件中对需要覆盖的部分进行覆盖就好了</p>
+<p>在代码中默认CompletableFuture&lt;?&gt; 使用的是默认的executor, 如果有cup密集型的计算或者是有可能会发生IO阻塞的计算, 那么我们建议使用另外的线程池</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Executor executor = context().system().dispatchers().lookup(<span class="string">"blocking-io-dispatcher"</span>);</span><br><span class="line">        CompletableFuture&lt;String&gt; completableFuture = CompletableFuture</span><br><span class="line">                .supplyAsync(() -&gt; <span class="string">"analyse something"</span>, executor);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -500,9 +553,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/akka/" rel="tag"># akka</a>
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
         </div>
       
@@ -515,8 +568,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/18/注解/" rel="next" title="注解">
-                <i class="fa fa-chevron-left"></i> 注解
+              <a href="/2019/03/03/4-Actor-的生命周期-处理状态和错误/" rel="next" title="4-Actor 的生命周期 处理状态和错误">
+                <i class="fa fa-chevron-left"></i> 4-Actor 的生命周期 处理状态和错误
               </a>
             
           </div>
@@ -525,8 +578,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/27/docker-jib/" rel="prev" title="docker_jib">
-                docker_jib <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/06/6-横向扩展-集群化/" rel="prev" title="6-横向扩展 集群化">
+                6-横向扩展 集群化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -725,7 +778,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举类型"><span class="nav-number">1.</span> <span class="nav-text">枚举类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#向enum-中添加新方法"><span class="nav-number">1.1.</span> <span class="nav-text">向enum 中添加新方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-语句中的enum"><span class="nav-number">1.2.</span> <span class="nav-text">switch 语句中的enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#values-的神秘之处"><span class="nav-number">1.3.</span> <span class="nav-text">values()的神秘之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用EnumMap"><span class="nav-number">1.4.</span> <span class="nav-text">使用EnumMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量相关的方法"><span class="nav-number">1.5.</span> <span class="nav-text">常量相关的方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#纵向扩张"><span class="nav-number">1.</span> <span class="nav-text">纵向扩张</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Router"><span class="nav-number">1.1.</span> <span class="nav-text">Router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Actor-进行并行编程"><span class="nav-number">1.1.1.</span> <span class="nav-text">使用Actor 进行并行编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#路由策略"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">路由策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pool的监督定义方式"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">pool的监督定义方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dispatcher"><span class="nav-number">1.1.2.</span> <span class="nav-text">Dispatcher</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Dispatch"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">创建Dispatch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决定何时使用那种Dispatcher"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">决定何时使用那种Dispatcher</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

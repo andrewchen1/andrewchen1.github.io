@@ -96,21 +96,27 @@
 
 
 
-  <meta name="keywords" content="笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小夫的笔记">
-<meta property="og:url" content="https://www.andrewchen1.top/page/2/index.html">
+  <meta name="description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
+<meta name="keywords" content="akka,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6-横向扩展 集群化">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/04/06/6-横向扩展-集群化/index.html">
 <meta property="og:site_name" content="小夫的笔记">
+<meta property="og:description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.andrewchen1.top/小书匠/7891228-fbea40230f4c5738.png">
+<meta property="og:updated_time" content="2019-04-06T10:13:42.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小夫的笔记">
+<meta name="twitter:title" content="6-横向扩展 集群化">
+<meta name="twitter:description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
+<meta name="twitter:image" content="http://img.andrewchen1.top/小书匠/7891228-fbea40230f4c5738.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.andrewchen1.top/page/2/">
+  <link rel="canonical" href="https://www.andrewchen1.top/2019/04/06/6-横向扩展-集群化/">
 
 
 
@@ -120,7 +126,7 @@
   };
 </script>
 
-  <title>小夫的笔记</title>
+  <title>6-横向扩展 集群化 | 小夫的笔记</title>
   
 
 
@@ -168,8 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -329,9 +334,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -346,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2018/09/18/注解/">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/04/06/6-横向扩展-集群化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小夫">
@@ -363,10 +368,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/09/18/注解/" class="post-title-link" itemprop="url">注解</a>
+          <h1 class="post-title" itemprop="name headline">6-横向扩展 集群化
+
               
             
           </h1>
@@ -391,24 +394,12 @@
                 
               
 
-              <time title="Created: 2018-09-18 23:47:31" itemprop="dateCreated datePublished" datetime="2018-09-18T23:47:31+08:00">2018-09-18</time>
+              <time title="Created: 2019-04-06 16:01:17 / Modified: 18:13:42" itemprop="dateCreated datePublished" datetime="2019-04-06T16:01:17+08:00">2019-04-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-17 23:01:51" itemprop="dateModified" datetime="2019-02-17T23:01:51+08:00">2019-02-17</time>
               
             
           </span>
@@ -425,7 +416,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java编程思想/" itemprop="url" rel="index"><span itemprop="name">Java编程思想</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Akka入门和实践/" itemprop="url" rel="index"><span itemprop="name">Akka入门和实践</span></a></span>
 
                 
                 
@@ -460,30 +451,68 @@
       
 
       
-        
-          
-            <p>
-              注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素.
-Java支持的三种标准注解
-@Override
-@Deprecated
-@Suppress Warnings
-
-Java支持的四种元注解
-@Targe
-表示该注解可以用于什么地方.可能的Elemen
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/09/18/注解/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+        <h1 id="横向扩展-集群化"><a href="#横向扩展-集群化" class="headerlink" title="横向扩展 集群化"></a>横向扩展 集群化</h1><h2 id="为什么要微服务化"><a href="#为什么要微服务化" class="headerlink" title="为什么要微服务化"></a>为什么要微服务化</h2><ol>
+<li>单机能提供的资源有限(primary)</li>
+</ol>
+<p>一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world 所需要的时间也就会很长, 导致业务暂停的时间也会延长.</p>
+<ol start="2">
+<li>方便项目管理、发布测试等的流程的进行(secondary)</li>
+</ol>
+<h2 id="集群和集群内部节点的状态"><a href="#集群和集群内部节点的状态" class="headerlink" title="集群和集群内部节点的状态"></a>集群和集群内部节点的状态</h2><p>集群就是一组可以互相通信的服务器, 他们向外界透明的提供一致服务. 集群可以动态的修改大小, 并且在发生错误的时候时候继续运行.集群需要具备两个功能</p>
+<ol>
+<li>发现失败</li>
+<li>集群中的所有成员最终能提供统一的视图</li>
+</ol>
+<p>###失败检测</p>
+<p>我们要知道集群中那些节点现在处于不能服务的状态, 我们就不把任务分配给这些节点了.在这里有若干的算法可以使用, 以下内容抄袭自<a href="https://www.jianshu.com/p/e72e3b208a0b" target="_blank" rel="noopener">分布式中几种服务注册与发现组件的原理与比较</a></p>
+<ol>
+<li><p>Eureka</p>
+<p>节点定时给注册中心发送心跳进行注册, 它会告知服务中心自己的ip port 以及自己的service-id (能提供怎样的服务). 注册中心在响应节点请求的时候告诉节点目前集群中存在的其他节点的信息.</p>
+<p>Eureka中没有使用任何的数据强一致性算法保证不同集群间的Server的数据一致，仅通过数据拷贝的方式争取注册中心数据的最终一致性，虽然放弃数据强一致性但是换来了Server的可用性，降低了注册的代价，提高了集群运行的健壮性。</p>
+</li>
+<li><p>Consul</p>
+<p>Consul提供强大的一致性保证，因为服务器使用Raft协议复制状态 。Consul支持丰富的健康检查，包括TCP，HTTP，Nagios / Sensu兼容脚本或基于Eureka的TTL。客户端节点参与基于八卦的健康检查，该检查分发健康检查工作，而不像集中式心跳检测那样成为可扩展性挑战。发现请求被路由到选举出来的领事领导，这使他们默认情况下强烈一致。允许陈旧读取的客户端使任何服务器都可以处理他们的请求，从而实现像Eureka这样的线性可伸缩性.</p>
+<p>内部有若干的角色</p>
+<ul>
+<li><p>Client：作为一个代理(非微服务实例)，它将转发所有的RPC请求到Server中。作为相对无状态的服务，它不持有任何注册信息。</p>
+</li>
+<li><p>Server：作为一个具备扩展功能的代理，它将响应RPC查询、参与Raft选举、维护集群状态和转发查询给Leader等。</p>
+</li>
+<li><p>Leader-Server：一个数据中心的所有Server都作为Raft节点集合的一部分。其中Leader将负责所有的查询和事务(如服务注册)，同时这些事务也会被复制到所有其他的节点。</p>
+</li>
+<li><p>Data Center：数据中心作为一个私有的，低延迟和高带宽的一个网络环境。每个数据中心会存在Consul集群，一般建议Server是3-5台(考虑到Raft算法在可用性和性能上取舍)，而Leader只能唯一，Client的数量没有限制，可以轻松扩展。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>所有的要求问询集群中状态的请求都会被发送到client. Client 不存储任何集群的的信息. 它会把请求转发给Server.Client之间通过gossip 来知晓目前集群中能够服务的Server有哪些.然后请求任何一个能够服务的Server.</p>
+<p>Server分为Leader Server 和 Follower Server. Follower Server 只是Leader的copy. 所有的事务信息都是被Leader记录 然后通知到Follower的. 这里由Raft算法提供一致性保证.</p>
+<p><img src="http://img.andrewchen1.top/小书匠/7891228-fbea40230f4c5738.png" alt="示意图"></p>
+<ol start="3">
+<li>Zookeeper</li>
+</ol>
+<ul>
+<li><p>Leader-Server：Leader负责进行投票的发起和决议，更新系统中的数据状态</p>
+</li>
+<li><p>Server：Server中存在两种类型：Follower和Observer。其中Follower接受客户端的请求并返回结果(事务请求将转发给Leader处理)，并在选举过程中参与投票；Observer与Follower功能一致，但是不参与投票过程，它的存在是为了提高系统的读取速度</p>
+</li>
+<li><p>Client：请求发起方，Server和Client之间可以通过长连接的方式进行交互。如发起注册或者请求集群信息等。</p>
+</li>
+</ul>
+<p>在Akka cluster 中是通过Gossip 协议来同步事务的状态的. 每个节点都会监控它后面的节点(默认最大监控数量是5). 然后”邻居”把自己所知道的情况告诉自己的”邻居” 然后整个节点都知道了.</p>
+<h3 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h3><p>c为Consistency 一致性. A为Available 可用性. P为Partition Tolerance 分区容错性. 因为系统是不稳定的, 肯定是会P的.CAP 其实就是发生了不一致的情况P, 是要C还是要A. 对于一个事情, 比方说扣账户里面的余额, 减库存. 当发生了请求扣余额的动作超时的时候, 我们要怎么做. 减库存那就是选择了A, 如果是报错就是选择了C.</p>
+<ul>
+<li><p>CP</p>
+<p>比方说一个系统有一个关系型数据库.leader和若干个follower. follower通过读leader的bin log 来实现数据的同步. 当leader不能工作的时候,那么整个系统也就不能处理请求了. 这个系统是是CP的.</p>
+</li>
+<li><p>AP</p>
+<p>比方说有一个存储单元, 里面有三个节点,他们都是互相独立的,我们可以访问当中的任意一个节点来获取数据.即使一个不能工作了,我们可以访问其他任意一个来获得数据.</p>
+</li>
+<li><p>CP和AP的着重程度是可以转变的</p>
+<p>比方说对于之前CP的情况,我们可以把follower当作是读库, Leader 当作是写库, 通过乐观锁来保证最终一致性.(update 的数量和期望的一致, 否则就说明这个数据从follower中拿到的不是最新的, 抛错). 对于AP的情况比方说当中的某个数据是需要被超过1/2节点所认可的.</p>
+</li>
+</ul>
+<h3 id="Akka-Cluster"><a href="#Akka-Cluster" class="headerlink" title="Akka Cluster"></a>Akka Cluster</h3>
       
     </div>
 
@@ -504,387 +533,38 @@ Java支持的四种元注解
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2018/08/28/并发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小夫的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/28/并发/" class="post-title-link" itemprop="url">并发</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 23:00:21" itemprop="dateCreated datePublished" datetime="2018-08-28T23:00:21+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-17 23:01:33" itemprop="dateModified" datetime="2019-02-17T23:01:33+08:00">2019-02-17</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java编程思想/" itemprop="url" rel="index"><span itemprop="name">Java编程思想</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/akka/" rel="tag"># akka</a>
           
-
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-            <p>
-              为什么要有并发现在多核心的处理器变得越来越常见,要如何使用多个核心呢?并发是一个很好的解决方案.
-Java并发的实现Thread线程可以驱动任务,因此你需要一种描述任务的方式, 这可以由Runable接口来提供.将Runable对象转变为工作任务的传统方式就是把它提交给一个Thread构造器
-pub
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/08/28/并发/#more" rel="contents">
-                Read more &raquo;
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/06/5-纵向扩展/" rel="next" title="5-纵向扩展">
+                <i class="fa fa-chevron-left"></i> 5-纵向扩展
               </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2018/08/27/Spring 揭秘-IOC基本概念/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小夫的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/27/Spring 揭秘-IOC基本概念/" class="post-title-link" itemprop="url">Spring 揭秘</a>
-              
             
-          </h1>
-        
+          </div>
 
-        <div class="post-meta">
-          <span class="post-time">
+          <span class="post-nav-divider"></span>
 
+          <div class="post-nav-prev post-nav-item">
             
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-27 10:56:15" itemprop="dateCreated datePublished" datetime="2018-08-27T10:56:15+08:00">2018-08-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-17 23:00:29" itemprop="dateModified" datetime="2019-02-17T23:00:29+08:00">2019-02-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring揭秘/" itemprop="url" rel="index"><span itemprop="name">spring揭秘</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>
-              FIRST THING FIRST虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我购买链接: Spring 揭秘
-IOCIOC Inversion of Control
-IOC 的三种注入方式
-构造函数注入
-接口注入
-setter注入掌管大局的IOC Service Provi
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/08/27/Spring 揭秘-IOC基本概念/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -894,18 +574,15 @@ setter注入掌管大局的IOC Service Provi
   </article>
 
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -925,8 +602,17 @@ setter注入掌管大局的IOC Service Provi
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1060,6 +746,23 @@ setter注入掌管大局的IOC Service Provi
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#横向扩展-集群化"><span class="nav-number">1.</span> <span class="nav-text">横向扩展 集群化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要微服务化"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要微服务化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群和集群内部节点的状态"><span class="nav-number">1.2.</span> <span class="nav-text">集群和集群内部节点的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP"><span class="nav-number">1.2.1.</span> <span class="nav-text">CAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Akka-Cluster"><span class="nav-number">1.2.2.</span> <span class="nav-text">Akka Cluster</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -1189,6 +892,10 @@ setter注入掌管大局的IOC Service Provi
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -1199,6 +906,8 @@ setter注入掌管大局的IOC Service Provi
   
   
 
+
+  
 
 
   

@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="消息传递 tell向Actor 发送一条消息。所有发送至sender()的响应都会返回给发送消息的Actor。 ask向Actor 发送一条消息，返回一个Future。当Actor 返回响应时，会完成Future。不会向消息发送者的邮箱返回任何消息。toJava(ask(actorSelection, new SetRequest(“key”, “value”), 2000)); forward将">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-17T14:38:53.225Z">
+<meta property="og:updated_time" content="2019-03-21T12:02:12.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3-传递消息">
 <meta name="twitter:description" content="消息传递 tell向Actor 发送一条消息。所有发送至sender()的响应都会返回给发送消息的Actor。 ask向Actor 发送一条消息，返回一个Future。当Actor 返回响应时，会完成Future。不会向消息发送者的邮箱返回任何消息。toJava(ask(actorSelection, new SetRequest(“key”, “value”), 2000)); forward将">
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-17 22:38:53" itemprop="dateModified" datetime="2019-03-17T22:38:53+08:00">2019-03-17</time>
+                <time title="Modified: 2019-03-21 20:02:12" itemprop="dateModified" datetime="2019-03-21T20:02:12+08:00">2019-03-21</time>
               
             
           </span>
@@ -486,7 +486,9 @@
 </ol>
 <h2 id="Forward"><a href="#Forward" class="headerlink" title="Forward"></a>Forward</h2><p>actor.forward(message, context());</p>
 <p>forward 的就是将消息转发给一个另外一个actor. tell(message, self()) 也可以完成一样的任务. 但是forward的语意更加的清晰.</p>
-<h2 id="Pipe"><a href="#Pipe" class="headerlink" title="Pipe"></a>Pipe</h2>
+<h2 id="Pipe"><a href="#Pipe" class="headerlink" title="Pipe"></a>Pipe</h2><p>pipe 和ask的语音相似</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipe(future, system.dispatcher()).to(sender());</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -607,7 +609,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

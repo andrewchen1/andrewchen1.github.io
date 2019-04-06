@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/03/03/4-Actor-的生命周期-处理状态和错误/">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/04/06/6-横向扩展-集群化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小夫">
@@ -366,7 +366,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/03/4-Actor-的生命周期-处理状态和错误/" class="post-title-link" itemprop="url">4-Actor 的生命周期 处理状态和错误</a>
+                <a href="/2019/04/06/6-横向扩展-集群化/" class="post-title-link" itemprop="url">6-横向扩展 集群化</a>
               
             
           </h1>
@@ -391,7 +391,7 @@
                 
               
 
-              <time title="Created: 2019-03-03 15:12:01 / Modified: 22:41:45" itemprop="dateCreated datePublished" datetime="2019-03-03T15:12:01+08:00">2019-03-03</time>
+              <time title="Created: 2019-04-06 16:01:17 / Modified: 18:13:42" itemprop="dateCreated datePublished" datetime="2019-04-06T16:01:17+08:00">2019-04-06</time>
             
 
             
@@ -451,10 +451,368 @@
         
           
             <p>
+              横向扩展 集群化为什么要微服务化
+单机能提供的资源有限(primary)
+
+一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/06/6-横向扩展-集群化/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/04/06/5-纵向扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小夫的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/06/5-纵向扩展/" class="post-title-link" itemprop="url">5-纵向扩展</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-06 14:21:39 / Modified: 16:33:09" itemprop="dateCreated datePublished" datetime="2019-04-06T14:21:39+08:00">2019-04-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Akka入门和实践/" itemprop="url" rel="index"><span itemprop="name">Akka入门和实践</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              纵向扩张使用传统的基于线程的抽象概念很难实现多核能力的使用.如果多个线程都能访问可变的共享状态, 很容易发生资源竞争.在并发的实现, 默认使用命令式编程是错误的 因为我们要关注临界资源, 要关注临界区. 
+Router使用Actor 进行并行编程public static void main(Str
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/06/5-纵向扩展/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/03/03/4-Actor-的生命周期-处理状态和错误/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小夫的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/03/4-Actor-的生命周期-处理状态和错误/" class="post-title-link" itemprop="url">4-Actor 的生命周期 处理状态和错误</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-03 15:12:01" itemprop="dateCreated datePublished" datetime="2019-03-03T15:12:01+08:00">2019-03-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-06 14:21:43" itemprop="dateModified" datetime="2019-04-06T14:21:43+08:00">2019-04-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Akka入门和实践/" itemprop="url" rel="index"><span itemprop="name">Akka入门和实践</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
               分布式计算的8个误区
 网络是可靠的
 没有延时
-贷款是无限的
+带宽是无限的
 网络是安全的
 网络拓扑不会改变
 只有一个管理员
@@ -963,7 +1321,7 @@ Runnable 和 Callable\runnable 中的void run();方法和 Callable 中的V call(
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-17 22:38:53" itemprop="dateModified" datetime="2019-03-17T22:38:53+08:00">2019-03-17</time>
+                <time title="Modified: 2019-03-21 20:02:12" itemprop="dateModified" datetime="2019-03-21T20:02:12+08:00">2019-03-21</time>
               
             
           </span>
@@ -1148,7 +1506,7 @@ ask向Actor 发送一条消息，返回一个Future。当Actor 返回响应时�
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-17 18:27:07" itemprop="dateModified" datetime="2019-03-17T18:27:07+08:00">2019-03-17</time>
+                <time title="Modified: 2019-04-06 13:50:51" itemprop="dateModified" datetime="2019-04-06T13:50:51+08:00">2019-04-06</time>
               
             
           </span>
@@ -1335,7 +1693,7 @@ ask向Actor 发送一条消息，返回一个Future。当Actor 返回响应时�
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-18 09:01:13" itemprop="dateModified" datetime="2019-03-18T09:01:13+08:00">2019-03-18</time>
+                <time title="Modified: 2019-03-21 19:34:06" itemprop="dateModified" datetime="2019-03-21T19:34:06+08:00">2019-03-21</time>
               
             
           </span>
@@ -1391,8 +1749,9 @@ ask向Actor 发送一条消息，返回一个Future。当Actor 返回响应时�
           
             <p>
               年糕的爸爸在B乎上开了专栏前路迢迢,教麻瓜使用Akka和Clojure. 然后就上船了.但是 akka 和clojure 是个什么鬼.但是应该是永远也学会不会的吧.  #从入门到放弃# #嘛哩嘛哩哄#
-什么是Actor在我的理解里面Actor 就是我们固定的一个流程(process)
-Actor做什
+什么是Actor在我的理解里面Actor 就是固定的一个流程(process)
+Actor做什么
+
               ...
             </p>
           <!--noindex-->
@@ -1815,382 +2174,6 @@ github GoogleContainerTools
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2018/09/18/注解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小夫的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/09/18/注解/" class="post-title-link" itemprop="url">注解</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-09-18 23:47:31" itemprop="dateCreated datePublished" datetime="2018-09-18T23:47:31+08:00">2018-09-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-17 23:01:51" itemprop="dateModified" datetime="2019-02-17T23:01:51+08:00">2019-02-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java编程思想/" itemprop="url" rel="index"><span itemprop="name">Java编程思想</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              注解注解为我们在代码中添加信息提供了形式化的方法, 使我们可以在稍后某个时刻非常方便的使用这些元素.
-Java支持的三种标准注解
-@Override
-@Deprecated
-@Suppress Warnings
-
-Java支持的四种元注解
-@Targe
-表示该注解可以用于什么地方.可能的Elemen
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/09/18/注解/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2018/08/28/并发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小夫的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/08/28/并发/" class="post-title-link" itemprop="url">并发</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-28 23:00:21" itemprop="dateCreated datePublished" datetime="2018-08-28T23:00:21+08:00">2018-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-17 23:01:33" itemprop="dateModified" datetime="2019-02-17T23:01:33+08:00">2019-02-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java编程思想/" itemprop="url" rel="index"><span itemprop="name">Java编程思想</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              为什么要有并发现在多核心的处理器变得越来越常见,要如何使用多个核心呢?并发是一个很好的解决方案.
-Java并发的实现Thread线程可以驱动任务,因此你需要一种描述任务的方式, 这可以由Runable接口来提供.将Runable对象转变为工作任务的传统方式就是把它提交给一个Thread构造器
-pub
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/08/28/并发/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2239,7 +2222,7 @@ pub
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
