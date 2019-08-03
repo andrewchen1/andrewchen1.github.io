@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="FIRST THING FIRST虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我购买链接: Spring 揭秘 IOCIOC Inversion of Control IOC 的三种注入方式 构造函数注入 接口注入 setter注入掌管大局的IOC Service ProviderIOC Service Provider 的职责 业务对象的构建管理 业务对象间的依赖绑定注册">
-<meta name="keywords" content="spring,读书笔记">
+  <meta name="description" content="FIRST THING FIRST虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我购买链接: Spring 揭秘 IOCIOC Inversion of Control IOC 的三种注入方式掌管大局的IOC Service ProviderIOC Service Provider 的职责 业务对象的构建管理 业务对象间的依赖绑定注册对象管理信息的方式直接编码方式(伪代码)1">
+<meta name="keywords" content="读书笔记,spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring 揭秘">
 <meta property="og:url" content="https://www.andrewchen1.top/2018/08/27/Spring 揭秘-IOC基本概念/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="FIRST THING FIRST虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我购买链接: Spring 揭秘 IOCIOC Inversion of Control IOC 的三种注入方式 构造函数注入 接口注入 setter注入掌管大局的IOC Service ProviderIOC Service Provider 的职责 业务对象的构建管理 业务对象间的依赖绑定注册">
+<meta property="og:description" content="FIRST THING FIRST虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我购买链接: Spring 揭秘 IOCIOC Inversion of Control IOC 的三种注入方式掌管大局的IOC Service ProviderIOC Service Provider 的职责 业务对象的构建管理 业务对象间的依赖绑定注册对象管理信息的方式直接编码方式(伪代码)1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3214284-cded8c85779bb815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3214284-be220a5a396117f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -110,10 +110,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3214284-5c0558ab2a210c7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3214284-9a38b5d1f120a1df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3214284-3db089e3bc71ebd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-17T15:00:29.072Z">
+<meta property="og:updated_time" content="2019-05-20T14:35:34.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring 揭秘">
-<meta name="twitter:description" content="FIRST THING FIRST虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我购买链接: Spring 揭秘 IOCIOC Inversion of Control IOC 的三种注入方式 构造函数注入 接口注入 setter注入掌管大局的IOC Service ProviderIOC Service Provider 的职责 业务对象的构建管理 业务对象间的依赖绑定注册">
+<meta name="twitter:description" content="FIRST THING FIRST虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我购买链接: Spring 揭秘 IOCIOC Inversion of Control IOC 的三种注入方式掌管大局的IOC Service ProviderIOC Service Provider 的职责 业务对象的构建管理 业务对象间的依赖绑定注册对象管理信息的方式直接编码方式(伪代码)1">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3214284-cded8c85779bb815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-17 23:00:29" itemprop="dateModified" datetime="2019-02-17T23:00:29+08:00">2019-02-17</time>
+                <time title="Modified: 2019-05-20 22:35:34" itemprop="dateModified" datetime="2019-05-20T22:35:34+08:00">2019-05-20</time>
               
             
           </span>
@@ -470,10 +470,7 @@
       
         <p><strong>FIRST THING FIRST</strong><br><strong>虽然说是笔记 但是和 拷整本书没有区别了, 谢谢作者. 请各位不要打我</strong><br>购买链接: <a href="https://e.jd.com/30142898.html#none" target="_blank" rel="noopener">Spring 揭秘</a></p>
 <h1 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h1><p>IOC Inversion of Control<br><img src="https://upload-images.jianshu.io/upload_images/3214284-cded8c85779bb815.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h2 id="IOC-的三种注入方式"><a href="#IOC-的三种注入方式" class="headerlink" title="IOC 的三种注入方式"></a>IOC 的三种注入方式</h2><ul>
-<li>构造函数注入</li>
-<li>接口注入</li>
-<li>setter注入<h1 id="掌管大局的IOC-Service-Provider"><a href="#掌管大局的IOC-Service-Provider" class="headerlink" title="掌管大局的IOC Service Provider"></a>掌管大局的IOC Service Provider</h1><h2 id="IOC-Service-Provider-的职责"><a href="#IOC-Service-Provider-的职责" class="headerlink" title="IOC Service Provider 的职责"></a>IOC Service Provider 的职责</h2></li>
+<h2 id="IOC-的三种注入方式"><a href="#IOC-的三种注入方式" class="headerlink" title="IOC 的三种注入方式"></a>IOC 的三种注入方式</h2><h1 id="掌管大局的IOC-Service-Provider"><a href="#掌管大局的IOC-Service-Provider" class="headerlink" title="掌管大局的IOC Service Provider"></a>掌管大局的IOC Service Provider</h1><h2 id="IOC-Service-Provider-的职责"><a href="#IOC-Service-Provider-的职责" class="headerlink" title="IOC Service Provider 的职责"></a>IOC Service Provider 的职责</h2><ul>
 <li>业务对象的构建管理</li>
 <li>业务对象间的依赖绑定<h2 id="注册对象管理信息的方式"><a href="#注册对象管理信息的方式" class="headerlink" title="注册对象管理信息的方式"></a>注册对象管理信息的方式</h2><h3 id="直接编码方式"><a href="#直接编码方式" class="headerlink" title="直接编码方式"></a>直接编码方式</h3>(伪代码)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IOCContainer container = ;</span><br><span class="line">container.register(A.class, <span class="keyword">new</span> A());</span><br><span class="line">container.register(B.class, <span class="keyword">new</span> B());</span><br><span class="line">A a = (A)container.get(A.class);</span><br></pre></td></tr></table></figure>
 </li>
@@ -671,9 +668,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
-          
             <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
           
         </div>
       
@@ -765,7 +762,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -790,7 +787,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -819,7 +822,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

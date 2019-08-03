@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
+  <meta name="description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
 <meta name="keywords" content="akka,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6-横向扩展 集群化">
 <meta property="og:url" content="https://www.andrewchen1.top/2019/04/06/6-横向扩展-集群化/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
+<meta property="og:description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.andrewchen1.top/小书匠/7891228-fbea40230f4c5738.png">
-<meta property="og:updated_time" content="2019-04-06T10:13:42.867Z">
+<meta property="og:updated_time" content="2019-04-07T06:32:35.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="6-横向扩展 集群化">
-<meta name="twitter:description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
+<meta name="twitter:description" content="横向扩展 集群化为什么要微服务化 单机能提供的资源有限(primary)  一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world">
 <meta name="twitter:image" content="http://img.andrewchen1.top/小书匠/7891228-fbea40230f4c5738.png">
 
 
@@ -394,12 +394,24 @@
                 
               
 
-              <time title="Created: 2019-04-06 16:01:17 / Modified: 18:13:42" itemprop="dateCreated datePublished" datetime="2019-04-06T16:01:17+08:00">2019-04-06</time>
+              <time title="Created: 2019-04-06 16:01:17" itemprop="dateCreated datePublished" datetime="2019-04-06T16:01:17+08:00">2019-04-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-07 14:32:35" itemprop="dateModified" datetime="2019-04-07T14:32:35+08:00">2019-04-07</time>
               
             
           </span>
@@ -454,7 +466,7 @@
         <h1 id="横向扩展-集群化"><a href="#横向扩展-集群化" class="headerlink" title="横向扩展 集群化"></a>横向扩展 集群化</h1><h2 id="为什么要微服务化"><a href="#为什么要微服务化" class="headerlink" title="为什么要微服务化"></a>为什么要微服务化</h2><ol>
 <li>单机能提供的资源有限(primary)</li>
 </ol>
-<p>一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通图的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world 所需要的时间也就会很长, 导致业务暂停的时间也会延长.</p>
+<p>一个物理机器的硬件资源,网络资源总是有限的, 可能需要多个机器才能支持需求.并且在GC的时候可能会stop the world. 将其余的线程暂停, GC线程启动, 对Eden区的对象做连通的计算. 对象目前是存活对象的图的予以保留, 对于在不在的予以清理.如果Survice的空间很大的话 那stop the world 所需要的时间也就会很长, 导致业务暂停的时间也会延长.</p>
 <ol start="2">
 <li>方便项目管理、发布测试等的流程的进行(secondary)</li>
 </ol>
@@ -512,7 +524,10 @@
 <p>比方说对于之前CP的情况,我们可以把follower当作是读库, Leader 当作是写库, 通过乐观锁来保证最终一致性.(update 的数量和期望的一致, 否则就说明这个数据从follower中拿到的不是最新的, 抛错). 对于AP的情况比方说当中的某个数据是需要被超过1/2节点所认可的.</p>
 </li>
 </ul>
-<h3 id="Akka-Cluster"><a href="#Akka-Cluster" class="headerlink" title="Akka Cluster"></a>Akka Cluster</h3>
+<h3 id="Akka-Cluster"><a href="#Akka-Cluster" class="headerlink" title="Akka Cluster"></a>Akka Cluster</h3><h4 id="分区与线性扩展"><a href="#分区与线性扩展" class="headerlink" title="分区与线性扩展"></a>分区与线性扩展</h4><p>通过hash mode x = n来计算结果存放在哪个节点, 对于这个x可以适当的大于目前的值, 比方说64 或者128 然后定义结果在[a-b) 之间的分配到 1 , [b-c) 之间分配到2.</p>
+<h4 id="节点冗余"><a href="#节点冗余" class="headerlink" title="节点冗余"></a>节点冗余</h4><p>读取请求会发送到任意一个节点,该节点负责进行协调, 计算 partition key的哈希值, 然后把请求发送给实际存储数据的3个节点, 当至少两个节点返回结果成功,即成功.</p>
+<h3 id="获取Identity"><a href="#获取Identity" class="headerlink" title="获取Identity"></a>获取Identity</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Identify identify = <span class="keyword">new</span> Identify(<span class="number">1</span>);</span><br><span class="line">Future future = ask(selection, identify, <span class="number">1000</span>);</span><br><span class="line"><span class="keyword">return</span> (ActorIdentity)Await.result(future, timeout.duration());</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -559,6 +574,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/07/7-邮箱/" rel="prev" title="7 邮箱">
+                7 邮箱 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -629,7 +648,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -654,7 +673,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -683,7 +708,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -756,7 +785,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#横向扩展-集群化"><span class="nav-number">1.</span> <span class="nav-text">横向扩展 集群化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要微服务化"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要微服务化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群和集群内部节点的状态"><span class="nav-number">1.2.</span> <span class="nav-text">集群和集群内部节点的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP"><span class="nav-number">1.2.1.</span> <span class="nav-text">CAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Akka-Cluster"><span class="nav-number">1.2.2.</span> <span class="nav-text">Akka Cluster</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#横向扩展-集群化"><span class="nav-number">1.</span> <span class="nav-text">横向扩展 集群化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要微服务化"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要微服务化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群和集群内部节点的状态"><span class="nav-number">1.2.</span> <span class="nav-text">集群和集群内部节点的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP"><span class="nav-number">1.2.1.</span> <span class="nav-text">CAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Akka-Cluster"><span class="nav-number">1.2.2.</span> <span class="nav-text">Akka Cluster</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分区与线性扩展"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">分区与线性扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#节点冗余"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">节点冗余</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取Identity"><span class="nav-number">1.2.3.</span> <span class="nav-text">获取Identity</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
