@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="重新认识spring基于servlet 的web开发首先我们会定义 如果开发一个简单的 hello world web应用  一个项目结构  一个web.xml 文件 或者WebApplicationInitializer实现. 12345678910111213141516171819202122&amp;lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web">
-<meta name="keywords" content="读书笔记,spring">
+  <meta name="description" content="MyBatis 快速入门Mybatis示例配置文件 1234567891011121314151617181920212223242526272829&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;&amp;gt;    &amp;lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybati">
+<meta name="keywords" content="Java,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring boot in action 1">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/05/09/spring-boot-in-action-1/index.html">
+<meta property="og:title" content="mybatis chapter1">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/08/10/mybatis-chapter1/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="重新认识spring基于servlet 的web开发首先我们会定义 如果开发一个简单的 hello world web应用  一个项目结构  一个web.xml 文件 或者WebApplicationInitializer实现. 12345678910111213141516171819202122&amp;lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web">
+<meta property="og:description" content="MyBatis 快速入门Mybatis示例配置文件 1234567891011121314151617181920212223242526272829&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;&amp;gt;    &amp;lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybati">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-20T14:35:28.652Z">
+<meta property="og:updated_time" content="2019-08-11T05:57:06.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring boot in action 1">
-<meta name="twitter:description" content="重新认识spring基于servlet 的web开发首先我们会定义 如果开发一个简单的 hello world web应用  一个项目结构  一个web.xml 文件 或者WebApplicationInitializer实现. 12345678910111213141516171819202122&amp;lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web">
+<meta name="twitter:title" content="mybatis chapter1">
+<meta name="twitter:description" content="MyBatis 快速入门Mybatis示例配置文件 1234567891011121314151617181920212223242526272829&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;&amp;gt;    &amp;lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybati">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.andrewchen1.top/2019/05/09/spring-boot-in-action-1/">
+  <link rel="canonical" href="https://www.andrewchen1.top/2019/08/10/mybatis-chapter1/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>spring boot in action 1 | 小夫的笔记</title>
+  <title>mybatis chapter1 | 小夫的笔记</title>
   
 
 
@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/05/09/spring-boot-in-action-1/">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/08/10/mybatis-chapter1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小夫">
@@ -366,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring boot in action 1
+          <h1 class="post-title" itemprop="name headline">mybatis chapter1
 
               
             
@@ -392,7 +392,7 @@
                 
               
 
-              <time title="Created: 2019-05-09 19:52:59" itemprop="dateCreated datePublished" datetime="2019-05-09T19:52:59+08:00">2019-05-09</time>
+              <time title="Created: 2019-08-10 15:56:45" itemprop="dateCreated datePublished" datetime="2019-08-10T15:56:45+08:00">2019-08-10</time>
             
 
             
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-20 22:35:28" itemprop="dateModified" datetime="2019-05-20T22:35:28+08:00">2019-05-20</time>
+                <time title="Modified: 2019-08-11 13:57:06" itemprop="dateModified" datetime="2019-08-11T13:57:06+08:00">2019-08-11</time>
               
             
           </span>
@@ -426,7 +426,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring-boot-in-action/" itemprop="url" rel="index"><span itemprop="name">spring boot in action</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MyBatis内幕/" itemprop="url" rel="index"><span itemprop="name">MyBatis内幕</span></a></span>
 
                 
                 
@@ -461,13 +461,41 @@
       
 
       
-        <h2 id="重新认识spring"><a href="#重新认识spring" class="headerlink" title="重新认识spring"></a>重新认识spring</h2><h3 id="基于servlet-的web开发"><a href="#基于servlet-的web开发" class="headerlink" title="基于servlet 的web开发"></a>基于servlet 的web开发</h3><p>首先我们会定义</p>
-<p>如果开发一个简单的 hello world web应用</p>
-<ul>
-<li><p>一个项目结构</p>
+        <h1 id="MyBatis-快速入门"><a href="#MyBatis-快速入门" class="headerlink" title="MyBatis 快速入门"></a>MyBatis 快速入门</h1><h2 id="Mybatis示例"><a href="#Mybatis示例" class="headerlink" title="Mybatis示例"></a>Mybatis示例</h2><p>配置文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"&gt;</span><br><span class="line">    &lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"/&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;properites&gt;</span><br><span class="line">            &lt;property name = "username" value ="root"/&gt;</span><br><span class="line">            &lt;property name = "id" value = "123"/&gt;</span><br><span class="line">        &lt;/properites&gt;</span><br><span class="line">        &lt;settings&gt;</span><br><span class="line">            &lt;setting name="cacheEnabled" value = "true"/&gt;</span><br><span class="line">        &lt;/settings&gt;</span><br><span class="line">        &lt;typeAliases&gt;</span><br><span class="line">            &lt;typeAlias type = "com.xxx.Blog" alias = "Blog"/&gt;</span><br><span class="line">        &lt;/typeAliases&gt;</span><br><span class="line">        &lt;enviroments default = "development"&gt;</span><br><span class="line">            &lt;enviroment id = "development"&gt;</span><br><span class="line">                &lt;transcationManager type="JDBC"/&gt;</span><br><span class="line">                &lt;dataSource type="POOLED"&gt;</span><br><span class="line">                    &lt;property name="driver" value = "com.mysql.jdbc.Driver"/&gt;</span><br><span class="line">                    &lt;property name="url" value="jdbc:mysql://localhost:3306/test"/&gt;</span><br><span class="line">                    &lt;property name="username" value="root"/&gt;</span><br><span class="line">                    &lt;property name="password" value=""/&gt;</span><br><span class="line">                &lt;/dataSource&gt;</span><br><span class="line">            &lt;/enviroment&gt;</span><br><span class="line">        &lt;/enviroments&gt;</span><br><span class="line">        &lt;mappers&gt;</span><br><span class="line">            &lt;mapper resource="com/***/BlogMapper.xml"/&gt;</span><br><span class="line">        &lt;/mappers&gt;            </span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/xml&gt;</span><br></pre></td></tr></table></figure>
+<p>执行的java代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String resource = <span class="string">"com/xxx/mybatis-config.xml"</span>;</span><br><span class="line">        InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">        SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuillder().build(inputStream);</span><br><span class="line"></span><br><span class="line">        SqlSession sqlsession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Map&lt;String,Object&gt; parameter = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">            parameter.put(<span class="string">"id"</span>, <span class="number">1</span>);</span><br><span class="line">            Blog blog = sqlSession.selectOne(<span class="string">"com.xxx.BlogMapper.selectBlogDetails"</span>, parameter);</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">        &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="MyBatis-整体架构"><a href="#MyBatis-整体架构" class="headerlink" title="MyBatis 整体架构"></a>MyBatis 整体架构</h2><h3 id="基础支持层"><a href="#基础支持层" class="headerlink" title="基础支持层"></a>基础支持层</h3><ul>
+<li><p>反射模块</p>
 </li>
-<li><p>一个web.xml 文件 或者WebApplicationInitializer实现.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"2.4"</span><span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/j2ee"</span><span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/j2eehttp://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/applicationContext.xml,/WEB-INF/controllers.xml,/WEB-INF/service.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatch<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatch<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-pattern</span>&gt;</span>*.*<span class="tag">&lt;/<span class="name">servlet-pattern</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>类型转换模块</p>
+<p>jdbcType和JavaType之间类型做转换</p>
+</li>
+<li><p>日志模块</p>
+</li>
+<li><p>资源加载模块</p>
+<p>对类加载器进行封装</p>
+</li>
+<li><p>解析器模块</p>
+<p>对Xpath进行封装 为config处理提供支持 </p>
+<p>为处理sql语言中的占位符提供支持</p>
+</li>
+<li><p>数据源模块</p>
+</li>
+<li><p>事务管理</p>
+</li>
+<li><p>缓存模块</p>
+</li>
+<li><p>Binding模块</p>
+</li>
+</ul>
+<h3 id="核心处理层"><a href="#核心处理层" class="headerlink" title="核心处理层"></a>核心处理层</h3><ul>
+<li><p>配置解析</p>
+</li>
+<li><p>Sql解析与sripting 模块</p>
+</li>
+<li><p>Sql执行</p>
+<p>sqlSession -&gt; executor -&gt; statementHandler -&gt; parameterHandler -&gt; statement -&gt; db -&gt; resultSet -&gt;ResultSetHandler -&gt; StatementHandler -&gt;executor -&gt; sqlSession </p>
 </li>
 </ul>
 
@@ -493,9 +521,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
         </div>
       
@@ -508,8 +536,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/09/spring揭秘-IOC的基本概念/" rel="next" title="spring揭秘 IOC的基本概念">
-                <i class="fa fa-chevron-left"></i> spring揭秘 IOC的基本概念
+              <a href="/2019/08/03/Java-基础知识点整理1/" rel="next" title="Java 基础知识点整理1">
+                <i class="fa fa-chevron-left"></i> Java 基础知识点整理1
               </a>
             
           </div>
@@ -518,8 +546,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/03/Java-基础知识点整理1/" rel="prev" title="Java 基础知识点整理1">
-                Java 基础知识点整理1 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/10/mybatis-chapter2/" rel="prev" title="mybatis chapter2">
+                mybatis chapter2 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -730,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重新认识spring"><span class="nav-number">1.</span> <span class="nav-text">重新认识spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于servlet-的web开发"><span class="nav-number">1.1.</span> <span class="nav-text">基于servlet 的web开发</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MyBatis-快速入门"><span class="nav-number">1.</span> <span class="nav-text">MyBatis 快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis示例"><span class="nav-number">1.1.</span> <span class="nav-text">Mybatis示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-整体架构"><span class="nav-number">1.2.</span> <span class="nav-text">MyBatis 整体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础支持层"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础支持层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心处理层"><span class="nav-number">1.2.2.</span> <span class="nav-text">核心处理层</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

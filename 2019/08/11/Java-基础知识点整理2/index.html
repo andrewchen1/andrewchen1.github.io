@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="重新认识spring基于servlet 的web开发首先我们会定义 如果开发一个简单的 hello world web应用  一个项目结构  一个web.xml 文件 或者WebApplicationInitializer实现. 12345678910111213141516171819202122&amp;lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web">
-<meta name="keywords" content="读书笔记,spring">
+  <meta name="description" content="Java 集合集合框架CollectionList ArrayList  按照插入顺序排序, 可重复  底层使用数组  可以随机进行读取、增删慢 (要挪元素在数组中的位置)  线程不安全   ConcurrentModificationException分析  123456789101112131415161718192021222324252627282930313233343536373839">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring boot in action 1">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/05/09/spring-boot-in-action-1/index.html">
+<meta property="og:title" content="Java 基础知识点整理2">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/08/11/Java-基础知识点整理2/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="重新认识spring基于servlet 的web开发首先我们会定义 如果开发一个简单的 hello world web应用  一个项目结构  一个web.xml 文件 或者WebApplicationInitializer实现. 12345678910111213141516171819202122&amp;lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web">
+<meta property="og:description" content="Java 集合集合框架CollectionList ArrayList  按照插入顺序排序, 可重复  底层使用数组  可以随机进行读取、增删慢 (要挪元素在数组中的位置)  线程不安全   ConcurrentModificationException分析  123456789101112131415161718192021222324252627282930313233343536373839">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-20T14:35:28.652Z">
+<meta property="og:updated_time" content="2019-08-11T08:22:35.583Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring boot in action 1">
-<meta name="twitter:description" content="重新认识spring基于servlet 的web开发首先我们会定义 如果开发一个简单的 hello world web应用  一个项目结构  一个web.xml 文件 或者WebApplicationInitializer实现. 12345678910111213141516171819202122&amp;lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;web">
+<meta name="twitter:title" content="Java 基础知识点整理2">
+<meta name="twitter:description" content="Java 集合集合框架CollectionList ArrayList  按照插入顺序排序, 可重复  底层使用数组  可以随机进行读取、增删慢 (要挪元素在数组中的位置)  线程不安全   ConcurrentModificationException分析  123456789101112131415161718192021222324252627282930313233343536373839">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.andrewchen1.top/2019/05/09/spring-boot-in-action-1/">
+  <link rel="canonical" href="https://www.andrewchen1.top/2019/08/11/Java-基础知识点整理2/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>spring boot in action 1 | 小夫的笔记</title>
+  <title>Java 基础知识点整理2 | 小夫的笔记</title>
   
 
 
@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/05/09/spring-boot-in-action-1/">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/08/11/Java-基础知识点整理2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小夫">
@@ -366,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring boot in action 1
+          <h1 class="post-title" itemprop="name headline">Java 基础知识点整理2
 
               
             
@@ -392,24 +392,12 @@
                 
               
 
-              <time title="Created: 2019-05-09 19:52:59" itemprop="dateCreated datePublished" datetime="2019-05-09T19:52:59+08:00">2019-05-09</time>
+              <time title="Created: 2019-08-11 14:44:02 / Modified: 16:22:35" itemprop="dateCreated datePublished" datetime="2019-08-11T14:44:02+08:00">2019-08-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-20 22:35:28" itemprop="dateModified" datetime="2019-05-20T22:35:28+08:00">2019-05-20</time>
               
             
           </span>
@@ -426,7 +414,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring-boot-in-action/" itemprop="url" rel="index"><span itemprop="name">spring boot in action</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础知识/" itemprop="url" rel="index"><span itemprop="name">Java基础知识</span></a></span>
 
                 
                 
@@ -461,13 +449,73 @@
       
 
       
-        <h2 id="重新认识spring"><a href="#重新认识spring" class="headerlink" title="重新认识spring"></a>重新认识spring</h2><h3 id="基于servlet-的web开发"><a href="#基于servlet-的web开发" class="headerlink" title="基于servlet 的web开发"></a>基于servlet 的web开发</h3><p>首先我们会定义</p>
-<p>如果开发一个简单的 hello world web应用</p>
-<ul>
-<li><p>一个项目结构</p>
+        <h1 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h1><h2 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h2><h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><ul>
+<li><p>ArrayList</p>
+<ol>
+<li><p>按照插入顺序排序, 可重复</p>
 </li>
-<li><p>一个web.xml 文件 或者WebApplicationInitializer实现.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"2.4"</span><span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/j2ee"</span><span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/j2eehttp://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/applicationContext.xml,/WEB-INF/controllers.xml,/WEB-INF/service.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatch<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatch<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">servlet-pattern</span>&gt;</span>*.*<span class="tag">&lt;/<span class="name">servlet-pattern</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li><p>底层使用数组</p>
+</li>
+<li><p>可以随机进行读取、增删慢 (要挪元素在数组中的位置)</p>
+</li>
+<li><p>线程不安全</p>
+</li>
+</ol>
+<p><a href="https://blog.csdn.net/wchicho/article/details/51987992" target="_blank" rel="noopener">ConcurrentModificationException分析</a> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">list.add(<span class="number">1</span>);</span><br><span class="line">list.add(<span class="number">2</span>);</span><br><span class="line">list.add(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* example 1</span></span><br><span class="line"><span class="comment">	* 在这个情况下不会抛错</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">  <span class="keyword">int</span> length = list.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (list.get(i).equals(<span class="number">2</span>)) &#123;</span><br><span class="line">                list.add(<span class="number">10</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">		* example 2</span></span><br><span class="line"><span class="comment">		* 在这种情况下会抛错</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> temp : list) &#123;</span><br><span class="line">    <span class="keyword">if</span>(temp == <span class="number">2</span>) &#123;</span><br><span class="line">      list.add(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * exmple 3</span></span><br><span class="line"><span class="comment"> * 在这种情况下会抛错</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext()) &#123;</span><br><span class="line">  <span class="keyword">if</span>(iterator.next().equals(<span class="number">2</span>)) &#123;</span><br><span class="line">    list.add(<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * example 4</span></span><br><span class="line"><span class="comment"> * 在这种情况下不会抛错</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">ListIterator&lt;Integer&gt; listIterator = list.listIterator();</span><br><span class="line"><span class="keyword">while</span> (listIterator.hasNext()) &#123;</span><br><span class="line">  <span class="keyword">if</span> (listIterator.next().equals(<span class="number">2</span>)) &#123;</span><br><span class="line">    listIterator.add(<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会抛出错误的原因</p>
+<p>在ArrayList 内有个内部类Itr</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 预期修改(modification)次数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">int</span> expectedModCount = modCount;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在迭代器调用next 方法的时候会检查当前类的修改次数和迭代器内的修改次数是不是一致, 如果是不一致的话 就爆炸.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	checkForComodification();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> i = cursor;</span><br><span class="line">		E next = get(i);</span><br><span class="line">		lastRet = i;</span><br><span class="line">		cursor = i + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> next;</span><br><span class="line">	&#125; <span class="keyword">catch</span>(IndexOutOfBoundsException e) &#123;</span><br><span class="line">		checkForComodification();</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">	checkForComodification();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> i = cursor;</span><br><span class="line">		ArrayList.<span class="keyword">this</span>.add(i, e);</span><br><span class="line">		cursor = i + <span class="number">1</span>;</span><br><span class="line">		lastRet = -<span class="number">1</span>;</span><br><span class="line">		exceptedModCount = modCount;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IndexOutOfBoundException ex) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在案例1 中没有使用到迭代器相关的api</p>
+<p>在案例 2, 3 中使用了迭代器相关的api 在外部类的mod time 发生了改变的时候没有对迭代器内部的mod time 同时进行修正, 当再次调用next 的时候发现内部类记录的修改次数和类外部的修改次数不一样.爆炸.</p>
+</li>
+<li><p>Vector</p>
+<ol>
+<li>按照插入顺序排序 可重复</li>
+<li>底层使用数组</li>
+<li>可以随机读取 增删慢(要挪元素在数组中的位置)</li>
+<li>线程安全</li>
+</ol>
+</li>
+<li><p>LinkedList</p>
+<ol>
+<li>按照插入顺序排序 元素可重复</li>
+<li>通过链表的方式保存数据</li>
+<li>不可以随机读取数据 要通过头节点 或者尾节点 以遍历的方式获得所得的元素 但是 add 和remove的方法快</li>
+</ol>
+</li>
+</ul>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><ul>
+<li><p>HashSet</p>
+<p>排列无序 不可重复 底层是HashMap. </p>
+</li>
+<li><p>TreeSet</p>
+<p>内部是TreeMap的sortedSet</p>
+</li>
+<li><p>LinkedHashSet</p>
+<p>内部是LinkedHashMap</p>
+</li>
+</ul>
+<h4 id="Queued"><a href="#Queued" class="headerlink" title="Queued"></a>Queued</h4><ul>
+<li>PriorityQueued</li>
+</ul>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><ul>
+<li><p>HashMap</p>
+<p>key不可重复 value 可以重复</p>
+<p>底层hash表</p>
+<p>线程不安全 (可能会造成endless loop)</p>
+<p>允许key值为null</p>
+</li>
+<li><p>HashTable</p>
+<p>key不可重复</p>
+<p>底层hashtable</p>
+<p>线程安全</p>
+<p>key value 都不允许为null</p>
+</li>
+<li><p>TreeMap</p>
+<p>key不可以重复</p>
 </li>
 </ul>
 
@@ -493,9 +541,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
-          
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -508,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/09/spring揭秘-IOC的基本概念/" rel="next" title="spring揭秘 IOC的基本概念">
-                <i class="fa fa-chevron-left"></i> spring揭秘 IOC的基本概念
+              <a href="/2019/08/10/mybatis-chapter2/" rel="next" title="mybatis chapter2">
+                <i class="fa fa-chevron-left"></i> mybatis chapter2
               </a>
             
           </div>
@@ -518,8 +564,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/03/Java-基础知识点整理1/" rel="prev" title="Java 基础知识点整理1">
-                Java 基础知识点整理1 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/11/Java-基础知识点整理3/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -730,7 +776,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重新认识spring"><span class="nav-number">1.</span> <span class="nav-text">重新认识spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于servlet-的web开发"><span class="nav-number">1.1.</span> <span class="nav-text">基于servlet 的web开发</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-集合"><span class="nav-number">1.</span> <span class="nav-text">Java 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合框架"><span class="nav-number">1.1.</span> <span class="nav-text">集合框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Collection"><span class="nav-number">1.1.1.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Queued"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">Queued</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">1.1.2.</span> <span class="nav-text">Map</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
