@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="Java基础知识点整理 JVMJVM 后台运行的系统进程 虚拟机线程 这个线程等待JVM到达安全点操作出现. Stop the world 垃圾回收、线程栈dump、线程暂停、线程偏向锁解除.  周期性任务线程 这线程负责定时器事件(中段),用来调度周期性操作的执行  GC线程 不同的GC  编译器线程 将字节码编译成本地码  信号分发线程 这个线程发送到JVM的信号并调用适当的JVM方法处理.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-11T06:37:32.701Z">
+<meta property="og:updated_time" content="2019-08-17T07:26:11.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 基础知识点整理1">
 <meta name="twitter:description" content="Java基础知识点整理 JVMJVM 后台运行的系统进程 虚拟机线程 这个线程等待JVM到达安全点操作出现. Stop the world 垃圾回收、线程栈dump、线程暂停、线程偏向锁解除.  周期性任务线程 这线程负责定时器事件(中段),用来调度周期性操作的执行  GC线程 不同的GC  编译器线程 将字节码编译成本地码  信号分发线程 这个线程发送到JVM的信号并调用适当的JVM方法处理.">
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-11 14:37:32" itemprop="dateModified" datetime="2019-08-11T14:37:32+08:00">2019-08-11</time>
+                <time title="Modified: 2019-08-17 15:26:11" itemprop="dateModified" datetime="2019-08-17T15:26:11+08:00">2019-08-17</time>
               
             
           </span>
@@ -548,13 +548,13 @@
 <li><p>Java的四种引用类型</p>
 <ol>
 <li><p>强引用</p>
-<p>最常见的就是强引用.当一个对象(Object)信息被赋值给一个引用(Reference)时,就是强引用.当处于可达状态时不可能被回收的</p>
+<p>最常见的就是强引用.当一个对象(Object)信息被赋值给一个引用(Reference)时,就是强引用.当处于可达状态时不可能被回收的 </p>
 </li>
 <li><p>软引用</p>
 <p>SoftReference.当内存不够时候会被回收</p>
 </li>
 <li><p>弱引用</p>
-<p>WeakReference 当垃圾回收机制一运行总会回收该对象占有的内存.</p>
+<p>WeakReference 当垃圾回收机制一运行总会回收该对象占有的内存. 当我们创建一个ThreadLoad的值的时候,实际上是加入到ThreadLocalMap\&lt;WeakReference\&lt;ThreadLocal\&lt;?>>,  Object&gt; 中</p>
 </li>
 <li><p>虚引用</p>
 <p>需要PhantomReference 类实现,它不能单独使用, 必须和引用队列联合使用.虚引用的主要作用是跟踪对象被垃圾回收的状态.</p>
@@ -573,7 +573,7 @@
 <li>年老带:</li>
 </ul>
 <p>​    Serial Old 是Serial老年区版本 单线程 STW.  <strong>标记整理</strong></p>
-<p>​    Parallel Old 是Parallel scagenge老年区版本 STW 标记整理</p>
+<p>​    Parallel Old 是Parallel scagenge老年区版本 STW <strong>标记整理</strong></p>
 <ul>
 <li><p>CMS</p>
 <p>初始标记 (只是标记一下GC Roots能够直接关联的对象 STW)</p>
