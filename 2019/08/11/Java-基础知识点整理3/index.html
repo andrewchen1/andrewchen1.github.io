@@ -104,10 +104,14 @@
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="Java 多线程并发线程的创建方式 继承Thread类 123456Thread thread = new Thread() &amp;#123;	@Override	public void run() 	&amp;#123;    Objects.  &amp;#125;&amp;#125;  实现Runnable接口 1234567Runnable run = new Runnable() &amp;#123;  @Override">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-17T06:58:31.692Z">
+<meta property="og:image" content="http://img.andrewchen1.top/20121109112521_220.jpg">
+<meta property="og:image" content="http://img.andrewchen1.top/20121109112521_981.jpg">
+<meta property="og:image" content="http://img.andrewchen1.top/20121109112521_777.jpg">
+<meta property="og:updated_time" content="2019-08-17T11:19:49.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 基础知识点整理3">
 <meta name="twitter:description" content="Java 多线程并发线程的创建方式 继承Thread类 123456Thread thread = new Thread() &amp;#123;	@Override	public void run() 	&amp;#123;    Objects.  &amp;#125;&amp;#125;  实现Runnable接口 1234567Runnable run = new Runnable() &amp;#123;  @Override">
+<meta name="twitter:image" content="http://img.andrewchen1.top/20121109112521_220.jpg">
 
 
 
@@ -409,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-17 14:58:31" itemprop="dateModified" datetime="2019-08-17T14:58:31+08:00">2019-08-17</time>
+                <time title="Modified: 2019-08-17 19:19:49" itemprop="dateModified" datetime="2019-08-17T19:19:49+08:00">2019-08-17</time>
               
             
           </span>
@@ -484,39 +488,250 @@
 <h3 id="线程的结束"><a href="#线程的结束" class="headerlink" title="线程的结束"></a>线程的结束</h3><h4 id="定义一个退出标志"><a href="#定义一个退出标志" class="headerlink" title="定义一个退出标志"></a>定义一个退出标志</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">  <span class="keyword">volatile</span> Boolean stop;</span><br><span class="line">  </span><br><span class="line">  &#123;</span><br><span class="line">    stop = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (! stop) &#123;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted"></a>interrupted</h4><p>用interrupted 有两种方法</p>
+<h4 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted"></a>interrupted</h4><p>   用interrupted 有两种方法</p>
 <ol>
-<li>当线程处于blocked的状态的时候.我们调用该线程的interrupt()方法会抛出InterruptedException</li>
-<li>在线程在处于非blocked状态的时候 去判断它的中断标示,这个方法会和方法1同时使用</li>
-</ol>
+<li><p>当线程处于blocked的状态的时候.我们调用该线程的interrupt()方法会抛出InterruptedException</p>
+</li>
+<li><p>在线程在处于非blocked状态的时候 去判断它的中断标示,这个方法会和方法1同时使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">  <span class="keyword">volatile</span> Boolean stop;</span><br><span class="line">  </span><br><span class="line">  &#123;</span><br><span class="line">    stop = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (! stop &amp;&amp; ! isInterrupted()) &#123;</span><br><span class="line">      <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="sleep-和wait之间的区别"><a href="#sleep-和wait之间的区别" class="headerlink" title="sleep 和wait之间的区别"></a>sleep 和wait之间的区别</h4><p>sleep 是属于Thread 的方法. wait是属于object的方法.</p>
-<p>sleep 是让渡cpu时间. 而wait是让渡出临界资源的控制权</p>
+</li>
+</ol>
+<h4 id="sleep-和wait之间的区别"><a href="#sleep-和wait之间的区别" class="headerlink" title="sleep 和wait之间的区别"></a>sleep 和wait之间的区别</h4><p>​        - sleep 是属于Thread 的方法. wait是属于object的方法.</p>
+<p>​        - sleep 是让渡cpu时间. 而wait是让渡出临界资源的控制权</p>
 <h2 id="Java-锁"><a href="#Java-锁" class="headerlink" title="Java 锁"></a>Java 锁</h2><h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>悲观锁可以叫做独占锁, 在得到这个资源之后到让渡出这个资源之前其他的事物都不能访问这个资源.</p>
 <h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>相对于悲观锁, 乐观锁认为在很大的程度下这个资源都不会发生变化 所以也没有必要进行独占(大家都可以访问), 在准备对这个资源进行修改的时候要去验证一下这个资源是不是发生变化了, 如果发生变化了就放弃修改, 如果是没有发生变化,那就修改它. (Compare And Swap)</p>
 <h3 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h3><ul>
 <li>自旋</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">  <span class="keyword">long</span> offset = Unsafe.getUnsafe().objectFieldOffset(Stuednt.class.getDeclaredField(<span class="string">"name"</span>));</span><br><span class="line">  Object o = Unsafe.getUnsafe().getAndSetObject(student, offset, <span class="string">"new name"</span>);</span><br><span class="line">  <span class="keyword">if</span> (Objects.nonNull(o)) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> offset = Unsafe.getUnsafe().objectFieldOffset(Stuednt.class.getDeclaredField(<span class="string">"name"</span>));</span><br><span class="line">Object o;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">    v = Unsafe.getUnsafe().getObjectVolatile(o, offset); </span><br><span class="line">&#125; <span class="keyword">while</span> (! Unsafe.getUnsafe().compareAndSwapObject(student, offset, v,<span class="string">"new name"</span>);)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果持有锁的线程能在很短的时间内释放锁资源, 那么那些等待竞争锁的线程就不需要做内核态和用户态之间的切换进入阻塞挂起状态,只要等一等就好了.</li>
 </ul>
 <h2 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h2><h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><ul>
 <li>作用方法 </li>
 <li>作用静态方法</li>
-<li>sychronized(something) , </li>
+<li>sychronized(something) </li>
 </ul>
-<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><ul>
-<li><p>wait set</p>
-<p>调用wait的线程在这个队列中</p>
-</li>
+<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><p><a href="https://www.cnblogs.com/lykm02/p/4516777.html" target="_blank" rel="noopener">详细说明 </a></p>
+<ul>
 <li><p>contention list</p>
 <p>竞争队列 所有请求锁的线程首先放在这个竞争队列中</p>
 </li>
 <li><p>entry list</p>
 <p>Contention list zhong 有资格称为候选资源的线程被移动到这个竞争队列中</p>
 </li>
-<li><p>OnDeck 任意时刻 <em>最多</em></p>
+<li><p>wait set</p>
+<p>调用wait的线程在这个队列中</p>
+</li>
+<li><p>OnDeck </p>
+<p>任意时刻最多只能有一个线程正在竞争锁,该线程被称为OnDeck</p>
+</li>
+<li><p>Owner</p>
+<p>获得锁的进程称为Owener</p>
+</li>
+<li><p>! Owener</p>
+<p>释放锁的线程    </p>
+</li>
+</ul>
+<blockquote>
+<p><img src="http://img.andrewchen1.top/20121109112521_220.jpg" alt="队列说明"></p>
+<ul>
+<li><p><strong>ContentionList</strong> <strong>虚拟队列</strong></p>
+<p>ContentionList 并不是一个真正的Queue，而只是一个虚拟队列，原因在于ContentionList是由Node及其next指 针逻辑构成，并不存在一个Queue的数据结构。ContentionList是一个后进先出（LIFO）的队列，每次新加入Node时都会在队头进行， 通过CAS改变第一个节点的的指针为新增节点，同时设置新增节点的next指向后续节点，而取得操作则发生在队尾。显然，该结构其实是个Lock- Free的队列。 </p>
+<p>因为只有Owner线程才能从队尾取元素，也即线程出列操作无争用，当然也就避免了CAS的ABA问题。</p>
+<p><img src="http://img.andrewchen1.top/20121109112521_981.jpg" alt="LIFO"></p>
+</li>
+<li><p>EntryList</p>
+<p>EntryList与ContentionList逻辑上同属等待队列，ContentionList会被线程并发访问，为了降低对 ContentionList队尾的争用，而建立EntryList。Owner线程在unlock时会从ContentionList中迁移线程到 EntryList，并会指定EntryList中的某个线程（一般为Head）为Ready（OnDeck）线程。Owner线程并不是把锁传递给 OnDeck线程，只是把竞争锁的权利交给OnDeck，OnDeck线程需要重新竞争锁。这样做虽然牺牲了一定的公平性，但极大的提高了整体吞吐量，在 Hotspot中把OnDeck的选择行为称之为“竞争切换”。 </p>
+<p>OnDeck线程获得锁后即变为owner线程，无法获得锁则会依然留在EntryList中，考虑到公平性，在EntryList中的位置不 发生变化（依然在队头）。如果Owner线程被wait方法阻塞，则转移到WaitSet队列；如果在某个时刻被notify/notifyAll唤醒， 则再次转移到EntryList。</p>
+</li>
+<li><p>自旋锁</p>
+<p>那些处于ContetionList、EntryList、WaitSet中的线程均处于阻塞状态，阻塞操作由操作系统完成（在Linxu下通 过pthread_mutex_lock函数）<em>LockSupport.park() LockSupport.unPark()</em>。线程被阻塞后便进入内核（Linux）调度状态，这个会导致系统在用户态与内核态之间来回切换，严重影响 锁的性能 </p>
+<p>缓解上述问题的办法便是自旋，其原理是：当发生争用时，若Owner线程能在很短的时间内释放锁，则那些正在争用线程可以稍微等一等（自旋）， 在Owner线程释放锁后，争用线程可能会立即得到锁，从而避免了系统阻塞。但Owner运行的时间可能会超出了临界值，争用线程自旋一段时间后还是无法 获得锁，这时争用线程则会停止自旋进入阻塞状态（后退）。基本思路就是自旋，不成功再阻塞，尽量降低阻塞的可能性，这对那些执行时间很短的代码块来说有非 常重要的性能提高。自旋锁有个更贴切的名字：自旋-指数后退锁，也即复合锁。很显然，自旋在多处理器上才有意义。 </p>
+<p>还有个问题是，线程自旋时做些啥？其实啥都不做，可以执行几次for循环，可以执行几条空的汇编指令，目的是占着CPU不放，等待获取锁的机 会。所以说，自旋是把双刃剑，如果旋的时间过长会影响整体性能，时间过短又达不到延迟阻塞的目的。显然，自旋的周期选择显得非常重要，但这与操作系统、硬 件体系、系统的负载等诸多场景相关，很难选择，如果选择不当，不但性能得不到提高，可能还会下降，因此大家普遍认为自旋锁不具有扩展性。 </p>
+<p>自旋优化策略 </p>
+<p>对自旋锁周期的选择上，HotSpot认为最佳时间应是一个线程上下文切换的时间，但目前并没有做到。经过调查，目前只是通过汇编暂停了几个CPU周期，除了自旋周期选择，HotSpot还进行许多其他的自旋优化策略，具体如下： </p>
+<p>如果平均负载小于CPUs则一直自旋 </p>
+<p>如果有超过(CPUs/2)个线程正在自旋，则后来线程直接阻塞 </p>
+<p>如果正在自旋的线程发现Owner发生了变化则延迟自旋时间（自旋计数）或进入阻塞 </p>
+<p>如果CPU处于节电模式则停止自旋 </p>
+<p>自旋时间的最坏情况是CPU的存储延迟（CPU A存储了一个数据，到CPU B得知这个数据直接的时间差） </p>
+<p>自旋时会适当放弃线程优先级之间的差异 </p>
+<p>那synchronized实现何时使用了自旋锁？答案是在线程进入ContentionList时，也即第一步操作前。线程在进入等待队列时 首先进行自旋尝试获得锁，如果不成功再进入等待队列。这对那些已经在等待队列中的线程来说，稍微显得不公平。还有一个不公平的地方是自旋线程可能会抢占了 Ready线程的锁。自旋锁由每个监视对象维护，每个监视对象一个。</p>
+</li>
+<li><p>偏向锁</p>
+<p>在JVM1.6中引入了偏向锁，偏向锁主要解决无竞争下的锁性能问题，首先我们看下无竞争下锁存在什么问题： </p>
+<p>现在几乎所有的锁都是可重入的，也即已经获得锁的线程可以多次锁住/解锁监视对象，按照之前的HotSpot设计，每次加锁/解锁都会涉及到一些 CAS操 作（比如对等待队列的CAS操作），CAS操作会延迟本地调用，因此偏向锁的想法是一旦线程第一次获得了监视对象，之后让监视对象“偏向”这个 线程，之后的多次调用则可以避免CAS操作，说白了就是置个变量，如果发现为true则无需再走各种加锁/解锁流程。但还有很多概念需要解释、很多引入的 问题需要解决：</p>
+<p><img src="http://img.andrewchen1.top/20121109112521_777.jpg" alt="SMP"></p>
+<p>其意思是所有的CPU会共享一条系统总线（BUS），靠此总线连接主存。每个核都有自己的一级缓存，各核相对于BUS对称分布，因此这种结构称为“对称多处理器”。 </p>
+<p>而CAS的全称为Compare-And-Swap，是一条CPU的原子指令，其作用是让CPU比较后原子地更新某个位置的值，经过调查发现， 其实现方式是基于硬件平台的汇编指令，就是说CAS是靠硬件实现的，JVM只是封装了汇编调用，那些AtomicInteger类便是使用了这些封装后的 接口。 </p>
+<p>Core1和Core2可能会同时把主存中某个位置的值Load到自己的L1 Cache中，当Core1在自己的L1 Cache中修改这个位置的值时，会通过总线，使Core2中L1 Cache对应的值“失效”，而Core2一旦发现自己L1 Cache中的值失效（称为Cache命中缺失）则会通过总线从内存中加载该地址最新的值，大家通过总线的来回通信称为“Cache一致性流量”，因为总 线被设计为固定的“通信能力”，如果Cache一致性流量过大，总线将成为瓶颈。而当Core1和Core2中的值再次一致时，称为“Cache一致 性”，从这个层面来说，锁设计的终极目标便是减少Cache一致性流量。 </p>
+<p>而CAS恰好会导致Cache一致性流量，如果有很多线程都共享同一个对象，当某个Core CAS成功时必然会引起总线风暴，这就是所谓的本地延迟，本质上偏向锁就是为了消除CAS，降低Cache一致性流量。</p>
+</li>
+</ul>
+<p>  上面提到Cache一致性，其实是有协议支持的，现在通用的协议是MESI（最早由Intel开始支持），具体参考：<a href="http://en.wikipedia.org/wiki/MESI_protocol" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/MESI_protocol</a>，以后会仔细讲解这部分。</p>
+<p>  其实也不是所有的CAS都会导致总线风暴，这跟Cache一致性协议有关，具体参考：<a href="http://blogs.oracle.com/dave/entry/biased_locking_in_hotspot" target="_blank" rel="noopener">http://blogs.oracle.com/dave/entry/biased_locking_in_hotspot</a></p>
+<p>  NUMA(Non Uniform Memory Access Achitecture）架构： </p>
+<p>  与SMP对应还有非对称多处理器架构，现在主要应用在一些高端处理器上，主要特点是没有总线，没有公用主存，每个Core有自己的内存，针对这种结构此处不做讨论。</p>
+</blockquote>
+<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p>他是一种重入锁,除了能完成sychronized所能完成的所有工作之外,还提供了诸如可响应中断锁、可轮训锁、定时锁能避免多线程死锁的方法.</p>
+<ol>
+<li><p>void lock() </p>
+<p>如果锁处于空闲的状态,当前线程将获得锁</p>
+</li>
+<li><p>boolean tryLock() </p>
+<p>如果锁可用,则获得锁,并且立即返回true,否则返回false.tryLock只是”试图”获取锁,如果锁不可用,不会导致这个线程处于wait状态</p>
+</li>
+<li><p>void unlock()</p>
+<p>当前线程将释放持有的锁</p>
+</li>
+<li><p>Condition newCondition()</p>
+<p>条件对象,获取等待通知组件. 该组件和当前的锁绑定.<strong>当前线程只有拥有了锁</strong>,才能调用该组件的await()方法.而调用了之后,当前线程会释放lock, 被加入到这个condition的等待队列中,这个线程不再会活动,until 其他线程操作这个conditional 调用signal()或者 signalAll(). 被await的线程会到lock的竞争队列中去竞争condition.</p>
+</li>
+<li><p>int getHoldCount()</p>
+<p>查询当前线程保持此锁的次数, 重入的次数,也就是执行此线程执行lock方法的次数</p>
+</li>
+<li><p>int getQueueLength()</p>
+<p>返回正等待获取此锁的线程数量</p>
+</li>
+<li><p>int getWaitQueueLength(Condition condition)</p>
+<p>返回等待与此锁相关的给定条件线程估计数.比方说10个线程,用同一个condition对象,而且10对象都执行了await的方法.那么返回的值为10</p>
+</li>
+<li><p>bool hasWaiters(Condition condition)</p>
+<p>某个Condition 是否有等待的Thread数量</p>
+</li>
+<li><p>boolean hasQueuedThread(Thread thread)</p>
+<p>查询给定的线程是否拥有这个锁</p>
+</li>
+<li><p>boolean hasQueuedThreads()</p>
+<p>是否有线程在等待这个lock</p>
+</li>
+<li><p>isFair()</p>
+<p>是否是公平锁</p>
+</li>
+<li><p>isHeldByCurrentThread()</p>
+<p>这个lock是不是被当前线程占有</p>
+</li>
+<li><p>isLock()</p>
+<p>这个锁是否被其他线程占用</p>
+</li>
+<li><p>lockInterruptibly()</p>
+<p>尝试获取锁,仅在调用时锁未被中断,获取锁</p>
+</li>
+<li><p>tryLock(Long timeout, TimeUnit unit)</p>
+<p>在给定的时间内尝试获取锁,如果没有获取到,则放弃</p>
+</li>
+</ol>
+<h3 id="公平锁和非公平锁"><a href="#公平锁和非公平锁" class="headerlink" title="公平锁和非公平锁"></a>公平锁和非公平锁</h3><p>JVM 按随机、就近原则分配原则锁的机制则称为不公平锁,按照对锁提出获取请求的先后顺序分配到锁的机制被称为公平锁</p>
+<h3 id="ReetrantLock-与-Sychronized"><a href="#ReetrantLock-与-Sychronized" class="headerlink" title="ReetrantLock 与 Sychronized"></a>ReetrantLock 与 Sychronized</h3><p>reetrantLock通过lock()和unlock() 实现加锁和解锁. ReetrantLock 必须在finally控制块中进行解锁操作.</p>
+<h3 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h3><p>Semaphore是一种基于基数的型号量.它可以设定一个阈值.多个线程获取许可型号(acquire),做完自己的申请后归还(release)</p>
+<h3 id="共享锁和独占锁"><a href="#共享锁和独占锁" class="headerlink" title="共享锁和独占锁"></a>共享锁和独占锁</h3><p>独占锁模式下,每次只有一个线程能持有锁.共享锁允许多个线程同时获取锁,并发共享资源. 比方说ReadWriteLock.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th>READ</th>
+<th>WRITE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">READ</td>
+<td>☑️</td>
+<td>✖️</td>
+</tr>
+<tr>
+<td style="text-align:center">WRITE</td>
+<td>✖️</td>
+<td>✖️</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReadWriteReetraintLock</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 目前正在读的数量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Integer readerNumber;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 正在读的数量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Integer writerNumber;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyReadWriteReetraintLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        readerNumber = <span class="number">0</span>;</span><br><span class="line">        writerNumber = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">tryRead</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (writerNumber &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125;</span><br><span class="line">        readerNumber ++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">readDone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        readerNumber --;</span><br><span class="line">        notifyAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">tryWrite</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (readerNumber &gt; <span class="number">0</span> || writerNumber &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125;</span><br><span class="line">        writerNumber ++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">writeDone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        writerNumber --;</span><br><span class="line">        notifyAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h3><p>中断一个线程,本意是给这个线程一个通知信号,会影响这个线程内部一个中断标识.</p>
+<ul>
+<li>运行中的线程不能响应interrupt. 但是标识位会被设置.可以通过isInterrupted方法来知晓标识位的状态</li>
+<li>在阻塞状态的进程被调用interrupt方法会抛出InterruptedException, 在抛出错误后会将标识位清除.</li>
+</ul>
+<h3 id="线程池的组成"><a href="#线程池的组成" class="headerlink" title="线程池的组成"></a>线程池的组成</h3><ul>
+<li>线程池管理器</li>
+<li>工作线程</li>
+<li>任务接口</li>
+<li>任务队列</li>
+</ul>
+<p>构建一个线程池</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ExecutorService threadPool = <span class="keyword">new</span> ThreadPoolExecutor(</span><br><span class="line">                Runtime.getRuntime().availableProcessors(),</span><br><span class="line">                <span class="number">10</span>, </span><br><span class="line">                <span class="number">100</span>, </span><br><span class="line">                TimeUnit.SECONDS, </span><br><span class="line">                <span class="keyword">new</span> LinkedBlockingQueue&lt;&gt;(),</span><br><span class="line">                <span class="keyword">new</span> ThreadPoolExecutor.CallerRunsPolicy());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h4><p>当线程池里面所有的线程都在运行中, 并且队列都满了情况下有若干的拒绝方式</p>
+<ul>
+<li><p>AbortPolicy  </p>
+<p>直接抛出异常,阻止系统正常运行</p>
+</li>
+<li><p>CellerRunsPolicy</p>
+</li>
+</ul>
+<p>​    该策略直接在调用者线程中运行当前被丢弃的任务. 优点不会真的丢弃任务. 但是任务提交的性能可能会急剧下降</p>
+<ul>
+<li>DiscardOldestPolicy</li>
+</ul>
+<p>​    抛弃队列中最老的线程</p>
+<ul>
+<li>DiscardPolicy</li>
+</ul>
+<p>​    默默的丢弃将要处理的任务不做任何的处理</p>
+<h3 id="线程池的工作流程"><a href="#线程池的工作流程" class="headerlink" title="线程池的工作流程"></a>线程池的工作流程</h3><p>当调用execute()方法添加一个任务的时候,线程池会做如下判断:</p>
+<p>a. 如果正在运行的线程数量小于corePoolSize, 会马上创建线程运行这个任务</p>
+<p>b. 如果运行的线程数量大于或者等于corePoolSize 会将这个任务放入队列</p>
+<p>c. 如果队列满了, 线程数量小于maximumPoolSize, 那么还是要创建非核心线程来运行这个任务</p>
+<p>f. 如果队列满了,而且现在正在运行的线程数量大于或者等于maximumPoolSize,那么线程池会抛出RejectExecutionExecution;</p>
+<p>当一个线程无事可做,超过一定时间,线程池会判断,如果当前运行的线程数量大于corePoolSize,那么这个线程就会被停掉,最终线程池会被压缩到corePoolSize的大小</p>
+<p>队列的方法</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>插入</th>
+<th>移除</th>
+<th>检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>会抛出异常</td>
+<td>add</td>
+<td>remove</td>
+<td>element</td>
+</tr>
+<tr>
+<td>不会抛出异常</td>
+<td>offer</td>
+<td>poll</td>
+<td>peek</td>
+</tr>
+<tr>
+<td>阻塞</td>
+<td>put</td>
+<td>take</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>ArrayBlockingQueue</p>
+<p>数组形式实现的有界阻塞队列</p>
+</li>
+<li><p>LinkedBlockingQueue</p>
+<p>对于<strong>消费者</strong>和<strong>生产者</strong> 采用不同的锁来控制数据同步 生产者不停的在队尾增加内容. 消费者不停的在队列头部生产内容</p>
+</li>
+<li><p>PriorityBlockingQueue</p>
+<p>队列使用大根堆的方式进行组织的. 每次取堆的根节点.每次添加内容后会进行堆的rearrange.</p>
+</li>
+<li><p>DelayQueue</p>
+<p>也是用小根堆的方式进行组织, 以延迟的时间作为权重值, 每次都从队列中取内容, 然后delay指定的时间</p>
+</li>
+<li><p>SynchronousQueue</p>
+<p>每一个put必须等待一个take操作.可以看作是一个数据暂存的地方</p>
+</li>
+<li><p>LinkedTransferQueue</p>
+<p>由一个链表组成的无界阻塞TransferQueue队列.相对于LinkedBlockingQueue多了transfer()方法</p>
 </li>
 </ul>
 
@@ -773,7 +988,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-多线程并发"><span class="nav-number">1.</span> <span class="nav-text">Java 多线程并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的创建方式"><span class="nav-number">1.1.</span> <span class="nav-text">线程的创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的结束"><span class="nav-number">1.2.1.</span> <span class="nav-text">线程的结束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义一个退出标志"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">定义一个退出标志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#interrupted"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">interrupted</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sleep-和wait之间的区别"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">sleep 和wait之间的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-锁"><span class="nav-number">1.3.</span> <span class="nav-text">Java 锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#悲观锁"><span class="nav-number">1.3.1.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁"><span class="nav-number">1.3.2.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自旋锁"><span class="nav-number">1.3.3.</span> <span class="nav-text">自旋锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized"><span class="nav-number">1.4.</span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.4.1.</span> <span class="nav-text">作用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组件"><span class="nav-number">1.4.2.</span> <span class="nav-text">核心组件</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-多线程并发"><span class="nav-number">1.</span> <span class="nav-text">Java 多线程并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的创建方式"><span class="nav-number">1.1.</span> <span class="nav-text">线程的创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的结束"><span class="nav-number">1.2.1.</span> <span class="nav-text">线程的结束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义一个退出标志"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">定义一个退出标志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#interrupted"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">interrupted</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sleep-和wait之间的区别"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">sleep 和wait之间的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-锁"><span class="nav-number">1.3.</span> <span class="nav-text">Java 锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#悲观锁"><span class="nav-number">1.3.1.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁"><span class="nav-number">1.3.2.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自旋锁"><span class="nav-number">1.3.3.</span> <span class="nav-text">自旋锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized"><span class="nav-number">1.4.</span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.4.1.</span> <span class="nav-text">作用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组件"><span class="nav-number">1.4.2.</span> <span class="nav-text">核心组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.4.3.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公平锁和非公平锁"><span class="nav-number">1.4.4.</span> <span class="nav-text">公平锁和非公平锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReetrantLock-与-Sychronized"><span class="nav-number">1.4.5.</span> <span class="nav-text">ReetrantLock 与 Sychronized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Semaphore"><span class="nav-number">1.4.6.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享锁和独占锁"><span class="nav-number">1.4.7.</span> <span class="nav-text">共享锁和独占锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interrupt"><span class="nav-number">1.4.8.</span> <span class="nav-text">Interrupt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的组成"><span class="nav-number">1.4.9.</span> <span class="nav-text">线程池的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝策略"><span class="nav-number">1.4.9.1.</span> <span class="nav-text">拒绝策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的工作流程"><span class="nav-number">1.4.10.</span> <span class="nav-text">线程池的工作流程</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
