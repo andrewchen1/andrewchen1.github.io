@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://img.andrewchen1.top/20121109112521_220.jpg">
 <meta property="og:image" content="http://img.andrewchen1.top/20121109112521_981.jpg">
 <meta property="og:image" content="http://img.andrewchen1.top/20121109112521_777.jpg">
-<meta property="og:updated_time" content="2019-08-17T11:19:49.332Z">
+<meta property="og:updated_time" content="2019-08-24T10:04:57.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 基础知识点整理3">
 <meta name="twitter:description" content="Java 多线程并发线程的创建方式 继承Thread类 123456Thread thread = new Thread() &amp;#123;	@Override	public void run() 	&amp;#123;    Objects.  &amp;#125;&amp;#125;  实现Runnable接口 1234567Runnable run = new Runnable() &amp;#123;  @Override">
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-17 19:19:49" itemprop="dateModified" datetime="2019-08-17T19:19:49+08:00">2019-08-17</time>
+                <time title="Modified: 2019-08-24 18:04:57" itemprop="dateModified" datetime="2019-08-24T18:04:57+08:00">2019-08-24</time>
               
             
           </span>
@@ -734,6 +734,61 @@
 <p>由一个链表组成的无界阻塞TransferQueue队列.相对于LinkedBlockingQueue多了transfer()方法</p>
 </li>
 </ul>
+<h4 id="CountDownLunch"><a href="#CountDownLunch" class="headerlink" title="CountDownLunch"></a>CountDownLunch</h4><h4 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h4><h4 id="Semaphore-1"><a href="#Semaphore-1" class="headerlink" title="Semaphore"></a>Semaphore</h4><h3 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h3><p> 在 JMM（Java Memory Model）数据的执行主要分为 lock、unlock、read、load、use、assign、store、write。 </p>
+<blockquote>
+<ul>
+<li>read（读取）：作用于主内存变量，把一个变量值从主内存传输到线程的工作内存中，以便随后的load动作使用</li>
+<li>load（载入）：作用于工作内存的变量，它把read操作从主内存中得到的变量值放入工作内存的变量副本中。</li>
+<li>use（使用）：作用于工作内存的变量，把工作内存中的一个变量值传递给执行引擎，每当虚拟机遇到一个需要使用变量的值的字节码指令时将会执行这个操作。</li>
+<li>assign（赋值）：作用于工作内存的变量，它把一个从执行引擎接收到的值赋值给工作内存的变量，每当虚拟机遇到一个给变量赋值的字节码指令时执行这个操作。</li>
+<li>store（存储）：作用于工作内存的变量，把工作内存中的一个变量的值传送到主内存中，以便随后的write的操作。</li>
+<li>write（写入）：作用于主内存的变量，它把store操作从工作内存中一个变量的值传送到主内存的变量中。</li>
+</ul>
+</blockquote>
+<p> 这些行为是不可分解的原子操作，在使用上相互依赖，read-load从主内存复制变量到当前工作内存，use-assign执行代码改变共享变量值，store-write用工作内存数据刷新主存相关内容。</p>
+<p>要保证所谓的多线程的数据执行正确，就是要保证happen-before。A操作如果发生在B操作之前，那么我们能保证数据的正确。所以我们需要内存屏障的帮助， Java内存屏障主要分为四种，它保证在栅栏前初始化的load和store指令，能够严格有序的在栅栏后的load和store指令之前执行。</p>
+<ul>
+<li><p>Load - Load</p>
+<p>确保Load1所要读入的数据能够在被Load2和后续的load指令访问前读入。</p>
+</li>
+<li><p>Store-Store</p>
+<p>确保Store1的数据在Store2以及后续Store指令操作相关数据之前对其它处理器可见（例如向主存刷新数据）</p>
+</li>
+<li><p>Load-Store</p>
+<p>确保Load1的数据在Store2和后续Store指令被刷新之前读取。</p>
+</li>
+<li><p>Store-Load</p>
+<p><a href="http://ifeve.com/jmm-cookbook-mb/" target="_blank" rel="noopener">ifever</a></p>
+<blockquote>
+<p>确保Store1的数据在被Load2和后续的Load指令读取之前对其他处理器可见。StoreLoad屏障可以防止一个后续的load指令 不正确的使用了Store1的数据，而不是另一个处理器在相同内存位置写入一个新数据。正因为如此，所以在下面所讨论的处理器为了在屏障前读取同样内存位置存过的数据，必须使用一个StoreLoad屏障将存储指令和后续的加载指令分开。Storeload屏障在几乎所有的现代多处理器中都需要使用，但通常它的开销也是最昂贵的。它们昂贵的部分原因是它们必须关闭通常的略过缓存直接从写缓冲区读取数据的机制。这可能通过让一个缓冲区进行充分刷新（flush）,以及其他延迟的方式来实现。</p>
+<p>在下面讨论的所有处理器中，执行StoreLoad的指令也会同时获得其他三种屏障的效果。所以StoreLoad可以作为最通用的（但通常也是最耗性能）的一种Fence。(这是经验得出的结论，并不是必然)。反之不成立，为了达到StoreLoad的效果而组合使用其他屏障并不常见。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="ThreadLocal-作用"><a href="#ThreadLocal-作用" class="headerlink" title="ThreadLocal 作用"></a>ThreadLocal 作用</h4><p><a href="https://www.jianshu.com/p/98b68c97df9b" target="_blank" rel="noopener">ThreadLocal的说明1</a></p>
+<p><a href="https://www.jianshu.com/p/a1cd61fa22da" target="_blank" rel="noopener">ThreadLocal的说明2</a></p>
+<p>这两篇说的很清楚了</p>
+<p>每个Thread 对象内部都有ThreadMap&lt;Entity,  T&gt;类型的属性，其中Entity extend WeakReference &lt; ThreadLocal&gt;的定义为.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">ThreadLocal</span>&lt;?&gt;&gt; </span>&#123;</span><br><span class="line">            <span class="comment">/** The value associated with this ThreadLocal. */</span></span><br><span class="line">            Object value;</span><br><span class="line"></span><br><span class="line">            Entry(ThreadLocal&lt;?&gt; k, Object v) &#123;</span><br><span class="line">                <span class="keyword">super</span>(k);</span><br><span class="line">                value = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/964fbc30151a" target="_blank" rel="noopener">WeakReferences说明</a></p>
+<p>WeakReference如字面意思，弱引用， 当一个对象仅仅被weak reference（弱引用）指向，而没有任何其他strong reference（强引用）指向的时候, 如果这时GC运行, 那么这个对象就会被回收。我们定义了Entity， 其中ThreadLocal 是弱引用，value 是强引用。 Entity中的ThreadLocal的值能被顺利的GC， 但是value中的值不能呗顺利的GC， 需要手动的设置，让JVM 让其GC。</p>
+<p>每次ThreadLocal的set和get方法实质是在ThreadMap中放置或者读取值</p>
+<p><strong>ThreadLocal 内存泄露问题</strong></p>
+<p>在程序的上下文中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dosomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ThreadLocal&lt;String&gt; name = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">  name.set(<span class="string">"something"</span>);</span><br><span class="line">  <span class="comment">// do something else </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么在结束之后， name会被gc， 因为entity的定义， 其对象也会被回收，但是ThreadLocalMap 中的table[i] 中还是放着value的值，导致<strong>内存泄漏</strong> 比较建议的做法是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dosomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ThreadLocal&lt;String&gt; name = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line"> 		name.set(<span class="string">"something"</span>);</span><br><span class="line">  	<span class="comment">// do something else </span></span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    name.remove();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ReetrantLock和Synchronized-之间的区别"><a href="#ReetrantLock和Synchronized-之间的区别" class="headerlink" title="ReetrantLock和Synchronized 之间的区别"></a>ReetrantLock和Synchronized 之间的区别</h3><ol>
+<li>ReentrantLock 显示的获得锁和释放锁， Synchronized隐式的获得锁</li>
+<li>ReentrantLock可响应中断， Synchronized不可以</li>
+<li>ReetrantLock 是api级别 Sychronized 是JVM 级别</li>
+<li>ReetrantLock 可以实现公平锁</li>
+<li>ReetrantLock 通过condition可以绑定多个条件</li>
+<li>synchronized 是同步阻塞， lock是同步非阻塞</li>
+<li>synchronized发生异常的时候会自动释放锁，而Lock需要在finally中调用unlock()</li>
+<li>通过Lock可以知道是否获得锁，而Synchronized不可以</li>
+</ol>
+<h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><p>concurrentHashMap的效率要比HashTable效率高的原因是ConcurrentHashMap采用了分片的策略，默认分为16片。</p>
 
       
     </div>
@@ -779,6 +834,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/24/Java-基础知识点整理4/" rel="prev" title="Java-基础知识点整理4">
+                Java-基础知识点整理4 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -849,7 +908,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -988,7 +1047,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-多线程并发"><span class="nav-number">1.</span> <span class="nav-text">Java 多线程并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的创建方式"><span class="nav-number">1.1.</span> <span class="nav-text">线程的创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的结束"><span class="nav-number">1.2.1.</span> <span class="nav-text">线程的结束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义一个退出标志"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">定义一个退出标志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#interrupted"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">interrupted</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sleep-和wait之间的区别"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">sleep 和wait之间的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-锁"><span class="nav-number">1.3.</span> <span class="nav-text">Java 锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#悲观锁"><span class="nav-number">1.3.1.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁"><span class="nav-number">1.3.2.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自旋锁"><span class="nav-number">1.3.3.</span> <span class="nav-text">自旋锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized"><span class="nav-number">1.4.</span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.4.1.</span> <span class="nav-text">作用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组件"><span class="nav-number">1.4.2.</span> <span class="nav-text">核心组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.4.3.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公平锁和非公平锁"><span class="nav-number">1.4.4.</span> <span class="nav-text">公平锁和非公平锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReetrantLock-与-Sychronized"><span class="nav-number">1.4.5.</span> <span class="nav-text">ReetrantLock 与 Sychronized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Semaphore"><span class="nav-number">1.4.6.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享锁和独占锁"><span class="nav-number">1.4.7.</span> <span class="nav-text">共享锁和独占锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interrupt"><span class="nav-number">1.4.8.</span> <span class="nav-text">Interrupt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的组成"><span class="nav-number">1.4.9.</span> <span class="nav-text">线程池的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝策略"><span class="nav-number">1.4.9.1.</span> <span class="nav-text">拒绝策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的工作流程"><span class="nav-number">1.4.10.</span> <span class="nav-text">线程池的工作流程</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-多线程并发"><span class="nav-number">1.</span> <span class="nav-text">Java 多线程并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的创建方式"><span class="nav-number">1.1.</span> <span class="nav-text">线程的创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的结束"><span class="nav-number">1.2.1.</span> <span class="nav-text">线程的结束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义一个退出标志"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">定义一个退出标志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#interrupted"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">interrupted</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sleep-和wait之间的区别"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">sleep 和wait之间的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-锁"><span class="nav-number">1.3.</span> <span class="nav-text">Java 锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#悲观锁"><span class="nav-number">1.3.1.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁"><span class="nav-number">1.3.2.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自旋锁"><span class="nav-number">1.3.3.</span> <span class="nav-text">自旋锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized"><span class="nav-number">1.4.</span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.4.1.</span> <span class="nav-text">作用范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心组件"><span class="nav-number">1.4.2.</span> <span class="nav-text">核心组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.4.3.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公平锁和非公平锁"><span class="nav-number">1.4.4.</span> <span class="nav-text">公平锁和非公平锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReetrantLock-与-Sychronized"><span class="nav-number">1.4.5.</span> <span class="nav-text">ReetrantLock 与 Sychronized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Semaphore"><span class="nav-number">1.4.6.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享锁和独占锁"><span class="nav-number">1.4.7.</span> <span class="nav-text">共享锁和独占锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interrupt"><span class="nav-number">1.4.8.</span> <span class="nav-text">Interrupt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的组成"><span class="nav-number">1.4.9.</span> <span class="nav-text">线程池的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝策略"><span class="nav-number">1.4.9.1.</span> <span class="nav-text">拒绝策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的工作流程"><span class="nav-number">1.4.10.</span> <span class="nav-text">线程池的工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CountDownLunch"><span class="nav-number">1.4.10.1.</span> <span class="nav-text">CountDownLunch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">1.4.10.2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Semaphore-1"><span class="nav-number">1.4.10.3.</span> <span class="nav-text">Semaphore</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Volatile"><span class="nav-number">1.4.11.</span> <span class="nav-text">Volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocal-作用"><span class="nav-number">1.4.11.1.</span> <span class="nav-text">ThreadLocal 作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReetrantLock和Synchronized-之间的区别"><span class="nav-number">1.4.12.</span> <span class="nav-text">ReetrantLock和Synchronized 之间的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap"><span class="nav-number">1.4.13.</span> <span class="nav-text">ConcurrentHashMap</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
