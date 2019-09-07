@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.andrewchen1.top/181453414212066.png">
 <meta property="og:image" content="http://img.andrewchen1.top/181454040628981.png">
-<meta property="og:updated_time" content="2019-08-24T11:51:47.979Z">
+<meta property="og:updated_time" content="2019-09-01T08:54:34.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-基础知识点整理4">
 <meta name="twitter:description" content="Java异常分类和处理Java注解 @Target 表示这个注解使用的范围  @Retention 表示这个注解的存活时间范围。比方说是  作者：RednaxelaFX 链接：https://www.zhihu.com/question/60835139/answer/180750670 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 RetentionPolic">
@@ -395,12 +395,24 @@
                 
               
 
-              <time title="Created: 2019-08-24 13:50:41 / Modified: 19:51:47" itemprop="dateCreated datePublished" datetime="2019-08-24T13:50:41+08:00">2019-08-24</time>
+              <time title="Created: 2019-08-24 13:50:41" itemprop="dateCreated datePublished" datetime="2019-08-24T13:50:41+08:00">2019-08-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-01 16:54:34" itemprop="dateModified" datetime="2019-09-01T16:54:34+08:00">2019-09-01</time>
               
             
           </span>
@@ -480,19 +492,33 @@
 </li>
 </ul>
 <h1 id="Spring-原理"><a href="#Spring-原理" class="headerlink" title="Spring 原理"></a>Spring 原理</h1><h2 id="Spring-Bean-生命周期"><a href="#Spring-Bean-生命周期" class="headerlink" title="Spring Bean 生命周期"></a>Spring Bean 生命周期</h2><p><img src="http://img.andrewchen1.top/181453414212066.png" alt="生命周期"></p>
+<p><img src="http://img.andrewchen1.top/181454040628981.png" alt="生命周期"></p>
+<p><a href="https://www.cnblogs.com/zrtqsk/p/3735273.html" target="_blank" rel="noopener">生命周期</a></p>
 <ol>
 <li><p>生成pojo</p>
 <p>可以通过在xml中 说明要做处理的类</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> = <span class="string">""</span> <span class="attr">class</span> = <span class="string">""</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password]&#125;"</span></span></span><br><span class="line">  &lt;/bean&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>或者在类上面使用@Component的注解。 通过ComponentScan的方式要找到相关的类。</p>
+<p>或者在类上面使用@Component的注解。 通过ComponentScan的方式要找到相关的类。插一句 ComponentScan的做法是什么</p>
+<ul>
+<li>ComponentScanAnnotationParser#parse</li>
+<li>ClassPathBeanDefinitionScanner#doScan</li>
+<li>ClassPathScanningCandidateComponentProvider#findCandidateComponents<ul>
+<li>将class path 中的.替换成/</li>
+<li>拼装成 classpath<em>:经过转换的basePackage地址 +  **/\</em>.class</li>
+<li>MetadataReaderFactory#getMetadataReader</li>
+<li>SimpleMetadataReader#getMetadataReader</li>
+<li>ClassReader#accept</li>
+<li></li>
+</ul>
+</li>
+</ul>
 </li>
 <li><p>BeanFactoryPostProcessor</p>
 <p>将${}中的值做替换</p>
 </li>
-<li></li>
+<li><p>BeanPostProcessor</p>
+</li>
 </ol>
-<p><img src="http://img.andrewchen1.top/181454040628981.png" alt="生命周期"></p>
-<p><a href="https://www.cnblogs.com/zrtqsk/p/3735273.html" target="_blank" rel="noopener">生命周期</a></p>
 
       
     </div>
