@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.andrewchen1.top/181453414212066.png">
 <meta property="og:image" content="http://img.andrewchen1.top/181454040628981.png">
-<meta property="og:updated_time" content="2019-09-01T08:54:34.013Z">
+<meta property="og:updated_time" content="2019-09-07T10:47:46.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-基础知识点整理4">
 <meta name="twitter:description" content="Java异常分类和处理Java注解 @Target 表示这个注解使用的范围  @Retention 表示这个注解的存活时间范围。比方说是  作者：RednaxelaFX 链接：https://www.zhihu.com/question/60835139/answer/180750670 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 RetentionPolic">
@@ -190,6 +190,10 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">但行好事 莫问前程</p>
+      
     
     
   </div>
@@ -412,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-01 16:54:34" itemprop="dateModified" datetime="2019-09-01T16:54:34+08:00">2019-09-01</time>
+                <time title="Modified: 2019-09-07 18:47:46" itemprop="dateModified" datetime="2019-09-07T18:47:46+08:00">2019-09-07</time>
               
             
           </span>
@@ -494,31 +498,101 @@
 <h1 id="Spring-原理"><a href="#Spring-原理" class="headerlink" title="Spring 原理"></a>Spring 原理</h1><h2 id="Spring-Bean-生命周期"><a href="#Spring-Bean-生命周期" class="headerlink" title="Spring Bean 生命周期"></a>Spring Bean 生命周期</h2><p><img src="http://img.andrewchen1.top/181453414212066.png" alt="生命周期"></p>
 <p><img src="http://img.andrewchen1.top/181454040628981.png" alt="生命周期"></p>
 <p><a href="https://www.cnblogs.com/zrtqsk/p/3735273.html" target="_blank" rel="noopener">生命周期</a></p>
-<ol>
-<li><p>生成pojo</p>
-<p>可以通过在xml中 说明要做处理的类</p>
+<h2 id="Bean的定义"><a href="#Bean的定义" class="headerlink" title="Bean的定义"></a>Bean的定义</h2><p>可以通过在xml中定义Bean</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> = <span class="string">""</span> <span class="attr">class</span> = <span class="string">""</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password]&#125;"</span></span></span><br><span class="line">  &lt;/bean&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>或者在类上面使用@Component的注解。 通过ComponentScan的方式要找到相关的类。插一句 ComponentScan的做法是什么</p>
+<p>或者在类上面使用@Component的注解。 通过ComponentScan的方式要找到相关的类。插一句 ComponentScan的怎么做</p>
 <ul>
-<li>ComponentScanAnnotationParser#parse</li>
-<li>ClassPathBeanDefinitionScanner#doScan</li>
-<li>ClassPathScanningCandidateComponentProvider#findCandidateComponents<ul>
-<li>将class path 中的.替换成/</li>
-<li>拼装成 classpath<em>:经过转换的basePackage地址 +  **/\</em>.class</li>
-<li>MetadataReaderFactory#getMetadataReader</li>
-<li>SimpleMetadataReader#getMetadataReader</li>
-<li>ClassReader#accept</li>
-<li></li>
+<li><p>ComponentScanAnnotationParser#parse</p>
+</li>
+<li><p>ClassPathBeanDefinitionScanner#doScan</p>
+</li>
+<li><p>ClassPathScanningCandidateComponentProvider#findCandidateComponents</p>
+<p>​    要做的事情就是读取Class的文件流，通过JVM中class的定义获得实现的接口等的信息，然后把这些信息写入到beandefinition 对象中。</p>
+<ul>
+<li><p>将class path 中的.替换成/</p>
+</li>
+<li><p>拼装成 classpath<em>:经过转换的basePackage地址 +  **/\</em>.class</p>
+</li>
+<li><p>MetadataReaderFactory#getMetadataReader</p>
+</li>
+<li><p>SimpleMetadataReader#getMetadataReader</p>
+</li>
+<li><p>ClassReader#accept </p>
+<p>这里涉及到ASM的内容<a href="http://img.andrewchen1.top/ASM4%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.pdf" target="_blank" rel="noopener">ASM4使用指南</a> 根据规范编译后的class文件的格式是固定的，我们可以根据ASM工具来从class文件中读取我们关心的信息。</p>
+</li>
 </ul>
+<p>返回含有父类、实现接口、注解等信息的包装类</p>
+</li>
+</ul>
+<h2 id="从DefaultListableBeanFactory-管中窥豹-看Bean的生命流程"><a href="#从DefaultListableBeanFactory-管中窥豹-看Bean的生命流程" class="headerlink" title="从DefaultListableBeanFactory 管中窥豹 看Bean的生命流程"></a>从DefaultListableBeanFactory 管中窥豹 看Bean的生命流程</h2><p>因为BeanFactory是懒加载的 ，当我们调用getBean()的时候，会</p>
+<ul>
+<li><p>AbstractBeanFactory#doGetBean(inal String name, final Class<t> requiredType, final Object[] args, boolean typeCheckOnly)</t></p>
+<ul>
+<li><p>得到bean Name  </p>
+<p>入参的beanName中如果有&amp;符号 截取到最后一个&amp;开始到结束的子字符串作为bean name</p>
+</li>
+<li><p>DefaultSingletonBeanRegistry#getSingleton</p>
+<p>背景知识 Bean的循环依赖和解决</p>
+<p>以下内容来自 <a href="https://blog.csdn.net/u010853261/article/details/77940767" target="_blank" rel="noopener">Spring-bean的循环依赖以及解决方式</a></p>
+<blockquote>
+<p>Spring的单例对象的初始化主要分为三步：</p>
+<ul>
+<li>create Bean Instance 实例化</li>
+<li>popluate Bean 填充属性</li>
+<li>Initalize Bean 初始化</li>
+</ul>
+<p>在Spring容器整个生命周期内，有且只有一个对象，所以很容易想到这个对象应该存在Cache中，Spring为了解决单例的循环依赖问题，使用了<strong>三级缓存</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">/** Cache of singleton objects: bean name --&gt; bean instance */</span></span><br><span class="line">&gt; <span class="comment">// 单例对象的cache</span></span><br><span class="line">&gt; <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; singletonObjects = <span class="keyword">new</span> ConcurrentHashMap&lt;String, Object&gt;(<span class="number">256</span>);</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">/** Cache of singleton factories: bean name --&gt; ObjectFactory */</span></span><br><span class="line">&gt; <span class="comment">// 单例工厂的cache </span></span><br><span class="line">&gt; <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories = <span class="keyword">new</span> HashMap&lt;String, ObjectFactory&lt;?&gt;&gt;(<span class="number">16</span>);</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">/** Cache of early singleton objects: bean name --&gt; bean instance */</span></span><br><span class="line">&gt; <span class="comment">// 提前曝光的单例对象</span></span><br><span class="line">&gt; <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; earlySingletonObjects = <span class="keyword">new</span> HashMap&lt;String, Object&gt;(<span class="number">16</span>);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>尝试从cache中获得对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">protected</span> Object <span class="title">getSingleton</span><span class="params">(String beanName, <span class="keyword">boolean</span> allowEarlyReference)</span> </span>&#123;</span><br><span class="line">&gt;     Object singletonObject = <span class="keyword">this</span>.singletonObjects.get(beanName);</span><br><span class="line">&gt;     <span class="keyword">if</span> (singletonObject == <span class="keyword">null</span> &amp;&amp; isSingletonCurrentlyInCreation(beanName)) &#123;</span><br><span class="line">&gt;         <span class="keyword">synchronized</span> (<span class="keyword">this</span>.singletonObjects) &#123;</span><br><span class="line">&gt;             singletonObject = <span class="keyword">this</span>.earlySingletonObjects.get(beanName);</span><br><span class="line">&gt;             <span class="keyword">if</span> (singletonObject == <span class="keyword">null</span> &amp;&amp; allowEarlyReference) &#123;</span><br><span class="line">&gt;                 ObjectFactory&lt;?&gt; singletonFactory = <span class="keyword">this</span>.singletonFactories.get(beanName);</span><br><span class="line">&gt;                 <span class="keyword">if</span> (singletonFactory != <span class="keyword">null</span>) &#123;</span><br><span class="line">&gt;                     singletonObject = singletonFactory.getObject();</span><br><span class="line">&gt;                     <span class="keyword">this</span>.earlySingletonObjects.put(beanName, singletonObject);</span><br><span class="line">&gt;                     <span class="keyword">this</span>.singletonFactories.remove(beanName);</span><br><span class="line">&gt;                 &#125;</span><br><span class="line">&gt;             &#125;</span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;     <span class="keyword">return</span> (singletonObject != NULL_OBJECT ? singletonObject : <span class="keyword">null</span>);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>上面的代码需要解释两个参数：</p>
+<p>isSingletonCurrentlyInCreation()判断当前单例bean是否正在创建中，也就是没有初始化完成(比如A的构造器依赖了B对象所以得先去创建B对象， 或则在A的populateBean过程中依赖了B对象，得先去创建B对象，这时的A就是处于创建中的状态。)<br>allowEarlyReference 是否允许从singletonFactories中通过getObject拿到对象<br>分析getSingleton()的整个过程，Spring首先从一级缓存singletonObjects中获取。如果获取不到，并且对象正在创建中，就再从二级缓存earlySingletonObjects中获取。如果还是获取不到且允许singletonFactories通过getObject()获取，就从三级缓存singletonFactory.getObject()(三级缓存)获取，如果获取到了则：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">this</span>.earlySingletonObjects.put(beanName, singletonObject);</span><br><span class="line">&gt; <span class="keyword">this</span>.singletonFactories.remove(beanName);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>从singletonFactories中移除，并放入earlySingletonObjects中。其实也就是从三级缓存移动到了二级缓存。</p>
+<p>从上面三级缓存的分析，我们可以知道，Spring解决循环依赖的诀窍就在于singletonFactories这个三级cache。这个cache的类型是ObjectFactory，定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ObjectFactory</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">&gt;     <span class="function">T <span class="title">getObject</span><span class="params">()</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>这个接口在下面被引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addSingletonFactory</span><span class="params">(String beanName, ObjectFactory&lt;?&gt; singletonFactory)</span> </span>&#123;</span><br><span class="line">&gt;     Assert.notNull(singletonFactory, <span class="string">"Singleton factory must not be null"</span>);</span><br><span class="line">&gt;     <span class="keyword">synchronized</span> (<span class="keyword">this</span>.singletonObjects) &#123;</span><br><span class="line">&gt;         <span class="keyword">if</span> (! <span class="keyword">this</span>.singletonObjects.containsKey(beanName)) &#123;</span><br><span class="line">&gt;             <span class="keyword">this</span>.singletonFactories.put(beanName, singletonFactory);</span><br><span class="line">&gt;             <span class="keyword">this</span>.earlySingletonObjects.remove(beanName);</span><br><span class="line">&gt;             <span class="keyword">this</span>.registeredSingletons.add(beanName);</span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>这里就是解决循环依赖的关键，这段代码发生在createBeanInstance之后，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">/**</span></span><br><span class="line"><span class="comment">&gt; 	 * Create a new instance for the specified bean, using an appropriate instantiation strategy:</span></span><br><span class="line"><span class="comment">&gt; 	 * factory method, constructor autowiring, or simple instantiation.</span></span><br><span class="line"><span class="comment">&gt; 	 * <span class="doctag">@param</span> beanName the name of the bean</span></span><br><span class="line"><span class="comment">&gt; 	 * <span class="doctag">@param</span> mbd the bean definition for the bean</span></span><br><span class="line"><span class="comment">&gt; 	 * <span class="doctag">@param</span> args explicit arguments to use for constructor or factory method invocation</span></span><br><span class="line"><span class="comment">&gt; 	 * <span class="doctag">@return</span> a BeanWrapper for the new instance</span></span><br><span class="line"><span class="comment">&gt; 	 * <span class="doctag">@see</span> #instantiateUsingFactoryMethod</span></span><br><span class="line"><span class="comment">&gt; 	 * <span class="doctag">@see</span> #autowireConstructor</span></span><br><span class="line"><span class="comment">&gt; 	 * <span class="doctag">@see</span> #instantiateBean</span></span><br><span class="line"><span class="comment">&gt; 	 */</span></span><br><span class="line">&gt; 	<span class="function"><span class="keyword">protected</span> BeanWrapper <span class="title">createBeanInstance</span><span class="params">(String beanName, RootBeanDefinition mbd, Object[] args)</span> </span>&#123;</span><br><span class="line">&gt; 		<span class="comment">// Make sure bean class is actually resolved at this point.</span></span><br><span class="line">&gt; 		Class&lt;?&gt; beanClass = resolveBeanClass(mbd, beanName);</span><br><span class="line">&gt; </span><br><span class="line">&gt; 		<span class="keyword">if</span> (beanClass != <span class="keyword">null</span> &amp;&amp; !Modifier.isPublic(beanClass.getModifiers()) &amp;&amp; !mbd.isNonPublicAccessAllowed()) &#123;</span><br><span class="line">&gt; 			<span class="keyword">throw</span> <span class="keyword">new</span> BeanCreationException(mbd.getResourceDescription(), beanName,</span><br><span class="line">&gt; 					<span class="string">"Bean class isn't public, and non-public access not allowed: "</span> + beanClass.getName());</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; </span><br><span class="line">&gt; 		<span class="keyword">if</span> (mbd.getFactoryMethodName() != <span class="keyword">null</span>) &#123;</span><br><span class="line">&gt; 			<span class="keyword">return</span> instantiateUsingFactoryMethod(beanName, mbd, args);</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; </span><br><span class="line">&gt; 		<span class="comment">// Shortcut when re-creating the same bean...</span></span><br><span class="line">&gt; 		<span class="keyword">boolean</span> resolved = <span class="keyword">false</span>;</span><br><span class="line">&gt; 		<span class="keyword">boolean</span> autowireNecessary = <span class="keyword">false</span>;</span><br><span class="line">&gt; 		<span class="keyword">if</span> (args == <span class="keyword">null</span>) &#123;</span><br><span class="line">&gt; 			<span class="keyword">synchronized</span> (mbd.constructorArgumentLock) &#123;</span><br><span class="line">&gt; 				<span class="keyword">if</span> (mbd.resolvedConstructorOrFactoryMethod != <span class="keyword">null</span>) &#123;</span><br><span class="line">&gt; 					resolved = <span class="keyword">true</span>;</span><br><span class="line">&gt; 					autowireNecessary = mbd.constructorArgumentsResolved;</span><br><span class="line">&gt; 				&#125;</span><br><span class="line">&gt; 			&#125;</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; 		<span class="keyword">if</span> (resolved) &#123;</span><br><span class="line">&gt; 			<span class="keyword">if</span> (autowireNecessary) &#123;</span><br><span class="line">&gt; 				<span class="keyword">return</span> autowireConstructor(beanName, mbd, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">&gt; 			&#125;</span><br><span class="line">&gt; 			<span class="keyword">else</span> &#123;</span><br><span class="line">&gt; 				<span class="keyword">return</span> instantiateBean(beanName, mbd);</span><br><span class="line">&gt; 			&#125;</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; </span><br><span class="line">&gt; 		<span class="comment">// Candidate constructors for autowiring?</span></span><br><span class="line">&gt; 		Constructor&lt;?&gt;[] ctors = determineConstructorsFromBeanPostProcessors(beanClass, beanName);</span><br><span class="line">&gt; 		<span class="keyword">if</span> (ctors != <span class="keyword">null</span> || mbd.getResolvedAutowireMode() == AUTOWIRE_CONSTRUCTOR ||</span><br><span class="line">&gt; 				mbd.hasConstructorArgumentValues() || !ObjectUtils.isEmpty(args)) &#123;</span><br><span class="line">&gt; 			<span class="keyword">return</span> autowireConstructor(beanName, mbd, ctors, args);</span><br><span class="line">&gt; 		&#125;</span><br><span class="line">&gt; </span><br><span class="line">&gt; 		<span class="comment">// No special handling: simply use no-arg constructor.</span></span><br><span class="line">&gt; 		<span class="keyword">return</span> instantiateBean(beanName, mbd);</span><br><span class="line">&gt; 	&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>也就是说单例对象此时已经被创建出来(调用了构造器)。这个对象已经被生产出来了，虽然还不完美（还没有进行初始化的第二步和第三步），但是已经能被人认出来了（根据对象引用能定位到堆中的对象），所以Spring此时将这个对象提前曝光出来让大家认识，让大家使用。</p>
+<p>这样做有什么好处呢？让我们来分析一下“A的某个field或者setter依赖了B的实例对象，同时B的某个field或者setter依赖了A的实例对象”这种循环依赖的情况。A首先完成了初始化的第一步，并且将自己提前曝光到singletonFactories中，此时进行初始化的第二步，发现自己依赖对象B，此时就尝试去get(B)，发现B还没有被create，所以走create流程，B在初始化第一步的时候发现自己依赖了对象A，于是尝试get(A)，尝试一级缓存singletonObjects(肯定没有，因为A还没初始化完全)，尝试二级缓存earlySingletonObjects（也没有），尝试三级缓存singletonFactories，由于A通过ObjectFactory将自己提前曝光了，所以B能够通过ObjectFactory.getObject拿到A对象(虽然A还没有初始化完全，但是总比没有好呀)，B拿到A对象后顺利完成了初始化阶段1、2、3，完全初始化之后将自己放入到一级缓存singletonObjects中。此时返回A中，A此时能拿到B的对象顺利完成自己的初始化阶段2、3，最终A也完成了初始化，进去了一级缓存singletonObjects中，而且更加幸运的是，由于B拿到了A的对象引用，所以B现在hold住的A对象完成了初始化。</p>
+<p>知道了这个原理时候，肯定就知道为啥Spring不能解决“A的构造方法中依赖了B的实例对象，同时B的构造方法中依赖了A的实例对象”这类问题了！因为加入singletonFactories三级缓存的前提是执行了构造器，所以构造器的循环依赖没法解决。</p>
+<p>参考 <a href="http://www.jianshu.com/p/6c359768b1dc" target="_blank" rel="noopener">http://www.jianshu.com/p/6c359768b1dc</a></p>
+</blockquote>
 </li>
 </ul>
 </li>
+</ul>
+<ol start="2">
 <li><p>BeanFactoryPostProcessor</p>
-<p>将${}中的值做替换</p>
+<p>将${}中的值做替换成*.properties中的内容</p>
 </li>
-<li><p>BeanPostProcessor</p>
+<li><p>InstantiationAwareBeanPostProcessor#postProcessBeforInstantiation </p>
+<p>Instantiation [ɪnstænʃɪ’eɪʃən] </p>
+<p>执行Bean的构造器</p>
+</li>
+<li><p>InstantiationAwareBeanPostProcessor#postProcessPropertyValue</p>
+<p>根据xml中的定义设置property的值</p>
+</li>
+<li><p>ApplicationContextAwareProcessor#postProcessBeforeInitialization</p>
+<p>ApplicationContextAwareProcessor是BeanPostProcessor的一个实现 在内部会调用invokeAwareInterfaces方法 里面会有很多的if 来判断这个类是不是特定的aware类型，比方说</p>
 </li>
 </ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (object <span class="keyword">instanceof</span> ApplicationContextAware) &#123;</span><br><span class="line">  ((ApplicationContextAware) object).setApplicationContext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6. </p>
 
       
     </div>
@@ -773,7 +847,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java异常分类和处理"><span class="nav-number">1.</span> <span class="nav-text">Java异常分类和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java注解"><span class="nav-number">1.1.</span> <span class="nav-text">Java注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-原理"><span class="nav-number">2.</span> <span class="nav-text">Spring 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean-生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Spring Bean 生命周期</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java异常分类和处理"><span class="nav-number">1.</span> <span class="nav-text">Java异常分类和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java注解"><span class="nav-number">1.1.</span> <span class="nav-text">Java注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-原理"><span class="nav-number">2.</span> <span class="nav-text">Spring 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean-生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Spring Bean 生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的定义"><span class="nav-number">2.2.</span> <span class="nav-text">Bean的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从DefaultListableBeanFactory-管中窥豹-看Bean的生命流程"><span class="nav-number">2.3.</span> <span class="nav-text">从DefaultListableBeanFactory 管中窥豹 看Bean的生命流程</span></a></li></ol></li></ol></div>
             
 
           </div>
