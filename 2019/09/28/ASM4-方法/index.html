@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="方法3.1 结构3.1.1 执行模型">
+  <meta name="description" content="方法3.1 结构3.1.1 执行模型每个线程都有自己的执行栈，栈由栈帧组成。每个帧表示一个方法调用。每次调用一个方法时，会将一个新栈帧push入当前线程的执行栈。当方法返回时，会讲这个帧从执行栈中弹出，执行过程在发出调用的方法中继续进行每一帧包括  操作数栈 局部变量表 动态链接（DL） 方法返回  局部变量表与操作数栈大小取决于方法的代码。 在创建一个帧时会将其初始化，提供一个空栈，并用目标对象">
 <meta name="keywords" content="ASM - 笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ASM4-方法">
 <meta property="og:url" content="https://www.andrewchen1.top/2019/09/28/ASM4-方法/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="方法3.1 结构3.1.1 执行模型">
+<meta property="og:description" content="方法3.1 结构3.1.1 执行模型每个线程都有自己的执行栈，栈由栈帧组成。每个帧表示一个方法调用。每次调用一个方法时，会将一个新栈帧push入当前线程的执行栈。当方法返回时，会讲这个帧从执行栈中弹出，执行过程在发出调用的方法中继续进行每一帧包括  操作数栈 局部变量表 动态链接（DL） 方法返回  局部变量表与操作数栈大小取决于方法的代码。 在创建一个帧时会将其初始化，提供一个空栈，并用目标对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-28T07:45:31.743Z">
+<meta property="og:updated_time" content="2019-09-28T14:17:39.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASM4-方法">
-<meta name="twitter:description" content="方法3.1 结构3.1.1 执行模型">
+<meta name="twitter:description" content="方法3.1 结构3.1.1 执行模型每个线程都有自己的执行栈，栈由栈帧组成。每个帧表示一个方法调用。每次调用一个方法时，会将一个新栈帧push入当前线程的执行栈。当方法返回时，会讲这个帧从执行栈中弹出，执行过程在发出调用的方法中继续进行每一帧包括  操作数栈 局部变量表 动态链接（DL） 方法返回  局部变量表与操作数栈大小取决于方法的代码。 在创建一个帧时会将其初始化，提供一个空栈，并用目标对象">
 
 
 
@@ -396,7 +396,7 @@
                 
               
 
-              <time title="Created: 2019-09-28 15:21:07 / Modified: 15:45:31" itemprop="dateCreated datePublished" datetime="2019-09-28T15:21:07+08:00">2019-09-28</time>
+              <time title="Created: 2019-09-28 15:21:07 / Modified: 22:17:39" itemprop="dateCreated datePublished" datetime="2019-09-28T15:21:07+08:00">2019-09-28</time>
             
 
             
@@ -453,7 +453,99 @@
       
 
       
-        <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="3-1-结构"><a href="#3-1-结构" class="headerlink" title="3.1 结构"></a>3.1 结构</h2><h3 id="3-1-1-执行模型"><a href="#3-1-1-执行模型" class="headerlink" title="3.1.1 执行模型"></a>3.1.1 执行模型</h3>
+        <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="3-1-结构"><a href="#3-1-结构" class="headerlink" title="3.1 结构"></a>3.1 结构</h2><h3 id="3-1-1-执行模型"><a href="#3-1-1-执行模型" class="headerlink" title="3.1.1 执行模型"></a>3.1.1 执行模型</h3><p>每个线程都有自己的执行栈，栈由栈帧组成。每个帧表示一个方法调用。<strong>每次调用一个方法时，会将一个新栈帧push入当前线程的执行栈。当方法返回时，会讲这个帧从执行栈中弹出，执行过程在发出调用的方法中继续进行</strong>每一帧包括</p>
+<ul>
+<li>操作数栈</li>
+<li>局部变量表</li>
+<li>动态链接（DL）</li>
+<li>方法返回</li>
+</ul>
+<p>局部变量表与操作数栈大小取决于方法的代码。</p>
+<p><strong>在创建一个帧时会将其初始化，提供一个空栈，并用目标对象this(非静态方法)，以及该方法的参数来初始化局部变量。比如调用a.equals(b)将创建一个帧，它有一个空栈，前两个局部变量被初始化为a和b</strong></p>
+<h3 id="3-1-2-字节代码指令"><a href="#3-1-2-字节代码指令" class="headerlink" title="3.1.2 字节代码指令"></a>3.1.2 字节代码指令</h3><p>字节代码指令由一个表示该指令的操作码和固定数目的参数组成</p>
+<ul>
+<li>操作码 是由一个无符号字节值，由助记符号标识。</li>
+<li>参数时静态值，确定了精确的指令行为</li>
+</ul>
+<p>字节代码指令可以分为两类 </p>
+<ol>
+<li>一小组指令。设计用在局部变量表和操作数栈之间传送值</li>
+<li>仅用于操作数栈：从栈中弹出一些值，根据这些值计算一个结果，并将它压回栈中</li>
+</ol>
+<p>ILOAD,LLOAD,FLOAD,DLOAD,ALOAD。 他们的参数必须是读取的局部变量的索引i。</p>
+<ul>
+<li>ILOAD 加载 boolean、byte、char、short、int局部变量</li>
+<li>LLoad、FLoad、DLoad 分别用于记载long，float，double的值</li>
+<li>ALoad 用于加载任意非基元值即对象和数组</li>
+</ul>
+<p>ISTORE, LSTORE,FSTORE, DSTORE, ASTORE 从操作数栈中弹出一个值，并且将它存储在由索引i指定的局部变量中</p>
+<p>xLoad和xStore指令被赋入了类型。确保不会执行非法转换。实际上，将一个值存储在局部变量中，然后再以不同的类型加载它是非法的。比方说ISTORE 1ALOAD1 序列是非法的。但是向一个局部变量中存储一个值，而这个值的类型不同于该局部变量中存储的当前值，却是完全合法的。</p>
+<ul>
+<li><p>栈 </p>
+<p><em>POP</em>弹出栈顶部的值，<em>DUP</em> 压入顶部，<em>SWAP</em>弹出两个值，并且按逆序压入他们</p>
+</li>
+<li><p>常量</p>
+<p>这些指令在操作数栈压入一个常量值：ACONST_NULL 压入null，ICONST_0 压入int0， FCONST_0 压入0f，DCONST_0压入0d，BIPUSH b 压入字节值b，SIPUSH s 压入short值 s，LDC 压入任意int、float、long、double、String或者class 常量cst</p>
+</li>
+<li><p>算数与逻辑</p>
+<p>这些指令从操作数栈弹出数值，合并他们，并将结果压入栈中。他们没有任何参数。xADD，xSUB，xMUL，xDIV和xREM。</p>
+</li>
+<li><p>类型变换</p>
+<p>这些指令从栈中弹出一个值，将其转换为另一种类型，并将结果压入栈中。他们对应Java中的类型转换表达式。I2F，F2D，L2D等将数值由一种数值类型转换为另一种类型。CHECKCAST t将一个引用值类型转换为类型t</p>
+</li>
+<li><p>对象</p>
+<p>这些指令用于创建对象、锁定他们、检测他们的类型，等等。 NEW type 指令将一个type类型的新对象压入栈中</p>
+</li>
+<li><p>字段</p>
+<p>这些指令读或者写一个字段的值。GETFIELD ower name desc 弹出一个对象引用，并将name字段中的值压入栈中。PUTFIELD owner name desc 弹出一个值和一个对象引用，并且将这个值存储在它的name字段中。在这两种情况下，该对象都必须是owner类型，它的字段必须是desc类型。GETSTATIC和PUTSTATIC是类似的指令 </p>
+</li>
+<li><p>方法</p>
+<p>这些指令调用一个方法或构造器。它们弹出值的个数等于其方法参数个数 + 1（用于目标对象），并压回方法调用的结果。 INVOKEVIRTUREAL owner name des调用在类owner中定义的name方法，其方法描述符为desc。INVOKESTATIC 用于静态方法，INVOKESPECIAL用于私有方法和构造器。INVOKDYNAMIC用于动态方法调用机制</p>
+</li>
+<li><p>数组</p>
+<p>这些指令用于读写数组中的值。xALOAD指令弹出一个索引和一个数组，并压入此索引处数组元素的值。xASTORE指令弹出一个值，一个索引和一个数组，并将这个值存入在该数组的这一索引处。x可以为I（int）、L（long）、F（float）、D（double）、A（other）、B（byte）、C（char）、S（short）</p>
+</li>
+<li><p>跳转</p>
+<p>这些指令无条件的或者在某一条件为真的时候跳转到任意指令。它们用于编译if、for、do、while、break、continue指令。IFEQ label 从栈中弹出一个int值，如果这个值是0，跳转到label指定的指令处。还有其他的指令IFNE、IFGE、TABLESWITCH、LOOKUPSWITCH 对应switch 指令</p>
+</li>
+<li><p>返回</p>
+<p>RETURN用于返回void方法，xRETURN用于其他方法</p>
+</li>
+</ul>
+<h3 id="3-1-3-举例说明"><a href="#3-1-3-举例说明" class="headerlink" title="3.1.3 举例说明"></a>3.1.3 举例说明</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> f;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getF</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setF</span><span class="params">(<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.f = f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-3-1-getter"><a href="#3-1-3-1-getter" class="headerlink" title="3.1.3.1 getter"></a>3.1.3.1 getter</h4><p>getter的字节码为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALOAD 0</span><br><span class="line">GETFIELD pkg/Bean f I</span><br><span class="line">IRETURN</span><br></pre></td></tr></table></figure>
+<p>读取局部变量0，（局部变量0在为这个方法调用创建帧期间被初始化为this），并且将这个值压入操作数栈中。</p>
+<p>从操作数栈中弹出这个值，并且将这个对象的f字段压入栈中</p>
+<p>从栈中弹出这个值，返回给调用者</p>
+<h4 id="3-1-3-2-setter"><a href="#3-1-3-2-setter" class="headerlink" title="3.1.3.2 setter"></a>3.1.3.2 setter</h4><p>setter方法的字节码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ALOAD 0</span><br><span class="line">ILOAD 1</span><br><span class="line">SETFIELD pkg/Bean f I</span><br><span class="line">RETURN</span><br></pre></td></tr></table></figure>
+<p>读取局部变量0，（局部变量0在为这个方法调用创建帧期间被初始化为this），并且将这个值压入操作数栈中。</p>
+<p>压入局部变量1</p>
+<p>弹出这两个值，并将int值存储在被引用对象的f字段中。</p>
+<p>销毁当前执行帧，并返回调用者。</p>
+<h4 id="3-1-3-3-contractor"><a href="#3-1-3-3-contractor" class="headerlink" title="3.1.3.3 contractor"></a>3.1.3.3 contractor</h4><p>bean类有一个默认的构造函数，在没有定义的情况下是由编译器生成的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Bean() &#123;</span><br><span class="line">  <span class="keyword">super</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALOAD 1</span><br><span class="line">INVOKESPECIAL java/lang/Object &lt;init&gt; ()V</span><br><span class="line">RETURN</span><br></pre></td></tr></table></figure>
+<p>读取局部变量0，（局部变量0在为这个方法调用创建帧期间被初始化为this），并且将这个值压入操作数栈中。</p>
+<p>调用Object对象中定义的\<init>方法</init></p>
+<h4 id="3-1-3-4-复杂的使用"><a href="#3-1-3-4-复杂的使用" class="headerlink" title="3.1.3.4 复杂的使用"></a>3.1.3.4 复杂的使用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkAndSetF</span><span class="params">(<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (f &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.f = f;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ILOAD 1</span><br><span class="line">IFLT label</span><br><span class="line">ALOAD 0</span><br><span class="line">ILOAD 1</span><br><span class="line">PUTFIELD pkg/Bean f I</span><br><span class="line">GOTO end</span><br><span class="line">label:</span><br><span class="line">	NEW java/lang/IllegalArgumentException</span><br><span class="line">	DUP</span><br><span class="line">	INVOKESPECIAL java/lang/IllegalArgumentException &lt;init&gt;()V</span><br><span class="line">	ATHROW</span><br><span class="line">end:</span><br><span class="line">	RETURN</span><br></pre></td></tr></table></figure>
+<h4 id="3-1-3-5-异常处理器"><a href="#3-1-3-5-异常处理器" class="headerlink" title="3.1.3.5 异常处理器"></a>3.1.3.5 异常处理器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> d)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(d);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TRYCATCHBLOCK try catch catch java/lang/InterrutedExcetion</span><br><span class="line">try:</span><br><span class="line">	LLOAD 0</span><br><span class="line">	INVOKESTATIC java/lang/Thread sleep(J)V</span><br><span class="line">	RETURN</span><br><span class="line">catch:</span><br><span class="line">	INVOKEVIRTUAL java/lang/InterruptedException printStackTrace ()V</span><br><span class="line">  RETURN</span><br></pre></td></tr></table></figure>
+<p><strong>TRYCATCHBLOCK</strong>行制定了一个异常处理器， 覆盖了try和catch标记之间的范围，有一个开始于catch标记的处理器，用于处理一些异常，这些异常是InterruptedException的子类。如果在try和catch之间抛出了一个异常，栈将被清空，异常被压入这个空栈中，执行过程在catch中继续。</p>
+<h4 id="3-1-3-6-帧"><a href="#3-1-3-6-帧" class="headerlink" title="3.1.3.6 帧"></a>3.1.3.6 帧</h4><p>除了字节码指令外，Java6或者更高的编译类中还包括一组栈映射帧，用于加快Java虚拟机中类验证过程的速度。<strong>它给出了就要执行某一特定字节码指令之前，每个局部变量槽和每个操作数栈槽总包含的值的类型</strong></p>
+<p>为节省空间，已编译方法中没有为每个指令包含一个帧 它仅为那些应对跳转目标或者异常处理器的指令，或者跟在无条件跳转指令之后的指令创建帧。</p>
+<p>在checkAndSetF 方法的情景中。仅存储两个帧 一个是用于NEW指令，另一个用于RETURN指令。因为它是GOTO指令的目标，还因为它跟在无条件跳转ATHROW指令后。</p>
+<h2 id="3-2-接口和组件"><a href="#3-2-接口和组件" class="headerlink" title="3.2 接口和组件"></a>3.2 接口和组件</h2><p>用于生成和转换已编译方法的ASM api 是基于MethodVisitor抽象类的。它由ClassVisitor的visitMethod返回。这些方法必须按照以下顺序调用</p>
+<p>visitAnntationDefault?</p>
+<p>(visitAnnotation | visitParameterAnnotation | visitAttribute  )*</p>
+<p>(visitCode</p>
+<p> (visitTryCatchBlock | vistLabel | visitFrame | visitXxxInsn | visitLocalVariable | visitLineNumber) *</p>
+<p>visitMaxs)?</p>
+<p>visitEnd</p>
+
       
     </div>
 
@@ -711,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-结构"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-执行模型"><span class="nav-number">1.1.1.</span> <span class="nav-text">3.1.1 执行模型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-结构"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-执行模型"><span class="nav-number">1.1.1.</span> <span class="nav-text">3.1.1 执行模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-字节代码指令"><span class="nav-number">1.1.2.</span> <span class="nav-text">3.1.2 字节代码指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-举例说明"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.1.3 举例说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-1-getter"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">3.1.3.1 getter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-2-setter"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">3.1.3.2 setter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-3-contractor"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">3.1.3.3 contractor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-4-复杂的使用"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">3.1.3.4 复杂的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-5-异常处理器"><span class="nav-number">1.1.3.5.</span> <span class="nav-text">3.1.3.5 异常处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-6-帧"><span class="nav-number">1.1.3.6.</span> <span class="nav-text">3.1.3.6 帧</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-接口和组件"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 接口和组件</span></a></li></ol></li></ol></div>
             
 
           </div>
