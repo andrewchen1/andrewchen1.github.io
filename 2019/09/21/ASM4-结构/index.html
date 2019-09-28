@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="类2.2 接口和组件2.2.1 介绍ClassVistor 就是就是个模板 我们对类的处理都通过这个模板生成的类来进行 1234567891011121314151617181920212223242526272829public abstract class ClassVisitor &amp;#123;  public ClassVistor(int api);  public ClassVistor">
+  <meta name="description" content="类2.1 类的结构2.1.1 已编译类的整体结构   内容 子内容     修饰符、名字、超类、接口    常量池：数值、字符串、类型常量    源文件名（可选）    封装的类引用    注释*    属性*    内部类* 名称   字段* 修饰符、名字、类型    注释    属性   方法* 修饰符、名字、返回类型、参数类型    注释    属性    编译后的代码    * 表示0个到">
 <meta name="keywords" content="笔记,ASM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ASM4-结构">
 <meta property="og:url" content="https://www.andrewchen1.top/2019/09/21/ASM4-结构/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="类2.2 接口和组件2.2.1 介绍ClassVistor 就是就是个模板 我们对类的处理都通过这个模板生成的类来进行 1234567891011121314151617181920212223242526272829public abstract class ClassVisitor &amp;#123;  public ClassVistor(int api);  public ClassVistor">
+<meta property="og:description" content="类2.1 类的结构2.1.1 已编译类的整体结构   内容 子内容     修饰符、名字、超类、接口    常量池：数值、字符串、类型常量    源文件名（可选）    封装的类引用    注释*    属性*    内部类* 名称   字段* 修饰符、名字、类型    注释    属性   方法* 修饰符、名字、返回类型、参数类型    注释    属性    编译后的代码    * 表示0个到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-21T09:13:16.350Z">
+<meta property="og:updated_time" content="2019-09-28T07:38:59.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASM4-结构">
-<meta name="twitter:description" content="类2.2 接口和组件2.2.1 介绍ClassVistor 就是就是个模板 我们对类的处理都通过这个模板生成的类来进行 1234567891011121314151617181920212223242526272829public abstract class ClassVisitor &amp;#123;  public ClassVistor(int api);  public ClassVistor">
+<meta name="twitter:description" content="类2.1 类的结构2.1.1 已编译类的整体结构   内容 子内容     修饰符、名字、超类、接口    常量池：数值、字符串、类型常量    源文件名（可选）    封装的类引用    注释*    属性*    内部类* 名称   字段* 修饰符、名字、类型    注释    属性   方法* 修饰符、名字、返回类型、参数类型    注释    属性    编译后的代码    * 表示0个到">
 
 
 
@@ -396,12 +396,24 @@
                 
               
 
-              <time title="Created: 2019-09-21 15:53:12 / Modified: 17:13:16" itemprop="dateCreated datePublished" datetime="2019-09-21T15:53:12+08:00">2019-09-21</time>
+              <time title="Created: 2019-09-21 15:53:12" itemprop="dateCreated datePublished" datetime="2019-09-21T15:53:12+08:00">2019-09-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-28 15:38:59" itemprop="dateModified" datetime="2019-09-28T15:38:59+08:00">2019-09-28</time>
               
             
           </span>
@@ -453,7 +465,154 @@
       
 
       
-        <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h2 id="2-2-接口和组件"><a href="#2-2-接口和组件" class="headerlink" title="2.2 接口和组件"></a>2.2 接口和组件</h2><h3 id="2-2-1-介绍"><a href="#2-2-1-介绍" class="headerlink" title="2.2.1 介绍"></a>2.2.1 介绍</h3><p>ClassVistor 就是就是个模板 我们对类的处理都通过这个<strong>模板</strong>生成的类来进行</p>
+        <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h2 id="2-1-类的结构"><a href="#2-1-类的结构" class="headerlink" title="2.1 类的结构"></a>2.1 类的结构</h2><h3 id="2-1-1-已编译类的整体结构"><a href="#2-1-1-已编译类的整体结构" class="headerlink" title="2.1.1 已编译类的整体结构"></a>2.1.1 已编译类的整体结构</h3><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>子内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>修饰符、名字、超类、接口</td>
+<td></td>
+</tr>
+<tr>
+<td>常量池：数值、字符串、类型常量</td>
+<td></td>
+</tr>
+<tr>
+<td>源文件名（可选）</td>
+<td></td>
+</tr>
+<tr>
+<td>封装的类引用</td>
+<td></td>
+</tr>
+<tr>
+<td>注释*</td>
+<td></td>
+</tr>
+<tr>
+<td>属性*</td>
+<td></td>
+</tr>
+<tr>
+<td>内部类*</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>字段*</td>
+<td>修饰符、名字、类型</td>
+</tr>
+<tr>
+<td></td>
+<td>注释</td>
+</tr>
+<tr>
+<td></td>
+<td>属性</td>
+</tr>
+<tr>
+<td>方法*</td>
+<td>修饰符、名字、返回类型、参数类型</td>
+</tr>
+<tr>
+<td></td>
+<td>注释</td>
+</tr>
+<tr>
+<td></td>
+<td>属性</td>
+</tr>
+<tr>
+<td></td>
+<td>编译后的代码</td>
+</tr>
+</tbody>
+</table>
+<p>* 表示0个到多个</p>
+<h3 id="2-1-2-类型描述符"><a href="#2-1-2-类型描述符" class="headerlink" title="2.1.2 类型描述符"></a>2.1.2 类型描述符</h3><table>
+<thead>
+<tr>
+<th>Java类型</th>
+<th>类型表述符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>Z</td>
+</tr>
+<tr>
+<td>char</td>
+<td>C</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>B</td>
+</tr>
+<tr>
+<td>short</td>
+<td>S</td>
+</tr>
+<tr>
+<td>int</td>
+<td>I</td>
+</tr>
+<tr>
+<td>float</td>
+<td>F</td>
+</tr>
+<tr>
+<td>long</td>
+<td>J</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>D</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>Ljava/lang/Object;</td>
+</tr>
+<tr>
+<td>int[]</td>
+<td>[I</td>
+</tr>
+<tr>
+<td>Object[][]</td>
+<td>[[Ljava/lang/Object;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-1-3-类型描述符"><a href="#2-1-3-类型描述符" class="headerlink" title="2.1.3 类型描述符"></a>2.1.3 类型描述符</h3><table>
+<thead>
+<tr>
+<th>源文件中的方法声明</th>
+<th>方法描述符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Void main (int i, float f)</td>
+<td>(IF)V</td>
+</tr>
+<tr>
+<td>int m(Object o)</td>
+<td>(Ljava.lang.Object;)I</td>
+</tr>
+<tr>
+<td>int[] m (int i, String s)</td>
+<td>(ILjava/lang/String;)I[</td>
+</tr>
+<tr>
+<td>Object m(int[] i)</td>
+<td>([I)Ljava/lang/Object;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-2-接口和组件"><a href="#2-2-接口和组件" class="headerlink" title="2.2 接口和组件"></a>2.2 接口和组件</h2><h3 id="2-2-1-介绍"><a href="#2-2-1-介绍" class="headerlink" title="2.2.1 介绍"></a>2.2.1 介绍</h3><p>ClassVistor 就是就是个模板 我们对类的处理都通过这个<strong>模板</strong>生成的类来进行</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassVisitor</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ClassVistor</span><span class="params">(<span class="keyword">int</span> api)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ClassVistor</span><span class="params">(<span class="keyword">int</span> api, ClassVistor cv)</span></span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">  	* verison 版本信息</span></span><br><span class="line"><span class="comment">  	* access 权限信息 </span></span><br><span class="line"><span class="comment">  	* name 类的名称</span></span><br><span class="line"><span class="comment">  	* signature 泛化</span></span><br><span class="line"><span class="comment">  	* superName 父类信息</span></span><br><span class="line"><span class="comment">  	* interface 接口信息</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(<span class="keyword">int</span> version, <span class="keyword">int</span> access, String name, String signature, String superName, String[] interface)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitSource</span><span class="params">(String source, String debug)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitOuterClass</span><span class="params">(String ower, String name, String desc)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function">AnnotationVisitor <span class="title">visitAnnotation</span><span class="params">(String desc, Boolean visible)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitAttribute</span><span class="params">(Attribute attr)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitInnerClass</span><span class="params">(String name, String outerName, String innerName, <span class="keyword">int</span> access)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> FieldVisitor <span class="title">visitField</span><span class="params">(<span class="keyword">int</span> access, String name, String desc, String signature, Object value)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> MethodVisitor <span class="title">visitorMethod</span><span class="params">(<span class="keyword">int</span> access, String name, String desc, String signature, String[] exceptions)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">visitEnd</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在上面的类中返回了 <strong>AnnotationVisitor</strong>, <strong>FieldVisitor</strong>, <strong>MethodVisitor</strong>.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">FieldVisitor</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FieldVisitor</span><span class="params">(<span class="keyword">int</span> api)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FieldVisitor</span><span class="params">(<span class="keyword">int</span> api, FieldVisitor fv)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> AnnotationVisitor <span class="title">visitorAnnotation</span><span class="params">(String desc, <span class="keyword">boolean</span> visible)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitAttribute</span><span class="params">(Attribute attr)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitEnd</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -479,7 +638,20 @@
 <p>或者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StubClassLoader</span> <span class="title">extend</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> Class <span class="title">findClass</span><span class="params">(BeanDenefication bd)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bd.isProxyed) &#123;</span><br><span class="line">      ClassWriter cw = <span class="keyword">new</span> ClassWriter();</span><br><span class="line">      <span class="keyword">byte</span>[] b = cw.getByteArray();</span><br><span class="line">      <span class="keyword">return</span> defineClass(name, b, <span class="number">0</span>, b.length);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      bd.getClass();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个可能是Spring 生成类的方式</p>
-<h3 id="2-2-4转换类"><a href="#2-2-4转换类" class="headerlink" title="2.2.4转换类"></a>2.2.4转换类</h3>
+<h3 id="2-2-4转换类"><a href="#2-2-4转换类" class="headerlink" title="2.2.4转换类"></a>2.2.4转换类</h3> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChangeVersionAdapter</span> <span class="keyword">extends</span> <span class="title">ClassVisitor</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ChangeVisionAdapter</span><span class="params">(ClassVisitor cv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span> (ASM4, cv);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(<span class="keyword">int</span> version, <span class="keyword">int</span> access, String name,</span></span></span><br><span class="line"><span class="function"><span class="params">                   String signature, String superName, String[] interfaces)</span> </span>&#123;</span><br><span class="line">    cv.visit(V1_6, access, name, signature, superName, interfaces);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> (InputStream inputStream = <span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"path"</span>)) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = inputStream.available();</span><br><span class="line">            <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[size];</span><br><span class="line">            inputStream.read(bytes);</span><br><span class="line">            ClassReader classReader = <span class="keyword">new</span> ClassReader(bytes);</span><br><span class="line">            ClassWriter classWriter = <span class="keyword">new</span> ClassWriter(classReader , <span class="number">0</span>);</span><br><span class="line">            ClassVisitor classVisitor = <span class="keyword">new</span> ChangeVersionAdapter(classWriter);</span><br><span class="line">            classReader.accept(classVisitor, <span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-5-移除类成员"><a href="#2-2-5-移除类成员" class="headerlink" title="2.2.5 移除类成员"></a>2.2.5 移除类成员</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveMethodAdapter</span> <span class="keyword">extends</span> <span class="title">ClassVisitor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String mName;</span><br><span class="line">    <span class="keyword">private</span> String mDesc;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RemoveMethodAdapter</span><span class="params">(ClassVisitor cv, String mName, String mDesc)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(ASM4, cv);</span><br><span class="line">        <span class="keyword">this</span>.mName = mName;</span><br><span class="line">        <span class="keyword">this</span>.mDesc = mDesc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MethodVisitor <span class="title">visitMethod</span><span class="params">(<span class="keyword">int</span> access, String name, String desc, String signature, String[] exceptions)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (name.equals(mName) &amp;&amp; desc.equals(mDesc)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cv.visitMethod(access, name, desc, signature, exceptions);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-6-增加类成员"><a href="#2-2-6-增加类成员" class="headerlink" title="2.2.6 增加类成员"></a>2.2.6 增加类成员</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddFieldAdapter</span> <span class="keyword">extends</span> <span class="title">ClassVisitor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> fAcc;</span><br><span class="line">    <span class="keyword">private</span> String fName;</span><br><span class="line">    <span class="keyword">private</span> String fDesc;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isFieldPresent;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AddFieldAdapter</span><span class="params">(ClassVisitor cv, <span class="keyword">int</span> fAcc, String fName, String fDesc)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(ASM4, cv);</span><br><span class="line">        <span class="keyword">this</span>.fAcc = fAcc;</span><br><span class="line">        <span class="keyword">this</span>.fName = fName;</span><br><span class="line">        <span class="keyword">this</span>.fDesc = fDesc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FieldVisitor <span class="title">fieldVisitor</span><span class="params">(<span class="keyword">int</span> access, String name, String desc, String signature, Object value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (name.equals(fName)) &#123;</span><br><span class="line">            isFieldPresent = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cv.visitField(access, name, desc, signature, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitEnd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (! isFieldPresent) &#123;</span><br><span class="line">            FieldVisitor fv = cv.visitField(fAcc, fName, fDesc, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">if</span> ( fv != <span class="keyword">null</span>) &#123;</span><br><span class="line">                fv.visitEnd();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cv.visitEnd();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们只是检测一下我们我们要添加的字段是不是存在的， 如果不存在的话，我们进行字段的添加</p>
+<h3 id="2-2-7-转化链"><a href="#2-2-7-转化链" class="headerlink" title="2.2.7 转化链"></a>2.2.7 转化链</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiClassAdapter</span> <span class="keyword">extends</span> <span class="title">ClassVisitor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> ClassVisitor[] cvs;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MultiClassAdapter</span><span class="params">(ClassVisitor[] cvs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(ASM4);</span><br><span class="line">        <span class="keyword">this</span>.cvs = cvs;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(<span class="keyword">int</span> version, <span class="keyword">int</span> access, String name, String signature, String superName, String[] interfaces)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (ClassVisitor cv : cvs) &#123;</span><br><span class="line">            cv.visit(version, access, name, signature, superName, interfaces);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-8-TraceClassVisitor-amp-CheckClassAdapter"><a href="#2-2-8-TraceClassVisitor-amp-CheckClassAdapter" class="headerlink" title="2.2.8 TraceClassVisitor &amp; CheckClassAdapter"></a>2.2.8 TraceClassVisitor &amp; CheckClassAdapter</h3><ul>
+<li><p>TraceClassVisitor</p>
+<p>以获得关于实际所生成内容的一个可读轨迹</p>
+</li>
+<li><p>CheckClassAdapter</p>
+<p>验证其对方法的调用顺序是否恰当，参数是否有效，然后才会委托给一下个防蚊器。当发生错误时，会抛出IllegaStateException或IllegalArgumentException</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassWriter cw = <span class="keyword">new</span> ClassWriter(<span class="number">0</span>);</span><br><span class="line">TraceClassVisitor tcv = <span class="keyword">new</span> TraceClassVisitor(cw, printWriter);</span><br><span class="line">CheckClassA</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -526,6 +698,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/28/ASM4-方法/" rel="prev" title="ASM4-方法">
+                ASM4-方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -596,7 +772,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -664,7 +840,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -737,7 +915,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类"><span class="nav-number">1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-接口和组件"><span class="nav-number">1.1.</span> <span class="nav-text">2.2 接口和组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.2.1 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-分析类"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.2.2 分析类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-生成类"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.2.3 生成类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4转换类"><span class="nav-number">1.1.4.</span> <span class="nav-text">2.2.4转换类</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类"><span class="nav-number">1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-类的结构"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 类的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-已编译类的整体结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1.1 已编译类的整体结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-类型描述符"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.1.2 类型描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-类型描述符"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.1.3 类型描述符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-接口和组件"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 接口和组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-介绍"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.2.1 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-分析类"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2.2 分析类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-生成类"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.2.3 生成类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4转换类"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.2.4转换类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-移除类成员"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.2.5 移除类成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-6-增加类成员"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.2.6 增加类成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-7-转化链"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.2.7 转化链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-8-TraceClassVisitor-amp-CheckClassAdapter"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.2.8 TraceClassVisitor &amp; CheckClassAdapter</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
