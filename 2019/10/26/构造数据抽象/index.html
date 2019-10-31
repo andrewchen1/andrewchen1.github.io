@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="2. 构造数据抽象 复合数据 闭包 符号表达式">
+  <meta name="description" content="2. 构造数据抽象 复合数据 闭包 符号表达式  2.1 数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构造数据抽象">
 <meta property="og:url" content="https://www.andrewchen1.top/2019/10/26/构造数据抽象/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="2. 构造数据抽象 复合数据 闭包 符号表达式">
+<meta property="og:description" content="2. 构造数据抽象 复合数据 闭包 符号表达式  2.1 数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-26T16:27:00.640Z">
+<meta property="og:updated_time" content="2019-10-30T15:17:55.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构造数据抽象">
-<meta name="twitter:description" content="2. 构造数据抽象 复合数据 闭包 符号表达式">
+<meta name="twitter:description" content="2. 构造数据抽象 复合数据 闭包 符号表达式  2.1 数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))">
 
 
 
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-27 00:27:00" itemprop="dateModified" datetime="2019-10-27T00:27:00+08:00">2019-10-27</time>
+                <time title="Modified: 2019-10-30 23:17:55" itemprop="dateModified" datetime="2019-10-30T23:17:55+08:00">2019-10-30</time>
               
             
           </span>
@@ -470,6 +470,16 @@
 <li>闭包</li>
 <li>符号表达式</li>
 </ul>
+<h2 id="2-1-数据抽象导引"><a href="#2-1-数据抽象导引" class="headerlink" title="2.1 数据抽象导引"></a>2.1 数据抽象导引</h2><p>假设make-rat 能使分数最简化</p>
+<p>假设 number 能获得分子，denom 能获得分母 </p>
+<ul>
+<li>加法</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">add-rat</span> x y) </span><br><span class="line">  (<span class="name">make-rat</span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span>(<span class="name">number</span> x) (<span class="name">denom</span> y))</span><br><span class="line">               (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">denom</span> x) (<span class="name">number</span> y)))</span><br><span class="line">            (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">denom</span> x) (<span class="name">denom</span> y)))</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>减法</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -726,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-构造数据抽象"><span class="nav-number">1.</span> <span class="nav-text">2. 构造数据抽象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-构造数据抽象"><span class="nav-number">1.</span> <span class="nav-text">2. 构造数据抽象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-数据抽象导引"><span class="nav-number">2.</span> <span class="nav-text">2.1 数据抽象导引</span></a></li></ol></div>
             
 
           </div>
@@ -890,6 +900,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 
