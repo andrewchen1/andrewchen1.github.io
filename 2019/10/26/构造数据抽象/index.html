@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="2. 构造数据抽象 复合数据 闭包 符号表达式  2.1 数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))">
+  <meta name="description" content="构造数据抽象 复合数据 闭包 符号表达式  数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))            (*">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构造数据抽象">
 <meta property="og:url" content="https://www.andrewchen1.top/2019/10/26/构造数据抽象/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="2. 构造数据抽象 复合数据 闭包 符号表达式  2.1 数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))">
+<meta property="og:description" content="构造数据抽象 复合数据 闭包 符号表达式  数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))            (*">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T15:17:55.470Z">
+<meta property="og:updated_time" content="2019-11-03T11:05:53.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构造数据抽象">
-<meta name="twitter:description" content="2. 构造数据抽象 复合数据 闭包 符号表达式  2.1 数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))">
+<meta name="twitter:description" content="构造数据抽象 复合数据 闭包 符号表达式  数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))            (*">
 
 
 
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-30 23:17:55" itemprop="dateModified" datetime="2019-10-30T23:17:55+08:00">2019-10-30</time>
+                <time title="Modified: 2019-11-03 19:05:53" itemprop="dateModified" datetime="2019-11-03T19:05:53+08:00">2019-11-03</time>
               
             
           </span>
@@ -465,12 +465,12 @@
       
 
       
-        <h2 id="2-构造数据抽象"><a href="#2-构造数据抽象" class="headerlink" title="2. 构造数据抽象"></a>2. 构造数据抽象</h2><ul>
+        <h2 id="构造数据抽象"><a href="#构造数据抽象" class="headerlink" title="构造数据抽象"></a>构造数据抽象</h2><ul>
 <li>复合数据</li>
 <li>闭包</li>
 <li>符号表达式</li>
 </ul>
-<h2 id="2-1-数据抽象导引"><a href="#2-1-数据抽象导引" class="headerlink" title="2.1 数据抽象导引"></a>2.1 数据抽象导引</h2><p>假设make-rat 能使分数最简化</p>
+<h2 id="数据抽象导引"><a href="#数据抽象导引" class="headerlink" title="数据抽象导引"></a>数据抽象导引</h2><p>假设make-rat 能使分数最简化</p>
 <p>假设 number 能获得分子，denom 能获得分母 </p>
 <ul>
 <li>加法</li>
@@ -479,7 +479,57 @@
 <ul>
 <li>减法</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sub-rat</span> x y)</span><br><span class="line">  (<span class="name">make-rat</span> (<span class="name"><span class="builtin-name">-</span></span> (<span class="name"><span class="builtin-name">*</span></span>(<span class="name">number</span> x) (<span class="name">denom</span> y))</span><br><span class="line">               (<span class="name"><span class="builtin-name">*</span></span>(<span class="name">denom</span> x) (<span class="name">number</span> x))</span><br><span class="line">               )</span><br><span class="line">            (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">denom</span> x) (<span class="name">denom</span> y)))</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>乘法</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">mul-rat</span> x y)</span><br><span class="line">  (<span class="name">make-rat</span> (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">number</span> x) (<span class="name">number</span> y)</span><br><span class="line">               (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">denom</span> x) (<span class="name">denom</span> y)))</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>除法</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">div-rat</span> x y)</span><br><span class="line">  (<span class="name">make-rat</span> (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">number</span> x) (<span class="name">denom</span> y))</span><br><span class="line">            (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">denom</span> y) (<span class="name">number</span> x)))</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断是否相等</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">equal-rat</span> x y) </span><br><span class="line">  (<span class="name"><span class="builtin-name">=</span></span> (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">number</span> x) (<span class="name">denom</span> y)</span><br><span class="line">        (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">denom</span> y) (<span class="name">number</span> x)))</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造函数</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> x (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> <span class="number">2</span>))</span><br><span class="line">(<span class="name"><span class="builtin-name">car</span></span> x)</span><br><span class="line">(<span class="name"><span class="builtin-name">cdr</span></span> x)</span><br></pre></td></tr></table></figure>
+<p>得到的结果分别是 1 和 2</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">make-rat</span> n d)</span><br><span class="line">  (<span class="name"><span class="builtin-name">let</span></span> (</span><br><span class="line">        (<span class="name">g</span> (<span class="name"><span class="builtin-name">gcd</span></span> n d))</span><br><span class="line">        )</span><br><span class="line">  	(<span class="name"><span class="builtin-name">cons</span></span> (<span class="name"><span class="builtin-name">/</span></span> n g) (<span class="name"><span class="builtin-name">/</span></span> d g))</span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<p>而 gdc 最大公约数,之前我们介绍过， 可以通过中国余数的方式获得</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">gcd</span></span> n d)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">0</span> d) (<span class="name">n</span>)</span><br><span class="line">      (<span class="name"><span class="builtin-name">gcd</span></span> (<span class="name">d</span> (<span class="name">reminder</span> n d))</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<h2 id="层次性数据和闭包性质"><a href="#层次性数据和闭包性质" class="headerlink" title="层次性数据和闭包性质"></a>层次性数据和闭包性质</h2><p>序对为我们提供一种用于构造复合数据的基本“粘结剂”。我们还可以通过它去组合起序对。</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> <span class="number">2</span>) (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">2</span> <span class="number">3</span>)) <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p>我们可以建立元素本身也是序对的序对，这就是表结构得以作为一种表示工具的根本基础。我们把这种能力称为cons的闭包。</p>
+<blockquote>
+<p>术语 闭包 来自于抽象代数。在抽象代数里，一集元素称为在某个元算（操作）之下封闭。如果将该运算应用于这一集合中的元素，产生出的仍是该集合里的元素。</p>
+</blockquote>
+<h3 id="序列的表示"><a href="#序列的表示" class="headerlink" title="序列的表示"></a>序列的表示</h3><p>利用序对可以构造出的一类有用结构是<strong>序列</strong>。 和Java的数据结构比较对应数据结构是链表。</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> </span><br><span class="line">      (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">2</span></span><br><span class="line">            (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">3</span></span><br><span class="line">                  (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">4</span> nil))))</span><br></pre></td></tr></table></figure>
+<p>通过嵌套的cons形成的这样一个序对的序列称为一个<strong>表</strong>， 它和上面的程序等价</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">list</span></span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p>比方说我们想得到表的第n项</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">list-ref</span></span> item)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">0</span> item) (<span class="name"><span class="builtin-name">car</span></span> item)</span><br><span class="line">      (<span class="name"><span class="builtin-name">list-ref</span></span> (<span class="name"><span class="builtin-name">cdr</span></span> item) (<span class="name"><span class="builtin-name">-</span></span> item <span class="number">1</span>))))</span><br></pre></td></tr></table></figure>
+<p>比方说append</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">append</span></span> list1 list2)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> nil list1) </span><br><span class="line">      (<span class="name">list2</span>)</span><br><span class="line">      (<span class="name"><span class="builtin-name">cons</span></span> (<span class="name"><span class="builtin-name">car</span></span> list1) (<span class="name"><span class="builtin-name">append</span></span>((<span class="name"><span class="builtin-name">cdr</span></span> list1) list2)))</span><br><span class="line">      )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<p>首先找到list1的最后一个元素。 把list1最后一个元素的next设置为list2. 依次递归。其中过程中的list1和参数的list1不等价。</p>
+<h3 id="对表的映射"><a href="#对表的映射" class="headerlink" title="对表的映射"></a>对表的映射</h3><p>$(1\ 2 \ 3) * 3 = (3 \ 6 \ 9)$</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">scale-list</span> items factor)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span></span><br><span class="line">   ( = nil items) </span><br><span class="line">   (<span class="name">nil</span>)</span><br><span class="line">   (</span><br><span class="line">    (<span class="name"><span class="builtin-name">cons</span></span>  (<span class="name"><span class="builtin-name">*</span></span> (<span class="name"><span class="builtin-name">car</span></span> items) factor) (<span class="name">scale-list</span> (<span class="name">crd</span> items) factor))</span><br><span class="line">    )</span><br><span class="line">   )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<p>我们将其中的公共模式表述成一个高阶过程，这个高阶过程我们称之为<strong>map</strong>。返回将这一个过程应用于表中各个元素得到的结果形成的表</p>
+<p>通式为</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">map</span></span> proc items)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> nil items)</span><br><span class="line">      (<span class="name">nil</span>)</span><br><span class="line">      (<span class="name"><span class="builtin-name">cons</span></span></span><br><span class="line">       (<span class="name">proc</span> (<span class="name"><span class="builtin-name">car</span></span> items))</span><br><span class="line">       (<span class="name"><span class="builtin-name">map</span></span> proc (<span class="name">crd</span> items))</span><br><span class="line">       )</span><br><span class="line">   )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<p>有了这个公式我们可以简化上述集合的乘法</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">scale-list</span> items factor)</span><br><span class="line">  (<span class="name"><span class="builtin-name">map</span></span> (<span class="name"><span class="builtin-name">lambda</span></span> (x)</span><br><span class="line">         (<span class="name"><span class="builtin-name">*</span></span> x factors)</span><br><span class="line">         )</span><br><span class="line">       items)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<h3 id="层次性结构"><a href="#层次性结构" class="headerlink" title="层次性结构"></a>层次性结构</h3><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> (<span class="name"><span class="builtin-name">list</span></span> <span class="number">1</span> <span class="number">2</span>) (<span class="name"><span class="builtin-name">list</span></span> <span class="number">3</span> <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<p>我们把这种数据结构称之为<strong>树</strong></p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">count-leaves</span> x)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> </span><br><span class="line">   ((<span class="name"><span class="builtin-name">null?</span></span> x) <span class="number">0</span>)</span><br><span class="line">   ((<span class="name"><span class="builtin-name">pair?</span></span> x)</span><br><span class="line">    	(<span class="name"><span class="builtin-name">+</span></span> (<span class="name">count-leaves</span> (<span class="name"><span class="builtin-name">car</span></span> x))</span><br><span class="line">         (<span class="name">count-leaves</span> (<span class="name"><span class="builtin-name">cdr</span></span> x))</span><br><span class="line">      ))</span><br><span class="line">   (<span class="name"><span class="builtin-name">else</span></span> <span class="number">1</span>)</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>其中pair? 的作用是检查是不是序对</p>
+<h3 id="对树的映射"><a href="#对树的映射" class="headerlink" title="对树的映射"></a>对树的映射</h3><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">scale-tree</span> tree factor)</span><br><span class="line">  (<span class="name"><span class="builtin-name">map</span></span> (<span class="name"><span class="builtin-name">lambda</span></span> (sub-tree)</span><br><span class="line">           (<span class="name"><span class="builtin-name">if</span></span> </span><br><span class="line">              (<span class="name"><span class="builtin-name">pair?</span></span> sub-tree)</span><br><span class="line">              (<span class="name">scale-tree</span> sub-tree factor)</span><br><span class="line">              (<span class="name"><span class="builtin-name">*</span></span> factor sub-tree)</span><br><span class="line">             )</span><br><span class="line">     )</span><br><span class="line">         tree </span><br><span class="line">   )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="序列作为一种约定的界面"><a href="#序列作为一种约定的界面" class="headerlink" title="序列作为一种约定的界面"></a>序列作为一种约定的界面</h3><p>以一棵树为参数，求值为奇数叶子的平方和</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-odd-squares</span> tree)</span><br><span class="line">  (<span class="name"><span class="builtin-name">map</span></span> (<span class="name"><span class="builtin-name">lambda</span></span> (sub-tree) </span><br><span class="line">         (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">null?</span></span> sub-tree)</span><br><span class="line">                <span class="number">0</span></span><br><span class="line">                )</span><br><span class="line">               (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">pair?</span></span> sub-tree)</span><br><span class="line">                   (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">sum-odd-squares</span> (<span class="name"><span class="builtin-name">car</span></span> sub-tree)) </span><br><span class="line">                      (<span class="name">sum-odd-squares</span> (<span class="name"><span class="builtin-name">cdr</span></span> sub-tree))</span><br><span class="line">                      )</span><br><span class="line">                   (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">1</span> (<span class="name">reminder</span> sub-tree <span class="number">2</span>))</span><br><span class="line">                       (<span class="name">square</span> sub-tree)</span><br><span class="line">                       )</span><br><span class="line">                   )</span><br><span class="line">         )</span><br><span class="line">    tree)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<h3 id="构造偶数的斐波那契数列的表"><a href="#构造偶数的斐波那契数列的表" class="headerlink" title="构造偶数的斐波那契数列的表"></a>构造偶数的斐波那契数列的表</h3><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fibs-iter</span> n_1 n_2 cur N total) </span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> cur N)</span><br><span class="line">      total</span><br><span class="line">      (<span class="name">fibs-iter</span> (<span class="name"><span class="builtin-name">+</span></span> n_1 n_2) n_1 (<span class="name"><span class="builtin-name">+</span></span> cur <span class="number">1</span>) N (<span class="name"><span class="builtin-name">+</span></span> n_1 total )))</span><br><span class="line">  )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fibs</span> N)</span><br><span class="line">  (<span class="name">fibs-iter</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> N <span class="number">0</span>)</span><br><span class="line">  )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">even-fibs</span> n)</span><br><span class="line">  ( (<span class="name"><span class="builtin-name">lambda</span></span> (k) </span><br><span class="line">      (<span class="name"><span class="builtin-name">&gt;</span></span> k n)</span><br><span class="line">      	nil</span><br><span class="line">      (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">even?</span></span> (<span class="name">fibs</span> n))</span><br><span class="line">          (<span class="name"><span class="builtin-name">cons</span></span> (<span class="name">fibs</span> n)</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">  (<span class="name"><span class="builtin-name">lambda</span></span> </span><br><span class="line">    (sub-list k) </span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (</span><br><span class="line">           (<span class="name"><span class="builtin-name">&gt;</span></span> k n)</span><br><span class="line">         		nil</span><br><span class="line">           (<span class="name"><span class="builtin-name">if</span></span> </span><br><span class="line">            (<span class="name"><span class="builtin-name">even?</span></span> (<span class="name">fibs</span> n)) </span><br><span class="line">            (<span class="name"><span class="builtin-name">cons</span></span> (<span class="name">fibs</span> n) sub-list)</span><br><span class="line">            )</span><br><span class="line">           (</span><br><span class="line">            (<span class="name"><span class="builtin-name">&lt;</span></span> k n)</span><br><span class="line">            ()</span><br><span class="line">           )</span><br><span class="line">          </span><br><span class="line">          )</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -736,7 +786,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-构造数据抽象"><span class="nav-number">1.</span> <span class="nav-text">2. 构造数据抽象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-数据抽象导引"><span class="nav-number">2.</span> <span class="nav-text">2.1 数据抽象导引</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造数据抽象"><span class="nav-number">1.</span> <span class="nav-text">构造数据抽象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据抽象导引"><span class="nav-number">2.</span> <span class="nav-text">数据抽象导引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次性数据和闭包性质"><span class="nav-number">3.</span> <span class="nav-text">层次性数据和闭包性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列的表示"><span class="nav-number">3.1.</span> <span class="nav-text">序列的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对表的映射"><span class="nav-number">3.2.</span> <span class="nav-text">对表的映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次性结构"><span class="nav-number">3.3.</span> <span class="nav-text">层次性结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对树的映射"><span class="nav-number">3.4.</span> <span class="nav-text">对树的映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列作为一种约定的界面"><span class="nav-number">3.5.</span> <span class="nav-text">序列作为一种约定的界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造偶数的斐波那契数列的表"><span class="nav-number">3.6.</span> <span class="nav-text">构造偶数的斐波那契数列的表</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -905,6 +955,53 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+</style>
+
+    
   
 
 
