@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="构造数据抽象 复合数据 闭包 符号表达式  数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))            (*">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-04T14:58:03.713Z">
+<meta property="og:updated_time" content="2019-11-09T10:08:53.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构造数据抽象">
 <meta name="twitter:description" content="构造数据抽象 复合数据 闭包 符号表达式  数据抽象导引假设make-rat 能使分数最简化 假设 number 能获得分子，denom 能获得分母   加法  12345(define (add-rat x y)   (make-rat (+ (*(number x) (denom y))               (* (denom x) (number y)))            (*">
@@ -413,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-04 22:58:03" itemprop="dateModified" datetime="2019-11-04T22:58:03+08:00">2019-11-04</time>
+                <time title="Modified: 2019-11-09 18:08:53" itemprop="dateModified" datetime="2019-11-09T18:08:53+08:00">2019-11-09</time>
               
             
           </span>
@@ -502,14 +502,16 @@
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">gcd</span></span> n d)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">0</span> d) (<span class="name">n</span>)</span><br><span class="line">      (<span class="name"><span class="builtin-name">gcd</span></span> (<span class="name">d</span> (<span class="name">reminder</span> n d))</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
 <h2 id="层次性数据和闭包性质"><a href="#层次性数据和闭包性质" class="headerlink" title="层次性数据和闭包性质"></a>层次性数据和闭包性质</h2><p>序对为我们提供一种用于构造复合数据的基本“粘结剂”。我们还可以通过它去组合起序对。</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> <span class="number">2</span>) (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">2</span> <span class="number">3</span>)) <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p>（⚠️ 上面的方式不是序列。）</p>
 <p>我们可以建立元素本身也是序对的序对，这就是表结构得以作为一种表示工具的根本基础。我们把这种能力称为cons的闭包。</p>
 <blockquote>
 <p>术语 闭包 来自于抽象代数。在抽象代数里，一集元素称为在某个元算（操作）之下封闭。如果将该运算应用于这一集合中的元素，产生出的仍是该集合里的元素。</p>
 </blockquote>
-<h3 id="序列的表示"><a href="#序列的表示" class="headerlink" title="序列的表示"></a>序列的表示</h3><p>利用序对可以构造出的一类有用结构是<strong>序列</strong>。 和Java的数据结构比较对应数据结构是链表。</p>
+<h3 id="序列的表示"><a href="#序列的表示" class="headerlink" title="序列的表示"></a>序列的表示</h3><p>利用序对可以构造出的一类有用结构是<strong>序列</strong>。 和Java的数据结构比较对应数据结构是<strong>链表</strong></p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> <span class="number">1</span> </span><br><span class="line">      (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">2</span></span><br><span class="line">            (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">3</span></span><br><span class="line">                  (<span class="name"><span class="builtin-name">cons</span></span> <span class="number">4</span> nil))))</span><br></pre></td></tr></table></figure>
 <p>通过嵌套的cons形成的这样一个序对的序列称为一个<strong>表</strong>， 它和上面的程序等价</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">list</span></span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>我们将car看作选取表的第一项的操作，将cdr看作选取表中除去第一项之后剩下的所有项形成的子表</strong></p>
 <p>比方说我们想得到表的第n项</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">list-ref</span></span> item)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">0</span> item) (<span class="name"><span class="builtin-name">car</span></span> item)</span><br><span class="line">      (<span class="name"><span class="builtin-name">list-ref</span></span> (<span class="name"><span class="builtin-name">cdr</span></span> item) (<span class="name"><span class="builtin-name">-</span></span> item <span class="number">1</span>))))</span><br></pre></td></tr></table></figure>
 <p>比方说append</p>
