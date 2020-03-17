@@ -1,126 +1,47 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="程序设计的基本元素 基本表达式 用于表示语言所关心的最简单的个体  组合的方法 通过它们可以从比较简单的东西出发构造出复合的元素  抽象的方法 通过它们可以为复合对象命名，并将它们当作单去操作   表达式（* 1 2 3 4） 像上面这样的表达式称为组合式，其构成方式就是用一对括号括起一些表达式，形成一个表 用于表示一个过程应用。在表最左边的元素被称为运算符，其他元素都称为运算对象。 命名和环境（">
-<meta name="keywords" content="笔记,费马小定理 素数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程序设计的基本元素">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/10/19/程序设计的基本元素/index.html">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/10/19/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="程序设计的基本元素 基本表达式 用于表示语言所关心的最简单的个体  组合的方法 通过它们可以从比较简单的东西出发构造出复合的元素  抽象的方法 通过它们可以为复合对象命名，并将它们当作单去操作   表达式（* 1 2 3 4） 像上面这样的表达式称为组合式，其构成方式就是用一对括号括起一些表达式，形成一个表 用于表示一个过程应用。在表最左边的元素被称为运算符，其他元素都称为运算对象。 命名和环境（">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-04T15:01:52.609Z">
+<meta property="article:published_time" content="2019-10-19T06:26:00.000Z">
+<meta property="article:modified_time" content="2019-11-04T15:01:52.609Z">
+<meta property="article:author" content="小夫">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="费马小定理 素数">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序设计的基本元素">
-<meta name="twitter:description" content="程序设计的基本元素 基本表达式 用于表示语言所关心的最简单的个体  组合的方法 通过它们可以从比较简单的东西出发构造出复合的元素  抽象的方法 通过它们可以为复合对象命名，并将它们当作单去操作   表达式（* 1 2 3 4） 像上面这样的表达式称为组合式，其构成方式就是用一对括号括起一些表达式，形成一个表 用于表示一个过程应用。在表最左边的元素被称为运算符，其他元素都称为运算对象。 命名和环境（">
+
+<link rel="canonical" href="https://www.andrewchen1.top/2019/10/19/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0/">
 
 
-
-
-
-
-  <link rel="canonical" href="https://www.andrewchen1.top/2019/10/19/程序设计的基本元素/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -132,15 +53,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -149,9 +63,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -165,304 +78,144 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 
-    <div class="custom-logo-site-title">
+  <div class="site-meta">
+
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">小夫的笔记</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-      
         <p class="site-subtitle">但行好事 莫问前程</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
-  
-  
-  
-  
-
-  
-
-  <a href="https://github.com/andrewchen1" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/10/19/程序设计的基本元素/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/10/19/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E7%B4%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="小夫的笔记">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">程序设计的基本元素
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          程序设计的基本元素
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-10-19 14:26:00" itemprop="dateCreated datePublished" datetime="2019-10-19T14:26:00+08:00">2019-10-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-11-04 23:01:52" itemprop="dateModified" datetime="2019-11-04T23:01:52+08:00">2019-11-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机的构造和解释/" itemprop="url" rel="index"><span itemprop="name">计算机的构造和解释</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%9E%84%E9%80%A0%E5%92%8C%E8%A7%A3%E9%87%8A/" itemprop="url" rel="index"><span itemprop="name">计算机的构造和解释</span></a>
+                </span>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h2 id="程序设计的基本元素"><a href="#程序设计的基本元素" class="headerlink" title="程序设计的基本元素"></a>程序设计的基本元素</h2><ol>
@@ -479,32 +232,35 @@
 <h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>（* 1 2 3 4）</p>
 <p>像上面这样的表达式称为组合式，其构成方式就是用一对括号括起一些表达式，形成一个<strong>表</strong> 用于表示一个过程应用。在表最左边的元素被称为<strong>运算符</strong>，其他元素都称为运算对象。</p>
 <h3 id="命名和环境"><a href="#命名和环境" class="headerlink" title="命名和环境"></a>命名和环境</h3><p>（define size 2）</p>
-<h3 id="组合式的求值"><a href="#组合式的求值" class="headerlink" title="组合式的求值"></a>组合式的求值</h3><p>（ <em> （+ 2 （</em> 4 6） （+ 3 5 7））</p>
+<h3 id="组合式的求值"><a href="#组合式的求值" class="headerlink" title="组合式的求值"></a>组合式的求值</h3><p>（ * （+ 2 （* 4 6） （+ 3 5 7））</p>
 <h3 id="复合过程"><a href="#复合过程" class="headerlink" title="复合过程"></a>复合过程</h3><ul>
 <li>数和算数计算是基本的数据和过程</li>
 <li>组合式的嵌套提供了一种组织起多个操作的方法</li>
 <li>定义是一种受限的抽象手段，它为名字关联相相应的值</li>
 </ul>
-<p>（define （<name> <formal parameters>） <body>）</body></formal></name></p>
+<p>（define （<name> <formal parameters>） <body>）</p>
 <h3 id="过程应用的代换模型"><a href="#过程应用的代换模型" class="headerlink" title="过程应用的代换模型"></a>过程应用的代换模型</h3><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f</span> a)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">square</span> n)</span><br><span class="line">    (<span class="name"><span class="builtin-name">*</span></span> n n)</span><br><span class="line">    )</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-of-squares</span> a)</span><br><span class="line">    (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">square</span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> a)) (<span class="name">square</span>(<span class="name"><span class="builtin-name">+</span></span> <span class="number">2</span> a)))</span><br><span class="line">    )</span><br><span class="line">  (<span class="name">sum-of-squares</span> a)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <p>要得到结果先要把式子替换成sum-of-squares的定义，进一步的要替换成square的定义。这样的计算过程被称为<strong>代换模型</strong>。</p>
 <h3 id="应用序和正则序"><a href="#应用序和正则序" class="headerlink" title="应用序和正则序"></a>应用序和正则序</h3><p>这种“完全展开而后归约”的求值模式被称为<strong>正则序求值</strong>，对于上面的f 函数来说就是 变成</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">5</span> <span class="number">1</span>) (<span class="name"><span class="builtin-name">+</span></span> <span class="number">5</span> <span class="number">1</span>)) (<span class="name"><span class="builtin-name">*</span></span> (<span class="name"><span class="builtin-name">*</span></span> <span class="number">5</span> <span class="number">2</span>) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">5</span> <span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+
 <p>然后进行规约</p>
 <p>与之相对应的是现在解释器里实际使用的“先求值参数而后应用”的方式，它称为<strong>应用序求值</strong>。</p>
 <h3 id="条件表达式和谓词"><a href="#条件表达式和谓词" class="headerlink" title="条件表达式和谓词"></a>条件表达式和谓词</h3><p>（cond </p>
-<p>​    (<p1> <e1>)</e1></p1></p>
-<p>​    (<p2> <e2>)</e2></p2></p>
+<p>​    (<p1> <e1>)</p>
+<p>​    (<p2> <e2>)</p>
 <p>）</p>
-<p>(if (<p1>)  (<e1>) (<e2>) )</e2></e1></p1></p>
+<p>(if (<p1>)  (<e1>) (<e2>) )</p>
 <p>谓词中允许中使用的词</p>
 <ul>
-<li>(and <e1> … <ex>）</ex></e1></li>
-<li>(or <e1> … <ex>)</ex></e1></li>
-<li>(not <e>)</e></li>
+<li>(and <e1> … <ex>）</li>
+<li>(or <e1> … <ex>)</li>
+<li>(not <e>)</li>
 </ul>
 <h3 id="实例：采用牛顿法求平方根"><a href="#实例：采用牛顿法求平方根" class="headerlink" title="实例：采用牛顿法求平方根"></a>实例：采用牛顿法求平方根</h3><p>$ \frac { {x} / {y^2} + 2y} {3}$</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">square</span> x)</span><br><span class="line">  (<span class="name">x</span> * x)</span><br><span class="line">  )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">cue</span> x)</span><br><span class="line">  (<span class="name">x</span> * x *x)</span><br><span class="line">  )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> good_guess(<span class="name">this_guess</span> last_guess)</span><br><span class="line">  (<span class="name"><span class="builtin-name">&lt;</span></span> (<span class="name"><span class="builtin-name">abs</span></span> (<span class="name"><span class="builtin-name">-</span></span> this_guess last_guess)) <span class="number">0.0001</span>)</span><br><span class="line">  )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> get_this_time_guess(<span class="name">last_guess</span> x)</span><br><span class="line">  (<span class="name"><span class="builtin-name">/</span></span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">/</span></span> x square(<span class="name">last_guess</span>)) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">2</span> last_guess)) <span class="number">3</span>)</span><br><span class="line">  )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> cue_root_inter(<span class="name">last_guess</span> x) </span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name">good_guess</span> (<span class="name">get_this_time_guess</span> last_guess x) last_guess)</span><br><span class="line">                (<span class="name">get_this_time_guess</span> last_guess x)</span><br><span class="line">                (<span class="name">cue_root_inter</span> (<span class="name">get_this_time_guess</span> last_guess x) x)</span><br><span class="line">      )</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">cue_root</span> x)</span><br><span class="line">  	cue_root_inter(<span class="name">1.0</span> x)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <h3 id="过程作为黑箱抽象"><a href="#过程作为黑箱抽象" class="headerlink" title="过程作为黑箱抽象"></a>过程作为黑箱抽象</h3><p>与其说cue_root 是一个过程，还不如说它一个过程的的抽象</p>
 <p><strong>局部名</strong></p>
 <blockquote>
@@ -519,9 +275,11 @@
 <p>定义各种复合过程</p>
 <h3 id="线性的递归和迭代"><a href="#线性的递归和迭代" class="headerlink" title="线性的递归和迭代"></a>线性的递归和迭代</h3><p>1.</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">factorial</span> n)</span><br><span class="line">  if (<span class="name"><span class="builtin-name">=</span></span> n <span class="number">1</span>)</span><br><span class="line">  (<span class="name">1</span>)</span><br><span class="line">  (<span class="name"><span class="builtin-name">*</span></span> n factorial(<span class="name"><span class="builtin-name">-</span></span> n <span class="number">1</span>)))</span><br></pre></td></tr></table></figure>
+
 <p>2.</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">factorial</span> n)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">factorial-iter</span> product current_count max_count) </span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span>(<span class="name"><span class="builtin-name">=</span></span> current max_count)</span><br><span class="line">       (<span class="name"><span class="builtin-name">*</span></span> product current)</span><br><span class="line">       (<span class="name">factorial-iter</span> (<span class="name"><span class="builtin-name">*</span></span> product current) (<span class="name"><span class="builtin-name">+</span></span> current <span class="number">1</span>) max_count)</span><br><span class="line">       )</span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
-<p>在第1个中。代换模型解释出一个<em>推迟进行</em>的操作所形成的链条。收缩阶段表现为这些运算的实际进行。称为<strong>递归计算过程</strong>，它的长度随着n值而线性增长，这样的计算过程为一个<em>线性递归过程</em></p>
+
+<p>在第1个中。代换模型解释出一个<em>推迟进行<em>的操作所形成的链条。收缩阶段表现为这些运算的实际进行。称为*</em>递归计算过程*<em>，它的长度随着n值而线性增长，这样的计算过程为一个</em>线性递归过程</em></p>
 <p>在第2个中，没有任何增长或者收缩。在我们需要保存轨迹里，所有的东西就是变量product、current_count和max_count的值。我们称这种过程为一个<em>迭代计算过程</em>。迭代计算过程就是那种其状态可以用<strong>固定数据的状态变量描述的计算过程</strong></p>
 <blockquote>
 <p>从另一个角度来看这两个过程之间的对比。在迭代的情况里，在计算过程中的任何一点，那几个程序变量都提供了有关计算状态的完整表述。如果我们令上述计算在某两个步骤之间停下来，想要重新唤醒这一计算，只需要为解释器提供有关这三个变量的值。</p>
@@ -533,16 +291,24 @@
 <li>递归方式调用</li>
 </ol>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fib</span> n) </span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> n <span class="number">1</span>) (<span class="name">1</span>))</span><br><span class="line">        ((<span class="name"><span class="builtin-name">=</span></span> n <span class="number">2</span>) (<span class="name">1</span>))</span><br><span class="line">        ((<span class="name"><span class="builtin-name">&gt;</span></span> n <span class="number">2</span>) (<span class="name"><span class="builtin-name">+</span></span> fib((<span class="name"><span class="builtin-name">-</span></span> n <span class="number">1</span>)) fib((<span class="name"><span class="builtin-name">-</span></span> n <span class="number">2</span>))))</span><br><span class="line">      )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>迭代的方式调用</li>
 </ol>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fib</span> n)</span><br><span class="line">  			(<span class="name">fib-iter</span>(<span class="name">n</span> <span class="number">3</span> <span class="number">1</span> <span class="number">1</span>))</span><br><span class="line">  )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fib-iter</span> N cur less1 less2)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> <span class="number">1</span> N) <span class="number">1</span>)</span><br><span class="line">         ((<span class="name"><span class="builtin-name">=</span></span> <span class="number">2</span> N) <span class="number">1</span>)</span><br><span class="line">         ((<span class="name"><span class="builtin-name">=</span></span> cur N) (<span class="name">less1</span>))</span><br><span class="line">         (<span class="name"><span class="builtin-name">else</span></span> (<span class="name">fib-iter</span> N (<span class="name"><span class="builtin-name">+</span></span> cur <span class="number">1</span>) (<span class="name"><span class="builtin-name">+</span></span> less1 less2) less1)</span><br><span class="line">         )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <h4 id="换零钱方式"><a href="#换零钱方式" class="headerlink" title="换零钱方式"></a>换零钱方式</h4><p>这个会比较复杂一点。就是用递归的方法进行计算有多少种方式</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">first-denomination</span> kinds-of-conions)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> kinds-of-conins <span class="number">1</span>) <span class="number">1</span>)</span><br><span class="line">        ((<span class="name"><span class="builtin-name">=</span></span> kinds-of-conins <span class="number">2</span>) <span class="number">5</span>)</span><br><span class="line">        ((<span class="name"><span class="builtin-name">=</span></span> kinds-of-conins <span class="number">3</span>) <span class="number">10</span>)</span><br><span class="line">        ((<span class="name"><span class="builtin-name">=</span></span> kinds-of-conins <span class="number">4</span>) <span class="number">25</span>)</span><br><span class="line">        ((<span class="name"><span class="builtin-name">=</span></span> kinds-of-conins <span class="number">5</span>) <span class="number">50</span>)</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">count-change</span> amount)</span><br><span class="line">  (<span class="name">cc</span> amount <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">cc</span> amount kinds-of-conions)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> <span class="number">0</span> amount) <span class="number">1</span>)</span><br><span class="line">        ((<span class="name"><span class="builtin-name">or</span></span> (<span class="name"><span class="builtin-name">&lt;</span></span> amount <span class="number">0</span>) (<span class="name"><span class="builtin-name">=</span></span> kinds-of-conions <span class="number">0</span>)) <span class="number">0</span>)</span><br><span class="line">        (<span class="name"><span class="builtin-name">else</span></span> ( (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">cc</span> amount (<span class="name"><span class="builtin-name">-</span></span> kinds-of-conions <span class="number">1</span>))</span><br><span class="line">                 (<span class="name">cc</span> (<span class="name"><span class="builtin-name">-</span></span> amount </span><br><span class="line">                        (<span class="name">first-denomination</span> kinds-of-conions))</span><br><span class="line">                     )</span><br><span class="line">                   )</span><br><span class="line">                )</span><br><span class="line">              )</span><br><span class="line">        )  	</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <p>下面是比较好理解的Java的方式</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span>[] arrange = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">       cal(arrange, <span class="number">50</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span>[] arrange, <span class="keyword">int</span> money)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (money == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"50 cent "</span> + arrange[<span class="number">0</span>] + <span class="string">" 25 cent "</span> + arrange[<span class="number">1</span>] + <span class="string">" 10 cent "</span> + arrange[<span class="number">2</span>] + <span class="string">" 5 cent "</span> + arrange[<span class="number">3</span>] + <span class="string">" 1 cent"</span> + arrange[<span class="number">4</span>]);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (money &gt;= <span class="number">50</span>) &#123;</span><br><span class="line">            arrange[<span class="number">0</span>] += <span class="number">1</span>;</span><br><span class="line">            cal(arrange, money - <span class="number">50</span>);</span><br><span class="line">            arrange[<span class="number">0</span>] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (money &gt;= <span class="number">25</span>) &#123;</span><br><span class="line">            arrange[<span class="number">1</span>] += <span class="number">1</span>;</span><br><span class="line">            cal (arrange, money - <span class="number">25</span>);</span><br><span class="line">            arrange[<span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (money &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">            arrange[<span class="number">2</span>] += <span class="number">1</span>;</span><br><span class="line">            cal(arrange, money - <span class="number">10</span>);</span><br><span class="line">            arrange[<span class="number">2</span>] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (money &gt;= <span class="number">5</span>) &#123;</span><br><span class="line">            arrange[<span class="number">3</span>] += <span class="number">1</span>;</span><br><span class="line">            cal(arrange, money -<span class="number">5</span>);</span><br><span class="line">            arrange[<span class="number">3</span>] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (money &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            arrange[<span class="number">4</span>] += <span class="number">1</span>;</span><br><span class="line">            cal(arrange, money - <span class="number">1</span>);</span><br><span class="line">            arrange[<span class="number">4</span>] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="练习-1-11"><a href="#练习-1-11" class="headerlink" title="练习 1.11"></a>练习 1.11</h4><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fun-iter</span> n cur a b c)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> (((<span class="name"><span class="builtin-name">=</span></span> n <span class="number">1</span>) <span class="number">1</span>)</span><br><span class="line">         ((<span class="name"><span class="builtin-name">=</span></span> n <span class="number">2</span>) <span class="number">2</span>)</span><br><span class="line">         ((<span class="name"><span class="builtin-name">=</span></span> n <span class="number">3</span>) <span class="number">3</span>)</span><br><span class="line">         ((<span class="name"><span class="builtin-name">=</span></span> n cur) a)</span><br><span class="line">         (<span class="name"><span class="builtin-name">else</span></span> (<span class="name">fun-iter</span> n (<span class="name"><span class="builtin-name">+</span></span> cur <span class="number">1</span>) (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> a <span class="number">3</span>) (<span class="name"><span class="builtin-name">*</span></span> b <span class="number">2</span>) c) a b)</span><br><span class="line">        )</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">func</span> n)</span><br><span class="line">  (<span class="name">fun-iter</span> n <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">1</span>)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <h4 id="练习-1-12"><a href="#练习-1-12" class="headerlink" title="练习 1.12"></a>练习 1.12</h4><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">pascal</span> row col)</span><br><span class="line">  cond ( (<span class="name"><span class="builtin-name">&gt;</span></span> col row) (<span class="name">error</span> <span class="string">"unvalid col value"</span>)</span><br><span class="line">         ((<span class="name"><span class="builtin-name">or</span></span> (<span class="name"><span class="builtin-name">=</span></span> col <span class="number">0</span>) (<span class="name"><span class="builtin-name">=</span></span> col row)) <span class="number">1</span>)</span><br><span class="line">         (<span class="name"><span class="builtin-name">+</span></span> pascal((<span class="name"><span class="builtin-name">-</span></span> row <span class="number">1</span>) col) pascal((<span class="name"><span class="builtin-name">-</span></span> row <span class="number">1</span>) (<span class="name"><span class="builtin-name">+</span></span> col <span class="number">1</span>)))</span><br><span class="line">        )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <p>这样的效率会很慢</p>
 <p>由帕斯卡三角形（杨辉三角形）的公式可得 ${row \choose col}= \frac {row!} {col!(row−col)!}$</p>
 <blockquote>
@@ -554,8 +320,11 @@
 <p>求$(x+1)^n$展开式从第2到n-1项</p>
 </blockquote>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">factorial</span> n)</span><br><span class="line">    (<span class="name">fact-iter</span> <span class="number">1</span> <span class="number">1</span> n))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fact-iter</span> p b e)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span>  (<span class="name"><span class="builtin-name">&gt;</span></span> b e) </span><br><span class="line">       p</span><br><span class="line">       (<span class="name">fact-iter</span> (<span class="name"><span class="builtin-name">*</span></span> p b)(<span class="name"><span class="builtin-name">+</span></span> b <span class="number">1</span>) e))</span><br><span class="line">)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">pascal</span> row col)</span><br><span class="line">  (<span class="name"><span class="builtin-name">/</span></span> (<span class="name">factorial</span> row) (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">factorial</span> col) (<span class="name">factorial</span> (<span class="name"><span class="builtin-name">-</span></span> row col)))</span><br></pre></td></tr></table></figure>
+
 <h4 id="更相减损术"><a href="#更相减损术" class="headerlink" title="更相减损术"></a>更相减损术</h4><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">gcb</span> a b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">0</span> b) a ( gcb b (<span class="name"><span class="builtin-name">remainder</span></span> a b) )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
-<h4 id="实例-1-2-6-素数检测"><a href="#实例-1-2-6-素数检测" class="headerlink" title="实例 1.2.6 素数检测"></a>实例 1.2.6 素数检测</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(define (devides? a b) </span><br><span class="line">	(= (remainder a b) 0)</span><br><span class="line">(define (smallest-divisor n)</span><br><span class="line">	(find-divisor n 2))</span><br><span class="line">	</span><br><span class="line">(define (find-devisor n b)</span><br><span class="line">	(conds ((&gt; (square b) n)) n)</span><br><span class="line">		((devides? n b) b)</span><br><span class="line">		(else (find-deversior n (+ b 1)) </span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
+
+<h4 id="实例-1-2-6-素数检测"><a href="#实例-1-2-6-素数检测" class="headerlink" title="实例 1.2.6 素数检测"></a>实例 1.2.6 素数检测</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(define (devides? a b) </span><br><span class="line">	(&#x3D; (remainder a b) 0)</span><br><span class="line">(define (smallest-divisor n)</span><br><span class="line">	(find-divisor n 2))</span><br><span class="line">	</span><br><span class="line">(define (find-devisor n b)</span><br><span class="line">	(conds ((&gt; (square b) n)) n)</span><br><span class="line">		((devides? n b) b)</span><br><span class="line">		(else (find-deversior n (+ b 1)) </span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
+
 <h4 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h4><p>先说结论当n为素数的时候 $(a^n-a)mod(n) = 0$ 进一步的 </p>
 <p>$a^nmod(n) = a$  </p>
 <p>=&gt;  </p>
@@ -571,7 +340,7 @@
 <li>那么通过数学归纳法，我们去求当a为的0时候，那么 $(0^n-0)$ 的值。 0能被任何素数整除</li>
 <li>所以费马小定理成立</li>
 </ol>
-<p><strong>注意</strong> 费马小定理是证明素数的充分不必要条件，比方说561 = 17 <em> 3 </em> 11. 但是 561 复合费马小定理的公式</p>
+<p><strong>注意</strong> 费马小定理是证明素数的充分不必要条件，比方说561 = 17 * 3 * 11. 但是 561 复合费马小定理的公式</p>
 <p>换个表述方式我们定义$\phi(n)$ 为1～n中和n互质的数，我们可以得到 $a^{\phi(n)} = 1 (mod \ n)$，这个就是欧拉函数</p>
 <h4 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h4><p>$a^{\phi(n)} = 1 (mod \ n)$</p>
 <p>$\phi(n)$表示在1～n中和n互质的数</p>
@@ -596,17 +365,21 @@
 <p>求$3^{83}$最后两位的值</p>
 <p>​    根据欧拉公式$a^{\phi(n)} = 1 (mod \ n)$</p>
 <p>$\phi(100) = \phi(4)\phi(25)=(2^2-2)*(5^2-5)=40$</p>
-<p>$3^{83} = 3^3 <em> 3^{80} = 3^3 </em> (3 ^{\phi(100)})^2\equiv 3^3 = 27$</p>
+<p>$3^{83} = 3^3 * 3^{80} = 3^3 * (3 ^{\phi(100)})^2\equiv 3^3 = 27$</p>
 <p><a href="https://zhuanlan.zhihu.com/p/35060143" target="_blank" rel="noopener">凶残小姐姐的知乎介绍</a></p>
 <h2 id="用高阶函数抽象"><a href="#用高阶函数抽象" class="headerlink" title="用高阶函数抽象"></a>用高阶函数抽象</h2><h3 id="过程作为参数"><a href="#过程作为参数" class="headerlink" title="过程作为参数"></a>过程作为参数</h3><p>例子1</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-cubes</span> a b)</span><br><span class="line">  	(<span class="name"><span class="builtin-name">if</span></span> ((<span class="name">a</span> &gt; b) <span class="number">0</span>)</span><br><span class="line">        (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">cube</span> a) (<span class="name">sum-cubes</span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> a) b))</span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <p>例子2</p>
 <p>$$\sum_{n 0\to\infty }{\frac{1}{(1+4<em>n)(3+4</em>n)}} = {\frac {\pi} {8}}$$</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">pi-sum</span> a b)</span><br><span class="line">  	(<span class="name"><span class="builtin-name">if</span></span> ( (<span class="name"><span class="builtin-name">&gt;</span></span> a b) <span class="number">0</span>)</span><br><span class="line">        (<span class="name"><span class="builtin-name">else</span></span> (<span class="name"><span class="builtin-name">+</span></span>(<span class="name"><span class="builtin-name">/</span></span> <span class="number">1</span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> (<span class="name"><span class="builtin-name">*</span></span> <span class="number">4</span> n)))))</span><br><span class="line">    )</span><br><span class="line"> )</span><br></pre></td></tr></table></figure>
+
 <p>我们可以填充下面模板中的各空位，产生出上面的各个过程：</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">&lt;name&gt;</span> a b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (</span><br><span class="line">       ((<span class="name"><span class="builtin-name">&gt;</span></span> a b) <span class="number">0</span>)</span><br><span class="line">       (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">&lt;term&gt;</span> a)</span><br><span class="line">          (<span class="name">&lt;name&gt;</span> (<span class="name">&lt;next&gt;</span> a) b)</span><br><span class="line">      )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <p>转换一下</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum</span> term a next b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> ((<span class="name"><span class="builtin-name">&gt;</span></span> a b) <span class="number">0</span>)</span><br><span class="line">      (<span class="name"><span class="builtin-name">else</span></span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">term</span> a) </span><br><span class="line">               (<span class="name">sum</span> term (<span class="name">next</span> a) next b)))</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">inc</span> n) (<span class="name"><span class="builtin-name">+</span></span> n <span class="number">1</span>))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-cube</span> a b)</span><br><span class="line">  (<span class="name">sum</span> cube a inc b))</span><br></pre></td></tr></table></figure>
+
 <p>相当于把过程作为参数传入</p>
 <blockquote>
 <p>然而，即使在数值计算过程中，如果将过程限制为只能以数作为参数，那么会严重的限制我们抽象的能力。经常有一些同样的程序设计模式能用于若干不同的过程，为了把这种模式描述为响应的概念吗，我们就需要构造出这样的过程，让他们以过程为参数。这类能操作过程的过程称为<strong>高阶过程</strong>。</p>
@@ -616,517 +389,229 @@
 <p>(lambda (x) (+ x 4))</p>
 <p>(lambda表达式可用作组合式的运算符。 <strong>lambda表达式可做运算符</strong></p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((<span class="name"><span class="builtin-name">lambda</span></span> (x y z) (<span class="name"><span class="builtin-name">+</span></span> x y (<span class="name">square</span> z))) <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
 <p>逻辑的过程是 </p>
 <p>我们通过过程名称调用过程 -&gt; 将过程作为参数传入 -&gt; 将lambda （匿名函数） 作为参数传入</p>
 <h3 id="用let创建局部变量"><a href="#用let创建局部变量" class="headerlink" title="用let创建局部变量"></a>用let创建局部变量</h3><p>$f(x,y) = x(1+xy)^2+y(1-y) + (1+xy)(1-y)$</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f</span> x y)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f-helper</span> a b) </span><br><span class="line">    (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> x square a) (<span class="name"><span class="builtin-name">*</span></span> y b) (<span class="name"><span class="builtin-name">*</span></span> a b))</span><br><span class="line">  )</span><br><span class="line">  (<span class="name">f-helper</span> </span><br><span class="line">   	(<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> (<span class="name"><span class="builtin-name">*</span></span> x y))</span><br><span class="line">   	(<span class="name"><span class="builtin-name">-</span></span> <span class="number">1</span> y)</span><br><span class="line">   )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
 <p>如果使用lambda的话</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f</span> x y)</span><br><span class="line">  ((<span class="name"><span class="builtin-name">lambda</span></span> (a b) </span><br><span class="line">    (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> x square a) </span><br><span class="line">       (<span class="name"><span class="builtin-name">*</span></span> y b) </span><br><span class="line">       (<span class="name"><span class="builtin-name">*</span></span> a b)))</span><br><span class="line">   (<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> (<span class="name"><span class="builtin-name">*</span></span> x y))</span><br><span class="line">   (<span class="name"><span class="builtin-name">-</span></span> <span class="number">1</span> y)</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
 <p>如果使用let的话</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f</span> x y)</span><br><span class="line">  (<span class="name"><span class="builtin-name">let</span></span> (</span><br><span class="line">        (<span class="name">a</span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">1</span> (<span class="name"><span class="builtin-name">*</span></span> x y)))</span><br><span class="line">        (<span class="name">b</span> (<span class="name"><span class="builtin-name">-</span></span> <span class="number">1</span> y)))</span><br><span class="line">    (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">x</span> (<span class="name">square</span> x))</span><br><span class="line">       (<span class="name"><span class="builtin-name">*</span></span> y b)</span><br><span class="line">       (<span class="name"><span class="builtin-name">*</span></span> a b)</span><br><span class="line">       )</span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
 <p>let 表达式只是作为基础lambda表达式的语法外衣罢了</p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
-            <a href="/tags/费马小定理-素数/" rel="tag"># 费马小定理 素数</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/09/28/ASM4-方法/" rel="next" title="ASM4-方法">
-                <i class="fa fa-chevron-left"></i> ASM4-方法
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86-%E7%B4%A0%E6%95%B0/" rel="tag"># 费马小定理 素数</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/26/构造数据抽象/" rel="prev" title="构造数据抽象">
-                构造数据抽象 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/28/ASM4-%E6%96%B9%E6%B3%95/" rel="prev" title="ASM4-方法">
+      <i class="fa fa-chevron-left"></i> ASM4-方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/26/%E6%9E%84%E9%80%A0%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1/" rel="next" title="构造数据抽象">
+      构造数据抽象 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
+  
+  
+  
 
   </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="小夫">
-            
-              <p class="site-author-name" itemprop="name">小夫</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">27</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/andrewchen1" title="GitHub &rarr; https://github.com/andrewchen1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:andrewchen7@outlook.com" title="E-Mail &rarr; mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="http://weibo.com/312228489" title="微博 &rarr; http://weibo.com/312228489" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序设计的基本元素"><span class="nav-number">1.</span> <span class="nav-text">程序设计的基本元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">1.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名和环境"><span class="nav-number">1.2.</span> <span class="nav-text">命名和环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合式的求值"><span class="nav-number">1.3.</span> <span class="nav-text">组合式的求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复合过程"><span class="nav-number">1.4.</span> <span class="nav-text">复合过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程应用的代换模型"><span class="nav-number">1.5.</span> <span class="nav-text">过程应用的代换模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用序和正则序"><span class="nav-number">1.6.</span> <span class="nav-text">应用序和正则序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件表达式和谓词"><span class="nav-number">1.7.</span> <span class="nav-text">条件表达式和谓词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例：采用牛顿法求平方根"><span class="nav-number">1.8.</span> <span class="nav-text">实例：采用牛顿法求平方根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程作为黑箱抽象"><span class="nav-number">1.9.</span> <span class="nav-text">过程作为黑箱抽象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程与它们所产生的计算"><span class="nav-number">2.</span> <span class="nav-text">过程与它们所产生的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性的递归和迭代"><span class="nav-number">2.1.</span> <span class="nav-text">线性的递归和迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树形递归"><span class="nav-number">2.2.</span> <span class="nav-text">树形递归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">2.2.1.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#换零钱方式"><span class="nav-number">2.2.2.</span> <span class="nav-text">换零钱方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-1-11"><span class="nav-number">2.2.3.</span> <span class="nav-text">练习 1.11</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-1-12"><span class="nav-number">2.2.4.</span> <span class="nav-text">练习 1.12</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更相减损术"><span class="nav-number">2.2.5.</span> <span class="nav-text">更相减损术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1-2-6-素数检测"><span class="nav-number">2.2.6.</span> <span class="nav-text">实例 1.2.6 素数检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#费马小定理"><span class="nav-number">2.2.7.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧拉函数"><span class="nav-number">2.2.8.</span> <span class="nav-text">欧拉函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用高阶函数抽象"><span class="nav-number">3.</span> <span class="nav-text">用高阶函数抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过程作为参数"><span class="nav-number">3.1.</span> <span class="nav-text">过程作为参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用lambda构造过程"><span class="nav-number">3.2.</span> <span class="nav-text">用lambda构造过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用let创建局部变量"><span class="nav-number">3.3.</span> <span class="nav-text">用let创建局部变量</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">浙ICP备18051892号 </a>&copy; 2018 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">小夫</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.1"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
-
-
-  
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
-
-  
-
-
-  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
-
-
-  
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-  
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      
-      equationNumbers: {
-        autoNumber: 'AMS'
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
     }
   });
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
-      }
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
-  });
+  }
 </script>
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-      for (i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
-<style>
-.MathJax_Display {
-  overflow-x: scroll;
-  overflow-y: hidden;
-}
-</style>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序设计的基本元素"><span class="nav-number">1.</span> <span class="nav-text">程序设计的基本元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">1.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名和环境"><span class="nav-number">1.2.</span> <span class="nav-text">命名和环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合式的求值"><span class="nav-number">1.3.</span> <span class="nav-text">组合式的求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复合过程"><span class="nav-number">1.4.</span> <span class="nav-text">复合过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程应用的代换模型"><span class="nav-number">1.5.</span> <span class="nav-text">过程应用的代换模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用序和正则序"><span class="nav-number">1.6.</span> <span class="nav-text">应用序和正则序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件表达式和谓词"><span class="nav-number">1.7.</span> <span class="nav-text">条件表达式和谓词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例：采用牛顿法求平方根"><span class="nav-number">1.8.</span> <span class="nav-text">实例：采用牛顿法求平方根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程作为黑箱抽象"><span class="nav-number">1.9.</span> <span class="nav-text">过程作为黑箱抽象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程与它们所产生的计算"><span class="nav-number">2.</span> <span class="nav-text">过程与它们所产生的计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性的递归和迭代"><span class="nav-number">2.1.</span> <span class="nav-text">线性的递归和迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树形递归"><span class="nav-number">2.2.</span> <span class="nav-text">树形递归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">2.2.1.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#换零钱方式"><span class="nav-number">2.2.2.</span> <span class="nav-text">换零钱方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-1-11"><span class="nav-number">2.2.3.</span> <span class="nav-text">练习 1.11</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-1-12"><span class="nav-number">2.2.4.</span> <span class="nav-text">练习 1.12</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更相减损术"><span class="nav-number">2.2.5.</span> <span class="nav-text">更相减损术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1-2-6-素数检测"><span class="nav-number">2.2.6.</span> <span class="nav-text">实例 1.2.6 素数检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#费马小定理"><span class="nav-number">2.2.7.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧拉函数"><span class="nav-number">2.2.8.</span> <span class="nav-text">欧拉函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用高阶函数抽象"><span class="nav-number">3.</span> <span class="nav-text">用高阶函数抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过程作为参数"><span class="nav-number">3.1.</span> <span class="nav-text">过程作为参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用lambda构造过程"><span class="nav-number">3.2.</span> <span class="nav-text">用lambda构造过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用let创建局部变量"><span class="nav-number">3.3.</span> <span class="nav-text">用let创建局部变量</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小夫"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">小夫</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/andrewchen1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;andrewchen1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:andrewchen7@outlook.com" title="E-Mail → mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/312228489" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;312228489" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备18051892号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小夫</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
   
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
 
   
 

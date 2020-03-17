@@ -1,129 +1,50 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="分布式计算的8个误区 网络是可靠的 没有延时 带宽是无限的 网络是安全的 网络拓扑不会改变 只有一个管理员 网络传输没有开销 网络是同构的监督监督的层级结构akka使用Actor层级结构来描述监督.   当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor. 然后是路径为/usr的守护Actor.使用actorSystem.actorOf(Props.create(a.c">
-<meta name="keywords" content="akka,笔记">
+  <meta name="description" content="分布式计算的8个误区 网络是可靠的 没有延时 带宽是无限的 网络是安全的 网络拓扑不会改变 只有一个管理员 网络传输没有开销 网络是同构的监督监督的层级结构akka使用Actor层级结构来描述监督.   当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor. 然后是路径为&#x2F;usr的守护Actor.使用actorSystem.actorOf(Props.create(a.c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4-Actor 的生命周期 处理状态和错误">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/03/03/4-Actor-的生命周期-处理状态和错误/index.html">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="分布式计算的8个误区 网络是可靠的 没有延时 带宽是无限的 网络是安全的 网络拓扑不会改变 只有一个管理员 网络传输没有开销 网络是同构的监督监督的层级结构akka使用Actor层级结构来描述监督.   当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor. 然后是路径为/usr的守护Actor.使用actorSystem.actorOf(Props.create(a.c">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1551598492970.png">
-<meta property="og:image" content="http://img.andrewchen1.top/小书匠/1551601330911.png">
-<meta property="og:updated_time" content="2019-04-06T06:21:43.749Z">
+<meta property="og:description" content="分布式计算的8个误区 网络是可靠的 没有延时 带宽是无限的 网络是安全的 网络拓扑不会改变 只有一个管理员 网络传输没有开销 网络是同构的监督监督的层级结构akka使用Actor层级结构来描述监督.   当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor. 然后是路径为&#x2F;usr的守护Actor.使用actorSystem.actorOf(Props.create(a.c">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551598492970.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551601330911.png">
+<meta property="article:published_time" content="2019-03-03T07:12:01.000Z">
+<meta property="article:modified_time" content="2019-04-06T06:21:43.750Z">
+<meta property="article:author" content="小夫">
+<meta property="article:tag" content="akka">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="4-Actor 的生命周期 处理状态和错误">
-<meta name="twitter:description" content="分布式计算的8个误区 网络是可靠的 没有延时 带宽是无限的 网络是安全的 网络拓扑不会改变 只有一个管理员 网络传输没有开销 网络是同构的监督监督的层级结构akka使用Actor层级结构来描述监督.   当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor. 然后是路径为/usr的守护Actor.使用actorSystem.actorOf(Props.create(a.c">
-<meta name="twitter:image" content="http://img.andrewchen1.top/小书匠/1551598492970.png">
+<meta name="twitter:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551598492970.png">
+
+<link rel="canonical" href="https://www.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/">
 
 
-
-
-
-
-  <link rel="canonical" href="https://www.andrewchen1.top/2019/03/03/4-Actor-的生命周期-处理状态和错误/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -135,15 +56,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -152,9 +66,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -168,304 +81,144 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 
-    <div class="custom-logo-site-title">
+  <div class="site-meta">
+
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">小夫的笔记</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-      
         <p class="site-subtitle">但行好事 莫问前程</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
-  
-  
-  
-  
-
-  
-
-  <a href="https://github.com/andrewchen1" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/03/03/4-Actor-的生命周期-处理状态和错误/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="小夫的笔记">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">4-Actor 的生命周期 处理状态和错误
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          4-Actor 的生命周期 处理状态和错误
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-03-03 15:12:01" itemprop="dateCreated datePublished" datetime="2019-03-03T15:12:01+08:00">2019-03-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-04-06 14:21:43" itemprop="dateModified" datetime="2019-04-06T14:21:43+08:00">2019-04-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Akka入门和实践/" itemprop="url" rel="index"><span itemprop="name">Akka入门和实践</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Akka%E5%85%A5%E9%97%A8%E5%92%8C%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">Akka入门和实践</span></a>
+                </span>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h2 id="分布式计算的8个误区"><a href="#分布式计算的8个误区" class="headerlink" title="分布式计算的8个误区"></a>分布式计算的8个误区</h2><ul>
@@ -481,7 +234,7 @@
 <ol>
 <li>当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor.</li>
 <li>然后是路径为/usr的守护Actor.使用actorSystem.actorOf(Props.create(a.class, parameters), name); 就是Actor的子Actor /usr/yourActor.</li>
-<li>如果在一个Actor内部创建另外一个Actor, 那么可以通过调用<strong>context().actorOf(Props.create(a.class, “”)) /</strong> 得到新建的actor, 他的路径就是 /usr/yourActor/newChild.<h3 id="监督策略和醉酒的厨师"><a href="#监督策略和醉酒的厨师" class="headerlink" title="监督策略和醉酒的厨师"></a>监督策略和醉酒的厨师</h3><img src="http://img.andrewchen1.top/小书匠/1551598492970.png" alt="酒店的层级结构"><br>假设厨师很喜欢喝酒. 但是喝了酒之后就经常给自己惹麻烦, 所以此时作为他的上级要采取一些措施<ul>
+<li>如果在一个Actor内部创建另外一个Actor, 那么可以通过调用<strong>context().actorOf(Props.create(a.class, “”)) /</strong> 得到新建的actor, 他的路径就是 /usr/yourActor/newChild.<h3 id="监督策略和醉酒的厨师"><a href="#监督策略和醉酒的厨师" class="headerlink" title="监督策略和醉酒的厨师"></a>监督策略和醉酒的厨师</h3><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551598492970.png" alt="酒店的层级结构"><br>假设厨师很喜欢喝酒. 但是喝了酒之后就经常给自己惹麻烦, 所以此时作为他的上级要采取一些措施<ul>
 <li>继续 resume actor 继续处理下一条信息</li>
 <li>停止 stop 停止Actor 不做任何操作</li>
 <li>重启 restart 新建一个Actor 代替原来的Actor</li>
@@ -499,8 +252,9 @@
 <li>reRestart(reson, message) 默认情况下会调用postStop()</li>
 <li>postRestart() 默认情况下会调用preStart()</li>
 </ul>
-<p>for example. 假设有一个聊天引用, 每个用户都用一个actor来表示, 而Actor 之间的消息传递就表示了用户之间的聊天. 一个用户进入聊天就启动了一个Actor, 并发送一个消息来更新聊天室中的用户名单. 当一个Actor停止的时候,发送另一条消息, 将用户从聊天室的活跃名单活跃名单中删除.<br><img src="http://img.andrewchen1.top/小书匠/1551601330911.png" alt="启动流程"></p>
-<h4 id="定义重试次数"><a href="#定义重试次数" class="headerlink" title="定义重试次数"></a>定义重试次数</h4><p>一旦某个消息抛出了异常，该消息就会被丢弃，不会被重新发送。监督者会执行监督策略。在继续执行（resume）或是重启（restart）的情况下，就会处理下一条消息了。如果有一个工作队列的话，我们可能会想要重试若干次，然后彻底返回失败。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> OneForOneStrategy(<span class="number">2</span>,Duration.create(<span class="string">"1 minute"</span>), PartialFunction)</span><br></pre></td></tr></table></figure></p>
+<p>for example. 假设有一个聊天引用, 每个用户都用一个actor来表示, 而Actor 之间的消息传递就表示了用户之间的聊天. 一个用户进入聊天就启动了一个Actor, 并发送一个消息来更新聊天室中的用户名单. 当一个Actor停止的时候,发送另一条消息, 将用户从聊天室的活跃名单活跃名单中删除.<br><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551601330911.png" alt="启动流程"></p>
+<h4 id="定义重试次数"><a href="#定义重试次数" class="headerlink" title="定义重试次数"></a>定义重试次数</h4><p>一旦某个消息抛出了异常，该消息就会被丢弃，不会被重新发送。监督者会执行监督策略。在继续执行（resume）或是重启（restart）的情况下，就会处理下一条消息了。如果有一个工作队列的话，我们可能会想要重试若干次，然后彻底返回失败。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> OneForOneStrategy(<span class="number">2</span>,Duration.create(<span class="string">"1 minute"</span>), PartialFunction)</span><br></pre></td></tr></table></figure>
 <h4 id="终止或者kill-一个-Actor"><a href="#终止或者kill-一个-Actor" class="headerlink" title="终止或者kill 一个 Actor"></a>终止或者kill 一个 Actor</h4><ul>
 <li>调用 system.stop(ActorRef)</li>
 <li>调用context.stop(ActorRef)</li>
@@ -509,363 +263,184 @@
 <li>热交换 become &amp; unbecome</li>
 <li>有限自动机</li>
 </ul>
-<h3 id="基于Actor状态的条件语句"><a href="#基于Actor状态的条件语句" class="headerlink" title="基于Actor状态的条件语句"></a>基于Actor状态的条件语句</h3><p>比方说数据端客户端离线了, 那么在重新上线之前,他都无法进行处理, 这时候我们可以将信息存储起来,直到客户端恢复连接之后再做处理.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.akkademy.article;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.AbstractActorWithStash;</span><br><span class="line"><span class="keyword">import</span> akka.japi.pf.ReceiveBuilder;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.messages.GetRequest;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-03-03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageStachActor</span> <span class="keyword">extends</span> <span class="title">AbstractActorWithStash</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Boolean online = Boolean.FALSE;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Receive <span class="title">createReceive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ReceiveBuilder.create().match(GetRequest.class, x -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (online) &#123;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stash();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).match(Connected.class, x -&gt; &#123;</span><br><span class="line">            online = <span class="keyword">true</span>;</span><br><span class="line">            unstash();</span><br><span class="line">        &#125;).match(Disconnect.class, x -&gt; online = <span class="keyword">false</span>)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="热交换"><a href="#热交换" class="headerlink" title="热交换"></a>热交换</h3><p>become 这个方法receiver 块中定义的行为修改为一个新的PartialFunction.<br>unbecome 这个方法将Actor的修改回默认的行为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.akkademy.messages;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.AbstractActorWithStash;</span><br><span class="line"><span class="keyword">import</span> akka.actor.ActorRef;</span><br><span class="line"><span class="keyword">import</span> akka.japi.pf.ReceiveBuilder;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Connected;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Disconnect;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-03-03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BecomeActor</span> <span class="keyword">extends</span> <span class="title">AbstractActorWithStash</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ActorRef actorRef;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BecomeActor</span><span class="params">(String refLocation)</span> </span>&#123;</span><br><span class="line">        actorRef = context().actorFor(refLocation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Receive <span class="title">createReceive</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ReceiveBuilder.create()</span><br><span class="line">                .match(GetRequest.class, x -&gt; stash())</span><br><span class="line">                .match(Connected.class, x -&gt; &#123;</span><br><span class="line">                    context().become(ReceiveBuilder.create()</span><br><span class="line">                            .match(GetRequest.class, b -&gt; actorRef.tell(<span class="string">""</span>, self())).build().onMessage());</span><br><span class="line">                    unstash();</span><br><span class="line">                &#125;).match(Disconnect.class, x -&gt; context().unbecome())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="stash-泄漏"><a href="#stash-泄漏" class="headerlink" title="stash 泄漏"></a>stash 泄漏</h4><p>如果在很长的时间之后才能将状态变回到unstash 需要的状态或者根本就不能恢复到那个状态,那么会造成内存耗尽或者邮箱开始丢弃信息.<br>所以我们要在构造函数或者preStart 中通过调度器来检查这个条件.避免泄漏的发生<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.akkademy.messages;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.AbstractActorWithStash;</span><br><span class="line"><span class="keyword">import</span> akka.actor.ActorRef;</span><br><span class="line"><span class="keyword">import</span> akka.japi.pf.ReceiveBuilder;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Connected;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.ConnectionTimeoutException;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Disconnect;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.TestConnected;</span><br><span class="line"><span class="keyword">import</span> scala.concurrent.duration.Duration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Time;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-03-03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BecomeActor</span> <span class="keyword">extends</span> <span class="title">AbstractActorWithStash</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ActorRef actorRef;</span><br><span class="line">    <span class="keyword">private</span> Boolean connected;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BecomeActor</span><span class="params">(String refLocation)</span> </span>&#123;</span><br><span class="line">        actorRef = context().actorFor(refLocation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Receive <span class="title">createReceive</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ReceiveBuilder.create()</span><br><span class="line">                .match(GetRequest.class, x -&gt; stash())</span><br><span class="line">                .match(Connected.class, x -&gt; &#123;</span><br><span class="line">                    context().become(ReceiveBuilder.create()</span><br><span class="line">                            .match(GetRequest.class, b -&gt; actorRef.tell(<span class="string">""</span>, self())).build().onMessage());</span><br><span class="line">                    unstash();</span><br><span class="line">                &#125;).match(Disconnect.class, x -&gt; context().unbecome())</span><br><span class="line">                .match(TestConnected.class, x -&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (! connected) &#123;</span><br><span class="line">                        <span class="keyword">throw</span> <span class="keyword">new</span> ConnectionTimeoutException();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        context().system()</span><br><span class="line">                .scheduler()</span><br><span class="line">                </span><br><span class="line">                .scheduleOnce(</span><br><span class="line">                        <span class="comment">// 延迟执行的时间</span></span><br><span class="line">                        Duration.create(<span class="number">1000</span>, TimeUnit.MICROSECONDS), </span><br><span class="line">                        self(),</span><br><span class="line">                        <span class="keyword">new</span> TestConnected(),</span><br><span class="line">                        context().dispatcher(),</span><br><span class="line">                        <span class="keyword">null</span></span><br><span class="line">                        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="基于Actor状态的条件语句"><a href="#基于Actor状态的条件语句" class="headerlink" title="基于Actor状态的条件语句"></a>基于Actor状态的条件语句</h3><p>比方说数据端客户端离线了, 那么在重新上线之前,他都无法进行处理, 这时候我们可以将信息存储起来,直到客户端恢复连接之后再做处理.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.akkademy.article;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.AbstractActorWithStash;</span><br><span class="line"><span class="keyword">import</span> akka.japi.pf.ReceiveBuilder;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.messages.GetRequest;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-03-03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageStachActor</span> <span class="keyword">extends</span> <span class="title">AbstractActorWithStash</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Boolean online = Boolean.FALSE;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Receive <span class="title">createReceive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ReceiveBuilder.create().match(GetRequest<span class="class">.<span class="keyword">class</span>, <span class="title">x</span> -&gt; </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (online) &#123;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stash();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).match(Connected<span class="class">.<span class="keyword">class</span>, <span class="title">x</span> -&gt; </span>&#123;</span><br><span class="line">            online = <span class="keyword">true</span>;</span><br><span class="line">            unstash();</span><br><span class="line">        &#125;).match(Disconnect<span class="class">.<span class="keyword">class</span>, <span class="title">x</span> -&gt; <span class="title">online</span> </span>= <span class="keyword">false</span>)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="热交换"><a href="#热交换" class="headerlink" title="热交换"></a>热交换</h3><p>become 这个方法receiver 块中定义的行为修改为一个新的PartialFunction.<br>unbecome 这个方法将Actor的修改回默认的行为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.akkademy.messages;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.AbstractActorWithStash;</span><br><span class="line"><span class="keyword">import</span> akka.actor.ActorRef;</span><br><span class="line"><span class="keyword">import</span> akka.japi.pf.ReceiveBuilder;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Connected;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Disconnect;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-03-03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BecomeActor</span> <span class="keyword">extends</span> <span class="title">AbstractActorWithStash</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ActorRef actorRef;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BecomeActor</span><span class="params">(String refLocation)</span> </span>&#123;</span><br><span class="line">        actorRef = context().actorFor(refLocation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Receive <span class="title">createReceive</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ReceiveBuilder.create()</span><br><span class="line">                .match(GetRequest<span class="class">.<span class="keyword">class</span>, <span class="title">x</span> -&gt; <span class="title">stash</span>())</span></span><br><span class="line"><span class="class">                .<span class="title">match</span>(<span class="title">Connected</span>.<span class="title">class</span>, <span class="title">x</span> -&gt; </span>&#123;</span><br><span class="line">                    context().become(ReceiveBuilder.create()</span><br><span class="line">                            .match(GetRequest.class, b -&gt; actorRef.tell("", self())).build().onMessage());</span><br><span class="line">                    unstash();</span><br><span class="line">                &#125;).match(Disconnect<span class="class">.<span class="keyword">class</span>, <span class="title">x</span> -&gt; <span class="title">context</span>().<span class="title">unbecome</span>())</span></span><br><span class="line"><span class="class">                .<span class="title">build</span>()</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="stash-泄漏"><a href="#stash-泄漏" class="headerlink" title="stash 泄漏"></a>stash 泄漏</h4><p>如果在很长的时间之后才能将状态变回到unstash 需要的状态或者根本就不能恢复到那个状态,那么会造成内存耗尽或者邮箱开始丢弃信息.<br>所以我们要在构造函数或者preStart 中通过调度器来检查这个条件.避免泄漏的发生</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.akkademy.messages;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.AbstractActorWithStash;</span><br><span class="line"><span class="keyword">import</span> akka.actor.ActorRef;</span><br><span class="line"><span class="keyword">import</span> akka.japi.pf.ReceiveBuilder;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Connected;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.ConnectionTimeoutException;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.Disconnect;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.article.TestConnected;</span><br><span class="line"><span class="keyword">import</span> scala.concurrent.duration.Duration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Time;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-03-03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BecomeActor</span> <span class="keyword">extends</span> <span class="title">AbstractActorWithStash</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ActorRef actorRef;</span><br><span class="line">    <span class="keyword">private</span> Boolean connected;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BecomeActor</span><span class="params">(String refLocation)</span> </span>&#123;</span><br><span class="line">        actorRef = context().actorFor(refLocation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Receive <span class="title">createReceive</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ReceiveBuilder.create()</span><br><span class="line">                .match(GetRequest<span class="class">.<span class="keyword">class</span>, <span class="title">x</span> -&gt; <span class="title">stash</span>())</span></span><br><span class="line"><span class="class">                .<span class="title">match</span>(<span class="title">Connected</span>.<span class="title">class</span>, <span class="title">x</span> -&gt; </span>&#123;</span><br><span class="line">                    context().become(ReceiveBuilder.create()</span><br><span class="line">                            .match(GetRequest.class, b -&gt; actorRef.tell("", self())).build().onMessage());</span><br><span class="line">                    unstash();</span><br><span class="line">                &#125;).match(Disconnect<span class="class">.<span class="keyword">class</span>, <span class="title">x</span> -&gt; <span class="title">context</span>().<span class="title">unbecome</span>())</span></span><br><span class="line"><span class="class">                .<span class="title">match</span>(<span class="title">TestConnected</span>.<span class="title">class</span>, <span class="title">x</span> -&gt; </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (! connected) &#123;</span><br><span class="line">                        <span class="keyword">throw</span> <span class="keyword">new</span> ConnectionTimeoutException();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        context().system()</span><br><span class="line">                .scheduler()</span><br><span class="line">                </span><br><span class="line">                .scheduleOnce(</span><br><span class="line">                        <span class="comment">// 延迟执行的时间</span></span><br><span class="line">                        Duration.create(<span class="number">1000</span>, TimeUnit.MICROSECONDS), </span><br><span class="line">                        self(),</span><br><span class="line">                        <span class="keyword">new</span> TestConnected(),</span><br><span class="line">                        context().dispatcher(),</span><br><span class="line">                        <span class="keyword">null</span></span><br><span class="line">                        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h3><p>fsm中的类型有两个参数 状态和容器</p>
 <p>首先 我们定义存在若干的状态</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Status &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 中断连接</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    DISCONNECTED,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    CONNECTED,</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 连接等待</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    CONNECTED_PENDING</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>首先FSM 肯定存在有限的状态和状态的变迁. </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BunchingActor</span> <span class="keyword">extends</span> <span class="title">AbstractFSM</span>&lt;<span class="title">Status</span>,</span></span><br><span class="line"><span class="class">        <span class="title">LinkedBlockingQueue</span>&lt;<span class="title">GetRequest</span>&gt;&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BunchingActor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        startWith(Status.DISCONNECTED, <span class="keyword">null</span>);</span><br><span class="line">				<span class="comment">//在离线的情况下</span></span><br><span class="line">      	<span class="comment">// 如果有清空的请求 -&gt; 保持原状</span></span><br><span class="line">        <span class="comment">// 如果有发送消息的请求 -&gt; 把这个请求放到队列中</span></span><br><span class="line">      	<span class="comment">// 如果连接上了网络</span></span><br><span class="line">      	<span class="comment">//	请求队列中有没有内容 状态变迁到连接中</span></span><br><span class="line">      	<span class="comment">//					 有内容 变迁到填充中状态中</span></span><br><span class="line">        when(Status.DISCONNECTED,</span><br><span class="line">                matchEvent(FlushMsg.class, (msg, container) -&gt; stay())</span><br><span class="line">                .event(SendRequest.class, (msg, container) -&gt; &#123;</span><br><span class="line">                    container.add(msg);</span><br><span class="line">                    <span class="keyword">return</span> stay();</span><br><span class="line">                &#125;)</span><br><span class="line">                .event(Tcp.Connected.class, (msg, container) -&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (Objects.isNull(container.peek())) &#123;</span><br><span class="line">                        <span class="keyword">return</span> goTo(Status.CONNECTED);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> goTo(Status.CONNECTED_PENDING);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">        );</span><br><span class="line">				<span class="comment">//在在线的情况下</span></span><br><span class="line">      	<span class="comment">// 如果有清空的请求 -&gt; 保持原状(因为队列是空的, 不能进行清空)</span></span><br><span class="line">      	<span class="comment">// 如果有发送消息的请求 -&gt; 保存到队列 同时将状态变迁到填充中的状态</span></span><br><span class="line">        when(Status.CONNECTED,</span><br><span class="line">                matchEvent(FlushMsg.class, (msg, container) -&gt; stay())</span><br><span class="line">                        .event(SendRequest.class, (msg, container) -&gt; &#123;</span><br><span class="line">                            container.add(msg);</span><br><span class="line">                            <span class="keyword">return</span> goTo(Status.CONNECTED_PENDING);</span><br><span class="line">                        &#125;)</span><br><span class="line">                        .event(String.class, (msg, container) -&gt; &#123;</span><br><span class="line">                            System.out.println(msg);</span><br><span class="line">                            <span class="keyword">return</span> stay();</span><br><span class="line">                        &#125;));</span><br><span class="line">			<span class="comment">//在 填充中的状态</span></span><br><span class="line">      <span class="comment">// 清空请求 -&gt; 进行清空, 同时将状态变迁到连接中(没有内容可以被清空了)</span></span><br><span class="line">        when(Status.CONNECTED_PENDING,</span><br><span class="line">                matchEvent(FlushMsg.class, (msg, container) -&gt; &#123;</span><br><span class="line">                    container.clear();</span><br><span class="line">                    <span class="keyword">return</span> stay();</span><br><span class="line">                &#125;).event(SendRequest.class, (msg, container) -&gt; &#123;</span><br><span class="line">                    container.add(msg);</span><br><span class="line">                    <span class="keyword">return</span> goTo(Status.CONNECTED_PENDING);</span><br><span class="line">                &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BunchingActor</span> <span class="keyword">extends</span> <span class="title">AbstractFSM</span>&lt;<span class="title">Status</span>,</span></span><br><span class="line"><span class="class">        <span class="title">LinkedBlockingQueue</span>&lt;<span class="title">GetRequest</span>&gt;&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BunchingActor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        startWith(Status.DISCONNECTED, <span class="keyword">null</span>);</span><br><span class="line">				<span class="comment">//在离线的情况下</span></span><br><span class="line">      	<span class="comment">// 如果有清空的请求 -&gt; 保持原状</span></span><br><span class="line">        <span class="comment">// 如果有发送消息的请求 -&gt; 把这个请求放到队列中</span></span><br><span class="line">      	<span class="comment">// 如果连接上了网络</span></span><br><span class="line">      	<span class="comment">//	请求队列中有没有内容 状态变迁到连接中</span></span><br><span class="line">      	<span class="comment">//					 有内容 变迁到填充中状态中</span></span><br><span class="line">        when(Status.DISCONNECTED,</span><br><span class="line">                matchEvent(FlushMsg<span class="class">.<span class="keyword">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; <span class="title">stay</span>())</span></span><br><span class="line"><span class="class">                .<span class="title">event</span>(<span class="title">SendRequest</span>.<span class="title">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; </span>&#123;</span><br><span class="line">                    container.add(msg);</span><br><span class="line">                    <span class="keyword">return</span> stay();</span><br><span class="line">                &#125;)</span><br><span class="line">                .event(Tcp.Connected<span class="class">.<span class="keyword">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (Objects.isNull(container.peek())) &#123;</span><br><span class="line">                        <span class="keyword">return</span> goTo(Status.CONNECTED);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> goTo(Status.CONNECTED_PENDING);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">        );</span><br><span class="line">				<span class="comment">//在在线的情况下</span></span><br><span class="line">      	<span class="comment">// 如果有清空的请求 -&gt; 保持原状(因为队列是空的, 不能进行清空)</span></span><br><span class="line">      	<span class="comment">// 如果有发送消息的请求 -&gt; 保存到队列 同时将状态变迁到填充中的状态</span></span><br><span class="line">        when(Status.CONNECTED,</span><br><span class="line">                matchEvent(FlushMsg<span class="class">.<span class="keyword">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; <span class="title">stay</span>())</span></span><br><span class="line"><span class="class">                        .<span class="title">event</span>(<span class="title">SendRequest</span>.<span class="title">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; </span>&#123;</span><br><span class="line">                            container.add(msg);</span><br><span class="line">                            <span class="keyword">return</span> goTo(Status.CONNECTED_PENDING);</span><br><span class="line">                        &#125;)</span><br><span class="line">                        .event(String<span class="class">.<span class="keyword">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; </span>&#123;</span><br><span class="line">                            System.out.println(msg);</span><br><span class="line">                            <span class="keyword">return</span> stay();</span><br><span class="line">                        &#125;));</span><br><span class="line">			<span class="comment">//在 填充中的状态</span></span><br><span class="line">      <span class="comment">// 清空请求 -&gt; 进行清空, 同时将状态变迁到连接中(没有内容可以被清空了)</span></span><br><span class="line">        when(Status.CONNECTED_PENDING,</span><br><span class="line">                matchEvent(FlushMsg<span class="class">.<span class="keyword">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; </span>&#123;</span><br><span class="line">                    container.clear();</span><br><span class="line">                    <span class="keyword">return</span> stay();</span><br><span class="line">                &#125;).event(SendRequest<span class="class">.<span class="keyword">class</span>, (<span class="title">msg</span>, <span class="title">container</span>) -&gt; </span>&#123;</span><br><span class="line">                    container.add(msg);</span><br><span class="line">                    <span class="keyword">return</span> goTo(Status.CONNECTED_PENDING);</span><br><span class="line">                &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
+
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/akka/" rel="tag"># akka</a>
-          
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/02/22/刚出炉的一套面试题Q1/" rel="next" title="刚出炉的一套面试题Q1">
-                <i class="fa fa-chevron-left"></i> 刚出炉的一套面试题Q1
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/akka/" rel="tag"># akka</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/06/5-纵向扩展/" rel="prev" title="5-纵向扩展">
-                5-纵向扩展 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/22/%E5%88%9A%E5%87%BA%E7%82%89%E7%9A%84%E4%B8%80%E5%A5%97%E9%9D%A2%E8%AF%95%E9%A2%98Q1/" rel="prev" title="刚出炉的一套面试题Q1">
+      <i class="fa fa-chevron-left"></i> 刚出炉的一套面试题Q1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/06/5-%E7%BA%B5%E5%90%91%E6%89%A9%E5%B1%95/" rel="next" title="5-纵向扩展">
+      5-纵向扩展 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
+  
+  
+  
 
   </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="小夫">
-            
-              <p class="site-author-name" itemprop="name">小夫</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">27</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/andrewchen1" title="GitHub &rarr; https://github.com/andrewchen1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:andrewchen7@outlook.com" title="E-Mail &rarr; mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="http://weibo.com/312228489" title="微博 &rarr; http://weibo.com/312228489" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式计算的8个误区"><span class="nav-number">1.</span> <span class="nav-text">分布式计算的8个误区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监督"><span class="nav-number">2.</span> <span class="nav-text">监督</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监督的层级结构"><span class="nav-number">2.1.</span> <span class="nav-text">监督的层级结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监督策略和醉酒的厨师"><span class="nav-number">2.2.</span> <span class="nav-text">监督策略和醉酒的厨师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">Actor 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义重试次数"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义重试次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终止或者kill-一个-Actor"><span class="nav-number">2.3.2.</span> <span class="nav-text">终止或者kill 一个 Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监督其他的Actor"><span class="nav-number">2.3.3.</span> <span class="nav-text">监督其他的Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全重启"><span class="nav-number">2.3.4.</span> <span class="nav-text">安全重启</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态"><span class="nav-number">3.</span> <span class="nav-text">状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Actor状态的条件语句"><span class="nav-number">3.1.</span> <span class="nav-text">基于Actor状态的条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热交换"><span class="nav-number">3.2.</span> <span class="nav-text">热交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stash-泄漏"><span class="nav-number">3.2.1.</span> <span class="nav-text">stash 泄漏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限状态机"><span class="nav-number">3.3.</span> <span class="nav-text">有限状态机</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">浙ICP备18051892号 </a>&copy; 2018 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">小夫</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式计算的8个误区"><span class="nav-number">1.</span> <span class="nav-text">分布式计算的8个误区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监督"><span class="nav-number">2.</span> <span class="nav-text">监督</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监督的层级结构"><span class="nav-number">2.1.</span> <span class="nav-text">监督的层级结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监督策略和醉酒的厨师"><span class="nav-number">2.2.</span> <span class="nav-text">监督策略和醉酒的厨师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">Actor 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义重试次数"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义重试次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终止或者kill-一个-Actor"><span class="nav-number">2.3.2.</span> <span class="nav-text">终止或者kill 一个 Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监督其他的Actor"><span class="nav-number">2.3.3.</span> <span class="nav-text">监督其他的Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全重启"><span class="nav-number">2.3.4.</span> <span class="nav-text">安全重启</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态"><span class="nav-number">3.</span> <span class="nav-text">状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Actor状态的条件语句"><span class="nav-number">3.1.</span> <span class="nav-text">基于Actor状态的条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热交换"><span class="nav-number">3.2.</span> <span class="nav-text">热交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stash-泄漏"><span class="nav-number">3.2.1.</span> <span class="nav-text">stash 泄漏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限状态机"><span class="nav-number">3.3.</span> <span class="nav-text">有限状态机</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小夫"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">小夫</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/andrewchen1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;andrewchen1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:andrewchen7@outlook.com" title="E-Mail → mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/312228489" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;312228489" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备18051892号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小夫</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
 
 
 
@@ -874,104 +449,43 @@
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.1"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
-
-
-  
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
-
-  
-
-
-  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
-
-
-  
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
 
   
 

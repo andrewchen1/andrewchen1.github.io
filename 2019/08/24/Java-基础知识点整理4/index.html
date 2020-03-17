@@ -1,129 +1,49 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-Hans">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false,"dimmer":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="Java异常分类和处理Java注解 @Target 表示这个注解使用的范围  @Retention 表示这个注解的存活时间范围。比方说是  作者：RednaxelaFX 链接：https://www.zhihu.com/question/60835139/answer/180750670 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 RetentionPolic">
-<meta name="keywords" content="Java">
+  <meta name="description" content="Java异常分类和处理Java注解 @Target 表示这个注解使用的范围  @Retention 表示这个注解的存活时间范围。比方说是  作者：RednaxelaFX 链接：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;60835139&#x2F;answer&#x2F;180750670 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 RetentionPolic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-基础知识点整理4">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/08/24/Java-基础知识点整理4/index.html">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/08/24/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%864/index.html">
 <meta property="og:site_name" content="小夫的笔记">
-<meta property="og:description" content="Java异常分类和处理Java注解 @Target 表示这个注解使用的范围  @Retention 表示这个注解的存活时间范围。比方说是  作者：RednaxelaFX 链接：https://www.zhihu.com/question/60835139/answer/180750670 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 RetentionPolic">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:description" content="Java异常分类和处理Java注解 @Target 表示这个注解使用的范围  @Retention 表示这个注解的存活时间范围。比方说是  作者：RednaxelaFX 链接：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;60835139&#x2F;answer&#x2F;180750670 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 RetentionPolic">
 <meta property="og:image" content="http://img.andrewchen1.top/181453414212066.png">
 <meta property="og:image" content="http://img.andrewchen1.top/181454040628981.png">
-<meta property="og:updated_time" content="2019-09-28T05:07:55.402Z">
+<meta property="article:published_time" content="2019-08-24T05:50:41.000Z">
+<meta property="article:modified_time" content="2019-09-28T05:07:55.402Z">
+<meta property="article:author" content="小夫">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java-基础知识点整理4">
-<meta name="twitter:description" content="Java异常分类和处理Java注解 @Target 表示这个注解使用的范围  @Retention 表示这个注解的存活时间范围。比方说是  作者：RednaxelaFX 链接：https://www.zhihu.com/question/60835139/answer/180750670 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 RetentionPolic">
 <meta name="twitter:image" content="http://img.andrewchen1.top/181453414212066.png">
 
+<link rel="canonical" href="https://www.andrewchen1.top/2019/08/24/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%864/">
 
 
-
-
-
-  <link rel="canonical" href="https://www.andrewchen1.top/2019/08/24/Java-基础知识点整理4/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
@@ -135,15 +55,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -152,9 +65,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -168,304 +80,144 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 
-    <div class="custom-logo-site-title">
+  <div class="site-meta">
+
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">小夫的笔记</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-      
         <p class="site-subtitle">但行好事 莫问前程</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
-  
-  
-  
-  
-
-  
-
-  <a href="https://github.com/andrewchen1" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/08/24/Java-基础知识点整理4/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/08/24/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%864/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="小夫的笔记">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Java-基础知识点整理4
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          Java-基础知识点整理4
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-08-24 13:50:41" itemprop="dateCreated datePublished" datetime="2019-08-24T13:50:41+08:00">2019-08-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-09-28 13:07:55" itemprop="dateModified" datetime="2019-09-28T13:07:55+08:00">2019-09-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础知识/" itemprop="url" rel="index"><span itemprop="name">Java基础知识</span></a></span>
-
-                
-                
-              
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">Java基础知识</span></a>
+                </span>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h1 id="Java异常分类和处理"><a href="#Java异常分类和处理" class="headerlink" title="Java异常分类和处理"></a>Java异常分类和处理</h1><h2 id="Java注解"><a href="#Java注解" class="headerlink" title="Java注解"></a>Java注解</h2><ul>
@@ -499,6 +251,7 @@
 <p><a href="https://www.cnblogs.com/zrtqsk/p/3735273.html" target="_blank" rel="noopener">生命周期</a></p>
 <h2 id="Bean的定义"><a href="#Bean的定义" class="headerlink" title="Bean的定义"></a>Bean的定义</h2><p>可以通过在xml中定义Bean</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> = <span class="string">""</span> <span class="attr">class</span> = <span class="string">""</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"root"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password]&#125;"</span></span></span><br><span class="line">  &lt;/bean&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>或者在类上面使用@Component的注解。 通过ComponentScan的方式要找到相关的类。插一句 ComponentScan的怎么做</p>
 <ul>
 <li><p>ComponentScanAnnotationParser#parse</p>
@@ -525,7 +278,7 @@
 </ul>
 <h2 id="从DefaultListableBeanFactory-管中窥豹-看Bean的生命流程"><a href="#从DefaultListableBeanFactory-管中窥豹-看Bean的生命流程" class="headerlink" title="从DefaultListableBeanFactory 管中窥豹 看Bean的生命流程"></a>从DefaultListableBeanFactory 管中窥豹 看Bean的生命流程</h2><p>因为BeanFactory是懒加载的 ，当我们调用getBean()的时候，会</p>
 <ul>
-<li><p>AbstractBeanFactory#doGetBean(inal String name, final Class<t> requiredType, final Object[] args, boolean typeCheckOnly)</t></p>
+<li><p>AbstractBeanFactory#doGetBean(inal String name, final Class<T> requiredType, final Object[] args, boolean typeCheckOnly)</p>
 <ul>
 <li><p>transformedBeanName</p>
 <p>得到bean Name，入参的beanName中如果有&amp;符号 截取到最后一个&amp;开始到结束的子字符串作为bean name</p>
@@ -534,46 +287,40 @@
 <h4 id="背景知识-Bean的循环依赖和解决"><a href="#背景知识-Bean的循环依赖和解决" class="headerlink" title="背景知识 Bean的循环依赖和解决"></a>背景知识 Bean的循环依赖和解决</h4><p>以下内容来自 <a href="https://blog.csdn.net/u010853261/article/details/77940767" target="_blank" rel="noopener">Spring-bean的循环依赖以及解决方式</a></p>
 <p> Spring的单例对象的初始化主要分为三步：</p>
 <ul>
-<li>create Bean Instance 实例化</li>
-<li>popluate Bean 填充属性</li>
+<li><p>create Bean Instance 实例化</p>
+</li>
+<li><p>popluate Bean 填充属性</p>
+</li>
 <li><p>Initalize Bean 初始化</p>
 <p>在Spring容器整个生命周期内，有且只有一个对象，所以很容易想到这个对象应该存在Cache中，Spring为了解决单例的循环依赖问题，使用了<strong>三级缓存</strong>。</p>
 <p>DefaultSingletonBeanRegistry.class</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Cache of singleton objects: bean name --&gt; bean instance */</span></span><br><span class="line"><span class="comment">// 单例对象的cache</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; singletonObjects = <span class="keyword">new</span> ConcurrentHashMap&lt;String, Object&gt;(<span class="number">256</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Cache of singleton factories: bean name --&gt; ObjectFactory */</span></span><br><span class="line"><span class="comment">// 单例工厂的cache </span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories = <span class="keyword">new</span> HashMap&lt;String, ObjectFactory&lt;?&gt;&gt;(<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Cache of early singleton objects: bean name --&gt; bean instance */</span></span><br><span class="line"><span class="comment">// 提前曝光的单例对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; earlySingletonObjects = <span class="keyword">new</span> HashMap&lt;String, Object&gt;(<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+
+<p>尝试从cache中获得对象</p>
+<p>DefaultSingletonBeanRegistry#getSingleton</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">getSingleton</span><span class="params">(String beanName, <span class="keyword">boolean</span> allowEarlyReference)</span> </span>&#123;</span><br><span class="line">    Object singletonObject = <span class="keyword">this</span>.singletonObjects.get(beanName);</span><br><span class="line">    <span class="keyword">if</span> (singletonObject == <span class="keyword">null</span> &amp;&amp; isSingletonCurrentlyInCreation(beanName)) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>.singletonObjects) &#123;</span><br><span class="line">            singletonObject = <span class="keyword">this</span>.earlySingletonObjects.get(beanName);</span><br><span class="line">            <span class="keyword">if</span> (singletonObject == <span class="keyword">null</span> &amp;&amp; allowEarlyReference) &#123;</span><br><span class="line">                ObjectFactory&lt;?&gt; singletonFactory = <span class="keyword">this</span>.singletonFactories.get(beanName);</span><br><span class="line">                <span class="keyword">if</span> (singletonFactory != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    singletonObject = singletonFactory.getObject();</span><br><span class="line">                    <span class="keyword">this</span>.earlySingletonObjects.put(beanName, singletonObject);</span><br><span class="line">                    <span class="keyword">this</span>.singletonFactories.remove(beanName);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (singletonObject != NULL_OBJECT ? singletonObject : <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码需要解释两个参数：</p>
+<p>isSingletonCurrentlyInCreation()判断当前单例bean是否正在创建中，也就是没有初始化完成(比如A的构造器依赖了B对象所以得先去创建B对象， 或则在A的populateBean过程中依赖了B对象，得先去创建B对象，这时的A就是处于创建中的状态。)<br>allowEarlyReference 是否允许从singletonFactories中通过getObject拿到对象<br>分析getSingleton()的整个过程，Spring首先从一级缓存singletonObjects中获取。如果获取不到，并且对象正在创建中，就再从二级缓存earlySingletonObjects中获取。如果还是获取不到且允许singletonFactories通过getObject()获取，就从三级缓存singletonFactory.getObject()(三级缓存)获取，如果获取到了则：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.earlySingletonObjects.put(beanName, singletonObject);</span><br><span class="line"><span class="keyword">this</span>.singletonFactories.remove(beanName);</span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code> 尝试从cache中获得对象
-
- DefaultSingletonBeanRegistry#getSingleton
-
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">getSingleton</span><span class="params">(String beanName, <span class="keyword">boolean</span> allowEarlyReference)</span> </span>&#123;</span><br><span class="line">    Object singletonObject = <span class="keyword">this</span>.singletonObjects.get(beanName);</span><br><span class="line">    <span class="keyword">if</span> (singletonObject == <span class="keyword">null</span> &amp;&amp; isSingletonCurrentlyInCreation(beanName)) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>.singletonObjects) &#123;</span><br><span class="line">            singletonObject = <span class="keyword">this</span>.earlySingletonObjects.get(beanName);</span><br><span class="line">            <span class="keyword">if</span> (singletonObject == <span class="keyword">null</span> &amp;&amp; allowEarlyReference) &#123;</span><br><span class="line">                ObjectFactory&lt;?&gt; singletonFactory = <span class="keyword">this</span>.singletonFactories.get(beanName);</span><br><span class="line">                <span class="keyword">if</span> (singletonFactory != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    singletonObject = singletonFactory.getObject();</span><br><span class="line">                    <span class="keyword">this</span>.earlySingletonObjects.put(beanName, singletonObject);</span><br><span class="line">                    <span class="keyword">this</span>.singletonFactories.remove(beanName);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (singletonObject != NULL_OBJECT ? singletonObject : <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
- 上面的代码需要解释两个参数：
-
- isSingletonCurrentlyInCreation()判断当前单例bean是否正在创建中，也就是没有初始化完成(比如A的构造器依赖了B对象所以得先去创建B对象， 或则在A的populateBean过程中依赖了B对象，得先去创建B对象，这时的A就是处于创建中的状态。)
- allowEarlyReference 是否允许从singletonFactories中通过getObject拿到对象
- 分析getSingleton()的整个过程，Spring首先从一级缓存singletonObjects中获取。如果获取不到，并且对象正在创建中，就再从二级缓存earlySingletonObjects中获取。如果还是获取不到且允许singletonFactories通过getObject()获取，就从三级缓存singletonFactory.getObject()(三级缓存)获取，如果获取到了则：
-
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.earlySingletonObjects.put(beanName, singletonObject);</span><br><span class="line"><span class="keyword">this</span>.singletonFactories.remove(beanName);</span><br></pre></td></tr></table></figure>
-
-
-
- 从singletonFactories中移除，并放入earlySingletonObjects中。其实也就是从三级缓存移动到了二级缓存。
+<pre><code> 从singletonFactories中移除，并放入earlySingletonObjects中。其实也就是从三级缓存移动到了二级缓存。
 
  从上面三级缓存的分析，我们可以知道，Spring解决循环依赖的诀窍就在于singletonFactories这个三级cache。这个cache的类型是ObjectFactory，定义如下：
 
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ObjectFactory</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">T <span class="title">getObject</span><span class="params">()</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-
  这个接口在下面被引用
 
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addSingletonFactory</span><span class="params">(String beanName, ObjectFactory&lt;?&gt; singletonFactory)</span> </span>&#123;</span><br><span class="line">    Assert.notNull(singletonFactory, <span class="string">"Singleton factory must not be null"</span>);</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>.singletonObjects) &#123;</span><br><span class="line">        <span class="keyword">if</span> (! <span class="keyword">this</span>.singletonObjects.containsKey(beanName)) &#123;</span><br><span class="line">            <span class="keyword">this</span>.singletonFactories.put(beanName, singletonFactory);</span><br><span class="line">            <span class="keyword">this</span>.earlySingletonObjects.remove(beanName);</span><br><span class="line">            <span class="keyword">this</span>.registeredSingletons.add(beanName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
  这里就是解决循环依赖的关键，这段代码发生在createBeanInstance之后，也就是说单例对象此时已经被创建出来(调用了构造器)。这个对象已经被生产出来了，虽然还不完美（还没有进行初始化的第二步和第三步），但是已经能被人认出来了（根据对象引用能定位到堆中的对象），所以Spring此时将这个对象提前曝光出来让大家认识，让大家使用。
 
@@ -585,12 +332,12 @@
 
  参考 http://www.jianshu.com/p/6c359768b1dc
 
-如果在三级缓存中找到了 再通过BeanName做一次判断 判断这个 我们想要的是这个bean 还是生成这个bean的factory。 在最初的时候我们是把bean name 给处理了一次的 看上面的**transformedBeanName** 说明。
-</code></pre><ul>
+如果在三级缓存中找到了 再通过BeanName做一次判断 判断这个 我们想要的是这个bean 还是生成这个bean的factory。 在最初的时候我们是把bean name 给处理了一次的 看上面的**transformedBeanName** 说明。</code></pre><ul>
 <li><p>getObjectForBeanInstance</p>
 <p>在之前我们在cache中找到了bean。但是这个bean可能是factoryBean。 我们需要通过工厂Bean 获得产品Bean</p>
 <p>AbstractBeanFactory#getObjectForBeanInstance</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">getObjectForBeanInstance</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">			Object beanInstance, String name, String beanName, RootBeanDefinition mbd)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Don't let calling code try to dereference the factory if the bean isn't a factory.</span></span><br><span class="line">  <span class="comment">// 因为在尝试获得bean的使用bean的名字是去掉&amp;符号的。&amp;表示工厂bean。 但是根据这个beanName获取道的并不是FactoryBean的 抛错</span></span><br><span class="line">		<span class="keyword">if</span> (BeanFactoryUtils.isFactoryDereference(name) &amp;&amp; !(beanInstance <span class="keyword">instanceof</span> FactoryBean)) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanIsNotAFactoryException(transformedBeanName(name), beanInstance.getClass());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Now we have the bean instance, which may be a normal bean or a FactoryBean.</span></span><br><span class="line">		<span class="comment">// If it's a FactoryBean, we use it to create a bean instance, unless the</span></span><br><span class="line">		<span class="comment">// caller actually wants a reference to the factory.</span></span><br><span class="line">  <span class="comment">// 相当于 ! beanInstance instanceof FactoryBean &amp;&amp; ! BeanFactoryUtils.isFactoryDereference(name) 确定 名字并不是BeanFactory类型的 且 得到的类并不是工厂类型的， return bean</span></span><br><span class="line">		<span class="keyword">if</span> (!(beanInstance <span class="keyword">instanceof</span> FactoryBean) || BeanFactoryUtils.isFactoryDereference(name)) &#123;</span><br><span class="line">			<span class="keyword">return</span> beanInstance;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">// 否则就是通过BeanFactory构建Bean</span></span><br><span class="line">		Object object = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span> (mbd == <span class="keyword">null</span>) &#123;</span><br><span class="line">			object = getCachedObjectForFactoryBean(beanName);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// Return bean instance from factory.</span></span><br><span class="line">			FactoryBean&lt;?&gt; factory = (FactoryBean&lt;?&gt;) beanInstance;</span><br><span class="line">			<span class="comment">// Caches object obtained from FactoryBean if it is a singleton.</span></span><br><span class="line">			<span class="keyword">if</span> (mbd == <span class="keyword">null</span> &amp;&amp; containsBeanDefinition(beanName)) &#123;</span><br><span class="line">				mbd = getMergedLocalBeanDefinition(beanName);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">boolean</span> synthetic = (mbd != <span class="keyword">null</span> &amp;&amp; mbd.isSynthetic());</span><br><span class="line">			object = getObjectFromFactoryBean(factory, beanName, !synthetic);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> object;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
 <p>通过getObjectFromFactoryBean获得Bean，在factoryBeanObjectCache中是不是已经存在Bean了，如果存在直接返回， 如果没有 通过BeanFactory 构建，构建的Bean还是要AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsAfterInitialization 进行组装。 同时根据factory bean 是否是isSingleton的来确定是否要加入到factoryBeanObjectCache中</p>
 <p>FactoryBeanRegistrySupport#getObjectFromFactoryBean</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Obtain an object to expose from the given FactoryBean.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> factory the FactoryBean instance</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> beanName the name of the bean</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> shouldPostProcess whether the bean is subject to post-processing</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> the object obtained from the FactoryBean</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> BeanCreationException if FactoryBean object creation failed</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> org.springframework.beans.factory.FactoryBean#getObject()</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> Object <span class="title">getObjectFromFactoryBean</span><span class="params">(FactoryBean&lt;?&gt; factory, String beanName, <span class="keyword">boolean</span> shouldPostProcess)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (factory.isSingleton() &amp;&amp; containsSingleton(beanName)) &#123;</span><br><span class="line">			<span class="keyword">synchronized</span> (getSingletonMutex()) &#123;</span><br><span class="line">				Object object = <span class="keyword">this</span>.factoryBeanObjectCache.get(beanName);</span><br><span class="line">				<span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</span><br><span class="line">					object = doGetObjectFromFactoryBean(factory, beanName);</span><br><span class="line">					<span class="comment">// Only post-process and store if not put there already during getObject() call above</span></span><br><span class="line">					<span class="comment">// (e.g. because of circular reference processing triggered by custom getBean calls)</span></span><br><span class="line">					Object alreadyThere = <span class="keyword">this</span>.factoryBeanObjectCache.get(beanName);</span><br><span class="line">					<span class="keyword">if</span> (alreadyThere != <span class="keyword">null</span>) &#123;</span><br><span class="line">						object = alreadyThere;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> &#123;</span><br><span class="line">						<span class="keyword">if</span> (object != <span class="keyword">null</span> &amp;&amp; shouldPostProcess) &#123;</span><br><span class="line">							<span class="keyword">if</span> (isSingletonCurrentlyInCreation(beanName)) &#123;</span><br><span class="line">								<span class="comment">// Temporarily return non-post-processed object, not storing it yet..</span></span><br><span class="line">								<span class="keyword">return</span> object;</span><br><span class="line">							&#125;</span><br><span class="line">							beforeSingletonCreation(beanName);</span><br><span class="line">							<span class="keyword">try</span> &#123;</span><br><span class="line">								object = postProcessObjectFromFactoryBean(object, beanName);</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">								<span class="keyword">throw</span> <span class="keyword">new</span> BeanCreationException(beanName,</span><br><span class="line">										<span class="string">"Post-processing of FactoryBean's singleton object failed"</span>, ex);</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="keyword">finally</span> &#123;</span><br><span class="line">								afterSingletonCreation(beanName);</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span> (containsSingleton(beanName)) &#123;</span><br><span class="line">							<span class="keyword">this</span>.factoryBeanObjectCache.put(beanName, (object != <span class="keyword">null</span> ? object : NULL_OBJECT));</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> (object != NULL_OBJECT ? object : <span class="keyword">null</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			Object object = doGetObjectFromFactoryBean(factory, beanName);</span><br><span class="line">			<span class="keyword">if</span> (object != <span class="keyword">null</span> &amp;&amp; shouldPostProcess) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					object = postProcessObjectFromFactoryBean(object, beanName);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">					<span class="keyword">throw</span> <span class="keyword">new</span> BeanCreationException(beanName, <span class="string">"Post-processing of FactoryBean's object failed"</span>, ex);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> object;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
@@ -599,16 +346,20 @@
 <ul>
 <li><p>如果这个Beanfactroy有parent Bean factory的话。 那么通过委托的方式看能不能得到bean</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Check if bean definition exists in this factory.</span></span><br><span class="line">			BeanFactory parentBeanFactory = getParentBeanFactory();</span><br><span class="line">			<span class="keyword">if</span> (parentBeanFactory != <span class="keyword">null</span> &amp;&amp; !containsBeanDefinition(beanName)) &#123;</span><br><span class="line">				<span class="comment">// Not found -&gt; check parent.</span></span><br><span class="line">				String nameToLookup = originalBeanName(name);</span><br><span class="line">				<span class="keyword">if</span> (args != <span class="keyword">null</span>) &#123;</span><br><span class="line">					<span class="comment">// Delegation to parent with explicit args.</span></span><br><span class="line">					<span class="keyword">return</span> (T) parentBeanFactory.getBean(nameToLookup, args);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="comment">// No args -&gt; delegate to standard getBean method.</span></span><br><span class="line">					<span class="keyword">return</span> parentBeanFactory.getBean(nameToLookup, requiredType);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>保证创建这个bean的时候，它构造方法中的Bean都已经创建好了</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">String[] dependsOn = mbd.getDependsOn();</span><br><span class="line">				<span class="keyword">if</span> (dependsOn != <span class="keyword">null</span>) &#123;</span><br><span class="line">					<span class="keyword">for</span> (String dep : dependsOn) &#123;</span><br><span class="line">						<span class="keyword">if</span> (isDependent(beanName, dep)) &#123;</span><br><span class="line">							<span class="keyword">throw</span> <span class="keyword">new</span> BeanCreationException(mbd.getResourceDescription(), beanName,</span><br><span class="line">									<span class="string">"Circular depends-on relationship between '"</span> + beanName + <span class="string">"' and '"</span> + dep + <span class="string">"'"</span>);</span><br><span class="line">						&#125;</span><br><span class="line">						registerDependentBean(dep, beanName);</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							getBean(dep);</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">catch</span> (NoSuchBeanDefinitionException ex) &#123;</span><br><span class="line">							<span class="keyword">throw</span> <span class="keyword">new</span> BeanCreationException(mbd.getResourceDescription(), beanName,</span><br><span class="line">									<span class="string">"'"</span> + beanName + <span class="string">"' depends on missing bean '"</span> + dep + <span class="string">"'"</span>, ex);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>DefaultSingletonBeanRegistry#isDependent</p>
 <p>通过递归的方式进行调用 保证这个Bean 构造方法中所依赖的Bean，Bean 构造方法中所依赖的Bean的构造方法中（如果这个Bean还没有被创建的话）所依赖的Bean… 都已经准备好了，否则报错💥</p>
-<p><strong>这里就显示了通过构造方法，依赖注入的方式创建Bean，Bean之间不允许互相依赖，但是通过setter的方式，依赖注入Bean， Bean之间是允许 </strong></p>
+<p>*<em>这里就显示了通过构造方法，依赖注入的方式创建Bean，Bean之间不允许互相依赖，但是通过setter的方式，依赖注入Bean， Bean之间是允许 *</em></p>
 <p>特别说明</p>
 <p><strong>举个简单例子：例如 B 依赖了 A，则 dependentBeanMap 缓存中应该存放一对映射：其中 key 为 A，value 为含有 B 的 Set；而 dependenciesForBeanMap 缓存中也应该存放一对映射：其中 key 为：B，value 为含有 A 的 Set。</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">      <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isDependent</span><span class="params">(String beanName, String dependentBeanName, Set&lt;String&gt; alreadySeen)</span> </span>&#123;</span><br><span class="line">      		<span class="keyword">if</span> (alreadySeen != <span class="keyword">null</span> &amp;&amp; alreadySeen.contains(beanName)) &#123;</span><br><span class="line">      			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      		&#125;</span><br><span class="line">      		String canonicalName = canonicalName(beanName);</span><br><span class="line">      		Set&lt;String&gt; dependentBeans = <span class="keyword">this</span>.dependentBeanMap.get(canonicalName);</span><br><span class="line">      		<span class="keyword">if</span> (dependentBeans == <span class="keyword">null</span>) &#123;</span><br><span class="line">      			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      		&#125;</span><br><span class="line">      		<span class="keyword">if</span> (dependentBeans.contains(dependentBeanName)) &#123;</span><br><span class="line">      			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      		&#125;</span><br><span class="line">      		<span class="keyword">for</span> (String transitiveDependency : dependentBeans) &#123;</span><br><span class="line">      			<span class="keyword">if</span> (alreadySeen == <span class="keyword">null</span>) &#123;</span><br><span class="line">      				alreadySeen = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">      			&#125;</span><br><span class="line">      			alreadySeen.add(beanName);</span><br><span class="line">      			<span class="keyword">if</span> (isDependent(transitiveDependency, dependentBeanName, alreadySeen)) &#123;</span><br><span class="line">      				<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      			&#125;</span><br><span class="line">&#125;</span><br><span class="line">      		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
 </li>
@@ -632,352 +383,170 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (object <span class="keyword">instanceof</span> ApplicationContextAware) &#123;</span><br><span class="line">  ((ApplicationContextAware) object).setApplicationContext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
+
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/11/Java-基础知识点整理3/" rel="next" title="Java 基础知识点整理3">
-                <i class="fa fa-chevron-left"></i> Java 基础知识点整理3
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/13/spring揭秘-掌管大局的Ioc/" rel="prev" title="spring揭秘-掌管大局的Ioc">
-                spring揭秘-掌管大局的Ioc <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/11/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%863/" rel="prev" title="Java 基础知识点整理3">
+      <i class="fa fa-chevron-left"></i> Java 基础知识点整理3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/13/spring%E6%8F%AD%E7%A7%98-%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc/" rel="next" title="spring揭秘-掌管大局的Ioc">
+      spring揭秘-掌管大局的Ioc <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
+  
+  
+  
 
   </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="小夫">
-            
-              <p class="site-author-name" itemprop="name">小夫</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">27</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/andrewchen1" title="GitHub &rarr; https://github.com/andrewchen1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:andrewchen7@outlook.com" title="E-Mail &rarr; mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="http://weibo.com/312228489" title="微博 &rarr; http://weibo.com/312228489" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java异常分类和处理"><span class="nav-number">1.</span> <span class="nav-text">Java异常分类和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java注解"><span class="nav-number">1.1.</span> <span class="nav-text">Java注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-原理"><span class="nav-number">2.</span> <span class="nav-text">Spring 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean-生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Spring Bean 生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的定义"><span class="nav-number">2.2.</span> <span class="nav-text">Bean的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从DefaultListableBeanFactory-管中窥豹-看Bean的生命流程"><span class="nav-number">2.3.</span> <span class="nav-text">从DefaultListableBeanFactory 管中窥豹 看Bean的生命流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景知识-Bean的循环依赖和解决"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">背景知识 Bean的循环依赖和解决</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">浙ICP备18051892号 </a>&copy; 2018 – <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">小夫</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java异常分类和处理"><span class="nav-number">1.</span> <span class="nav-text">Java异常分类和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java注解"><span class="nav-number">1.1.</span> <span class="nav-text">Java注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-原理"><span class="nav-number">2.</span> <span class="nav-text">Spring 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Bean-生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Spring Bean 生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean的定义"><span class="nav-number">2.2.</span> <span class="nav-text">Bean的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从DefaultListableBeanFactory-管中窥豹-看Bean的生命流程"><span class="nav-number">2.3.</span> <span class="nav-text">从DefaultListableBeanFactory 管中窥豹 看Bean的生命流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景知识-Bean的循环依赖和解决"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">背景知识 Bean的循环依赖和解决</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小夫"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">小夫</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/andrewchen1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;andrewchen1" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:andrewchen7@outlook.com" title="E-Mail → mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/312228489" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;312228489" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>微博</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备18051892号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小夫</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
 
 
 
@@ -986,104 +555,43 @@
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
+<script src="/js/schemes/pisces.js"></script>
 
 
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/affix.js?v=7.0.1"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
-
-
-  
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
-
-  
-
-
-  <script src="/js/src/bootstrap.js?v=7.0.1"></script>
-
-
-  
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
 
   
 
