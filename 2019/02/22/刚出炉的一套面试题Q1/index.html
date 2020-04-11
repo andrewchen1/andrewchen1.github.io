@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="刚出炉的一套面试题(JAVA岗) 你们在关于微服务间数据一致性问题，是如何解决的？微服务下的数据一致性的几种实现方式之概述 传统应用的事务管理本地事务事务的特征ACID原子(原子, 一致, 隔离, 持久)  并发事务问题 脏读 (读到了其他事务没有提交的修改) 不可重复读 (读到了其他事务提交的修改) 幻影读 (做count操作的时候在同一事务中获得结果不一致)事务隔离级别 read uncomm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刚出炉的一套面试题Q1">
+<meta property="og:url" content="https://www.andrewchen1.top/2019/02/22/%E5%88%9A%E5%87%BA%E7%82%89%E7%9A%84%E4%B8%80%E5%A5%97%E9%9D%A2%E8%AF%95%E9%A2%98Q1/index.html">
+<meta property="og:site_name" content="小夫的笔记">
+<meta property="og:description" content="刚出炉的一套面试题(JAVA岗) 你们在关于微服务间数据一致性问题，是如何解决的？微服务下的数据一致性的几种实现方式之概述 传统应用的事务管理本地事务事务的特征ACID原子(原子, 一致, 隔离, 持久)  并发事务问题 脏读 (读到了其他事务没有提交的修改) 不可重复读 (读到了其他事务提交的修改) 幻影读 (做count操作的时候在同一事务中获得结果不一致)事务隔离级别 read uncomm">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550843215530.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550843268348.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550843771177.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845574483.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845652250.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845714409.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845870353.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550846036129.png">
+<meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551063033304.png">
+<meta property="article:published_time" content="2019-02-22T07:17:00.000Z">
+<meta property="article:modified_time" content="2019-02-25T03:08:46.065Z">
+<meta property="article:author" content="小夫">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550843215530.png">
+
+<link rel="canonical" href="https://www.andrewchen1.top/2019/02/22/%E5%88%9A%E5%87%BA%E7%82%89%E7%9A%84%E4%B8%80%E5%A5%97%E9%9D%A2%E8%AF%95%E9%A2%98Q1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>刚出炉的一套面试题Q1 | 小夫的笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小夫的笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">但行好事 莫问前程</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/02/22/%E5%88%9A%E5%87%BA%E7%82%89%E7%9A%84%E4%B8%80%E5%A5%97%E9%9D%A2%E8%AF%95%E9%A2%98Q1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小夫的笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          刚出炉的一套面试题Q1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-22 15:17:00" itemprop="dateCreated datePublished" datetime="2019-02-22T15:17:00+08:00">2019-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-02-25 11:08:46" itemprop="dateModified" datetime="2019-02-25T11:08:46+08:00">2019-02-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://mp.weixin.qq.com/s/N5dNzIn8y4DdT4At_DwBvg" target="_blank" rel="noopener">刚出炉的一套面试题(JAVA岗)</a></p>
+<h1 id="你们在关于微服务间数据一致性问题，是如何解决的？"><a href="#你们在关于微服务间数据一致性问题，是如何解决的？" class="headerlink" title="你们在关于微服务间数据一致性问题，是如何解决的？"></a>你们在关于微服务间数据一致性问题，是如何解决的？</h1><p><a href="https://www.jianshu.com/p/b264a196b177" target="_blank" rel="noopener">微服务下的数据一致性的几种实现方式之概述</a></p>
+<h2 id="传统应用的事务管理"><a href="#传统应用的事务管理" class="headerlink" title="传统应用的事务管理"></a>传统应用的事务管理</h2><h3 id="本地事务"><a href="#本地事务" class="headerlink" title="本地事务"></a>本地事务</h3><h4 id="事务的特征"><a href="#事务的特征" class="headerlink" title="事务的特征"></a>事务的特征</h4><p>ACID原子(原子, 一致, 隔离, 持久) </p>
+<h4 id="并发事务问题"><a href="#并发事务问题" class="headerlink" title="并发事务问题"></a>并发事务问题</h4><ul>
+<li>脏读 (读到了其他事务没有提交的修改)</li>
+<li>不可重复读 (读到了其他事务提交的修改)</li>
+<li>幻影读 (做count操作的时候在同一事务中获得结果不一致)<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4></li>
+<li>read uncommit<br>  可以读到没有提交的修改</li>
+<li>read commit<br>  可以读到已经提交的修改</li>
+<li>repeatable read<br>  可重复读, 在一个事务中</li>
+<li>serializable<br>  串行化, 只有在一个事务完成之后再执行下一个事务<h4 id="事务和Connection-在JDBC的事务操作中，必须操作的是同一个Connection连接吗？"><a href="#事务和Connection-在JDBC的事务操作中，必须操作的是同一个Connection连接吗？" class="headerlink" title="事务和Connection 在JDBC的事务操作中，必须操作的是同一个Connection连接吗？"></a>事务和Connection <a href="https://www.zhihu.com/question/38815591" target="_blank" rel="noopener">在JDBC的事务操作中，必须操作的是同一个Connection连接吗？</a></h4>当JDBC程序向DriverManagement获得一个Connection对象时，默认情况下这个Connection对象会自动向数据库提交在它上面发送的SQL语句.<br>statement.executeQuery(). 然后就直接提交给数据库了.若想关闭这种默认提交方式，让多条SQL在一个事务中执行，可使用下列语句：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Connection.setAutoCommit(<span class="keyword">false</span>); <span class="comment">//  相当于start transaction</span></span><br><span class="line">Connection.rollback();  <span class="comment">//rollback</span></span><br><span class="line">Connection.commit();  <span class="comment">//commit</span></span><br></pre></td></tr></table></figure>
+再扩展下，我们直到SQL语句到达MySql之后会有针对SQL语句的编译缓存，也就是执行计划缓存，由于对SQL语句解析和执行计划分析是比较耗时的，于是如果同样的SQL语句发送过来，并且是同一个Connection的，其实也就是同一个TCP链接的，就可以直接从缓存中读取，(因为事务的等级是repeatable read)当Connection断开也就是TCP链接断开，缓存也就失效了。</li>
+</ul>
+<p>在MyBatis中的事务管理有两种模式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.apache.ibatis.transaction.jdbc.JdbcTransaction</span><br><span class="line">org.apache.ibatis.transaction.managed.ManagedTraction</span><br></pre></td></tr></table></figure>
+<p>其实前者org.apache.ibatis.transaction.jdbc.JdbcTransaction就是封装了java.sql.Connection类的事务操作而已，禁止了自动提交模式</p>
+<p>也就是说在数据库自己的事务层次，一次Connection的提交是处理基本单元，即认为Connection的一次提交就是一次事务。所以在ORM层次的MyBatis，封装JDBC Connection 的事务逻辑中，始终都是围绕着Connection类的.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.apache.ibatis.transaction.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.logging.Log;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.logging.LogFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.TransactionIsolationLevel;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.transaction.Transaction;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.transaction.TransactionException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> Transaction&#125; that makes use of the JDBC commit and rollback facilities directly.</span></span><br><span class="line"><span class="comment"> * It relies on the connection retrieved from the dataSource to manage the scope</span></span><br><span class="line"><span class="comment">* of the transaction.</span></span><br><span class="line"><span class="comment"> * Delays connection retrieval until getConnection() is called.</span></span><br><span class="line"><span class="comment"> * Ignores commit or rollback requests when autocommit is on.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> JdbcTransactionFactory</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Jdbc事务</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Clinton Begin</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcTransaction</span> <span class="keyword">implements</span> <span class="title">Transaction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Log log = LogFactory.getLog(JdbcTransaction<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">protected</span> Connection connection;			<span class="comment">//数据库连接</span></span><br><span class="line">  <span class="keyword">protected</span> DataSource dataSource;			<span class="comment">//数据源</span></span><br><span class="line">  <span class="keyword">protected</span> TransactionIsolationLevel level;<span class="comment">//事务隔离级别</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">boolean</span> autoCommmit;			<span class="comment">//是否自动提交</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">JdbcTransaction</span><span class="params">(DataSource ds, TransactionIsolationLevel desiredLevel, <span class="keyword">boolean</span> desiredAutoCommit)</span> </span>&#123;</span><br><span class="line">    dataSource = ds;</span><br><span class="line">    level = desiredLevel;</span><br><span class="line">    autoCommmit = desiredAutoCommit;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">JdbcTransaction</span><span class="params">(Connection connection)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.connection = connection;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (connection == <span class="keyword">null</span>) &#123;</span><br><span class="line">      openConnection();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> connection;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">commit</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (connection != <span class="keyword">null</span> &amp;&amp; !connection.getAutoCommit()) &#123; <span class="comment">//连接非空且事务不是自动提交时</span></span><br><span class="line">      <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">        log.debug(<span class="string">"Committing JDBC Connection ["</span> + connection + <span class="string">"]"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      connection.commit();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rollback</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (connection != <span class="keyword">null</span> &amp;&amp; !connection.getAutoCommit()) &#123; <span class="comment">//连接非空且事务不是自动提交时</span></span><br><span class="line">      <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">        log.debug(<span class="string">"Rolling back JDBC Connection ["</span> + connection + <span class="string">"]"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      connection.rollback();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;</span><br><span class="line">      resetAutoCommit();	<span class="comment">//重置自动提交为true</span></span><br><span class="line">      <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">        log.debug(<span class="string">"Closing JDBC Connection ["</span> + connection + <span class="string">"]"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@description</span> 设置是否自动提交事务 </span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> xudj</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2016年7月15日 下午5:37:37</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> desiredAutoCommit</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setDesiredAutoCommit</span><span class="params">(<span class="keyword">boolean</span> desiredAutoCommit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">    	<span class="comment">//和之前的不相等时进行设置</span></span><br><span class="line">      <span class="keyword">if</span> (connection.getAutoCommit() != desiredAutoCommit) &#123;</span><br><span class="line">        <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">          log.debug(<span class="string">"Setting autocommit to "</span> + desiredAutoCommit + <span class="string">" on JDBC Connection ["</span> + connection + <span class="string">"]"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        connection.setAutoCommit(desiredAutoCommit);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">      <span class="comment">// Only a very poorly implemented driver would fail here,</span></span><br><span class="line">      <span class="comment">// and there's not much we can do about that.</span></span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> TransactionException(<span class="string">"Error configuring AutoCommit.  "</span></span><br><span class="line">          + <span class="string">"Your driver may not support getAutoCommit() or setAutoCommit(). "</span></span><br><span class="line">          + <span class="string">"Requested setting: "</span> + desiredAutoCommit + <span class="string">".  Cause: "</span> + e, e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@description</span> 重置事务自动提交 </span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> xudj</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2016年7月15日 下午5:41:40</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">resetAutoCommit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (!connection.getAutoCommit()) &#123;</span><br><span class="line">        <span class="comment">// MyBatis does not call commit/rollback on a connection if just selects were performed.</span></span><br><span class="line">        <span class="comment">// Some databases start transactions with select statements</span></span><br><span class="line">        <span class="comment">// and they mandate a commit/rollback before closing the connection.</span></span><br><span class="line">        <span class="comment">// A workaround is setting the autocommit to true before closing the connection.</span></span><br><span class="line">        <span class="comment">// Sybase throws an exception here.</span></span><br><span class="line">        <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">          log.debug(<span class="string">"Resetting autocommit to true on JDBC Connection ["</span> + connection + <span class="string">"]"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        connection.setAutoCommit(<span class="keyword">true</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">      <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">        log.debug(<span class="string">"Error resetting autocommit to true "</span></span><br><span class="line">          + <span class="string">"before closing the connection.  Cause: "</span> + e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@description</span> 打开数据库连接 </span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> xudj</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2016年7月15日 下午1:55:38</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@throws</span> SQLException</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">openConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) &#123;		<span class="comment">//先判断是否是debug模式，其它地方作用相同</span></span><br><span class="line">      log.debug(<span class="string">"Opening JDBC Connection"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    connection = dataSource.getConnection();	<span class="comment">//获取数据库连接</span></span><br><span class="line">    <span class="keyword">if</span> (level != <span class="keyword">null</span>) &#123;</span><br><span class="line">   <span class="comment">//设置事务隔离级别，通过枚举进行获取</span></span><br><span class="line">      connection.setTransactionIsolation(level.getLevel());		</span><br><span class="line">    &#125;</span><br><span class="line">    setDesiredAutoCommit(autoCommmit);		<span class="comment">//设置是否自动提交</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="本地事务的的实现"><a href="#本地事务的的实现" class="headerlink" title="本地事务的的实现"></a>本地事务的的实现</h4><p>传统单机应用使用一个RDBMS作为数据源。应用开启事务，进行CRUD，提交或回滚事务，统统发生在本地事务中，由资源管理器（RM）直接提供事务支持。数据的一致性在一个本地事务中得到保证。<br>Spring中有<em>7</em>中的事务传播级别, 用@Transactional(propagation = value) 注解进行标注, 这个标注记号可以使用在类或者方法上.</p>
+<ul>
+<li>REQUIRED(没有事务创建事务, 有事务使用当前事务, 默认, 被设计成这个级别时, 会为每一个被调用的方法创建一个逻辑事务域. 如果前面的方法已经创建了事务,后面的方法支持当前的事务,如果当前没有事务会重新建立事务) </li>
+<li>SUPPORTS (支持当前事务, 当前没有事务,就以非事务方式执行)</li>
+<li>MANDATORY(该方法必须运行在一个事务中.如果当前没有事务正在发生,将抛出一个异常)</li>
+<li>REQUIRES_NEW(新建事务, 如果当前存在事务,把当前事务挂起)</li>
+<li>NOT_SUPPORTED(在没有事务的方式执行操作, 如果当前存在事务, 把当前事务挂起)</li>
+<li>NEVER (在没有事务的情况下执行.如果一个事务正在运行,则抛出一个异常)</li>
+<li>NESTED(支持当前事务, 新增SavePoint, 外层事务失败的时候全部回滚,内层事务失败的时候并不会发生回滚)</li>
+</ul>
+<h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><p>该部分内容全部抄袭自<a href="http://www.cnblogs.com/bangerlee/p/5268485.html" target="_blank" rel="noopener">分布式系统理论基础 - 一致性、2PC和3PC</a></p>
+<h3 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h3><blockquote>
+<p>假设一个具有N个节点的分布式系统，当其满足以下条件时，我们说这个系统满足一致性：<br>全认同(agreement): 所有N个节点都认同一个结果<br>值合法(validity): 该结果必须由N个节点中的节点提出<br>可结束(termination): 决议过程在一定时间内结束，不会无休止地进行下去</p>
+</blockquote>
+<p>但就这样看似简单的事情，分布式系统实现起来并不轻松，因为它面临着这些问题：</p>
+<ul>
+<li>消息传递异步无序(asynchronous): 现实网络不是一个可靠的信道，存在消息延时、丢失，节点间消息传递做不到同步有序(synchronous)</li>
+<li>节点宕机(fail-stop): 节点持续宕机，不会恢复</li>
+<li>节点宕机恢复(fail-recover): 节点宕机一段时间后恢复，在分布式系统中最常见</li>
+<li>网络分化(network partition): 网络链路出现问题，将N个节点隔离成多个部分</li>
+<li>拜占庭将军问题(byzantine failure): 节点或宕机或逻辑失败，甚至不按套路出牌抛出干扰决议的### 两阶段提交（2PC）</li>
+</ul>
+<p>对照现实中的问题</p>
+<blockquote>
+<p>我: 老王，今晚7点老地方，搓够48圈不见不散！<br>……<br>（第二天凌晨3点） 隔壁老王: 没问题！       // 消息延迟<br>我: ……<br>我: 小张，今晚7点老地方，搓够48圈不见不散！<br>小张: No ……<br>（两小时后……）<br>小张: No problem！                     // 宕机节点恢复<br>我: ……<br>我: 老李头，今晚7点老地方，搓够48圈不见不散！<br>老李: 必须的，大保健走起！               // 拜占庭将军<br>（这是要打麻将呢？还是要大保健？还是一边打麻将一边大保健……）<br>我: 老李头们，今晚7点老地方，搓够48圈不见不散！<br>老李头A们: 联系不上 一致采纳A的意见去西门<br>老李头B们: 联系不上 一致采纳B的意见去东门</p>
+</blockquote>
+<p>我们把以上所列的问题称为系统模型(system model)，讨论分布式系统理论和工程实践的时候，必先划定模型。例如有以下两种模型：</p>
+<p>异步环境(asynchronous)下，节点宕机(fail-stop)<br>异步环境(asynchronous)下，节点宕机恢复(fail-recover)、网络分化(network partition)<br>2比1多了节点恢复、网络分化的考量，因而对这两种模型的理论研究和工程解决方案必定是不同的，在还没有明晰所要解决的问题前谈解决方案都是一本正经地耍流氓。<br>一致性还具备两个属性，一个是强一致(safety)，它要求所有节点状态一致、共进退；一个是可用(liveness)，它要求分布式系统24*7无间断对外服务。FLP定理(FLP impossibility) 已经证明在一个收窄的模型中(异步环境并只存在节点宕机)，不能同时满足 safety 和 liveness。</p>
+<h3 id="2-Pharse-Commit"><a href="#2-Pharse-Commit" class="headerlink" title="2 Pharse Commit"></a>2 Pharse Commit</h3><p>2PC(tow phase commit)两阶段提交顾名思义它分成两个阶段，先由一方进行提议(propose)并收集其他节点的反馈(vote)，再根据反馈决定提交(commit)或中止(abort)事务。我们将提议的节点称为协调者(coordinator)，其他参与决议节点称为参与者(participants, 或cohorts)：<br><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550843215530.png" alt="第一阶段提议并且收集信息"><br><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550843268348.png" alt="第二阶段提交或者终止事务"><br>在异步环境(asynchronous)并且没有节点宕机(fail-stop)的模型下，2PC可以满足全认同、值合法、可结束，是解决一致性问题的一种协议。但如果再加上节点宕机(fail-recover)的考虑，2PC是否还能解决一致性问题呢？<br>coordinator如果在发起提议后宕机，那么participant将进入阻塞(block)状态、一直等待coordinator回应以完成该次决议。这时需要另一角色把系统从不可结束的状态中带出来，我们把新增的这一角色叫协调者备份(coordinator watchdog)。coordinator宕机一定时间后，watchdog接替原coordinator工作，通过问询(query) 各participant的状态，决定阶段2是提交还是中止。这也要求 coordinator/participant 记录(logging)历史状态，以备coordinator宕机后watchdog对participant查询、coordinator宕机恢复后重新找回状态。</p>
+<p>从coordinator接收到一次事务请求、发起提议到事务完成，经过2PC协议后增加了2次RTT(propose+commit)，带来的时延(latency)增加相对较少。</p>
+<h3 id="3-Pharse-Commit"><a href="#3-Pharse-Commit" class="headerlink" title="3 Pharse Commit"></a>3 Pharse Commit</h3><p>3PC(three phase commit)即三阶段提交，既然2PC可以在异步网络+节点宕机恢复的模型下实现一致性，那还需要3PC做什么，3PC是什么鬼？</p>
+<p>在2PC中一个participant的状态只有它自己和coordinator知晓，假如coordinator提议后自身宕机，在watchdog启用前一个participant又宕机，其他participant就会进入既不能回滚、又不能强制commit的阻塞状态，直到participant宕机恢复。这引出两个疑问：</p>
+<p>能不能去掉阻塞，使系统可以在commit/abort前回滚(rollback)到决议发起前的初始状态<br>当次决议中，participant间能不能相互知道对方的状态，又或者participant间根本不依赖对方的状态</p>
+<p>相比2PC，3PC增加了一个准备提交(prepare to commit)阶段来解决以上问题：</p>
+<p><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550843771177.png" alt="enter description here"></p>
+<p>coordinator接收完participant的反馈(vote)之后，进入阶段2，给各个participant发送准备提交(prepare to commit)指令。participant接到准备提交指令后可以锁资源，但要求相关操作必须可回滚。coordinator接收完确认(ACK)后进入阶段3、进行commit/abort，3PC的阶段3与2PC的阶段2无异。协调者备份(coordinator watchdog)、状态记录(logging)同样应用在3PC。</p>
+<p>participant如果在不同阶段宕机，我们来看看3PC如何应对：</p>
+<ol>
+<li>阶段1: coordinator或watchdog未收到宕机participant的vote，直接中止事务；宕机的participant恢复后，读取logging发现未发出赞成vote，自行中止该次事务</li>
+<li>阶段2: coordinator未收到宕机participant的precommit ACK，但因为之前已经收到了宕机participant的赞成反馈(不然也不会进入到阶段2)，coordinator进行commit；watchdog可以通过问询其他participant获得这些信息，过程同理；宕机的participant恢复后发现收到precommit或已经发出赞成vote，则自行commit该次事务</li>
+<li>阶段3: 即便coordinator或watchdog未收到宕机participant的commit ACK，也结束该次事务；宕机的participant恢复后发现收到commit或者precommit，也将自行commit该次事务<br>因为有了准备提交(prepare to commit)阶段，3PC的事务处理延时也增加了1个RTT，变为3个RTT(propose+precommit+commit)，但是它防止participant宕机后整个系统进入阻塞态，增强了系统的可用性，对一些现实业务场景是非常值得的。<h2 id="微服务事务管理"><a href="#微服务事务管理" class="headerlink" title="微服务事务管理"></a>微服务事务管理</h2></li>
+<li>由于微服务间无法直接进行数据访问，微服务间互相调用通常通过RPC（dubbo）或Http API（SpringCloud）进行，所以已经无法使用TM统一管理微服务的RM。</li>
+<li>不同的微服务使用的数据源类型可能完全不同，如果微服务使用了NoSQL之类不支持事务的数据库，则事务根本无从谈起。</li>
+<li>即使微服务使用的数据源都支持事务，那么如果使用一个大事务将许多微服务的事务管理起来，这个大事务维持的时间，将比本地事务长几个数量级。如此长时间的事务及跨服务的事务，将为产生很多锁及数据不可用，严重影响系统性能。</li>
+</ol>
+<p>BASE理论由eBay的架构师Dan Pritchett提出，BASE理论是对CAP理论的延伸，核心思想是即使无法做到强一致性，应用应该可以采用合适的方式达到最终一致性。BASE是指基本可用（Basically Available）、软状态（ Soft State）、最终一致性（ Eventual Consistency）。</p>
+<p>BASE中的最终一致性是对于微服务下的事务管理的根本要求，既基于微服务的事务管理无法达到强一致性，但必须保证最重一致性。那么，有哪些方法可以保证微服务下的事务管理的最终一致性呢，按照实现原理分主要有两类，事件通知型和补偿型，其中事件通知型又可分为可靠事件通知模式及最大努力通知模式，而补偿型又可分为TCC模式、和业务补偿模式两种。这四种模式都可以达到微服务下的数据最终一致性。</p>
+<p><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845574483.png" alt="理想化事情"><br><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845652250.png" alt="错误的回滚1"><br><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845714409.png" alt="错误的回滚2"></p>
+<h3 id="本地事件服务"><a href="#本地事件服务" class="headerlink" title="本地事件服务"></a>本地事件服务</h3><p><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550845870353.png" alt="本地事件服务"></p>
+<ol>
+<li>当业务执行时，在同一个本地事务中将事件写入本地事件表，同时投递该事件，如果事件投递成功，则将该事件从事件表中删除。</li>
+<li>如果投递失败，则使用事件服务<strong>定时</strong>地异步统一处理投递失败的事件，进行重新投递，直到事件被正确投递，并将事件从事件表中删除。这种方式最大可能地保证了事件投递的实效性，并且当第一次投递失败后，也能使用异步事件服务保证事件至少被投递一次。<h3 id="外部事件服务"><a href="#外部事件服务" class="headerlink" title="外部事件服务"></a>外部事件服务</h3></li>
+</ol>
+<p><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550846036129.png" alt="要创建事件服务"></p>
+<p>业务服务在提交前，向事件服务发送事件，<strong>事件服务</strong>只记录事件，并不发送。业务服务在提交或回滚后通知事件服务，事件服务发送事件或者删除事件。不用担心业务系统在提交或者会滚后宕机而无法发送确认事件给事件服务，因为事件服务会定时获取所有仍未发送的事件并且向业务系统<strong>查询</strong>，根据业务系统的返回来决定发送或者删除该事件。</p>
+<p>可靠事件模式需要注意的有两点，</p>
+<ol>
+<li>事件的正确发送； </li>
+<li>事件的重复消费。<br>通过异步消息服务可以确保事件的正确发送，然而事件是有可能重复发送的，那么就需要消费端保证同一条事件不会重复被消费，简而言之就是保证事件消费的幂等性。</li>
+</ol>
+<p>如果事件本身是具备幂等性的状态型事件，如订单状态的通知（已下单、已支付、已发货等），则需要判断事件的顺序。<br><strong>一般通过时间戳来判断，既消费过了新的消息后，当接受到老的消息直接丢弃不予消费。如果无法提供全局时间戳，则应考虑使用全局统一的序列号。</strong><br>对于不具备幂等性的事件，一般是动作行为事件，如扣款100，存款200，则应该将事件id及事件结果持久化，<strong>在消费事件前查询事件id，若已经消费则直接返回执行结果；若是新消息，则执行，并存储执行结果。</strong></p>
+<h3 id="最大努力通知模式"><a href="#最大努力通知模式" class="headerlink" title="最大努力通知模式"></a>最大努力通知模式</h3><p>最大努力通知型的特点是，业务服务在提交事务后，进行有限次数（设置最大次数限制）的消息发送，比如发送三次消息，若三次消息发送都失败，则不予继续发送。所以有可能导致消息的丢失。</p>
+<h3 id="业务补偿模式"><a href="#业务补偿模式" class="headerlink" title="业务补偿模式"></a>业务补偿模式</h3><p>补偿模式比起事件通知模式最大的不同是，补偿模式的上游服务依赖于下游服务的运行结果，而事件通知模式上游服务不依赖于下游服务的运行结果。首先介绍业务补偿模式，业务补偿模式是一种纯补偿模式，其设计理念为，业务在调用的时候正常提交，当一个服务失败的时候，所有其依赖的上游服务都进行业务补偿操作<br>小明从杭州出发，去往美国纽约出差，现在他需要定从杭州去往上海的火车票，以及从上海飞往纽约的飞机票。如果小明成功购买了火车票之后发现那天的飞机票已经售空了，那么与其在上海再多待一天，小明还不如取消去上海的火车票，选择飞往北京再转机纽约，所以小明就取消了去上海的火车票。这个例子中购买杭州到上海的火车票是服务a，购买上海到纽约的飞机票是服务b，业务补偿模式就是在服务b失败的时候，对服务a进行补偿操作，在例子中就是取消杭州到上海的火车票。</p>
+<p>补偿模式要求每个服务都提供补偿借口，且这种补偿一般来说是<strong>不完全补偿</strong>，既即使进行了补偿操作，那条取消的火车票记录还是一直存在数据库中可以被追踪（一般是有相信的状态字段“已取消”作为标记），毕竟已经提交的线上数据一般是不能进行物理删除的。</p>
+<p>补偿模式要求每个服务都提供补偿借口，且这种补偿一般来说是不完全补偿，既即使进行了补偿操作，那条取消的火车票记录还是一直存在数据库中可以被追踪（一般是有相信的状态字段“已取消”作为标记），毕竟已经提交的线上数据一般是不能进行物理删除的。</p>
+<h3 id="TCC-Try-Confirm-Cancel模式"><a href="#TCC-Try-Confirm-Cancel模式" class="headerlink" title="TCC/Try Confirm Cancel模式"></a>TCC/Try Confirm Cancel模式</h3><p>TCC模式是一种优化了的业务补偿模式，它可以做到完全补偿，既进行补偿后不留下补偿的纪录，就好像什么事情都没有发生过一样。同时，TCC的软状态时间很短，原因是因为TCC是一种两阶段型模式（已经忘了两阶段概念的可以回顾一下1.2.1），只有在所有的服务的第一阶段（try）都成功的时候才进行第二阶段确认（Confirm）操作，否则进行补偿(Cancel)操作，而在try阶段是不会进行真正的业务处理的。<br><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551063033304.png" alt="TCC业务逻辑"><br>和2PC很像</p>
+<ol>
+<li>Try，业务服务完成所有的业务检查，预留必需的业务资源</li>
+<li>如果Try在所有服务中都成功，那么执行Confirm操作，Confirm操作不做任何的业务检查（因为try中已经做过），只是用Try阶段预留的业务资源进行业务处理；否则进行Cancel操作，Cancel操作释放Try阶段预留的业务资源.</li>
+</ol>
+<p>example:<br>服务a（小明从招行转出100元）:<br>try: update cmb_account set balance=balance-100, freeze=freeze+100 where acc_id=1 and balance&gt;100;<br>confirm: update cmb_account set freeze=freeze-100 where acc_id=1;<br>cancel: update cmb_account set balance=balance+100, freeze=freeze-100 where acc_id=1;<br>服务b（小明往广发银行汇入100元）:<br>try: update cgb_account set freeze=freeze+100 where acc_id=1;<br>confirm: update cgb_account set balance=balance+100, freeze=freeze-100 where acc_id=1;<br>cancel: update cgb_account set freeze=freeze-100 where acc_id=1;<br>具体说明：<br>a的try阶段，服务做了两件事，1：业务检查，这里是检查小明的帐户里的钱是否多余100元；2:预留资源，将100元从余额中划入冻结资金。<br>a的confirm阶段，这里不再进行业务检查，因为try阶段已经做过了，同时由于转账已经成功，将冻结资金扣除。<br>a的cancel阶段，释放预留资源，既100元冻结资金，并恢复到余额。<br>b的try阶段进行，预留资源，将100元冻结。<br>b的confirm阶段，使用try阶段预留的资源，将100元冻结资金划入余额。<br>b的cancel阶段，释放try阶段的预留资源，将100元从冻结资金中减去。<br>从上面的简单例子可以看出，TCC模式比纯业务补偿模式更加复杂，所以在实现上每个服务都需要实现Cofirm和Cancel两个接口。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/18/CompleteableFuture/" rel="prev" title="CompleteableFuture">
+      <i class="fa fa-chevron-left"></i> CompleteableFuture
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/" rel="next" title="4-Actor 的生命周期 处理状态和错误">
+      4-Actor 的生命周期 处理状态和错误 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#你们在关于微服务间数据一致性问题，是如何解决的？"><span class="nav-number">1.</span> <span class="nav-text">你们在关于微服务间数据一致性问题，是如何解决的？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统应用的事务管理"><span class="nav-number">1.1.</span> <span class="nav-text">传统应用的事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地事务"><span class="nav-number">1.1.1.</span> <span class="nav-text">本地事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务的特征"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">事务的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发事务问题"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">并发事务问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务和Connection-在JDBC的事务操作中，必须操作的是同一个Connection连接吗？"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">事务和Connection 在JDBC的事务操作中，必须操作的是同一个Connection连接吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地事务的的实现"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">本地事务的的实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式事务"><span class="nav-number">1.2.</span> <span class="nav-text">分布式事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一致性"><span class="nav-number">1.2.1.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Pharse-Commit"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 Pharse Commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Pharse-Commit"><span class="nav-number">1.2.3.</span> <span class="nav-text">3 Pharse Commit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务事务管理"><span class="nav-number">1.3.</span> <span class="nav-text">微服务事务管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地事件服务"><span class="nav-number">1.3.1.</span> <span class="nav-text">本地事件服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部事件服务"><span class="nav-number">1.3.2.</span> <span class="nav-text">外部事件服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大努力通知模式"><span class="nav-number">1.3.3.</span> <span class="nav-text">最大努力通知模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#业务补偿模式"><span class="nav-number">1.3.4.</span> <span class="nav-text">业务补偿模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCC-Try-Confirm-Cancel模式"><span class="nav-number">1.3.5.</span> <span class="nav-text">TCC&#x2F;Try Confirm Cancel模式</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小夫"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">小夫</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/andrewchen1" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;andrewchen1" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:andrewchen7@outlook.com" title="E-Mail → mailto:andrewchen7@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/312228489" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;312228489" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备18051892号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小夫</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
