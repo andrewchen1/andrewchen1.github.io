@@ -161,6 +161,143 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小夫的笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/" class="post-title-link" itemprop="url">2-Actor与并发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-17 15:10:35" itemprop="dateCreated datePublished" datetime="2019-02-17T15:10:35+08:00">2019-02-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-04-06 13:50:51" itemprop="dateModified" datetime="2019-04-06T13:50:51+08:00">2019-04-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Akka%E5%85%A5%E9%97%A8%E5%92%8C%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">Akka入门和实践</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="响应式四准则"><a href="#响应式四准则" class="headerlink" title="响应式四准则"></a>响应式四准则</h2><ol>
+<li>灵敏性<br> 立刻进行响应</li>
+<li>伸缩性<br> 方便进行扩展</li>
+<li>容错性<br> 从容的对错误进行响应, 不会对系统的其他地方造成影响</li>
+<li>事件驱动<br> 何时 何地 如何对请求作出响应. 允许对响应的组件进行路由和负载均衡.<h2 id="剖析Actor"><a href="#剖析Actor" class="headerlink" title="剖析Actor"></a>剖析Actor</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.akkademy.pingpong;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.AbstractActor;</span><br><span class="line"><span class="keyword">import</span> akka.actor.ActorRef;</span><br><span class="line"><span class="keyword">import</span> akka.actor.Status;</span><br><span class="line"><span class="keyword">import</span> akka.japi.pf.ReceiveBuilder;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-02-17</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaPongActor</span> <span class="keyword">extends</span> <span class="title">AbstractActor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Receive <span class="title">createReceive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ReceiveBuilder.create()</span><br><span class="line">                .matchEquals(<span class="string">"Ping"</span>, s -&gt;</span><br><span class="line">                    sender().tell(<span class="string">"Pong"</span>, ActorRef.noSender()))</span><br><span class="line">                .matchAny(x -&gt;</span><br><span class="line">                        sender().tell(</span><br><span class="line">                                <span class="keyword">new</span> Status.Failure(<span class="keyword">new</span> Exception(<span class="string">"unknown message"</span>)), self()))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>AbstractActor<br>  这里使用了模版模式, 在Abstract 里面就已经定义好了一些方法, 我们要做的就是实现每一个Actor (行为) 要做的事情就好了.</li>
+<li>match<ul>
+<li>match(class, function)<br>match(String.class, s -&gt; retrun dosomething)</li>
+<li>match(class, predicate, function)<br>match(String.class, s -&gt; Objects.equals(s, “Ping”), s -&gt; return something)</li>
+<li>matchEquals(Object, function)<br>match(“Ping”, s -&gt; return something)</li>
+<li>matchAny(function)<br>此处最佳的实践应该是抛出错误</li>
+</ul>
+</li>
+</ul>
+<p>match函数的匹配模式是从上到下的方式进行模式匹配. <strong>所以可以从特殊定义到一般</strong></p>
+<ul>
+<li>tell<br>sender()函数回返回一个ActorRef. 在上面的代码中我们使用了 tell(). tell是最基本的单向消息传输模式.第一个参数是我们想要发送到对方信箱的信息, 第二个参数消息的发送者<h2 id="Actor的创建"><a href="#Actor的创建" class="headerlink" title="Actor的创建"></a>Actor的创建</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActorRef actor = actorSystem.actorOf(Props.create(JavaPongActor<span class="class">.<span class="keyword">class</span>))</span>;</span><br></pre></td></tr></table></figure>
+我们创建了一个Actor 这个Actor 的Reference 是***<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Props.create(PongActor<span class="class">.<span class="keyword">class</span>, <span class="title">Object</span>... <span class="title">objects</span>)</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Promise、Future和事件驱动的编程模型"><a href="#Promise、Future和事件驱动的编程模型" class="headerlink" title="Promise、Future和事件驱动的编程模型"></a>Promise、Future和事件驱动的编程模型</h2><h3 id="阻塞与事件驱动API"><a href="#阻塞与事件驱动API" class="headerlink" title="阻塞与事件驱动API"></a>阻塞与事件驱动API</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Connection connection = DriverManager.getConnection(<span class="string">"1"</span>);</span><br><span class="line">       PreparedStatement preparedStatement =  connection.prepareStatement(sql);</span><br><span class="line">       preparedStatement.setString(<span class="number">0</span>, pre);</span><br><span class="line"></span><br><span class="line">       ResultSet resultSet = preparedStatement.executeQuery();</span><br><span class="line">       <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">           Integer a = resultSet.getInt(columnName);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+调用executeQuery 发起调用的线程必须等待数据库查询的完成. 否则这个线程回一直在阻塞的过程中.如果系统的并发很大的话,很快所有的线程因为这个原因都会处在等待IO的过程中<br><strong>如果使用事件模型的话</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CompletableFuture&lt;String&gt; userNameFuture = getUserNameFromDatabaseAsync(userId);</span><br><span class="line">       userNameFuture.thenAccept(userName -&gt; System.out.println(userName));</span><br></pre></td></tr></table></figure>
+从线程的角度来看, 代码首先会调用这个方法, 然后会进入这个方法内部, 然后立刻返回一个 Future/CompleteableFuture. 返回的就只是一个占位符,真正的值在未来的某个时候会返回到这个占位符内, <strong>数据库的调用和生成是在另外的线程上执行的, 不影响主线程的执行, 试想一下本来我们在一个循环中有50个数据库连接动作要执行, 平均一次所要的时间是m 那个共计花的时间是50m, 如果用下面的方法去执行的话 那么可能需要的时候就是m, 花的时间就要大大的优化了</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;CompletableFuture&lt;ContractAuditResponseDTO&gt;&gt; futures = contractAuditReportList.stream().map(auditReport -&gt;</span><br><span class="line">             CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">               <span class="comment">// create contractAuditResponseDTO</span></span><br><span class="line">            &#125;).thenApplyAsync(contractAuditResponseDTO -&gt; &#123;</span><br><span class="line">                <span class="comment">// file the other part</span></span><br><span class="line">                <span class="keyword">return</span> contractAuditResponseDTO;</span><br><span class="line">            &#125;)</span><br><span class="line">        ).collect(Collectors.toList());</span><br><span class="line">List&lt;ContractAuditResponseDTO&gt; contractAuditResponseDTOS = Futures.sequence(futures).get();</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550399086170.png" alt="流程"></p>
+<h3 id="使用Future-进行响应的Actor"><a href="#使用Future-进行响应的Actor" class="headerlink" title="使用Future 进行响应的Actor"></a>使用Future 进行响应的Actor</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> akkademy.message;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> akka.actor.ActorRef;</span><br><span class="line"><span class="keyword">import</span> akka.actor.ActorSystem;</span><br><span class="line"><span class="keyword">import</span> akka.actor.Props;</span><br><span class="line"><span class="keyword">import</span> com.akkademy.pingpong.JavaPongActor;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> scala.concurrent.Future;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CompletableFuture;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CompletionStage;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> akka.pattern.Patterns.ask;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> scala.compat.java8.FutureConverters.toJava;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> dafuchen</span></span><br><span class="line"><span class="comment"> * 2019-02-17</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaPongActorTest</span> </span>&#123;</span><br><span class="line">    ActorSystem actorSystem = ActorSystem.create();</span><br><span class="line">    ActorRef actorRef = actorSystem.actorOf(Props.create(JavaPongActor<span class="class">.<span class="keyword">class</span>))</span>;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shouldReplyToPingWithPong</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Future sFuture = ask(actorRef, <span class="string">"Ping"</span>, <span class="number">1000</span>);</span><br><span class="line">        <span class="keyword">final</span> CompletionStage&lt;String&gt; cs = toJava(sFuture);</span><br><span class="line">        <span class="keyword">final</span> CompletableFuture&lt;String&gt; jFuture = (CompletableFuture&lt;String&gt;) cs;</span><br><span class="line">        <span class="keyword">assert</span> (jFuture.get(<span class="number">1000</span>, TimeUnit.MILLISECONDS).equals(<span class="string">"Pong"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建一个ActorSystem</li>
+<li>向Actor询问其对于某个消息的响应.</li>
+</ol>
+<h3 id="理解Future-和Promise"><a href="#理解Future-和Promise" class="headerlink" title="理解Future 和Promise"></a>理解Future 和Promise</h3><p>现代化的Future隐式的处理了两种情况 <em>失败</em> 和 <em>延迟</em>.</p>
+<h4 id="对返回的结果进行异步的转换"><a href="#对返回的结果进行异步的转换" class="headerlink" title="对返回的结果进行异步的转换"></a>对返回的结果进行异步的转换</h4><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Transfer value</td>
+<td>thenApply</td>
+</tr>
+<tr>
+<td align="left">Transfer value async</td>
+<td>thenCompose</td>
+</tr>
+<tr>
+<td align="left">Return value if error</td>
+<td>exceptionally</td>
+</tr>
+<tr>
+<td align="left">return value async if error</td>
+<td>handle((t, x) -&gt; )</td>
+</tr>
+</tbody></table>
+<h3 id="对失败进行处理"><a href="#对失败进行处理" class="headerlink" title="对失败进行处理"></a>对失败进行处理</h3><h4 id="在失败的情况下执行代码"><a href="#在失败的情况下执行代码" class="headerlink" title="在失败的情况下执行代码"></a>在失败的情况下执行代码</h4><p>在Java8 中没有面向用户的用于失败处理的方法,所以我们使用handle的方式进行处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// aksPong 返回的是completeStage 的子类</span></span><br><span class="line">askPong(<span class="string">"cause error"</span>).handle((x, t) -&gt; &#123;</span><br><span class="line">	<span class="keyword">if</span>(t != <span class="keyword">null</span>)&#123;</span><br><span class="line">	System.out.println(<span class="string">"Error: "</span> + t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="从失败中恢复"><a href="#从失败中恢复" class="headerlink" title="从失败中恢复"></a>从失败中恢复</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CompletionStage&lt;String&gt; cs = askPong(<span class="string">"cause error"</span>)</span><br><span class="line">	.exceptionally(t -&gt; &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"default"</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="异步的从失败中恢复"><a href="#异步的从失败中恢复" class="headerlink" title="异步的从失败中恢复"></a>异步的从失败中恢复</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">askPong(<span class="string">"cause error"</span>).handle( (pong, ex) -&gt; ex == <span class="keyword">null</span></span><br><span class="line">	? CompletableFuture.completedFuture(pong)</span><br><span class="line">	: askPong(<span class="string">"Ping"</span>)</span><br><span class="line">).thenCompose(x -&gt; x);</span><br></pre></td></tr></table></figure>
+<h3 id="链式操作"><a href="#链式操作" class="headerlink" title="链式操作"></a>链式操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">askPong(<span class="string">"Ping"</span>)</span><br><span class="line">	.thenCombine(askPong(<span class="string">"Ping"</span>), (a,b) -&gt; &#123;</span><br><span class="line">		<span class="keyword">return</span> a + b; <span class="comment">//"PongPong"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/02/17/3-%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1691,7 +1828,7 @@ or<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
