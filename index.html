@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E4%BA%86/">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -175,7 +175,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E4%BA%86/" class="post-title-link" itemprop="url">Spring Boot 启动了</a>
+            <a href="/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">Spring Boot 启动流程</a>
         </h2>
 
         <div class="post-meta">
@@ -186,7 +186,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-04-18 17:53:22 / Modified: 21:13:27" itemprop="dateCreated datePublished" datetime="2020-04-18T17:53:22+08:00">2020-04-18</time>
+              <time title="Created: 2020-04-18 17:53:22 / Modified: 23:21:05" itemprop="dateCreated datePublished" datetime="2020-04-18T17:53:22+08:00">2020-04-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -194,7 +194,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MyBatis%E5%86%85%E5%B9%95/" itemprop="url" rel="index"><span itemprop="name">MyBatis内幕</span></a>
+                  <a href="/categories/SpringBoot%E6%8F%AD%E7%A7%98/" itemprop="url" rel="index"><span itemprop="name">SpringBoot揭秘</span></a>
                 </span>
             </span>
 
@@ -209,41 +209,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="打包的时候"><a href="#打包的时候" class="headerlink" title="打包的时候"></a>打包的时候</h1><p>首先按照正常的流程编译</p>
-<p>spring-boot-maven-plugin 插件 会进行repackage</p>
-<p>[INFO] — spring-boot-maven-plugin:2.2.6.RELEASE:repackage (repackage) @ demo —<br>[INFO] Replacing main artifact with repackaged archive</p>
-<p>根据在pom 中 packaging 指定的类型不同 jar/war 重新组织文件</p>
+          <h1 id="Spring-Boot应用打包"><a href="#Spring-Boot应用打包" class="headerlink" title="Spring Boot应用打包"></a>Spring Boot应用打包</h1><p>在编写spring boot 项目的时候往往会在pom的build 部分内加入</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其作用就是重新组织资源 使最终的结果物 无论是jar形式的还是 war形式的 都能 通过java -jar ***.jar(war)的命令启动。</p>
+<p>在通过maven 打包的时候</p>
+<p>首先按照会正常的流程编译，之后</p>
+<p>spring-boot-maven-plugin 插件 会介入进行repackage</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[INFO] --- spring-boot-maven-plugin:2.2.6.RELEASE:repackage (repackage) @ demo ---</span><br><span class="line">[INFO] Replacing main artifact with repackaged archive</span><br></pre></td></tr></table></figure>
+
+<p>根据在pom 中 packaging 指定的类型不同 jar/war 重新组织文件的结构和内容</p>
 <ol>
-<li>如果是war类型的 会加入loader的代码</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-loader<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>修改 MAINFEST.MF 的内容</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">Manifest-Version</span>: <span class="string">1.0</span></span><br><span class="line"><span class="meta">Created-By</span>: <span class="string">Maven Archiver 3.4.0</span></span><br><span class="line"><span class="meta">Build-Jdk-Spec</span>: <span class="string">11</span></span><br><span class="line"><span class="meta">Implementation-Title</span>: <span class="string">demo</span></span><br><span class="line"><span class="meta">Implementation-Version</span>: <span class="string">0.0.1-SNAPSHOT</span></span><br><span class="line"><span class="meta">Main-Class</span>: <span class="string">org.springframework.boot.loader.JarLauncher</span></span><br><span class="line"><span class="meta">Start-Class</span>: <span class="string">com.example.demo.DemoApplication</span></span><br><span class="line"><span class="meta">Spring-Boot-Version</span>: <span class="string">2.2.6.RELEASE</span></span><br><span class="line"><span class="meta">Spring-Boot-Classes</span>: <span class="string">BOOT-INF/classes/</span></span><br><span class="line"><span class="meta">Spring-Boot-Lib</span>: <span class="string">BOOT-INF/lib/</span></span><br></pre></td></tr></table></figure>
-
-<p>解压后的文件内容为</p>
+<li><p>如果是war类型的 </p>
+<p>对artifacts进行解压后会有如下的文件结构</p>
 <p>META-INF/ MAINFEST.MF </p>
 <p>META-INF/maven/com/example/demo/pom.properties</p>
 <p>META-INF/maven/com/example/demo/pom.xml</p>
 <p>WEB-INF/classes/*</p>
 <p>WEB-INF/lib/*</p>
 <p>org/springframework/boot/loader/*</p>
-<hr>
-<p>com/example/demo 为项目的pom所在的包</p>
-<p>org/springframework/boot/loader/* 为spring-boot-loader的代码</p>
+<p>其中org/springframework/boot/loader/* 所代表的是下面这个包内的内容</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-loader<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其作用是引导Spring Boot应用加载资源</p>
+<p>同时会修改 MAINFEST.MF 的内容 ,值得注意的是Main class 并不是在程序里面写的入口类，而是Spring Boot提供的一个入口类</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">Manifest-Version</span>: <span class="string">1.0</span></span><br><span class="line"><span class="meta">Created-By</span>: <span class="string">Maven Archiver 3.4.0</span></span><br><span class="line"><span class="meta">Build-Jdk-Spec</span>: <span class="string">11</span></span><br><span class="line"><span class="meta">Implementation-Title</span>: <span class="string">demo</span></span><br><span class="line"><span class="meta">Implementation-Version</span>: <span class="string">0.0.1-SNAPSHOT</span></span><br><span class="line"><span class="meta">Main-Class</span>: <span class="string">org.springframework.boot.loader.archive.Archive.WarLauncher</span></span><br><span class="line"><span class="meta">Start-Class</span>: <span class="string">com.example.demo.DemoApplication</span></span><br><span class="line"><span class="meta">Spring-Boot-Version</span>: <span class="string">2.2.6.RELEASE</span></span><br><span class="line"><span class="meta">Spring-Boot-Classes</span>: <span class="string">BOOT-INF/classes/</span></span><br><span class="line"><span class="meta">Spring-Boot-Lib</span>: <span class="string">BOOT-INF/lib/</span></span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li><p>如果是jar 类型的 </p>
+<p>对jar进行解压后会有如下的文件结构</p>
 <p>META-INF/ MAINFEST.MF </p>
 <p>META-INF/maven/com/example/demo/pom.properties</p>
 <p>META-INF/maven/com/example/demo/pom.xml</p>
 <p>BOOT-INF/classes/*</p>
 <p>BOOT-INF/lib/*</p>
 <p>org/springframework/boot/loader/*</p>
-<p>把WEB-INF 替换为 BOOT-INF 其他保持不变</p>
+<p>差异点有 </p>
+<p>把WEB-INF 替换为 BOOT-INF</p>
+<p> MAINFEST.MF 中的Main-Class 为org.springframework.boot.loader.JarLauncher</p>
 </li>
 </ol>
-<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><p>##Main-Class部分</p>
-<p>做的事情很简单</p>
+<h1 id="Spring-Boot项目启动"><a href="#Spring-Boot项目启动" class="headerlink" title="Spring Boot项目启动"></a>Spring Boot项目启动</h1><p>首先会加载 main-class 指定类的main方法。然后由其调用start-class 中的main方法</p>
+<p>##Main-Class部分</p>
 <h3 id="ONE"><a href="#ONE" class="headerlink" title="ONE"></a>ONE</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> Archive <span class="title">createArchive</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		ProtectionDomain protectionDomain = getClass().getProtectionDomain();</span><br><span class="line">		CodeSource codeSource = protectionDomain.getCodeSource();</span><br><span class="line">		URI location = (codeSource != <span class="keyword">null</span>) ? codeSource.getLocation().toURI() : <span class="keyword">null</span>;</span><br><span class="line">		String path = (location != <span class="keyword">null</span>) ? location.getSchemeSpecificPart() : <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span> (path == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Unable to determine code source archive"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		File root = <span class="keyword">new</span> File(path);</span><br><span class="line">		<span class="keyword">if</span> (!root.exists()) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Unable to determine code source archive from "</span> + root);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> (root.isDirectory() ? <span class="keyword">new</span> ExplodedArchive(root) : <span class="keyword">new</span> JarFileArchive(root));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -2228,7 +2237,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
