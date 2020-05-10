@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E4%BA%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -175,7 +175,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">Spring Boot 启动流程</a>
+            <a href="/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E4%BA%86/" class="post-title-link" itemprop="url">Spring Boot 启动流程</a>
         </h2>
 
         <div class="post-meta">
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-25 14:23:32" itemprop="dateModified" datetime="2020-04-25T14:23:32+08:00">2020-04-25</time>
+                <time title="Modified: 2020-05-10 17:03:37" itemprop="dateModified" datetime="2020-05-10T17:03:37+08:00">2020-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -310,12 +310,20 @@
 </ol>
 <p>主要是从getSpringFactoriesInstances 中去找 ApplicationContextInitializer.class 和ApplicationListener.class的子类</p>
 <p>getSpringFactoriesInstances比较像SPI 是Spring私有协议，解析每个jar包里面的META-INF/spring.factories文件。</p>
-<p>在项目启动的时候 会把BOOT-INF 里面所有的jar都由ClassLoad 载入一次了</p>
-<p>SpringApplication的实例就算构造好了 然后开始执行SpringApplication的Run方法。</p>
+<p>在前述部分 Main-Class 部分中 ClassLoader 已经把BOOT-INF 里面所有的jar都由ClassLoad 载入一次了</p>
+<p>SpringApplication的实例就算构造好了 </p>
+<p>在SpringApplication的实例中 属性有</p>
+<ul>
+<li>primarySources</li>
+<li>webApplicationType</li>
+<li>initializers （List &lt; ApplicationContextInitializer &gt; ）</li>
+<li>listen (List&lt; ApplicationListener&lt; ? &gt; &gt;)</li>
+</ul>
+<p>然后开始执行SpringApplication的Run方法。</p>
 <ol>
-<li><p>在spring.factories的list里面找SpringApplicationRunListener的子类 然后创建他们的实例。调用他们的starting方法。</p>
+<li><p>在spring.factories的list里面找SpringApplicationRunListener的子类 然后创建他们的实例。调用他们的starting方法</p>
 </li>
-<li><p>查找并且加载SpringApplicationRunListener的实现类，调用他们的start方法</p>
+<li><p>解析通过命令行的方式给到的参数java -jar ***.jar –something=something something=something</p>
 </li>
 <li><p>创建并且配置将要使用的Environment（Properties和Profile）将启动参数的里面的内</p>
 <p>主要的方法是SpringApplication#prepareEnvironment</p>
@@ -325,9 +333,9 @@
 
 <p>主要做的事情是把commandline的参数加入到environment 中。</p>
 <ol start="4">
-<li><p>启动Application</p>
+<li><p>创建ApplicationContext</p>
 </li>
-<li><p>创建reporters的实例</p>
+<li><p>到spring.factories 中找 SpringBootExceptionReporter的子类，进行实例化</p>
 </li>
 <li><p>调用SpringApplication#prepareContext</p>
 <ol>
@@ -359,15 +367,37 @@
 </ol>
 </li>
 <li><p>refreshContext</p>
+<p>调用refresh方法</p>
 <ol>
 <li><p>prepareRefresh</p>
 <p>web项目会重写这个方法</p>
-<p>AbstractRefreshableWebApplicationContext#initPropertySources 会读取servletContextInitParams和servletConfigInitParams中的内容</p>
-<p>//TODO</p>
+<p>AbstractRefreshableWebApplicationContext#initPropertySources 会读取servletContextInitParams和servletConfigInitParams中的内容. 将其放到Environment 中</p>
+<p>WebApplicationContextUtils#initServletPropertySources</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initServletPropertySources</span><span class="params">(MutablePropertySources sources,</span></span></span><br><span class="line"><span class="function"><span class="params">			@Nullable ServletContext servletContext, @Nullable ServletConfig servletConfig)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		Assert.notNull(sources, <span class="string">"'propertySources' must not be null"</span>);</span><br><span class="line">		String name = StandardServletEnvironment.SERVLET_CONTEXT_PROPERTY_SOURCE_NAME;</span><br><span class="line">		<span class="keyword">if</span> (servletContext != <span class="keyword">null</span> &amp;&amp; sources.contains(name) &amp;&amp; sources.get(name) <span class="keyword">instanceof</span> StubPropertySource) &#123;</span><br><span class="line">			sources.replace(name, <span class="keyword">new</span> ServletContextPropertySource(name, servletContext));</span><br><span class="line">		&#125;</span><br><span class="line">		name = StandardServletEnvironment.SERVLET_CONFIG_PROPERTY_SOURCE_NAME;</span><br><span class="line">		<span class="keyword">if</span> (servletConfig != <span class="keyword">null</span> &amp;&amp; sources.contains(name) &amp;&amp; sources.get(name) <span class="keyword">instanceof</span> StubPropertySource) &#123;</span><br><span class="line">			sources.replace(name, <span class="keyword">new</span> ServletConfigPropertySource(name, servletConfig));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 </li>
 </ol>
+<ol start="2">
+<li><p>obtainFreshBeanFactory</p>
+<p>在这里创建beanFactory </p>
+<p>AbstractApplicationContext#obtainFreshBeanFactory</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> ConfigurableListableBeanFactory <span class="title">obtainFreshBeanFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		refreshBeanFactory();</span><br><span class="line">		<span class="keyword">return</span> getBeanFactory();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AbstractRefreshableApplicationContext#refreshBeanFactory</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">refreshBeanFactory</span><span class="params">()</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (hasBeanFactory()) &#123;</span><br><span class="line">			destroyBeans();</span><br><span class="line">			closeBeanFactory();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			DefaultListableBeanFactory beanFactory = createBeanFactory();</span><br><span class="line">			beanFactory.setSerializationId(getId());</span><br><span class="line">			customizeBeanFactory(beanFactory);</span><br><span class="line">			loadBeanDefinitions(beanFactory);</span><br><span class="line">			<span class="keyword">synchronized</span> (<span class="keyword">this</span>.beanFactoryMonitor) &#123;</span><br><span class="line">				<span class="keyword">this</span>.beanFactory = beanFactory;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> ApplicationContextException(<span class="string">"I/O error parsing bean definition source for "</span> + getDisplayName(), ex);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AnnotationConfigWebApplicationContext#loadBeanDefinitions</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadBeanDefinitions</span><span class="params">(DefaultListableBeanFactory beanFactory)</span> </span>&#123;</span><br><span class="line">	AnnotatedBeanDefinitionReader reader = getAnnotatedBeanDefinitionReader(beanFactory);</span><br><span class="line">	ClassPathBeanDefinitionScanner scanner = getClassPathBeanDefinitionScanner(beanFactory);</span><br><span class="line">      </span><br><span class="line">	BeanNameGenerator beanNameGenerator = getBeanNameGenerator();</span><br><span class="line">	<span class="keyword">if</span> (beanNameGenerator != <span class="keyword">null</span>) &#123;</span><br><span class="line">		reader.setBeanNameGenerator(beanNameGenerator);</span><br><span class="line">		scanner.setBeanNameGenerator(beanNameGenerator);</span><br><span class="line">		beanFactory.registerSingleton(AnnotationConfigUtils.CONFIGURATION_BEAN_NAME_GENERATOR, beanNameGenerator);</span><br><span class="line">	&#125;</span><br><span class="line">      </span><br><span class="line">	ScopeMetadataResolver scopeMetadataResolver = getScopeMetadataResolver();</span><br><span class="line">	<span class="keyword">if</span> (scopeMetadataResolver != <span class="keyword">null</span>) &#123;</span><br><span class="line">		reader.setScopeMetadataResolver(scopeMetadataResolver);</span><br><span class="line">		scanner.setScopeMetadataResolver(scopeMetadataResolver);</span><br><span class="line">	&#125;</span><br><span class="line">      </span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">this</span>.componentClasses.isEmpty()) &#123;</span><br><span class="line">		<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">			logger.debug(<span class="string">"Registering component classes: ["</span> +</span><br><span class="line">					StringUtils.collectionToCommaDelimitedString(<span class="keyword">this</span>.componentClasses) + <span class="string">"]"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		reader.register(ClassUtils.toClassArray(<span class="keyword">this</span>.componentClasses));</span><br><span class="line">	&#125;</span><br><span class="line">      </span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">this</span>.basePackages.isEmpty()) &#123;</span><br><span class="line">		<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">			logger.debug(<span class="string">"Scanning base packages: ["</span> +</span><br><span class="line">					StringUtils.collectionToCommaDelimitedString(<span class="keyword">this</span>.basePackages) + <span class="string">"]"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		scanner.scan(StringUtils.toStringArray(<span class="keyword">this</span>.basePackages));</span><br><span class="line">	&#125;</span><br><span class="line">      </span><br><span class="line">	String[] configLocations = getConfigLocations();</span><br><span class="line">	<span class="keyword">if</span> (configLocations != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (String configLocation : configLocations) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Class&lt;?&gt; clazz = ClassUtils.forName(configLocation, getClassLoader());</span><br><span class="line">				<span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">					logger.trace(<span class="string">"Registering ["</span> + configLocation + <span class="string">"]"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				reader.register(clazz);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (ClassNotFoundException ex) &#123;</span><br><span class="line">				<span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">					logger.trace(<span class="string">"Could not load class for config location ["</span> + configLocation +</span><br><span class="line">							<span class="string">"] - trying package scan. "</span> + ex);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">int</span> count = scanner.scan(configLocation);</span><br><span class="line">				<span class="keyword">if</span> (count == <span class="number">0</span> &amp;&amp; logger.isDebugEnabled()) &#123;</span><br><span class="line">					logger.debug(<span class="string">"No component classes found for specified class/package ["</span> + configLocation + <span class="string">"]"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p>   //TODO</p>
 
       
     </div>
