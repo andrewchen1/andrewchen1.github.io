@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,15 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="响应式四准则 灵敏性 立刻进行响应 伸缩性 方便进行扩展 容错性 从容的对错误进行响应, 不会对系统的其他地方造成影响 事件驱动 何时 何地 如何对请求作出响应. 允许对响应的组件进行路由和负载均衡.剖析Actor12345678910111213141516171819202122package com.akkademy.pingpong;import akka.actor.AbstractAc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2-Actor与并发">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/index.html">
+<meta property="og:url" content="https://blog.andrewchen1.top/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="响应式四准则 灵敏性 立刻进行响应 伸缩性 方便进行扩展 容错性 从容的对错误进行响应, 不会对系统的其他地方造成影响 事件驱动 何时 何地 如何对请求作出响应. 允许对响应的组件进行路由和负载均衡.剖析Actor12345678910111213141516171819202122package com.akkademy.pingpong;import akka.actor.AbstractAc">
+<meta property="og:locale">
 <meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550399086170.png">
 <meta property="article:published_time" content="2019-02-17T07:10:35.000Z">
 <meta property="article:modified_time" content="2019-04-06T05:50:51.663Z">
@@ -35,7 +36,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1550399086170.png">
 
-<link rel="canonical" href="https://www.andrewchen1.top/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/">
+<link rel="canonical" href="https://blog.andrewchen1.top/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/">
 
 
 <script id="page-configurations">
@@ -169,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/02/17/2-Actor%E4%B8%8E%E5%B9%B6%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -370,7 +371,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式四准则"><span class="nav-number">1.</span> <span class="nav-text">响应式四准则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剖析Actor"><span class="nav-number">2.</span> <span class="nav-text">剖析Actor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actor的创建"><span class="nav-number">3.</span> <span class="nav-text">Actor的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Props"><span class="nav-number">4.</span> <span class="nav-text">Props</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise、Future和事件驱动的编程模型"><span class="nav-number">5.</span> <span class="nav-text">Promise、Future和事件驱动的编程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻塞与事件驱动API"><span class="nav-number">5.1.</span> <span class="nav-text">阻塞与事件驱动API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Future-进行响应的Actor"><span class="nav-number">5.2.</span> <span class="nav-text">使用Future 进行响应的Actor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解Future-和Promise"><span class="nav-number">5.3.</span> <span class="nav-text">理解Future 和Promise</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对返回的结果进行异步的转换"><span class="nav-number">5.3.1.</span> <span class="nav-text">对返回的结果进行异步的转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对失败进行处理"><span class="nav-number">5.4.</span> <span class="nav-text">对失败进行处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在失败的情况下执行代码"><span class="nav-number">5.4.1.</span> <span class="nav-text">在失败的情况下执行代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从失败中恢复"><span class="nav-number">5.4.2.</span> <span class="nav-text">从失败中恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步的从失败中恢复"><span class="nav-number">5.4.3.</span> <span class="nav-text">异步的从失败中恢复</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式操作"><span class="nav-number">5.5.</span> <span class="nav-text">链式操作</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%9B%E5%87%86%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">响应式四准则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%96%E6%9E%90Actor"><span class="nav-number">2.</span> <span class="nav-text">剖析Actor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actor%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">Actor的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Props"><span class="nav-number">4.</span> <span class="nav-text">Props</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise%E3%80%81Future%E5%92%8C%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">Promise、Future和事件驱动的编程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E4%B8%8E%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8API"><span class="nav-number">5.1.</span> <span class="nav-text">阻塞与事件驱动API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Future-%E8%BF%9B%E8%A1%8C%E5%93%8D%E5%BA%94%E7%9A%84Actor"><span class="nav-number">5.2.</span> <span class="nav-text">使用Future 进行响应的Actor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3Future-%E5%92%8CPromise"><span class="nav-number">5.3.</span> <span class="nav-text">理解Future 和Promise</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E8%BF%9B%E8%A1%8C%E5%BC%82%E6%AD%A5%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">5.3.1.</span> <span class="nav-text">对返回的结果进行异步的转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E5%A4%B1%E8%B4%A5%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86"><span class="nav-number">5.4.</span> <span class="nav-text">对失败进行处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%A4%B1%E8%B4%A5%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="nav-number">5.4.1.</span> <span class="nav-text">在失败的情况下执行代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E5%A4%B1%E8%B4%A5%E4%B8%AD%E6%81%A2%E5%A4%8D"><span class="nav-number">5.4.2.</span> <span class="nav-text">从失败中恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E7%9A%84%E4%BB%8E%E5%A4%B1%E8%B4%A5%E4%B8%AD%E6%81%A2%E5%A4%8D"><span class="nav-number">5.4.3.</span> <span class="nav-text">异步的从失败中恢复</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">5.5.</span> <span class="nav-text">链式操作</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

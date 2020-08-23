@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,15 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="消息传递 tell向Actor 发送一条消息。所有发送至sender()的响应都会返回给发送消息的Actor。 ask向Actor 发送一条消息，返回一个Future。当Actor 返回响应时，会完成Future。不会向消息发送者的邮箱返回任何消息。toJava(ask(actorSelection, new SetRequest(“key”, “value”), 2000)); forward将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3-传递消息">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/02/17/3-%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF/index.html">
+<meta property="og:url" content="https://blog.andrewchen1.top/2019/02/17/3-%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="消息传递 tell向Actor 发送一条消息。所有发送至sender()的响应都会返回给发送消息的Actor。 ask向Actor 发送一条消息，返回一个Future。当Actor 返回响应时，会完成Future。不会向消息发送者的邮箱返回任何消息。toJava(ask(actorSelection, new SetRequest(“key”, “value”), 2000)); forward将">
+<meta property="og:locale">
 <meta property="article:published_time" content="2019-02-17T07:10:35.000Z">
 <meta property="article:modified_time" content="2019-03-21T12:02:12.729Z">
 <meta property="article:author" content="小夫">
@@ -33,7 +34,7 @@
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.andrewchen1.top/2019/02/17/3-%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF/">
+<link rel="canonical" href="https://blog.andrewchen1.top/2019/02/17/3-%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF/">
 
 
 <script id="page-configurations">
@@ -167,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/02/17/3-%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF/">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/02/17/3-%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -335,7 +336,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#消息传递"><span class="nav-number">1.</span> <span class="nav-text">消息传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息是不可变的"><span class="nav-number">2.</span> <span class="nav-text">消息是不可变的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ask-模式"><span class="nav-number">3.</span> <span class="nav-text">Ask 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在另一个执行上下文中执行回调函数"><span class="nav-number">3.1.</span> <span class="nav-text">在另一个执行上下文中执行回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#必须设置超时参数"><span class="nav-number">3.2.</span> <span class="nav-text">必须设置超时参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超时错误的栈追踪信息并没有用"><span class="nav-number">3.3.</span> <span class="nav-text">超时错误的栈追踪信息并没有用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ask的额外性能开销"><span class="nav-number">3.4.</span> <span class="nav-text">Ask的额外性能开销</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tell-模式"><span class="nav-number">4.</span> <span class="nav-text">Tell 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forward"><span class="nav-number">5.</span> <span class="nav-text">Forward</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipe"><span class="nav-number">6.</span> <span class="nav-text">Pipe</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92"><span class="nav-number">1.</span> <span class="nav-text">消息传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">消息是不可变的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ask-%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">Ask 模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%AD%E6%89%A7%E8%A1%8C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">在另一个执行上下文中执行回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%85%E9%A1%BB%E8%AE%BE%E7%BD%AE%E8%B6%85%E6%97%B6%E5%8F%82%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">必须设置超时参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%85%E6%97%B6%E9%94%99%E8%AF%AF%E7%9A%84%E6%A0%88%E8%BF%BD%E8%B8%AA%E4%BF%A1%E6%81%AF%E5%B9%B6%E6%B2%A1%E6%9C%89%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">超时错误的栈追踪信息并没有用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ask%E7%9A%84%E9%A2%9D%E5%A4%96%E6%80%A7%E8%83%BD%E5%BC%80%E9%94%80"><span class="nav-number">3.4.</span> <span class="nav-text">Ask的额外性能开销</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tell-%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">Tell 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forward"><span class="nav-number">5.</span> <span class="nav-text">Forward</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipe"><span class="nav-number">6.</span> <span class="nav-text">Pipe</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

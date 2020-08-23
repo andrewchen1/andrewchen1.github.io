@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,15 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="分布式计算的8个误区 网络是可靠的 没有延时 带宽是无限的 网络是安全的 网络拓扑不会改变 只有一个管理员 网络传输没有开销 网络是同构的监督监督的层级结构akka使用Actor层级结构来描述监督.   当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor. 然后是路径为&#x2F;usr的守护Actor.使用actorSystem.actorOf(Props.create(a.c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4-Actor 的生命周期 处理状态和错误">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/index.html">
+<meta property="og:url" content="https://blog.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="分布式计算的8个误区 网络是可靠的 没有延时 带宽是无限的 网络是安全的 网络拓扑不会改变 只有一个管理员 网络传输没有开销 网络是同构的监督监督的层级结构akka使用Actor层级结构来描述监督.   当我们创建actor时,新建的Actor就是作为另一个Actor的子Actor. 然后是路径为&#x2F;usr的守护Actor.使用actorSystem.actorOf(Props.create(a.c">
+<meta property="og:locale">
 <meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551598492970.png">
 <meta property="og:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551601330911.png">
 <meta property="article:published_time" content="2019-03-03T07:12:01.000Z">
@@ -36,7 +37,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://img.andrewchen1.top/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1551598492970.png">
 
-<link rel="canonical" href="https://www.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/">
+<link rel="canonical" href="https://blog.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/">
 
 
 <script id="page-configurations">
@@ -170,7 +171,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/03/03/4-Actor-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-%E5%A4%84%E7%90%86%E7%8A%B6%E6%80%81%E5%92%8C%E9%94%99%E8%AF%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -362,7 +363,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式计算的8个误区"><span class="nav-number">1.</span> <span class="nav-text">分布式计算的8个误区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监督"><span class="nav-number">2.</span> <span class="nav-text">监督</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监督的层级结构"><span class="nav-number">2.1.</span> <span class="nav-text">监督的层级结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监督策略和醉酒的厨师"><span class="nav-number">2.2.</span> <span class="nav-text">监督策略和醉酒的厨师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">Actor 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义重试次数"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义重试次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终止或者kill-一个-Actor"><span class="nav-number">2.3.2.</span> <span class="nav-text">终止或者kill 一个 Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监督其他的Actor"><span class="nav-number">2.3.3.</span> <span class="nav-text">监督其他的Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全重启"><span class="nav-number">2.3.4.</span> <span class="nav-text">安全重启</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态"><span class="nav-number">3.</span> <span class="nav-text">状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Actor状态的条件语句"><span class="nav-number">3.1.</span> <span class="nav-text">基于Actor状态的条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#热交换"><span class="nav-number">3.2.</span> <span class="nav-text">热交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stash-泄漏"><span class="nav-number">3.2.1.</span> <span class="nav-text">stash 泄漏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限状态机"><span class="nav-number">3.3.</span> <span class="nav-text">有限状态机</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%E7%9A%848%E4%B8%AA%E8%AF%AF%E5%8C%BA"><span class="nav-number">1.</span> <span class="nav-text">分布式计算的8个误区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3"><span class="nav-number">2.</span> <span class="nav-text">监督</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E7%9A%84%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">监督的层级结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E7%AD%96%E7%95%A5%E5%92%8C%E9%86%89%E9%85%92%E7%9A%84%E5%8E%A8%E5%B8%88"><span class="nav-number">2.2.</span> <span class="nav-text">监督策略和醉酒的厨师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.3.</span> <span class="nav-text">Actor 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%87%8D%E8%AF%95%E6%AC%A1%E6%95%B0"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义重试次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%88%96%E8%80%85kill-%E4%B8%80%E4%B8%AA-Actor"><span class="nav-number">2.3.2.</span> <span class="nav-text">终止或者kill 一个 Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%91%E7%9D%A3%E5%85%B6%E4%BB%96%E7%9A%84Actor"><span class="nav-number">2.3.3.</span> <span class="nav-text">监督其他的Actor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E9%87%8D%E5%90%AF"><span class="nav-number">2.3.4.</span> <span class="nav-text">安全重启</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81"><span class="nav-number">3.</span> <span class="nav-text">状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EActor%E7%8A%B6%E6%80%81%E7%9A%84%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.1.</span> <span class="nav-text">基于Actor状态的条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E4%BA%A4%E6%8D%A2"><span class="nav-number">3.2.</span> <span class="nav-text">热交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stash-%E6%B3%84%E6%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">stash 泄漏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">3.3.</span> <span class="nav-text">有限状态机</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

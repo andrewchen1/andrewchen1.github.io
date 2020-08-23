@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,15 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="MyBatis 快速入门Mybatis示例配置文件 1234567891011121314151617181920212223242526272829&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;&gt;    &lt;!DOCTYPE mapper PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;mybati">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mybatis chapter1">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/08/10/mybatis-chapter1/index.html">
+<meta property="og:url" content="https://blog.andrewchen1.top/2019/08/10/mybatis-chapter1/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="MyBatis 快速入门Mybatis示例配置文件 1234567891011121314151617181920212223242526272829&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;&gt;    &lt;!DOCTYPE mapper PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;mybati">
+<meta property="og:locale">
 <meta property="article:published_time" content="2019-08-10T07:56:45.000Z">
 <meta property="article:modified_time" content="2019-08-11T05:57:06.099Z">
 <meta property="article:author" content="小夫">
@@ -33,7 +34,7 @@
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.andrewchen1.top/2019/08/10/mybatis-chapter1/">
+<link rel="canonical" href="https://blog.andrewchen1.top/2019/08/10/mybatis-chapter1/">
 
 
 <script id="page-configurations">
@@ -167,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/08/10/mybatis-chapter1/">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/08/10/mybatis-chapter1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -343,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MyBatis-快速入门"><span class="nav-number">1.</span> <span class="nav-text">MyBatis 快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis示例"><span class="nav-number">1.1.</span> <span class="nav-text">Mybatis示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-整体架构"><span class="nav-number">1.2.</span> <span class="nav-text">MyBatis 整体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础支持层"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础支持层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心处理层"><span class="nav-number">1.2.2.</span> <span class="nav-text">核心处理层</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MyBatis-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">MyBatis 快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Mybatis示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">MyBatis 整体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%94%AF%E6%8C%81%E5%B1%82"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础支持层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%A4%84%E7%90%86%E5%B1%82"><span class="nav-number">1.2.2.</span> <span class="nav-text">核心处理层</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

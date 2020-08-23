@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,15 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="掌管大局的Ioc主要职责 业务对象的构建管理 业务对象之间的依赖绑定">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring揭秘-掌管大局的Ioc">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/09/13/spring%E6%8F%AD%E7%A7%98-%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc/index.html">
+<meta property="og:url" content="https://blog.andrewchen1.top/2019/09/13/spring%E6%8F%AD%E7%A7%98-%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="掌管大局的Ioc主要职责 业务对象的构建管理 业务对象之间的依赖绑定">
+<meta property="og:locale">
 <meta property="article:published_time" content="2019-09-13T13:37:32.000Z">
 <meta property="article:modified_time" content="2019-09-13T13:39:51.356Z">
 <meta property="article:author" content="小夫">
@@ -33,7 +34,7 @@
 <meta property="article:tag" content="读书笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.andrewchen1.top/2019/09/13/spring%E6%8F%AD%E7%A7%98-%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc/">
+<link rel="canonical" href="https://blog.andrewchen1.top/2019/09/13/spring%E6%8F%AD%E7%A7%98-%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc/">
 
 
 <script id="page-configurations">
@@ -167,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/09/13/spring%E6%8F%AD%E7%A7%98-%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc/">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/09/13/spring%E6%8F%AD%E7%A7%98-%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -302,7 +303,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#掌管大局的Ioc"><span class="nav-number">1.</span> <span class="nav-text">掌管大局的Ioc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要职责"><span class="nav-number">1.1.</span> <span class="nav-text">主要职责</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%8C%E7%AE%A1%E5%A4%A7%E5%B1%80%E7%9A%84Ioc"><span class="nav-number">1.</span> <span class="nav-text">掌管大局的Ioc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E8%81%8C%E8%B4%A3"><span class="nav-number">1.1.</span> <span class="nav-text">主要职责</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

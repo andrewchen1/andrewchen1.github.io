@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,15 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.andrewchen1.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="响应式编程 I&#x2F;O 阻塞限制了并行性 同步交互限制了并行性 轮询减少了使用更少资源的机会 一个节点会拖慢所有的其他的节点 需要隔离错误 系统的部署能够弹性  建立实例   目标 传统部署 Akka方法    扩展性 混合使用线程池 共享数据库的互斥状态,和RPC网络服务进行扩展 Actor 发送和接收信息   提供交互信息 对信息进行轮训 当时间发生的时候进行推送   在网络上进行扩展 同步RPC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AKKA_IN_ACTION 1 简介">
-<meta property="og:url" content="https://www.andrewchen1.top/2019/04/07/AKKA-IN-ACTION-1-%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:url" content="https://blog.andrewchen1.top/2019/04/07/AKKA-IN-ACTION-1-%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="小夫的笔记">
 <meta property="og:description" content="响应式编程 I&#x2F;O 阻塞限制了并行性 同步交互限制了并行性 轮询减少了使用更少资源的机会 一个节点会拖慢所有的其他的节点 需要隔离错误 系统的部署能够弹性  建立实例   目标 传统部署 Akka方法    扩展性 混合使用线程池 共享数据库的互斥状态,和RPC网络服务进行扩展 Actor 发送和接收信息   提供交互信息 对信息进行轮训 当时间发生的时候进行推送   在网络上进行扩展 同步RPC">
+<meta property="og:locale">
 <meta property="article:published_time" content="2019-04-07T07:54:46.000Z">
 <meta property="article:modified_time" content="2019-04-13T05:40:48.230Z">
 <meta property="article:author" content="小夫">
@@ -33,7 +34,7 @@
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.andrewchen1.top/2019/04/07/AKKA-IN-ACTION-1-%E7%AE%80%E4%BB%8B/">
+<link rel="canonical" href="https://blog.andrewchen1.top/2019/04/07/AKKA-IN-ACTION-1-%E7%AE%80%E4%BB%8B/">
 
 
 <script id="page-configurations">
@@ -167,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://www.andrewchen1.top/2019/04/07/AKKA-IN-ACTION-1-%E7%AE%80%E4%BB%8B/">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/04/07/AKKA-IN-ACTION-1-%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -377,7 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式编程"><span class="nav-number">1.</span> <span class="nav-text">响应式编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立实例"><span class="nav-number">2.</span> <span class="nav-text">建立实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统扩展"><span class="nav-number">2.1.</span> <span class="nav-text">传统扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传统扩展和持久性-一切移入数据库"><span class="nav-number">2.1.1.</span> <span class="nav-text">传统扩展和持久性 一切移入数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传统扩展和交互应用-轮询"><span class="nav-number">2.1.2.</span> <span class="nav-text">传统扩展和交互应用 轮询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传统扩展和交互应用-web"><span class="nav-number">2.1.3.</span> <span class="nav-text">传统扩展和交互应用 web</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Akka进行扩展"><span class="nav-number">2.2.</span> <span class="nav-text">Akka进行扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用Akka扩展和持久化"><span class="nav-number">2.2.1.</span> <span class="nav-text">用Akka扩展和持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#改变保存为事件序列"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">改变保存为事件序列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#会话分割"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">会话分割</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息推送"><span class="nav-number">2.2.2.</span> <span class="nav-text">消息推送</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-操作"><span class="nav-number">2.3.</span> <span class="nav-text">Actor 操作</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">响应式编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">建立实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%89%A9%E5%B1%95"><span class="nav-number">2.1.</span> <span class="nav-text">传统扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%89%A9%E5%B1%95%E5%92%8C%E6%8C%81%E4%B9%85%E6%80%A7-%E4%B8%80%E5%88%87%E7%A7%BB%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.1.1.</span> <span class="nav-text">传统扩展和持久性 一切移入数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%89%A9%E5%B1%95%E5%92%8C%E4%BA%A4%E4%BA%92%E5%BA%94%E7%94%A8-%E8%BD%AE%E8%AF%A2"><span class="nav-number">2.1.2.</span> <span class="nav-text">传统扩展和交互应用 轮询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%89%A9%E5%B1%95%E5%92%8C%E4%BA%A4%E4%BA%92%E5%BA%94%E7%94%A8-web"><span class="nav-number">2.1.3.</span> <span class="nav-text">传统扩展和交互应用 web</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Akka%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%B1%95"><span class="nav-number">2.2.</span> <span class="nav-text">Akka进行扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8Akka%E6%89%A9%E5%B1%95%E5%92%8C%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">2.2.1.</span> <span class="nav-text">用Akka扩展和持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E4%BF%9D%E5%AD%98%E4%B8%BA%E4%BA%8B%E4%BB%B6%E5%BA%8F%E5%88%97"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">改变保存为事件序列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E5%88%86%E5%89%B2"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">会话分割</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81"><span class="nav-number">2.2.2.</span> <span class="nav-text">消息推送</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">Actor 操作</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
