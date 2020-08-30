@@ -28,7 +28,7 @@
 <meta property="og:description" content="Spring Boot应用打包在编写spring boot 项目的时候往往会在pom的build 部分内加入 1234&lt;plugin&gt;	&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;	&lt;artifactId&gt;spring-boot-maven-plugin&lt;&#x2F;artifactId&gt;&lt;&#x2F;plug">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-04-18T09:53:22.000Z">
-<meta property="article:modified_time" content="2020-08-30T09:44:39.293Z">
+<meta property="article:modified_time" content="2020-08-30T09:58:49.469Z">
 <meta property="article:author" content="小夫">
 <meta property="article:tag" content="spring">
 <meta name="twitter:card" content="summary">
@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-30 17:44:39" itemprop="dateModified" datetime="2020-08-30T17:44:39+08:00">2020-08-30</time>
+                <time title="Modified: 2020-08-30 17:58:49" itemprop="dateModified" datetime="2020-08-30T17:58:49+08:00">2020-08-30</time>
               </span>
 
           
@@ -484,11 +484,25 @@
 <p>AbstractAutowireCapableBeanFactory#resolveBeforeInstantiation</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">resolveBeforeInstantiation</span><span class="params">(String beanName, RootBeanDefinition mbd)</span> </span>&#123;</span><br><span class="line">	Object bean = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">if</span> (!Boolean.FALSE.equals(mbd.beforeInstantiationResolved)) &#123;</span><br><span class="line">		<span class="comment">// Make sure bean class is actually resolved at this point.</span></span><br><span class="line">		<span class="keyword">if</span> (!mbd.isSynthetic() &amp;&amp; hasInstantiationAwareBeanPostProcessors()) &#123;</span><br><span class="line">			Class&lt;?&gt; targetType = determineTargetType(beanName, mbd);</span><br><span class="line">			<span class="keyword">if</span> (targetType != <span class="keyword">null</span>) &#123;</span><br><span class="line">				bean = applyBeanPostProcessorsBeforeInstantiation(targetType, beanName);</span><br><span class="line">				<span class="keyword">if</span> (bean != <span class="keyword">null</span>) &#123;</span><br><span class="line">					bean = applyBeanPostProcessorsAfterInitialization(bean, beanName);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		mbd.beforeInstantiationResolved = (bean != <span class="keyword">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> bean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>一个典型的BeanPostProcessorsBeforeInstantiation</p>
-<p>AbstractAutoProxyCreator#postProcessBeforeInstantiation</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span> </span>&#123;</span><br><span class="line">		Object cacheKey = getCacheKey(beanClass, beanName);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (!StringUtils.hasLength(beanName) || !<span class="keyword">this</span>.targetSourcedBeans.contains(beanName)) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.advisedBeans.containsKey(cacheKey)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (isInfrastructureClass(beanClass) || shouldSkip(beanClass, beanName)) &#123;</span><br><span class="line">				<span class="keyword">this</span>.advisedBeans.put(cacheKey, Boolean.FALSE);</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Create proxy here if we have a custom TargetSource.</span></span><br><span class="line">		<span class="comment">// Suppresses unnecessary default instantiation of the target bean:</span></span><br><span class="line">		<span class="comment">// The TargetSource will handle target instances in a custom fashion.</span></span><br><span class="line">		TargetSource targetSource = getCustomTargetSource(beanClass, beanName);</span><br><span class="line">		<span class="keyword">if</span> (targetSource != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (StringUtils.hasLength(beanName)) &#123;</span><br><span class="line">				<span class="keyword">this</span>.targetSourcedBeans.add(beanName);</span><br><span class="line">			&#125;</span><br><span class="line">			Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(beanClass, beanName, targetSource);</span><br><span class="line">			Object proxy = createProxy(beanClass, beanName, specificInterceptors, targetSource);</span><br><span class="line">			<span class="keyword">this</span>.proxyTypes.put(cacheKey, proxy.getClass());</span><br><span class="line">			<span class="keyword">return</span> proxy;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>一般在这个环节都是在处理各种的动态代理</p>
+<p>介绍一下一种RedLock 在遇到预期的Exception的时候自动删除锁的方式</p>
+<ul>
+<li><p>有一个注解@LockReleaseCondition，这个注解有两个属性</p>
+<ol>
+<li><p>幂等锁的前缀</p>
+</li>
+<li><p>要响应的Exception的list。</p>
+</li>
+</ol>
+</li>
+<li><p>BeanPostProcessor接口</p>
+<p>实现postProcessBeforeInitialization</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">default</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> bean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a href="http://blog.andrewchen1.top/2020/08/30/spring-proxy/">Spring 代理的部分</a></p>
+<p>根据bean找到对应的Class，检查Class 中每一个方法是否被@LockReleaseCondition注解修饰，</p>
+</li>
+</ul>
+<p>Spring 代理的部分](<a href="http://blog.andrewchen1.top/2020/08/30/spring-proxy/">http://blog.andrewchen1.top/2020/08/30/spring-proxy/</a>)</p>
 <p><a href="#getSingleton">getSingleton</a></p>
 
     </div>
@@ -602,7 +616,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
