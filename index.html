@@ -187,7 +187,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-08-30 17:34:58 / Modified: 17:41:06" itemprop="dateCreated datePublished" datetime="2020-08-30T17:34:58+08:00">2020-08-30</time>
+              <time title="Created: 2020-08-30 17:34:58 / Modified: 17:44:06" itemprop="dateCreated datePublished" datetime="2020-08-30T17:34:58+08:00">2020-08-30</time>
             </span>
 
           
@@ -251,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-30 17:29:56" itemprop="dateModified" datetime="2020-08-30T17:29:56+08:00">2020-08-30</time>
+                <time title="Modified: 2020-08-30 17:44:39" itemprop="dateModified" datetime="2020-08-30T17:44:39+08:00">2020-08-30</time>
               </span>
 
           
@@ -542,8 +542,7 @@
 <p>AbstractAutoProxyCreator#postProcessBeforeInstantiation</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span> </span>&#123;</span><br><span class="line">		Object cacheKey = getCacheKey(beanClass, beanName);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (!StringUtils.hasLength(beanName) || !<span class="keyword">this</span>.targetSourcedBeans.contains(beanName)) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.advisedBeans.containsKey(cacheKey)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (isInfrastructureClass(beanClass) || shouldSkip(beanClass, beanName)) &#123;</span><br><span class="line">				<span class="keyword">this</span>.advisedBeans.put(cacheKey, Boolean.FALSE);</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Create proxy here if we have a custom TargetSource.</span></span><br><span class="line">		<span class="comment">// Suppresses unnecessary default instantiation of the target bean:</span></span><br><span class="line">		<span class="comment">// The TargetSource will handle target instances in a custom fashion.</span></span><br><span class="line">		TargetSource targetSource = getCustomTargetSource(beanClass, beanName);</span><br><span class="line">		<span class="keyword">if</span> (targetSource != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (StringUtils.hasLength(beanName)) &#123;</span><br><span class="line">				<span class="keyword">this</span>.targetSourcedBeans.add(beanName);</span><br><span class="line">			&#125;</span><br><span class="line">			Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(beanClass, beanName, targetSource);</span><br><span class="line">			Object proxy = createProxy(beanClass, beanName, specificInterceptors, targetSource);</span><br><span class="line">			<span class="keyword">this</span>.proxyTypes.put(cacheKey, proxy.getClass());</span><br><span class="line">			<span class="keyword">return</span> proxy;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
+<p><a href="http://blog.andrewchen1.top/2020/08/30/spring-proxy/">Spring 代理的部分</a></p>
 <p><a href="#getSingleton">getSingleton</a></p>
 
       
@@ -2354,7 +2353,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
