@@ -162,6 +162,142 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2020/09/26/%E9%BB%98%E8%AE%A4%E6%A0%87%E7%AD%BE%E7%9A%84%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小夫的笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/26/%E9%BB%98%E8%AE%A4%E6%A0%87%E7%AD%BE%E7%9A%84%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">默认标签的解析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-26 15:43:27" itemprop="dateCreated datePublished" datetime="2020-09-26T15:43:27+08:00">2020-09-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2020/09/26/%E5%AE%B9%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="小夫">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小夫的笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/26/%E5%AE%B9%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">容器的基本实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-26 15:07:41 / Modified: 17:14:28" itemprop="dateCreated datePublished" datetime="2020-09-26T15:07:41+08:00">2020-09-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.xml.XmlBeanFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.core.io.ClassPathResource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    BeanFactory beanFactory = <span class="keyword">new</span> XmlBeanFactory(<span class="keyword">new</span> ClassPathResource(<span class="string">&quot;Beans.xml&quot;</span>));</span><br><span class="line"></span><br><span class="line">        beanFactory.getBean(<span class="string">&quot;myTestBean&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h1><p>org.springframework.core.io.Resource<br>是对不同类型资源的封装 大体上想要拿到的就是那个资源的Inputstrem</p>
+<h1 id="XmlBeanFactory"><a href="#XmlBeanFactory" class="headerlink" title="XmlBeanFactory"></a>XmlBeanFactory</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">XmlBeanFactory</span><span class="params">(Resource resource, BeanFactory beanFactory)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">  supre(beanFactory);</span><br><span class="line">  <span class="keyword">this</span>.reader.loadBeanDefinitions(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="加载Bean"><a href="#加载Bean" class="headerlink" title="加载Bean"></a>加载Bean</h1><p>检查Bean 是不是已经被加载过了 如果没有就委托给<a href="#实际加载BeanDefinitions">XmlBeanDefinitionReader#doLoadBeanDefinitions</a>进行实际类型的加载<br>XmlBeanDefinitionReader#loadBeanDefinitions</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">loadBeanDefinitions</span><span class="params">(EncodedResource encodedResource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">		Assert.notNull(encodedResource, <span class="string">&quot;EncodedResource must not be null&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">			logger.trace(<span class="string">&quot;Loading XML bean definitions from &quot;</span> + encodedResource);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// resource 这个已经被reader load过了</span></span><br><span class="line">		Set&lt;EncodedResource&gt; currentResources = <span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.get();</span><br><span class="line">		<span class="keyword">if</span> (currentResources == <span class="keyword">null</span>) &#123;</span><br><span class="line">			currentResources = <span class="keyword">new</span> HashSet&lt;&gt;(<span class="number">4</span>);</span><br><span class="line">			<span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.set(currentResources);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!currentResources.add(encodedResource)) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(</span><br><span class="line">					<span class="string">&quot;Detected cyclic loading of &quot;</span> + encodedResource + <span class="string">&quot; - check your import definitions!&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> (InputStream inputStream = encodedResource.getResource().getInputStream()) &#123;</span><br><span class="line">			InputSource inputSource = <span class="keyword">new</span> InputSource(inputStream);</span><br><span class="line">			<span class="keyword">if</span> (encodedResource.getEncoding() != <span class="keyword">null</span>) &#123;</span><br><span class="line">				inputSource.setEncoding(encodedResource.getEncoding());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> doLoadBeanDefinitions(inputSource, encodedResource.getResource());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(</span><br><span class="line">					<span class="string">&quot;IOException parsing XML document from &quot;</span> + encodedResource.getResource(), ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span> &#123;</span><br><span class="line">			currentResources.remove(encodedResource);</span><br><span class="line">			<span class="keyword">if</span> (currentResources.isEmpty()) &#123;</span><br><span class="line">				<span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.remove();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实际加载BeanDefinitions"><a href="#实际加载BeanDefinitions" class="headerlink" title="实际加载BeanDefinitions"></a>实际加载BeanDefinitions</h2><p>XmlBeanDefinitionReader#doLoadBeanDefinitions</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">doLoadBeanDefinitions</span><span class="params">(InputSource inputSource, Resource resource)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 解析xml 得到Document </span></span><br><span class="line">			Document doc = doLoadDocument(inputSource, resource);</span><br><span class="line">			<span class="keyword">int</span> count = registerBeanDefinitions(doc, resource);</span><br><span class="line">			<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">				logger.debug(<span class="string">&quot;Loaded &quot;</span> + count + <span class="string">&quot; bean definitions from &quot;</span> + resource);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> count;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (BeanDefinitionStoreException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> ex;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (SAXParseException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;Line &quot;</span> + ex.getLineNumber() + <span class="string">&quot; in XML document from &quot;</span> + resource + <span class="string">&quot; is invalid&quot;</span>, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (SAXException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;XML document from &quot;</span> + resource + <span class="string">&quot; is invalid&quot;</span>, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (ParserConfigurationException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;Parser configuration exception parsing XML from &quot;</span> + resource, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;IOException parsing XML document from &quot;</span> + resource, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;Unexpected exception parsing XML document from &quot;</span> + resource, ex);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="解析Xml-获得Docuemnt对象"><a href="#解析Xml-获得Docuemnt对象" class="headerlink" title="解析Xml 获得Docuemnt对象"></a>解析Xml 获得Docuemnt对象</h1><p>XmlBeanDefinitionReader#doLoadDocument</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">protected Document doLoadDocument(InputSource inputSource, Resource resource) throws Exception &#123;</span><br><span class="line">	return this.documentLoader.loadDocument(inputSource, getEntityResolver(), this.errorHandler,</span><br><span class="line">			getValidationModeForResource(resource), isNamespaceAware());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="获取Resource的验证方式"><a href="#获取Resource的验证方式" class="headerlink" title="获取Resource的验证方式"></a>获取Resource的验证方式</h2><p>xml的验证方式主要有DTD和XSD<br>读取每一行，如果行内有DOCTYPE 表示验证的方式是DTD 否则是XSD<br>XmlValidationModeDetector#detectValidationMode</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Detect the validation mode for the XML document in the supplied &#123;<span class="doctag">@link</span> InputStream&#125;.</span></span><br><span class="line"><span class="comment"> * Note that the supplied &#123;<span class="doctag">@link</span> InputStream&#125; is closed by this method before returning.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> inputStream the InputStream to parse</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException in case of I/O failure</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> #VALIDATION_DTD</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> #VALIDATION_XSD</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">detectValidationMode</span><span class="params">(InputStream inputStream)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	<span class="comment">// Peek into the file to look for DOCTYPE.</span></span><br><span class="line">	BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(inputStream));</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">boolean</span> isDtdValidated = <span class="keyword">false</span>;</span><br><span class="line">		String content;</span><br><span class="line">		<span class="keyword">while</span> ((content = reader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			content = consumeCommentTokens(content);</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>.inComment || !StringUtils.hasText(content)) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (hasDoctype(content)) &#123;</span><br><span class="line">				isDtdValidated = <span class="keyword">true</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (hasOpeningTag(content)) &#123;</span><br><span class="line">				<span class="comment">// End of meaningful data...</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> (isDtdValidated ? VALIDATION_DTD : VALIDATION_XSD);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (CharConversionException ex) &#123;</span><br><span class="line">		<span class="comment">// Choked on some character encoding...</span></span><br><span class="line">		<span class="comment">// Leave the decision up to the caller.</span></span><br><span class="line">		<span class="keyword">return</span> VALIDATION_AUTO;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">finally</span> &#123;</span><br><span class="line">		reader.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="设定解析Document的-DocumentBuilderFactory-和-DocumentBuilder"><a href="#设定解析Document的-DocumentBuilderFactory-和-DocumentBuilder" class="headerlink" title="设定解析Document的 DocumentBuilderFactory 和 DocumentBuilder"></a>设定解析Document的 DocumentBuilderFactory 和 DocumentBuilder</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Document <span class="title">loadDocument</span><span class="params">(InputSource inputSource, EntityResolver entityResolver,</span></span></span><br><span class="line"><span class="function"><span class="params">		ErrorHandler errorHandler, <span class="keyword">int</span> validationMode, <span class="keyword">boolean</span> namespaceAware)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">	DocumentBuilderFactory factory = createDocumentBuilderFactory(validationMode, namespaceAware);</span><br><span class="line">	<span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">		logger.trace(<span class="string">&quot;Using JAXP provider [&quot;</span> + factory.getClass().getName() + <span class="string">&quot;]&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	DocumentBuilder builder = createDocumentBuilder(factory, entityResolver, errorHandler);</span><br><span class="line">	<span class="keyword">return</span> builder.parse(inputSource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="解析和注册BeanDefinitons"><a href="#解析和注册BeanDefinitons" class="headerlink" title="解析和注册BeanDefinitons"></a>解析和注册BeanDefinitons</h1><p>DefaultBeanDefinitionDocumentReader#registerBeanDefinitions</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">registerBeanDefinitions</span><span class="params">(Document doc, Resource resource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">		BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();</span><br><span class="line">		<span class="keyword">int</span> countBefore = getRegistry().getBeanDefinitionCount();</span><br><span class="line">		documentReader.registerBeanDefinitions(doc, createReaderContext(resource));</span><br><span class="line">		<span class="keyword">return</span> getRegistry().getBeanDefinitionCount() - countBefore;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解析Xml中的Beans"><a href="#解析Xml中的Beans" class="headerlink" title="解析Xml中的Beans"></a>解析Xml中的Beans</h2><p>DefaultBeanDefinitionDocumentReader#doRegisterBeanDefinitions</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings(&quot;deprecation&quot;)</span>  <span class="comment">// for Environment.acceptsProfiles(String...)</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doRegisterBeanDefinitions</span><span class="params">(Element root)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// Any nested &lt;beans&gt; elements will cause recursion in this method. In</span></span><br><span class="line">	<span class="comment">// order to propagate and preserve &lt;beans&gt; default-* attributes correctly,</span></span><br><span class="line">	<span class="comment">// keep track of the current (parent) delegate, which may be null. Create</span></span><br><span class="line">	<span class="comment">// the new (child) delegate with a reference to the parent for fallback purposes,</span></span><br><span class="line">	<span class="comment">// then ultimately reset this.delegate back to its original (parent) reference.</span></span><br><span class="line">	<span class="comment">// this behavior emulates a stack of delegates without actually necessitating one.</span></span><br><span class="line">	BeanDefinitionParserDelegate parent = <span class="keyword">this</span>.delegate;</span><br><span class="line">	<span class="keyword">this</span>.delegate = createDelegate(getReaderContext(), root, parent);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">		String profileSpec = root.getAttribute(PROFILE_ATTRIBUTE);</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(profileSpec)) &#123;</span><br><span class="line">			String[] specifiedProfiles = StringUtils.tokenizeToStringArray(</span><br><span class="line">					profileSpec, BeanDefinitionParserDelegate.MULTI_VALUE_ATTRIBUTE_DELIMITERS);</span><br><span class="line">			<span class="comment">// We cannot use Profiles.of(...) since profile expressions are not supported</span></span><br><span class="line">			<span class="comment">// in XML config. See SPR-12458 for details.</span></span><br><span class="line">			<span class="keyword">if</span> (!getReaderContext().getEnvironment().acceptsProfiles(specifiedProfiles)) &#123;</span><br><span class="line">				<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">					logger.debug(<span class="string">&quot;Skipped XML bean definition file due to specified profiles [&quot;</span> + profileSpec +</span><br><span class="line">							<span class="string">&quot;] not matching: &quot;</span> + getReaderContext().getResource());</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	preProcessXml(root);</span><br><span class="line">	parseBeanDefinitions(root, <span class="keyword">this</span>.delegate);</span><br><span class="line">	postProcessXml(root);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">this</span>.delegate = parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解析Beans-标签的attribute元素"><a href="#解析Beans-标签的attribute元素" class="headerlink" title="解析Beans 标签的attribute元素"></a>解析Beans 标签的attribute元素</h2><p>Reader 中会生成ParserDelegate<br>DefaultBeanDefinitionDocumentReader#createDelegate</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> BeanDefinitionParserDelegate <span class="title">createDelegate</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      XmlReaderContext readerContext, Element root, <span class="meta">@Nullable</span> BeanDefinitionParserDelegate parentDelegate)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   BeanDefinitionParserDelegate delegate = <span class="keyword">new</span> BeanDefinitionParserDelegate(readerContext);</span><br><span class="line">   delegate.initDefaults(root, parentDelegate);</span><br><span class="line">   <span class="keyword">return</span> delegate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BeanDefinitionParserDelegate#initDefaults</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initDefaults</span><span class="params">(Element root, <span class="meta">@Nullable</span> BeanDefinitionParserDelegate parent)</span> </span>&#123;</span><br><span class="line">		populateDefaults(<span class="keyword">this</span>.defaults, (parent != <span class="keyword">null</span> ? parent.defaults : <span class="keyword">null</span>), root);</span><br><span class="line">		<span class="keyword">this</span>.readerContext.fireDefaultsRegistered(<span class="keyword">this</span>.defaults);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>BeanDefinitionParserDelegate#populateDefaults</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">populateDefaults</span><span class="params">(DocumentDefaultsDefinition defaults, <span class="meta">@Nullable</span> DocumentDefaultsDefinition parentDefaults, Element root)</span> </span>&#123;</span><br><span class="line">	String lazyInit = root.getAttribute(DEFAULT_LAZY_INIT_ATTRIBUTE);</span><br><span class="line">	<span class="keyword">if</span> (isDefaultValue(lazyInit)) &#123;</span><br><span class="line">		<span class="comment">// Potentially inherited from outer &lt;beans&gt; sections, otherwise falling back to false.</span></span><br><span class="line">		lazyInit = (parentDefaults != <span class="keyword">null</span> ? parentDefaults.getLazyInit() : FALSE_VALUE);</span><br><span class="line">	&#125;</span><br><span class="line">	defaults.setLazyInit(lazyInit);</span><br><span class="line"></span><br><span class="line">	String merge = root.getAttribute(DEFAULT_MERGE_ATTRIBUTE);</span><br><span class="line">	<span class="keyword">if</span> (isDefaultValue(merge)) &#123;</span><br><span class="line">		<span class="comment">// Potentially inherited from outer &lt;beans&gt; sections, otherwise falling back to false.</span></span><br><span class="line">		merge = (parentDefaults != <span class="keyword">null</span> ? parentDefaults.getMerge() : FALSE_VALUE);</span><br><span class="line">	&#125;</span><br><span class="line">	defaults.setMerge(merge);</span><br><span class="line"></span><br><span class="line">	String autowire = root.getAttribute(DEFAULT_AUTOWIRE_ATTRIBUTE);</span><br><span class="line">	<span class="keyword">if</span> (isDefaultValue(autowire)) &#123;</span><br><span class="line">		<span class="comment">// Potentially inherited from outer &lt;beans&gt; sections, otherwise falling back to &#x27;no&#x27;.</span></span><br><span class="line">		autowire = (parentDefaults != <span class="keyword">null</span> ? parentDefaults.getAutowire() : AUTOWIRE_NO_VALUE);</span><br><span class="line">	&#125;</span><br><span class="line">	defaults.setAutowire(autowire);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (root.hasAttribute(DEFAULT_AUTOWIRE_CANDIDATES_ATTRIBUTE)) &#123;</span><br><span class="line">		defaults.setAutowireCandidates(root.getAttribute(DEFAULT_AUTOWIRE_CANDIDATES_ATTRIBUTE));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (parentDefaults != <span class="keyword">null</span>) &#123;</span><br><span class="line">		defaults.setAutowireCandidates(parentDefaults.getAutowireCandidates());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (root.hasAttribute(DEFAULT_INIT_METHOD_ATTRIBUTE)) &#123;</span><br><span class="line">		defaults.setInitMethod(root.getAttribute(DEFAULT_INIT_METHOD_ATTRIBUTE));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (parentDefaults != <span class="keyword">null</span>) &#123;</span><br><span class="line">		defaults.setInitMethod(parentDefaults.getInitMethod());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (root.hasAttribute(DEFAULT_DESTROY_METHOD_ATTRIBUTE)) &#123;</span><br><span class="line">		defaults.setDestroyMethod(root.getAttribute(DEFAULT_DESTROY_METHOD_ATTRIBUTE));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (parentDefaults != <span class="keyword">null</span>) &#123;</span><br><span class="line">		defaults.setDestroyMethod(parentDefaults.getDestroyMethod());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	defaults.setSource(<span class="keyword">this</span>.readerContext.extractSource(root));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2020/08/30/spring-proxy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -221,7 +357,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E4%BA%86/">
+    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2020/04/18/Spring%20%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -235,7 +371,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/18/Spring-Boot-%E5%90%AF%E5%8A%A8%E4%BA%86/" class="post-title-link" itemprop="url">Spring Boot 启动流程</a>
+            <a href="/2020/04/18/Spring%20%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">Spring Boot 启动流程</a>
         </h2>
 
         <div class="post-meta">
@@ -252,7 +388,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-20 18:31:16" itemprop="dateModified" datetime="2020-09-20T18:31:16+08:00">2020-09-20</time>
+                <time title="Modified: 2020-09-26 17:14:15" itemprop="dateModified" datetime="2020-09-26T17:14:15+08:00">2020-09-26</time>
               </span>
 
           
@@ -409,39 +545,6 @@
 </ol>
 </li>
 </ol>
-<h1 id="基于xml-的Spring-启动"><a href="#基于xml-的Spring-启动" class="headerlink" title="基于xml 的Spring 启动"></a>基于xml 的Spring 启动</h1><p>安利一个博客<a target="_blank" rel="noopener" href="https://www.cnblogs.com/binarylei/p/12290153.html">Spring 核心编程思想目录</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.BeanFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.xml.XmlBeanFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.io.ClassPathResource;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        BeanFactory beanFactory = <span class="keyword">new</span> XmlBeanFactory(<span class="keyword">new</span> ClassPathResource(<span class="string">&quot;Beans.xml&quot;</span>));</span><br><span class="line">        beanFactory.getBean(<span class="string">&quot;myTestBean&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="加载Resource"><a href="#加载Resource" class="headerlink" title="加载Resource"></a>加载Resource</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">XmlBeanFactory</span><span class="params">(Resource resource, BeanFactory beanFactory)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">  supre(beanFactory);</span><br><span class="line">  <span class="keyword">this</span>.reader.loadBeanDefinitions(resource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>XmlBeanDefinitionReader#loadBeanDefinitions</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">loadBeanDefinitions</span><span class="params">(EncodedResource encodedResource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">		Assert.notNull(encodedResource, <span class="string">&quot;EncodedResource must not be null&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (logger.isTraceEnabled()) &#123;</span><br><span class="line">			logger.trace(<span class="string">&quot;Loading XML bean definitions from &quot;</span> + encodedResource);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// resource 这个已经被reader load过了</span></span><br><span class="line">		Set&lt;EncodedResource&gt; currentResources = <span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.get();</span><br><span class="line">		<span class="keyword">if</span> (currentResources == <span class="keyword">null</span>) &#123;</span><br><span class="line">			currentResources = <span class="keyword">new</span> HashSet&lt;&gt;(<span class="number">4</span>);</span><br><span class="line">			<span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.set(currentResources);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!currentResources.add(encodedResource)) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(</span><br><span class="line">					<span class="string">&quot;Detected cyclic loading of &quot;</span> + encodedResource + <span class="string">&quot; - check your import definitions!&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> (InputStream inputStream = encodedResource.getResource().getInputStream()) &#123;</span><br><span class="line">			InputSource inputSource = <span class="keyword">new</span> InputSource(inputStream);</span><br><span class="line">			<span class="keyword">if</span> (encodedResource.getEncoding() != <span class="keyword">null</span>) &#123;</span><br><span class="line">				inputSource.setEncoding(encodedResource.getEncoding());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> doLoadBeanDefinitions(inputSource, encodedResource.getResource());</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(</span><br><span class="line">					<span class="string">&quot;IOException parsing XML document from &quot;</span> + encodedResource.getResource(), ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span> &#123;</span><br><span class="line">			currentResources.remove(encodedResource);</span><br><span class="line">			<span class="keyword">if</span> (currentResources.isEmpty()) &#123;</span><br><span class="line">				<span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.remove();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>XmlBeanDefinitionReader#doLoadBeanDefinitions</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">doLoadBeanDefinitions</span><span class="params">(InputSource inputSource, Resource resource)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 解析xml 得到Document </span></span><br><span class="line">			Document doc = doLoadDocument(inputSource, resource);</span><br><span class="line">			<span class="keyword">int</span> count = registerBeanDefinitions(doc, resource);</span><br><span class="line">			<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">				logger.debug(<span class="string">&quot;Loaded &quot;</span> + count + <span class="string">&quot; bean definitions from &quot;</span> + resource);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> count;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (BeanDefinitionStoreException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> ex;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (SAXParseException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;Line &quot;</span> + ex.getLineNumber() + <span class="string">&quot; in XML document from &quot;</span> + resource + <span class="string">&quot; is invalid&quot;</span>, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (SAXException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;XML document from &quot;</span> + resource + <span class="string">&quot; is invalid&quot;</span>, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (ParserConfigurationException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;Parser configuration exception parsing XML from &quot;</span> + resource, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;IOException parsing XML document from &quot;</span> + resource, ex);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(),</span><br><span class="line">					<span class="string">&quot;Unexpected exception parsing XML document from &quot;</span> + resource, ex);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解析Resource"><a href="#解析Resource" class="headerlink" title="解析Resource"></a>解析Resource</h2><p>DefaultBeanDefinitionDocumentReader#registerBeanDefinitions</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">registerBeanDefinitions</span><span class="params">(Document doc, Resource resource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">		BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();</span><br><span class="line">		<span class="keyword">int</span> countBefore = getRegistry().getBeanDefinitionCount();</span><br><span class="line">		documentReader.registerBeanDefinitions(doc, createReaderContext(resource));</span><br><span class="line">		<span class="keyword">return</span> getRegistry().getBeanDefinitionCount() - countBefore;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解析Xml中的Beans"><a href="#解析Xml中的Beans" class="headerlink" title="解析Xml中的Beans"></a>解析Xml中的Beans</h3><p>DefaultBeanDefinitionDocumentReader#doRegisterBeanDefinitions</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings(&quot;deprecation&quot;)</span>  <span class="comment">// for Environment.acceptsProfiles(String...)</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doRegisterBeanDefinitions</span><span class="params">(Element root)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// Any nested &lt;beans&gt; elements will cause recursion in this method. In</span></span><br><span class="line">	<span class="comment">// order to propagate and preserve &lt;beans&gt; default-* attributes correctly,</span></span><br><span class="line">	<span class="comment">// keep track of the current (parent) delegate, which may be null. Create</span></span><br><span class="line">	<span class="comment">// the new (child) delegate with a reference to the parent for fallback purposes,</span></span><br><span class="line">	<span class="comment">// then ultimately reset this.delegate back to its original (parent) reference.</span></span><br><span class="line">	<span class="comment">// this behavior emulates a stack of delegates without actually necessitating one.</span></span><br><span class="line">	BeanDefinitionParserDelegate parent = <span class="keyword">this</span>.delegate;</span><br><span class="line">	<span class="keyword">this</span>.delegate = createDelegate(getReaderContext(), root, parent);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">		String profileSpec = root.getAttribute(PROFILE_ATTRIBUTE);</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(profileSpec)) &#123;</span><br><span class="line">			String[] specifiedProfiles = StringUtils.tokenizeToStringArray(</span><br><span class="line">					profileSpec, BeanDefinitionParserDelegate.MULTI_VALUE_ATTRIBUTE_DELIMITERS);</span><br><span class="line">			<span class="comment">// We cannot use Profiles.of(...) since profile expressions are not supported</span></span><br><span class="line">			<span class="comment">// in XML config. See SPR-12458 for details.</span></span><br><span class="line">			<span class="keyword">if</span> (!getReaderContext().getEnvironment().acceptsProfiles(specifiedProfiles)) &#123;</span><br><span class="line">				<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">					logger.debug(<span class="string">&quot;Skipped XML bean definition file due to specified profiles [&quot;</span> + profileSpec +</span><br><span class="line">							<span class="string">&quot;] not matching: &quot;</span> + getReaderContext().getResource());</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	preProcessXml(root);</span><br><span class="line">	parseBeanDefinitions(root, <span class="keyword">this</span>.delegate);</span><br><span class="line">	postProcessXml(root);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">this</span>.delegate = parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="解析Beans-标签的attribute元素"><a href="#解析Beans-标签的attribute元素" class="headerlink" title="解析Beans 标签的attribute元素"></a>解析Beans 标签的attribute元素</h4><p>DefaultBeanDefinitionDocumentReader#createDelegate</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> BeanDefinitionParserDelegate <span class="title">createDelegate</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      XmlReaderContext readerContext, Element root, <span class="meta">@Nullable</span> BeanDefinitionParserDelegate parentDelegate)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   BeanDefinitionParserDelegate delegate = <span class="keyword">new</span> BeanDefinitionParserDelegate(readerContext);</span><br><span class="line">   delegate.initDefaults(root, parentDelegate);</span><br><span class="line">   <span class="keyword">return</span> delegate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>BeanDefinitionParserDelegate#initDefaults</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initDefaults</span><span class="params">(Element root, <span class="meta">@Nullable</span> BeanDefinitionParserDelegate parent)</span> </span>&#123;</span><br><span class="line">		populateDefaults(<span class="keyword">this</span>.defaults, (parent != <span class="keyword">null</span> ? parent.defaults : <span class="keyword">null</span>), root);</span><br><span class="line">		<span class="keyword">this</span>.readerContext.fireDefaultsRegistered(<span class="keyword">this</span>.defaults);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>BeanDefinitionParserDelegate#populateDefaults</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">populateDefaults</span><span class="params">(DocumentDefaultsDefinition defaults, <span class="meta">@Nullable</span> DocumentDefaultsDefinition parentDefaults, Element root)</span> </span>&#123;</span><br><span class="line">	String lazyInit = root.getAttribute(DEFAULT_LAZY_INIT_ATTRIBUTE);</span><br><span class="line">	<span class="keyword">if</span> (isDefaultValue(lazyInit)) &#123;</span><br><span class="line">		<span class="comment">// Potentially inherited from outer &lt;beans&gt; sections, otherwise falling back to false.</span></span><br><span class="line">		lazyInit = (parentDefaults != <span class="keyword">null</span> ? parentDefaults.getLazyInit() : FALSE_VALUE);</span><br><span class="line">	&#125;</span><br><span class="line">	defaults.setLazyInit(lazyInit);</span><br><span class="line"></span><br><span class="line">	String merge = root.getAttribute(DEFAULT_MERGE_ATTRIBUTE);</span><br><span class="line">	<span class="keyword">if</span> (isDefaultValue(merge)) &#123;</span><br><span class="line">		<span class="comment">// Potentially inherited from outer &lt;beans&gt; sections, otherwise falling back to false.</span></span><br><span class="line">		merge = (parentDefaults != <span class="keyword">null</span> ? parentDefaults.getMerge() : FALSE_VALUE);</span><br><span class="line">	&#125;</span><br><span class="line">	defaults.setMerge(merge);</span><br><span class="line"></span><br><span class="line">	String autowire = root.getAttribute(DEFAULT_AUTOWIRE_ATTRIBUTE);</span><br><span class="line">	<span class="keyword">if</span> (isDefaultValue(autowire)) &#123;</span><br><span class="line">		<span class="comment">// Potentially inherited from outer &lt;beans&gt; sections, otherwise falling back to &#x27;no&#x27;.</span></span><br><span class="line">		autowire = (parentDefaults != <span class="keyword">null</span> ? parentDefaults.getAutowire() : AUTOWIRE_NO_VALUE);</span><br><span class="line">	&#125;</span><br><span class="line">	defaults.setAutowire(autowire);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (root.hasAttribute(DEFAULT_AUTOWIRE_CANDIDATES_ATTRIBUTE)) &#123;</span><br><span class="line">		defaults.setAutowireCandidates(root.getAttribute(DEFAULT_AUTOWIRE_CANDIDATES_ATTRIBUTE));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (parentDefaults != <span class="keyword">null</span>) &#123;</span><br><span class="line">		defaults.setAutowireCandidates(parentDefaults.getAutowireCandidates());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (root.hasAttribute(DEFAULT_INIT_METHOD_ATTRIBUTE)) &#123;</span><br><span class="line">		defaults.setInitMethod(root.getAttribute(DEFAULT_INIT_METHOD_ATTRIBUTE));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (parentDefaults != <span class="keyword">null</span>) &#123;</span><br><span class="line">		defaults.setInitMethod(parentDefaults.getInitMethod());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (root.hasAttribute(DEFAULT_DESTROY_METHOD_ATTRIBUTE)) &#123;</span><br><span class="line">		defaults.setDestroyMethod(root.getAttribute(DEFAULT_DESTROY_METHOD_ATTRIBUTE));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (parentDefaults != <span class="keyword">null</span>) &#123;</span><br><span class="line">		defaults.setDestroyMethod(parentDefaults.getDestroyMethod());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	defaults.setSource(<span class="keyword">this</span>.readerContext.extractSource(root));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="for循环处理Beans-下面的Element"><a href="#for循环处理Beans-下面的Element" class="headerlink" title="for循环处理Beans 下面的Element"></a>for循环处理Beans 下面的Element</h3><p>判断是标准的Element （bean 、 beans 、alias、import） 还是自定义的tag<a href="#自定义标签解析">自定义的tag解析</a></p>
-<p>DefaultBeanDefinitionDocumentReader#parseBeanDefinitions</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">parseBeanDefinitions</span><span class="params">(Element root, BeanDefinitionParserDelegate delegate)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">		NodeList nl = root.getChildNodes();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nl.getLength(); i++) &#123;</span><br><span class="line">			Node node = nl.item(i);</span><br><span class="line">			<span class="keyword">if</span> (node <span class="keyword">instanceof</span> Element) &#123;</span><br><span class="line">				Element ele = (Element) node;</span><br><span class="line">				<span class="keyword">if</span> (delegate.isDefaultNamespace(ele)) &#123;</span><br><span class="line">					parseDefaultElement(ele, delegate);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					delegate.parseCustomElement(ele);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		delegate.parseCustomElement(root);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>DefaultBeanDefinitionDocumentReader#parseDefaultElement</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">public static final String NESTED_BEANS_ELEMENT = &quot;beans&quot;;</span></span><br><span class="line"><span class="comment">public static final String ALIAS_ELEMENT = &quot;alias&quot;;</span></span><br><span class="line"><span class="comment">public static final String NAME_ATTRIBUTE = &quot;name&quot;;</span></span><br><span class="line"><span class="comment">public static final String ALIAS_ATTRIBUTE = &quot;alias&quot;;</span></span><br><span class="line"><span class="comment">public static final String IMPORT_ELEMENT = &quot;import&quot;;</span></span><br><span class="line"><span class="comment">public static final String RESOURCE_ATTRIBUTE = &quot;resource&quot;;</span></span><br><span class="line"><span class="comment">public static final String PROFILE_ATTRIBUTE = &quot;profile&quot;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">parseDefaultElement</span><span class="params">(Element ele, BeanDefinitionParserDelegate delegate)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) &#123;</span><br><span class="line">			importBeanDefinitionResource(ele);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) &#123;</span><br><span class="line">			processAliasRegistration(ele);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) &#123;</span><br><span class="line">			processBeanDefinition(ele, delegate);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) &#123;</span><br><span class="line">			doRegisterBeanDefinitions(ele);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="解析Bean"><a href="#解析Bean" class="headerlink" title="解析Bean"></a>解析Bean</h3><p>DefaultBeanDefinitionDocumentReader#processBeanDefinition</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">processBeanDefinition</span><span class="params">(Element ele, BeanDefinitionParserDelegate delegate)</span> </span>&#123;</span><br><span class="line">		BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele);</span><br><span class="line">		<span class="keyword">if</span> (bdHolder != <span class="keyword">null</span>) &#123;</span><br><span class="line">			bdHolder = delegate.decorateBeanDefinitionIfRequired(ele, bdHolder);</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// Register the final decorated instance.</span></span><br><span class="line">				BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (BeanDefinitionStoreException ex) &#123;</span><br><span class="line">				getReaderContext().error(<span class="string">&quot;Failed to register bean definition with name &#x27;&quot;</span> +</span><br><span class="line">						bdHolder.getBeanName() + <span class="string">&quot;&#x27;&quot;</span>, ele, ex);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// Send registration event.</span></span><br><span class="line">			getReaderContext().fireComponentRegistered(<span class="keyword">new</span> BeanComponentDefinition(bdHolder));</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
 
@@ -609,6 +712,7 @@
 </ul>
 <h1 id="ListableBeanFactory-和ApplicationContext"><a href="#ListableBeanFactory-和ApplicationContext" class="headerlink" title="ListableBeanFactory 和ApplicationContext"></a>ListableBeanFactory 和ApplicationContext</h1><h2 id="reflush"><a href="#reflush" class="headerlink" title="reflush"></a>reflush</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> <span class="keyword">throws</span> BeansException, IllegalStateException </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>.startupShutdownMonitor) &#123;</span><br><span class="line">			<span class="comment">// Prepare this context for refreshing.</span></span><br><span class="line">      <span class="comment">// 准备刷新的上下文环境</span></span><br><span class="line">			prepareRefresh();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Tell the subclass to refresh the internal bean factory.</span></span><br><span class="line">      <span class="comment">//初始化BeanFactory</span></span><br><span class="line">			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Prepare the bean factory for use in this context.</span></span><br><span class="line">      <span class="comment">// 对BeanFactory进行各种功能填充</span></span><br><span class="line">			prepareBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// Allows post-processing of the bean factory in context subclasses.</span></span><br><span class="line">        <span class="comment">// 子类覆盖方法做额外的处理</span></span><br><span class="line">				postProcessBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Invoke factory processors registered as beans in the context.</span></span><br><span class="line">        <span class="comment">// 激活各种BeanFactory处理期</span></span><br><span class="line">				invokeBeanFactoryPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Regis处理器ter bean processors that intercept bean creation.</span></span><br><span class="line">        <span class="comment">// 注册拦截Bean创建的Bean</span></span><br><span class="line">				registerBeanPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Initialize message source for this context.</span></span><br><span class="line">        <span class="comment">// 初始化应用消息广播器</span></span><br><span class="line">				initMessageSource();</span><br><span class="line">				<span class="comment">// Initialize event multicaster for this context.</span></span><br><span class="line">        <span class="comment">//初始化应用消息广播器</span></span><br><span class="line">				initApplicationEventMulticaster();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Initialize other special beans in specific context subclasses.</span></span><br><span class="line">        <span class="comment">// 留给子类来初始化其他的Bean</span></span><br><span class="line">				onRefresh();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Check for listener beans and register them.</span></span><br><span class="line">        <span class="comment">// 在所有注册的bean中查找Listener Bean，注册到广播中</span></span><br><span class="line">				registerListeners();</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Instantiate all remaining (non-lazy-init) singletons.</span></span><br><span class="line">        <span class="comment">// 初始化剩下的单实例</span></span><br><span class="line">				finishBeanFactoryInitialization(beanFactory);</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Last step: publish corresponding event.</span></span><br><span class="line">        <span class="comment">// 完成刷新过程，通知生命周期处理器</span></span><br><span class="line">				finishRefresh();</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="prepareRefresh"><a href="#prepareRefresh" class="headerlink" title="prepareRefresh"></a>prepareRefresh</h3><p>步骤没有做什么</p>
 <h3 id="obtainFreshBeanFactory"><a href="#obtainFreshBeanFactory" class="headerlink" title="obtainFreshBeanFactory"></a>obtainFreshBeanFactory</h3><p>AbstractApplicationContext#obtainFreshBeanFactory</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> ConfigurableListableBeanFactory <span class="title">obtainFreshBeanFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	refreshBeanFactory();</span><br><span class="line">	<span class="keyword">return</span> getBeanFactory();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
@@ -1895,562 +1999,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/08/11/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%863/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小夫的笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/11/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%863/" class="post-title-link" itemprop="url">Java 基础知识点整理3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-08-11 16:21:13" itemprop="dateCreated datePublished" datetime="2019-08-11T16:21:13+08:00">2019-08-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-30 22:05:00" itemprop="dateModified" datetime="2020-08-30T22:05:00+08:00">2020-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">Java基础知识</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-多线程并发"><a href="#Java-多线程并发" class="headerlink" title="Java 多线程并发"></a>Java 多线程并发</h1><h2 id="线程的创建方式"><a href="#线程的创建方式" class="headerlink" title="线程的创建方式"></a>线程的创建方式</h2><ol>
-<li><p>继承Thread类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> 	</span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现Runnable接口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Runnable run = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Thread t = <span class="keyword">new</span> Thread(run);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ExecutorService Callable<E>, Future</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ExecutorSrevice threadPool = Executors.cachedThreadPool();</span><br><span class="line">Future f = threadPool.submit(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">  <span class="comment">// 各种run任务的描述</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><ol>
-<li><p>newCachedThreadPool</p>
-<p>调用execute将重用之前构造的线程(如果线程可用) 如果现有的线程没有可用的,则创建一个新线程并添加到线程池中.<strong>终止并从缓存中移除</strong>那些已有60s未被使用的线程</p>
-</li>
-<li><p>newFixedThreadPool</p>
-</li>
-<li><p>newScheduledThreadPool</p>
-</li>
-<li><p>newSingleThreadExecutor</p>
-</li>
-</ol>
-<h3 id="线程的结束"><a href="#线程的结束" class="headerlink" title="线程的结束"></a>线程的结束</h3><h4 id="定义一个退出标志"><a href="#定义一个退出标志" class="headerlink" title="定义一个退出标志"></a>定义一个退出标志</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">  <span class="keyword">volatile</span> Boolean stop;</span><br><span class="line">  </span><br><span class="line">  &#123;</span><br><span class="line">    stop = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (! stop) &#123;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="interrupted"><a href="#interrupted" class="headerlink" title="interrupted"></a>interrupted</h4><p>   用interrupted 有两种方法</p>
-<ol>
-<li><p>当线程处于blocked的状态的时候.我们调用该线程的interrupt()方法会抛出InterruptedException</p>
-</li>
-<li><p>在线程在处于非blocked状态的时候 去判断它的中断标示,这个方法会和方法1同时使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">  <span class="keyword">volatile</span> Boolean stop;</span><br><span class="line">  </span><br><span class="line">  &#123;</span><br><span class="line">    stop = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (! stop &amp;&amp; ! isInterrupted()) &#123;</span><br><span class="line">      <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="sleep-和wait之间的区别"><a href="#sleep-和wait之间的区别" class="headerlink" title="sleep 和wait之间的区别"></a>sleep 和wait之间的区别</h4><p>​        - sleep 是属于Thread 的方法. wait是属于object的方法.</p>
-<p>​        - sleep 是让渡cpu时间. 而wait是让渡出临界资源的控制权</p>
-<h2 id="Java-锁"><a href="#Java-锁" class="headerlink" title="Java 锁"></a>Java 锁</h2><h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>悲观锁可以叫做独占锁, 在得到这个资源之后到让渡出这个资源之前其他的事物都不能访问这个资源.</p>
-<h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>相对于悲观锁, 乐观锁认为在很大的程度下这个资源都不会发生变化 所以也没有必要进行独占(大家都可以访问), 在准备对这个资源进行修改的时候要去验证一下这个资源是不是发生变化了, 如果发生变化了就放弃修改, 如果是没有发生变化,那就修改它. (Compare And Swap)</p>
-<h3 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h3><ul>
-<li>自旋</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> offset = Unsafe.getUnsafe().objectFieldOffset(Stuednt.class.getDeclaredField(&quot;name&quot;));</span><br><span class="line">Object o;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">    v = Unsafe.getUnsafe().getObjectVolatile(o, offset); </span><br><span class="line">&#125; <span class="keyword">while</span> (! Unsafe.getUnsafe().compareAndSwapObject(student, offset, v,<span class="string">&quot;new name&quot;</span>);)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果持有锁的线程能在很短的时间内释放锁资源, 那么那些等待竞争锁的线程就不需要做内核态和用户态之间的切换进入阻塞挂起状态,只要等一等就好了.</li>
-</ul>
-<h2 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h2><h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><ul>
-<li>作用方法 </li>
-<li>作用静态方法</li>
-<li>sychronized(something) </li>
-</ul>
-<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lykm02/p/4516777.html">详细说明 </a></p>
-<ul>
-<li><p>contention list</p>
-<p>竞争队列 所有请求锁的线程首先放在这个竞争队列中</p>
-</li>
-<li><p>entry list</p>
-<p>Contention list zhong 有资格称为候选资源的线程被移动到这个竞争队列中</p>
-</li>
-<li><p>wait set</p>
-<p>调用wait的线程在这个队列中</p>
-</li>
-<li><p>OnDeck </p>
-<p>任意时刻最多只能有一个线程正在竞争锁,该线程被称为OnDeck</p>
-</li>
-<li><p>Owner</p>
-<p>获得锁的进程称为Owener</p>
-</li>
-<li><p>! Owener</p>
-<p>释放锁的线程    </p>
-</li>
-</ul>
-<blockquote>
-<p><img src="http://img.andrewchen1.top/20121109112521_220.jpg" alt="队列说明"></p>
-<ul>
-<li><p><strong>ContentionList</strong> <strong>虚拟队列</strong></p>
-<p>ContentionList 并不是一个真正的Queue，而只是一个虚拟队列，原因在于ContentionList是由Node及其next指 针逻辑构成，并不存在一个Queue的数据结构。ContentionList是一个后进先出（LIFO）的队列，每次新加入Node时都会在队头进行， 通过CAS改变第一个节点的的指针为新增节点，同时设置新增节点的next指向后续节点，而取得操作则发生在队尾。显然，该结构其实是个Lock- Free的队列。 </p>
-<p>因为只有Owner线程才能从队尾取元素，也即线程出列操作无争用，当然也就避免了CAS的ABA问题。</p>
-<p><img src="http://img.andrewchen1.top/20121109112521_981.jpg" alt="LIFO"></p>
-</li>
-<li><p>EntryList</p>
-<p>EntryList与ContentionList逻辑上同属等待队列，ContentionList会被线程并发访问，为了降低对 ContentionList队尾的争用，而建立EntryList。Owner线程在unlock时会从ContentionList中迁移线程到 EntryList，并会指定EntryList中的某个线程（一般为Head）为Ready（OnDeck）线程。Owner线程并不是把锁传递给 OnDeck线程，只是把竞争锁的权利交给OnDeck，OnDeck线程需要重新竞争锁。这样做虽然牺牲了一定的公平性，但极大的提高了整体吞吐量，在 Hotspot中把OnDeck的选择行为称之为“竞争切换”。 </p>
-<p>OnDeck线程获得锁后即变为owner线程，无法获得锁则会依然留在EntryList中，考虑到公平性，在EntryList中的位置不 发生变化（依然在队头）。如果Owner线程被wait方法阻塞，则转移到WaitSet队列；如果在某个时刻被notify/notifyAll唤醒， 则再次转移到EntryList。</p>
-</li>
-<li><p>自旋锁</p>
-<p>那些处于ContetionList、EntryList、WaitSet中的线程均处于阻塞状态，阻塞操作由操作系统完成（在Linxu下通 过pthread_mutex_lock函数）<em>LockSupport.park() LockSupport.unPark()</em>。线程被阻塞后便进入内核（Linux）调度状态，这个会导致系统在用户态与内核态之间来回切换，严重影响 锁的性能 </p>
-<p>缓解上述问题的办法便是自旋，其原理是：当发生争用时，若Owner线程能在很短的时间内释放锁，则那些正在争用线程可以稍微等一等（自旋）， 在Owner线程释放锁后，争用线程可能会立即得到锁，从而避免了系统阻塞。但Owner运行的时间可能会超出了临界值，争用线程自旋一段时间后还是无法 获得锁，这时争用线程则会停止自旋进入阻塞状态（后退）。基本思路就是自旋，不成功再阻塞，尽量降低阻塞的可能性，这对那些执行时间很短的代码块来说有非 常重要的性能提高。自旋锁有个更贴切的名字：自旋-指数后退锁，也即复合锁。很显然，自旋在多处理器上才有意义。 </p>
-<p>还有个问题是，线程自旋时做些啥？其实啥都不做，可以执行几次for循环，可以执行几条空的汇编指令，目的是占着CPU不放，等待获取锁的机 会。所以说，自旋是把双刃剑，如果旋的时间过长会影响整体性能，时间过短又达不到延迟阻塞的目的。显然，自旋的周期选择显得非常重要，但这与操作系统、硬 件体系、系统的负载等诸多场景相关，很难选择，如果选择不当，不但性能得不到提高，可能还会下降，因此大家普遍认为自旋锁不具有扩展性。 </p>
-<p>自旋优化策略 </p>
-<p>对自旋锁周期的选择上，HotSpot认为最佳时间应是一个线程上下文切换的时间，但目前并没有做到。经过调查，目前只是通过汇编暂停了几个CPU周期，除了自旋周期选择，HotSpot还进行许多其他的自旋优化策略，具体如下： </p>
-<p>如果平均负载小于CPUs则一直自旋 </p>
-<p>如果有超过(CPUs/2)个线程正在自旋，则后来线程直接阻塞 </p>
-<p>如果正在自旋的线程发现Owner发生了变化则延迟自旋时间（自旋计数）或进入阻塞 </p>
-<p>如果CPU处于节电模式则停止自旋 </p>
-<p>自旋时间的最坏情况是CPU的存储延迟（CPU A存储了一个数据，到CPU B得知这个数据直接的时间差） </p>
-<p>自旋时会适当放弃线程优先级之间的差异 </p>
-<p>那synchronized实现何时使用了自旋锁？答案是在线程进入ContentionList时，也即第一步操作前。线程在进入等待队列时 首先进行自旋尝试获得锁，如果不成功再进入等待队列。这对那些已经在等待队列中的线程来说，稍微显得不公平。还有一个不公平的地方是自旋线程可能会抢占了 Ready线程的锁。自旋锁由每个监视对象维护，每个监视对象一个。</p>
-</li>
-<li><p>偏向锁</p>
-<p>在JVM1.6中引入了偏向锁，偏向锁主要解决无竞争下的锁性能问题，首先我们看下无竞争下锁存在什么问题： </p>
-<p>现在几乎所有的锁都是可重入的，也即已经获得锁的线程可以多次锁住/解锁监视对象，按照之前的HotSpot设计，每次加锁/解锁都会涉及到一些 CAS操 作（比如对等待队列的CAS操作），CAS操作会延迟本地调用，因此偏向锁的想法是一旦线程第一次获得了监视对象，之后让监视对象“偏向”这个 线程，之后的多次调用则可以避免CAS操作，说白了就是置个变量，如果发现为true则无需再走各种加锁/解锁流程。但还有很多概念需要解释、很多引入的 问题需要解决：</p>
-<p><img src="http://img.andrewchen1.top/20121109112521_777.jpg" alt="SMP"></p>
-<p>其意思是所有的CPU会共享一条系统总线（BUS），靠此总线连接主存。每个核都有自己的一级缓存，各核相对于BUS对称分布，因此这种结构称为“对称多处理器”。 </p>
-<p>而CAS的全称为Compare-And-Swap，是一条CPU的原子指令，其作用是让CPU比较后原子地更新某个位置的值，经过调查发现， 其实现方式是基于硬件平台的汇编指令，就是说CAS是靠硬件实现的，JVM只是封装了汇编调用，那些AtomicInteger类便是使用了这些封装后的 接口。 </p>
-<p>Core1和Core2可能会同时把主存中某个位置的值Load到自己的L1 Cache中，当Core1在自己的L1 Cache中修改这个位置的值时，会通过总线，使Core2中L1 Cache对应的值“失效”，而Core2一旦发现自己L1 Cache中的值失效（称为Cache命中缺失）则会通过总线从内存中加载该地址最新的值，大家通过总线的来回通信称为“Cache一致性流量”，因为总 线被设计为固定的“通信能力”，如果Cache一致性流量过大，总线将成为瓶颈。而当Core1和Core2中的值再次一致时，称为“Cache一致 性”，从这个层面来说，锁设计的终极目标便是减少Cache一致性流量。 </p>
-<p>而CAS恰好会导致Cache一致性流量，如果有很多线程都共享同一个对象，当某个Core CAS成功时必然会引起总线风暴，这就是所谓的本地延迟，本质上偏向锁就是为了消除CAS，降低Cache一致性流量。</p>
-</li>
-</ul>
-<p>  上面提到Cache一致性，其实是有协议支持的，现在通用的协议是MESI（最早由Intel开始支持），具体参考：<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/MESI_protocol">http://en.wikipedia.org/wiki/MESI_protocol</a>，以后会仔细讲解这部分。</p>
-<p>  其实也不是所有的CAS都会导致总线风暴，这跟Cache一致性协议有关，具体参考：<a target="_blank" rel="noopener" href="http://blogs.oracle.com/dave/entry/biased_locking_in_hotspot">http://blogs.oracle.com/dave/entry/biased_locking_in_hotspot</a></p>
-<p>  NUMA(Non Uniform Memory Access Achitecture）架构： </p>
-<p>  与SMP对应还有非对称多处理器架构，现在主要应用在一些高端处理器上，主要特点是没有总线，没有公用主存，每个Core有自己的内存，针对这种结构此处不做讨论。</p>
-</blockquote>
-<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p>他是一种重入锁,除了能完成sychronized所能完成的所有工作之外,还提供了诸如可响应中断锁、可轮训锁、定时锁能避免多线程死锁的方法.</p>
-<ol>
-<li><p>void lock() </p>
-<p>如果锁处于空闲的状态,当前线程将获得锁</p>
-</li>
-<li><p>boolean tryLock() </p>
-<p>如果锁可用,则获得锁,并且立即返回true,否则返回false.tryLock只是”试图”获取锁,如果锁不可用,不会导致这个线程处于wait状态</p>
-</li>
-<li><p>void unlock()</p>
-<p>当前线程将释放持有的锁</p>
-</li>
-<li><p>Condition newCondition()</p>
-<p>条件对象,获取等待通知组件. 该组件和当前的锁绑定.<strong>当前线程只有拥有了锁</strong>,才能调用该组件的await()方法.而调用了之后,当前线程会释放lock, 被加入到这个condition的等待队列中,这个线程不再会活动,until 其他线程操作这个conditional 调用signal()或者 signalAll(). 被await的线程会到lock的竞争队列中去竞争condition.</p>
-</li>
-<li><p>int getHoldCount()</p>
-<p>查询当前线程保持此锁的次数, 重入的次数,也就是执行此线程执行lock方法的次数</p>
-</li>
-<li><p>int getQueueLength()</p>
-<p>返回正等待获取此锁的线程数量</p>
-</li>
-<li><p>int getWaitQueueLength(Condition condition)</p>
-<p>返回等待与此锁相关的给定条件线程估计数.比方说10个线程,用同一个condition对象,而且10对象都执行了await的方法.那么返回的值为10</p>
-</li>
-<li><p>bool hasWaiters(Condition condition)</p>
-<p>某个Condition 是否有等待的Thread数量</p>
-</li>
-<li><p>boolean hasQueuedThread(Thread thread)</p>
-<p>查询给定的线程是否拥有这个锁</p>
-</li>
-<li><p>boolean hasQueuedThreads()</p>
-<p>是否有线程在等待这个lock</p>
-</li>
-<li><p>isFair()</p>
-<p>是否是公平锁</p>
-</li>
-<li><p>isHeldByCurrentThread()</p>
-<p>这个lock是不是被当前线程占有</p>
-</li>
-<li><p>isLock()</p>
-<p>这个锁是否被其他线程占用</p>
-</li>
-<li><p>lockInterruptibly()</p>
-<p>尝试获取锁,仅在调用时锁未被中断,获取锁</p>
-</li>
-<li><p>tryLock(Long timeout, TimeUnit unit)</p>
-<p>在给定的时间内尝试获取锁,如果没有获取到,则放弃</p>
-</li>
-</ol>
-<h3 id="公平锁和非公平锁"><a href="#公平锁和非公平锁" class="headerlink" title="公平锁和非公平锁"></a>公平锁和非公平锁</h3><p>JVM 按随机、就近原则分配原则锁的机制则称为不公平锁,按照对锁提出获取请求的先后顺序分配到锁的机制被称为公平锁</p>
-<h3 id="ReetrantLock-与-Sychronized"><a href="#ReetrantLock-与-Sychronized" class="headerlink" title="ReetrantLock 与 Sychronized"></a>ReetrantLock 与 Sychronized</h3><p>reetrantLock通过lock()和unlock() 实现加锁和解锁. ReetrantLock 必须在finally控制块中进行解锁操作.</p>
-<h3 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h3><p>Semaphore是一种基于基数的型号量.它可以设定一个阈值.多个线程获取许可型号(acquire),做完自己的申请后归还(release)</p>
-<h3 id="共享锁和独占锁"><a href="#共享锁和独占锁" class="headerlink" title="共享锁和独占锁"></a>共享锁和独占锁</h3><p>独占锁模式下,每次只有一个线程能持有锁.共享锁允许多个线程同时获取锁,并发共享资源. 比方说ReadWriteLock.</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th>READ</th>
-<th>WRITE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">READ</td>
-<td>☑️</td>
-<td>✖️</td>
-</tr>
-<tr>
-<td align="center">WRITE</td>
-<td>✖️</td>
-<td>✖️</td>
-</tr>
-</tbody></table>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReadWriteReetraintLock</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 目前正在读的数量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Integer readerNumber;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 正在读的数量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Integer writerNumber;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyReadWriteReetraintLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        readerNumber = <span class="number">0</span>;</span><br><span class="line">        writerNumber = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">tryRead</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (writerNumber &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125;</span><br><span class="line">        readerNumber ++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">readDone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        readerNumber --;</span><br><span class="line">        notifyAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">tryWrite</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (readerNumber &gt; <span class="number">0</span> || writerNumber &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125;</span><br><span class="line">        writerNumber ++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">writeDone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        writerNumber --;</span><br><span class="line">        notifyAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h3><p>中断一个线程,本意是给这个线程一个通知信号,会影响这个线程内部一个中断标识.</p>
-<ul>
-<li>运行中的线程不能响应interrupt. 但是标识位会被设置.可以通过isInterrupted方法来知晓标识位的状态</li>
-<li>在阻塞状态的进程被调用interrupt方法会抛出InterruptedException, 在抛出错误后会将标识位清除.</li>
-</ul>
-<h3 id="线程池的组成"><a href="#线程池的组成" class="headerlink" title="线程池的组成"></a>线程池的组成</h3><ul>
-<li>线程池管理器</li>
-<li>工作线程</li>
-<li>任务接口</li>
-<li>任务队列</li>
-</ul>
-<p>构建一个线程池</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ExecutorService threadPool = <span class="keyword">new</span> ThreadPoolExecutor(</span><br><span class="line">                Runtime.getRuntime().availableProcessors(),</span><br><span class="line">                <span class="number">10</span>, </span><br><span class="line">                <span class="number">100</span>, </span><br><span class="line">                TimeUnit.SECONDS, </span><br><span class="line">                <span class="keyword">new</span> LinkedBlockingQueue&lt;&gt;(),</span><br><span class="line">                <span class="keyword">new</span> ThreadPoolExecutor.CallerRunsPolicy());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h4><p>当线程池里面所有的线程都在运行中, 并且队列都满了情况下有若干的拒绝方式</p>
-<ul>
-<li><p>AbortPolicy  </p>
-<p>直接抛出异常,阻止系统正常运行</p>
-</li>
-<li><p>CellerRunsPolicy</p>
-</li>
-</ul>
-<p>​    该策略直接在调用者线程中运行当前被丢弃的任务. 优点不会真的丢弃任务. 但是任务提交的性能可能会急剧下降</p>
-<ul>
-<li>DiscardOldestPolicy</li>
-</ul>
-<p>​    抛弃队列中最老的线程</p>
-<ul>
-<li>DiscardPolicy</li>
-</ul>
-<p>​    默默的丢弃将要处理的任务不做任何的处理</p>
-<h3 id="线程池的工作流程"><a href="#线程池的工作流程" class="headerlink" title="线程池的工作流程"></a>线程池的工作流程</h3><p>当调用execute()方法添加一个任务的时候,线程池会做如下判断:</p>
-<p>a. 如果正在运行的线程数量小于corePoolSize, 会马上创建线程运行这个任务</p>
-<p>b. 如果运行的线程数量大于或者等于corePoolSize 会将这个任务放入队列</p>
-<p>c. 如果队列满了, 线程数量小于maximumPoolSize, 那么还是要创建非核心线程来运行这个任务</p>
-<p>f. 如果队列满了,而且现在正在运行的线程数量大于或者等于maximumPoolSize,那么线程池会抛出RejectExecutionExecution;</p>
-<p>当一个线程无事可做,超过一定时间,线程池会判断,如果当前运行的线程数量大于corePoolSize,那么这个线程就会被停掉,最终线程池会被压缩到corePoolSize的大小</p>
-<p>队列的方法</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>插入</th>
-<th>移除</th>
-<th>检查</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>会抛出异常</td>
-<td>add</td>
-<td>remove</td>
-<td>element</td>
-</tr>
-<tr>
-<td>不会抛出异常</td>
-<td>offer</td>
-<td>poll</td>
-<td>peek</td>
-</tr>
-<tr>
-<td>阻塞</td>
-<td>put</td>
-<td>take</td>
-<td></td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>ArrayBlockingQueue</p>
-<p>数组形式实现的有界阻塞队列</p>
-</li>
-<li><p>LinkedBlockingQueue</p>
-<p>对于<strong>消费者</strong>和<strong>生产者</strong> 采用不同的锁来控制数据同步 生产者不停的在队尾增加内容. 消费者不停的在队列头部生产内容</p>
-</li>
-<li><p>PriorityBlockingQueue</p>
-<p>队列使用大根堆的方式进行组织的. 每次取堆的根节点.每次添加内容后会进行堆的rearrange.</p>
-</li>
-<li><p>DelayQueue</p>
-<p>也是用小根堆的方式进行组织, 以延迟的时间作为权重值, 每次都从队列中取内容, 然后delay指定的时间</p>
-</li>
-<li><p>SynchronousQueue</p>
-<p>每一个put必须等待一个take操作.可以看作是一个数据暂存的地方</p>
-</li>
-<li><p>LinkedTransferQueue</p>
-<p>由一个链表组成的无界阻塞TransferQueue队列.相对于LinkedBlockingQueue多了transfer()方法</p>
-</li>
-</ul>
-<h4 id="CountDownLunch"><a href="#CountDownLunch" class="headerlink" title="CountDownLunch"></a>CountDownLunch</h4><h4 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h4><h4 id="Semaphore-1"><a href="#Semaphore-1" class="headerlink" title="Semaphore"></a>Semaphore</h4><h3 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h3><p> 在 JMM（Java Memory Model）数据的执行主要分为 lock、unlock、read、load、use、assign、store、write。 </p>
-<blockquote>
-<ul>
-<li>read（读取）：作用于主内存变量，把一个变量值从主内存传输到线程的工作内存中，以便随后的load动作使用</li>
-<li>load（载入）：作用于工作内存的变量，它把read操作从主内存中得到的变量值放入工作内存的变量副本中。</li>
-<li>use（使用）：作用于工作内存的变量，把工作内存中的一个变量值传递给执行引擎，每当虚拟机遇到一个需要使用变量的值的字节码指令时将会执行这个操作。</li>
-<li>assign（赋值）：作用于工作内存的变量，它把一个从执行引擎接收到的值赋值给工作内存的变量，每当虚拟机遇到一个给变量赋值的字节码指令时执行这个操作。</li>
-<li>store（存储）：作用于工作内存的变量，把工作内存中的一个变量的值传送到主内存中，以便随后的write的操作。</li>
-<li>write（写入）：作用于主内存的变量，它把store操作从工作内存中一个变量的值传送到主内存的变量中。</li>
-</ul>
-</blockquote>
-<p> 这些行为是不可分解的原子操作，在使用上相互依赖，read-load从主内存复制变量到当前工作内存，use-assign执行代码改变共享变量值，store-write用工作内存数据刷新主存相关内容。</p>
-<p>要保证所谓的多线程的数据执行正确，就是要保证happen-before。A操作如果发生在B操作之前，那么我们能保证数据的正确。所以我们需要内存屏障的帮助， Java内存屏障主要分为四种，它保证在栅栏前初始化的load和store指令，能够严格有序的在栅栏后的load和store指令之前执行。</p>
-<ul>
-<li><p>Load - Load</p>
-<p>确保Load1所要读入的数据能够在被Load2和后续的load指令访问前读入。</p>
-</li>
-<li><p>Store-Store</p>
-<p>确保Store1的数据在Store2以及后续Store指令操作相关数据之前对其它处理器可见（例如向主存刷新数据）</p>
-</li>
-<li><p>Load-Store</p>
-<p>确保Load1的数据在Store2和后续Store指令被刷新之前读取。</p>
-</li>
-<li><p>Store-Load</p>
-<p><a target="_blank" rel="noopener" href="http://ifeve.com/jmm-cookbook-mb/">ifever</a></p>
-<blockquote>
-<p>确保Store1的数据在被Load2和后续的Load指令读取之前对其他处理器可见。StoreLoad屏障可以防止一个后续的load指令 不正确的使用了Store1的数据，而不是另一个处理器在相同内存位置写入一个新数据。正因为如此，所以在下面所讨论的处理器为了在屏障前读取同样内存位置存过的数据，必须使用一个StoreLoad屏障将存储指令和后续的加载指令分开。Storeload屏障在几乎所有的现代多处理器中都需要使用，但通常它的开销也是最昂贵的。它们昂贵的部分原因是它们必须关闭通常的略过缓存直接从写缓冲区读取数据的机制。这可能通过让一个缓冲区进行充分刷新（flush）,以及其他延迟的方式来实现。</p>
-<p>在下面讨论的所有处理器中，执行StoreLoad的指令也会同时获得其他三种屏障的效果。所以StoreLoad可以作为最通用的（但通常也是最耗性能）的一种Fence。(这是经验得出的结论，并不是必然)。反之不成立，为了达到StoreLoad的效果而组合使用其他屏障并不常见。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="ThreadLocal-作用"><a href="#ThreadLocal-作用" class="headerlink" title="ThreadLocal 作用"></a>ThreadLocal 作用</h4><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/98b68c97df9b">ThreadLocal的说明1</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a1cd61fa22da">ThreadLocal的说明2</a></p>
-<p>这两篇说的很清楚了</p>
-<p>每个Thread 对象内部都有ThreadMap&lt;Entity,  T&gt;类型的属性，其中Entity extend WeakReference &lt; ThreadLocal&gt;的定义为.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">ThreadLocal</span>&lt;?&gt;&gt; </span>&#123;</span><br><span class="line">            <span class="comment">/** The value associated with this ThreadLocal. */</span></span><br><span class="line">            Object value;</span><br><span class="line"></span><br><span class="line">            Entry(ThreadLocal&lt;?&gt; k, Object v) &#123;</span><br><span class="line">                <span class="keyword">super</span>(k);</span><br><span class="line">                value = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/964fbc30151a">WeakReferences说明</a></p>
-<p>WeakReference如字面意思，弱引用， 当一个对象仅仅被weak reference（弱引用）指向，而没有任何其他strong reference（强引用）指向的时候, 如果这时GC运行, 那么这个对象就会被回收。我们定义了Entity， 其中ThreadLocal 是弱引用，value 是强引用。 Entity中的ThreadLocal的值能被顺利的GC， 但是value中的值不能呗顺利的GC， 需要手动的设置，让JVM 让其GC。</p>
-<p>每次ThreadLocal的set和get方法实质是在ThreadMap中放置或者读取值</p>
-<p><strong>ThreadLocal 内存泄露问题</strong></p>
-<p>在程序的上下文中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dosomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ThreadLocal&lt;String&gt; name = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">  name.set(<span class="string">&quot;something&quot;</span>);</span><br><span class="line">  <span class="comment">// do something else </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么在结束之后， name会被gc， 因为entity的定义， 其对象也会被回收，但是ThreadLocalMap 中的table[i] 中还是放着value的值，导致<strong>内存泄漏</strong> 比较建议的做法是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dosomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ThreadLocal&lt;String&gt; name = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line"> 		name.set(<span class="string">&quot;something&quot;</span>);</span><br><span class="line">  	<span class="comment">// do something else </span></span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    name.remove();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ReetrantLock和Synchronized-之间的区别"><a href="#ReetrantLock和Synchronized-之间的区别" class="headerlink" title="ReetrantLock和Synchronized 之间的区别"></a>ReetrantLock和Synchronized 之间的区别</h3><ol>
-<li>ReentrantLock 显示的获得锁和释放锁， Synchronized隐式的获得锁</li>
-<li>ReentrantLock可响应中断， Synchronized不可以</li>
-<li>ReetrantLock 是api级别 Sychronized 是JVM 级别</li>
-<li>ReetrantLock 可以实现公平锁</li>
-<li>ReetrantLock 通过condition可以绑定多个条件</li>
-<li>synchronized 是同步阻塞， lock是同步非阻塞</li>
-<li>synchronized发生异常的时候会自动释放锁，而Lock需要在finally中调用unlock()</li>
-<li>通过Lock可以知道是否获得锁，而Synchronized不可以</li>
-</ol>
-<h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><p>concurrentHashMap的效率要比HashTable效率高的原因是ConcurrentHashMap采用了分片的策略，默认分为16片。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://blog.andrewchen1.top/2019/08/11/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%862/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="小夫">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小夫的笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/11/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%862/" class="post-title-link" itemprop="url">Java 基础知识点整理2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-08-11 14:44:02" itemprop="dateCreated datePublished" datetime="2019-08-11T14:44:02+08:00">2019-08-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-30 22:05:10" itemprop="dateModified" datetime="2020-08-30T22:05:10+08:00">2020-08-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">Java基础知识</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h1><h2 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h2><h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><ul>
-<li><p>ArrayList</p>
-<ol>
-<li><p>按照插入顺序排序, 可重复</p>
-</li>
-<li><p>底层使用数组</p>
-</li>
-<li><p>可以随机进行读取、增删慢 (要挪元素在数组中的位置)</p>
-</li>
-<li><p>线程不安全</p>
-</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wchicho/article/details/51987992">ConcurrentModificationException分析</a> </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">list.add(<span class="number">1</span>);</span><br><span class="line">list.add(<span class="number">2</span>);</span><br><span class="line">list.add(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	* example 1</span></span><br><span class="line"><span class="comment">	* 在这个情况下不会抛错</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">  <span class="keyword">int</span> length = list.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (list.get(i).equals(<span class="number">2</span>)) &#123;</span><br><span class="line">                list.add(<span class="number">10</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">		* example 2</span></span><br><span class="line"><span class="comment">		* 在这种情况下会抛错</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> temp : list) &#123;</span><br><span class="line">    <span class="keyword">if</span>(temp == <span class="number">2</span>) &#123;</span><br><span class="line">      list.add(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * exmple 3</span></span><br><span class="line"><span class="comment"> * 在这种情况下会抛错</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext()) &#123;</span><br><span class="line">  <span class="keyword">if</span>(iterator.next().equals(<span class="number">2</span>)) &#123;</span><br><span class="line">    list.add(<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * example 4</span></span><br><span class="line"><span class="comment"> * 在这种情况下不会抛错</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">ListIterator&lt;Integer&gt; listIterator = list.listIterator();</span><br><span class="line"><span class="keyword">while</span> (listIterator.hasNext()) &#123;</span><br><span class="line">  <span class="keyword">if</span> (listIterator.next().equals(<span class="number">2</span>)) &#123;</span><br><span class="line">    listIterator.add(<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>会抛出错误的原因</p>
-<p>在ArrayList 内有个内部类Itr</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 预期修改(modification)次数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">int</span> expectedModCount = modCount;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在迭代器调用next 方法的时候会检查当前类的修改次数和迭代器内的修改次数是不是一致, 如果是不一致的话 就爆炸.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	checkForComodification();</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> i = cursor;</span><br><span class="line">		E next = get(i);</span><br><span class="line">		lastRet = i;</span><br><span class="line">		cursor = i + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> next;</span><br><span class="line">	&#125; <span class="keyword">catch</span>(IndexOutOfBoundsException e) &#123;</span><br><span class="line">		checkForComodification();</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">	checkForComodification();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> i = cursor;</span><br><span class="line">		ArrayList.<span class="keyword">this</span>.add(i, e);</span><br><span class="line">		cursor = i + <span class="number">1</span>;</span><br><span class="line">		lastRet = -<span class="number">1</span>;</span><br><span class="line">		exceptedModCount = modCount;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IndexOutOfBoundException ex) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在案例1 中没有使用到迭代器相关的api</p>
-<p>在案例 2, 3 中使用了迭代器相关的api 在外部类的mod time 发生了改变的时候没有对迭代器内部的mod time 同时进行修正, 当再次调用next 的时候发现内部类记录的修改次数和类外部的修改次数不一样.爆炸.</p>
-</li>
-<li><p>Vector</p>
-<ol>
-<li>按照插入顺序排序 可重复</li>
-<li>底层使用数组</li>
-<li>可以随机读取 增删慢(要挪元素在数组中的位置)</li>
-<li>线程安全</li>
-</ol>
-</li>
-<li><p>LinkedList</p>
-<ol>
-<li>按照插入顺序排序 元素可重复</li>
-<li>通过链表的方式保存数据</li>
-<li>不可以随机读取数据 要通过头节点 或者尾节点 以遍历的方式获得所得的元素 但是 add 和remove的方法快</li>
-</ol>
-</li>
-</ul>
-<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><ul>
-<li><p>HashSet</p>
-<p>排列无序 不可重复 底层是HashMap. </p>
-</li>
-<li><p>TreeSet</p>
-<p>内部是TreeMap的sortedSet</p>
-</li>
-<li><p>LinkedHashSet</p>
-<p>内部是LinkedHashMap</p>
-</li>
-</ul>
-<h4 id="Queued"><a href="#Queued" class="headerlink" title="Queued"></a>Queued</h4><ul>
-<li>PriorityQueued</li>
-</ul>
-<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><ul>
-<li><p>HashMap</p>
-<p>key不可重复 value 可以重复</p>
-<p>底层hash表</p>
-<p>线程不安全 (可能会造成endless loop)</p>
-<p>允许key值为null</p>
-</li>
-<li><p>HashTable</p>
-<p>key不可重复</p>
-<p>底层hashtable</p>
-<p>线程安全</p>
-<p>key value 都不允许为null</p>
-</li>
-<li><p>TreeMap</p>
-<p>key不可以重复</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2518,7 +2070,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -2531,7 +2083,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
